@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="Collapse">Collapse</s:String>
+    <s:String x:Key="Expand">Expand</s:String>
+    <s:String x:Key="Reestablish">Reestablish</s:String>
+    <s:String x:Key="Close">Close</s:String>
+    
+    <s:String x:Key="StartCleaning">Start Cleaning</s:String>
+    <s:String x:Key="SaveFiles">Save Files</s:String>
+    
+    <s:String x:Key="Menu">Menu</s:String>
+    <s:String x:Key="Cleaner">Cleaner</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Questions and Answers</s:String>
+    <s:String x:Key="Settings">Settings</s:String>
+    <s:String x:Key="About">About</s:String>
+    
+    <s:String x:Key="General">General</s:String>
+</ResourceDictionary>

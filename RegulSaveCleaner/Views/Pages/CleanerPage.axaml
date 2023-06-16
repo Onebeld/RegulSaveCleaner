@@ -1,0 +1,84 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RegulSaveCleaner.Views.Pages.CleanerPage"
+             x:DataType="viewModels:MainWindowViewModel">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="*,Auto">
+        <SmoothScrollViewer Grid.Row="0">
+            <StackPanel Spacing="5" Margin="25">
+                <Border Height="250"
+                        CornerRadius="4"
+                        Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                        BorderThickness="1"
+                        BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                        IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
+                    <Grid RowDefinitions="Auto,*">
+                        <Panel Grid.Row="0" Margin="10 10 10 0">
+                            <TextBlock Text="{StaticResource SaveFiles}"
+                                       Margin="5 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"/>
+                            
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Spacing="5">
+                                <ProgressRing IsIndeterminate="True" Margin="0 0 5 0" MinHeight="14" MinWidth="14" />
+                                
+                                <InformationBlock Content="{CompiledBinding GameSaves.Count}"
+                                                  Icon="{StaticResource PeopleRegular}"/>
+                                
+                                <Border Width="1"
+                                        VerticalAlignment="Stretch"
+                                        Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Padding="8 6" CornerRadius="4 0 0 4">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource SelectallOnRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                                    <Button Padding="8 6" CornerRadius="0 4 4 0">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource SelectallOffRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                                </StackPanel>
+                                
+                                <Border Width="1"
+                                        VerticalAlignment="Stretch"
+                                        Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                                
+                                <Button Padding=" 8 6">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource ArrowCounterclockwiseRegular}" />
+                                    </Viewbox>
+                                </Button>
+                            </StackPanel>
+                        </Panel>
+                    </Grid>
+                    
+                </Border>
+            </StackPanel>
+        </SmoothScrollViewer>
+        
+        <Border Grid.Row="1"
+                BorderBrush="{StaticResource ControlStrokeColorDefaultBrush}"
+                Background="{StaticResource SolidBackgroundFillColorBaseBrush}"
+                BorderThickness="0 1 0 0"
+                Height="80">
+            <Button Theme="{StaticResource AccentButton}"
+                    Content="{StaticResource StartCleaning}"
+                    VerticalAlignment="Center"
+                    Command="{CompiledBinding StartCleaning}"
+                    Margin="15 0" />
+        </Border>
+    </Grid>
+</UserControl>

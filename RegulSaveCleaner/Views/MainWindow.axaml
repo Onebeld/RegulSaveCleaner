@@ -1,0 +1,43 @@
+﻿<PleasantWindow xmlns="https://github.com/avaloniaui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+                xmlns:pages="clr-namespace:RegulSaveCleaner.Views.Pages"
+                mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+                x:Class="RegulSaveCleaner.Views.MainWindow"
+                Width="860"
+                Height="600"
+                MinWidth="590"
+                MinHeight="450"
+                WindowStartupLocation="CenterScreen"
+                Title="Regul Save Cleaner"
+                IconImage="{StaticResource RegulIcon}"
+                TitleGeometry="{StaticResource RegulText}"
+                Subtitle="Save Cleaner"
+                EnableTitleBarMargin="False"
+                TitleBarType="ClassicExtended"
+                x:DataType="viewModels:MainWindowViewModel">
+    <NavigationView Header="{x:Null}"
+                    IsOpen="False"
+                    SelectionMode="AlwaysSelected"
+                    BindWindowSettings="True">
+        <NavigationViewItem IsSelected="True"
+                            Header="{DynamicResource Cleaner}"
+                            Icon="{StaticResource BroomRegular}"
+                            TypeContent="{x:Type pages:CleanerPage}"/>
+        <NavigationViewItem Header="{DynamicResource QuestionsAndAnswers}"
+                            Margin="0 5 0 0"
+                            Icon="{StaticResource QuestionCircleRegular}" />
+        
+        <NavigationViewItem Header="{DynamicResource About}"
+                            Icon="{StaticResource InfoRegular}"
+                            Margin="0 5"
+                            DockPanel.Dock="Bottom" />
+        <NavigationViewItem Header="{DynamicResource Settings}"
+                            Icon="{StaticResource SettingsRegular}"
+                            DockPanel.Dock="Bottom" />
+        
+        <Panel />
+    </NavigationView>
+</PleasantWindow>
