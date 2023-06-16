@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             xmlns:core="clr-namespace:RegulSaveCleaner.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegulSaveCleaner.Views.Pages.CleanerPage"
              x:DataType="viewModels:MainWindowViewModel">
@@ -17,15 +18,24 @@
                         CornerRadius="4"
                         Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
                         BorderThickness="1"
-                        BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                        BorderBrush="{StaticResource ControlStrokeColorSecondaryBrush}"
                         IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
                     <Grid RowDefinitions="Auto,*">
                         <Panel Grid.Row="0" Margin="10 10 10 0">
-                            <TextBlock Text="{StaticResource SaveFiles}"
-                                       Margin="5 0 0 0"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Left"
+                                        Margin="5 0 0 0">
+                                <TextBlock Text="{StaticResource SaveFiles}"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"/>
+                                
+                                <TextBlock Text="Selected: 0"
+                                           FontSize="12"
+                                           VerticalAlignment="Center"
+                                           Margin="10 0 0 0"
+                                           Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                            </StackPanel>
+                            
                             
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right"
@@ -40,12 +50,42 @@
                                         Background="{StaticResource ControlStrokeColorDefaultBrush}" />
                                 
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Padding="8 6" CornerRadius="4 0 0 4">
+                                    <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                                                 CornerRadius="4 0 0 4"
+                                                 Padding="8 6"
+                                                 GroupName="Sorting"
+                                                 ToolTip.Tip="{StaticResource SortByAlphabetical}">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource AlphabetRegular}" />
+                                        </Viewbox>
+                                    </RadioButton>
+                                    <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                                                 CornerRadius="0 4 4 0"
+                                                 Padding="8 6"
+                                                 IsChecked="True"
+                                                 GroupName="Sorting"
+                                                 ToolTip.Tip="{StaticResource SortByDate}">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource CalendarRegular}" />
+                                        </Viewbox>
+                                    </RadioButton>
+                                </StackPanel>
+                                
+                                <Border Width="1"
+                                        VerticalAlignment="Stretch"
+                                        Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Padding="8 6"
+                                            CornerRadius="4 0 0 4"
+                                            ToolTip.Tip="{StaticResource SelectAll}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource SelectallOnRegular}" />
                                         </Viewbox>
                                     </Button>
-                                    <Button Padding="8 6" CornerRadius="0 4 4 0">
+                                    <Button Padding="8 6"
+                                            CornerRadius="0 4 4 0"
+                                            ToolTip.Tip="{StaticResource CancelAll}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource SelectallOffRegular}" />
                                         </Viewbox>
@@ -56,7 +96,8 @@
                                         VerticalAlignment="Stretch"
                                         Background="{StaticResource ControlStrokeColorDefaultBrush}" />
                                 
-                                <Button Padding=" 8 6">
+                                <Button Padding=" 8 6"
+                                        ToolTip.Tip="{StaticResource UpdateList}">
                                     <Viewbox Width="16" Height="16">
                                         <Path Data="{StaticResource ArrowCounterclockwiseRegular}" />
                                     </Viewbox>
@@ -64,8 +105,32 @@
                             </StackPanel>
                         </Panel>
                     </Grid>
-                    
                 </Border>
+                
+                <OptionsDisplayItem Header="{StaticResource CleaningOptions}"
+                                    Description="{StaticResource CleaningOptionsDescription}"
+                                    Icon="{StaticResource BroomRegular}"
+                                    Expands="True">
+                </OptionsDisplayItem>
+                
+                <OptionsDisplayItem Header="{StaticResource CreateBackup}"
+                                    Icon="{StaticResource HistoryRegular}"
+                                    Expands="True">
+                    <OptionsDisplayItem.ActionButton>
+                        <ToggleSwitch Classes="RightToggle"
+                                      IsChecked="{CompiledBinding CreateBackup, Source={x:Static core:RegulSettings.Instance}}" />
+                    </OptionsDisplayItem.ActionButton>
+                </OptionsDisplayItem>
+                
+                <OptionsDisplayItem Header="{StaticResource ClearCache}"
+                                    Description="{StaticResource ClearCacheDescription}"
+                                    Icon="{StaticResource DeleteRegular}"
+                                    Expands="True">
+                    <OptionsDisplayItem.ActionButton>
+                        <ToggleSwitch Classes="RightToggle"
+                                      IsChecked="{CompiledBinding ClearCache, Source={x:Static core:RegulSettings.Instance}}" />
+                    </OptionsDisplayItem.ActionButton>
+                </OptionsDisplayItem>
             </StackPanel>
         </SmoothScrollViewer>
         

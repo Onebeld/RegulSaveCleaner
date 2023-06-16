@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner", "RegulSa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner.Assets", "RegulSaveCleaner.Assets\RegulSaveCleaner.Assets.csproj", "{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regul.S3PI", "Regul.S3PI\Regul.S3PI.csproj", "{012F95D6-DA83-4119-8002-E99099640D8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner.S3PI", "RegulSaveCleaner.S3PI\RegulSaveCleaner.S3PI.csproj", "{012F95D6-DA83-4119-8002-E99099640D8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

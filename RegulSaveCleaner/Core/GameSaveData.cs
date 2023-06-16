@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using Regul.S3PI;
-using Regul.S3PI.Interfaces;
-using Regul.S3PI.Package;
+using RegulSaveCleaner.S3PI;
+using RegulSaveCleaner.S3PI.Interfaces;
+using RegulSaveCleaner.S3PI.Package;
 
 namespace RegulSaveCleaner.Core;
 

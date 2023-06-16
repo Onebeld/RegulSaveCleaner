@@ -17,6 +17,7 @@
                 Subtitle="Save Cleaner"
                 EnableTitleBarMargin="False"
                 TitleBarType="ClassicExtended"
+                Icon="icon.ico"
                 x:DataType="viewModels:MainWindowViewModel">
     <NavigationView Header="{x:Null}"
                     IsOpen="False"
@@ -25,17 +26,20 @@
         <NavigationViewItem IsSelected="True"
                             Header="{DynamicResource Cleaner}"
                             Icon="{StaticResource BroomRegular}"
-                            TypeContent="{x:Type pages:CleanerPage}"/>
+                            TypeContent="{x:Type pages:CleanerPage}" />
         <NavigationViewItem Header="{DynamicResource QuestionsAndAnswers}"
                             Margin="0 5 0 0"
-                            Icon="{StaticResource QuestionCircleRegular}" />
+                            Icon="{StaticResource QuestionCircleRegular}"
+                            TypeContent="{x:Type pages:QuestionsAndAnswersPage}" />
         
         <NavigationViewItem Header="{DynamicResource About}"
                             Icon="{StaticResource InfoRegular}"
                             Margin="0 5"
+                            TypeContent="{x:Type pages:AboutPage}"
                             DockPanel.Dock="Bottom" />
         <NavigationViewItem Header="{DynamicResource Settings}"
                             Icon="{StaticResource SettingsRegular}"
+                            TypeContent="{x:Type pages:SettingsPage}"
                             DockPanel.Dock="Bottom" />
         
         <Panel />

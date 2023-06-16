@@ -17,14 +17,15 @@
         <PackageReference Include="Avalonia.Desktop" Version="11.0.0-rc1.1" />
         <PackageReference Include="Pfim" Version="0.11.2" />
         <PackageReference Include="PleasantUI" Version="3.0.1" />
-        
     </ItemGroup>
 
     <ItemGroup>
         <AdditionalFiles Include="**\*.axaml" />
         <Compile Update="**\*.axaml.cs" />
-        <Compile Include="obj\Debug\net461\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
-        <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="icon.ico" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,37 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Regul.S3PI\Regul.S3PI.csproj" />
+      <ProjectReference Include="..\RegulSaveCleaner.S3PI\RegulSaveCleaner.S3PI.csproj" />
       <ProjectReference Include="..\RegulSaveCleaner.Assets\RegulSaveCleaner.Assets.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="obj\Debug\net461\RegulSaveCleaner.exe.config" />
-      <None Include="obj\Debug\net461\RegulSaveCleaner.exe.withSupportedRuntime.config" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="obj\Debug\net461\Avalonia\Resources.Inputs.cache" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.AssemblyInfoInputs.cache" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.assets.cache" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.csproj.AssemblyReference.cache" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.csproj.CoreCompileInputs.cache" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.csproj.FileListAbsolute.txt" />
-      <Content Include="obj\Debug\net461\RegulSaveCleaner.csproj.SuggestedBindingRedirects.cache" />
-      <Content Include="obj\Debug\net6.0\apphost.exe" />
-      <Content Include="obj\Debug\net6.0\Avalonia\original.dll" />
-      <Content Include="obj\Debug\net6.0\Avalonia\original.pdb" />
-      <Content Include="obj\Debug\net6.0\Avalonia\original.ref.dll" />
-      <Content Include="obj\Debug\net6.0\Avalonia\references" />
-      <Content Include="obj\Debug\net6.0\Avalonia\Resources.Inputs.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.AssemblyInfoInputs.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.assets.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.csproj.AssemblyReference.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.csproj.CopyComplete" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.csproj.CoreCompileInputs.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.csproj.FileListAbsolute.txt" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.dll" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.genruntimeconfig.cache" />
-      <Content Include="obj\Debug\net6.0\RegulSaveCleaner.pdb" />
     </ItemGroup>
 </Project>

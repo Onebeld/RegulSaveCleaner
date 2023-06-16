@@ -6,14 +6,89 @@
     <s:String x:Key="Reestablish">Reestablish</s:String>
     <s:String x:Key="Close">Close</s:String>
     
-    <s:String x:Key="StartCleaning">Start Cleaning</s:String>
-    <s:String x:Key="SaveFiles">Save Files</s:String>
-    
     <s:String x:Key="Menu">Menu</s:String>
     <s:String x:Key="Cleaner">Cleaner</s:String>
     <s:String x:Key="QuestionsAndAnswers">Questions and Answers</s:String>
     <s:String x:Key="Settings">Settings</s:String>
     <s:String x:Key="About">About</s:String>
     
+    <s:String x:Key="On">On</s:String>
+    <s:String x:Key="Off">Off</s:String>
+    
+    <s:String x:Key="Cut">Cut</s:String>
+    <s:String x:Key="Copy">Copy</s:String>
+    <s:String x:Key="Paste">Paste</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Start Cleaning</s:String>
+    <s:String x:Key="SaveFiles">Save Files</s:String>
+    
+    <s:String x:Key="SelectAll">Select all</s:String>
+    <s:String x:Key="CancelAll">Cancel all</s:String>
+    <s:String x:Key="UpdateList">Update list</s:String>
+    <s:String x:Key="SortByDate">Sort by date</s:String>
+    <s:String x:Key="SortByAlphabetical">Sort by alphabetical</s:String>
+    
+    <s:String x:Key="CleaningOptions">Cleaning options</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Setting up what you want to clear</s:String>
+    <s:String x:Key="CreateBackup">Create backup</s:String>
+    <s:String x:Key="ClearCache">Clear cache</s:String>
+    <s:String x:Key="ClearCacheDescription">Setting up the cleaning</s:String>
+    <s:String x:Key="BackupPath">Backup path</s:String>
+    <s:String x:Key="CreateNow">Create Now</s:String>
+    <s:String x:Key="ClearNow">Clear Now</s:String>
+    
+    <s:String x:Key="Recommended">Recommended</s:String>
+    <s:String x:Key="Experimentally">Experimentally</s:String>
+    <s:String x:Key="ReadMore">Read more</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">Remove family portraits</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Remove portraits of Sims</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Remove lot thumbnails</s:String>
+    <s:String x:Key="RemovePhotos">Remove photos</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Remove generated images</s:String>
+    <s:String x:Key="RemoveTextures">Remove textures</s:String>
+    <s:String x:Key="RemoveOtherTypes">Remove other types</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>
+    <s:String x:Key="Error12">Error 12</s:String>
+    <s:String x:Key="Error16">Error 16</s:String>
+    <s:String x:Key="Error0AfterOpeningSave">Error 0 after opening a save</s:String>
+    
+    <!--Settings Page-->
     <s:String x:Key="General">General</s:String>
+    
+    <s:String x:Key="Language">Language</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Clear unnecessary prohibited lists</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">If you have deleted a save and do not want to use the lists further, click on the button to delete</s:String>
+    <s:String x:Key="PathSettings">Path Settings</s:String>
+    <s:String x:Key="PathSettingsDescription">Change if the path to the game folder has changed</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Reset to default settings</s:String>
+    <s:String x:Key="Clear">Clear</s:String>
+    <s:String x:Key="Reset">Reset</s:String>
+    <s:String x:Key="Appearance">Appearance</s:String>
+    <s:String x:Key="Font">Font</s:String>
+    <s:String x:Key="EnableShadow">Enable shadow</s:String>
+    <s:String x:Key="EnableShadowDescription">If you have a performance problem, disable this setting</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Enable custom title bar</s:String>
+    <s:String x:Key="EnableBlur">Enable blur</s:String>
+    <s:String x:Key="OpacityLevel">Opacity level</s:String>
+    <s:String x:Key="AccentColor">Accent color</s:String>
+    <s:String x:Key="UseSystemAccentColor">Use system accent color</s:String>
+    <s:String x:Key="Change">Change</s:String>
+    <s:String x:Key="Theme">Theme</s:String>
+    
+    <s:String x:Key="System">System</s:String>
+    <s:String x:Key="Light">Light</s:String>
+    <s:String x:Key="Dark">Dark</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">License</s:String>
+    <s:String x:Key="Version">Version</s:String>
+    <s:String x:Key="ContactAuthor">Contact author</s:String>
+    <s:String x:Key="UsedLibraries">Used libraries</s:String>
+    <s:String x:Key="Links">Links</s:String>
+    
+    <s:String x:Key="Description">Description</s:String>
 </ResourceDictionary>

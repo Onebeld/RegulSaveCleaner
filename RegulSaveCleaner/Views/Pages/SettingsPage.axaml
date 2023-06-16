@@ -1,0 +1,99 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+             x:Class="RegulSaveCleaner.Views.Pages.SettingsPage">
+    <SmoothScrollViewer>
+        <StackPanel Margin="25" Spacing="5">
+            <TextBlock Text="{StaticResource Settings}"
+                       Margin="0 0 0 10"
+                       Theme="{StaticResource TitleTextBlockTheme}" />
+            
+            <TextBlock Theme="{StaticResource BaseTextBlockTheme}" Text="{DynamicResource General}" />
+            
+            <OptionsDisplayItem Header="{StaticResource Language}"
+                                Icon="{StaticResource LocalLanguageRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ComboBox MinWidth="150" />
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource ClearUnnecessaryProhibitedLists}"
+                                Description="{StaticResource ClearUnnecessaryProhibitedListsDescription}">
+                <OptionsDisplayItem.ActionButton>
+                    <Button Content="{StaticResource Clear}"
+                            Padding="20 5"/>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource PathSettings}"
+                                Description="{StaticResource PathSettingsDescription}"
+                                Expands="True">
+                
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource ResetToDefaultSettings}">
+                <OptionsDisplayItem.ActionButton>
+                    <Button Content="{StaticResource Reset}" Padding="20 5" />
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <TextBlock Theme="{StaticResource BaseTextBlockTheme}" Text="{StaticResource Appearance}" Margin="0 15 0 0" />
+            
+            <OptionsDisplayItem Header="{StaticResource Font}"
+                                Icon="{StaticResource TextFontRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ComboBox MinWidth="150"></ComboBox>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource EnableShadow}"
+                                Description="{StaticResource EnableShadowDescription}"
+                                Icon="{StaticResource SparkleRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ToggleSwitch Classes="RightToggle"
+                                  IsChecked="{CompiledBinding RenderSettings.EnableShadowing, Source={x:Static PleasantSettings.Instance}}" />
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource EnableCustomTitleBar}"
+                                Icon="{StaticResource WindowRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ToggleSwitch Classes="RightToggle"
+                                  IsChecked="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"/>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource EnableBlur}"
+                                Icon="{StaticResource WindowInprivateRegular}"
+                                Expands="True">
+                <OptionsDisplayItem.ActionButton>
+                    <ToggleSwitch Classes="RightToggle"
+                                  IsChecked="{CompiledBinding WindowSettings.EnableBlur, Source={x:Static PleasantSettings.Instance}}"/>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource AccentColor}"
+                                Icon="{StaticResource ColorRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <CheckBox Content="{StaticResource UseSystemAccentColor}" />
+                    </StackPanel>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource Theme}"
+                                Icon="{StaticResource PaintBrushRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ComboBox MinWidth="150" SelectedIndex="0">
+                        <ComboBoxItem Content="{StaticResource System}" />
+                        <ComboBoxItem Content="{StaticResource Light}" />
+                        <ComboBoxItem Content="{StaticResource Dark}" />
+                    </ComboBox>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+        </StackPanel>
+    </SmoothScrollViewer>
+</UserControl>
