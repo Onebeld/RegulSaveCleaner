@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
              xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+             xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+             xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegulSaveCleaner.Views.Pages.CleanerPage"
              x:DataType="viewModels:MainWindowViewModel">
@@ -14,7 +16,7 @@
     <Grid RowDefinitions="*,Auto">
         <SmoothScrollViewer Grid.Row="0">
             <StackPanel Spacing="5" Margin="25">
-                <Border Height="250"
+                <Border MinHeight="200"
                         CornerRadius="4"
                         Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
                         BorderThickness="1"
@@ -29,27 +31,42 @@
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"/>
                                 
-                                <TextBlock Text="Selected: 0"
-                                           FontSize="12"
+                                <TextBlock FontSize="12"
                                            VerticalAlignment="Center"
                                            Margin="10 0 0 0"
-                                           Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                           Foreground="{StaticResource TextFillColorTertiaryBrush}"
+                                           IsVisible="{CompiledBinding !!SelectedGameSaves.Count}">
+                                    <Run Text="Selected" /><Run Text=":" />
+                                    <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
+                                </TextBlock>
                             </StackPanel>
                             
                             
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right"
                                         Spacing="5">
-                                <ProgressRing IsIndeterminate="True" Margin="0 0 5 0" MinHeight="14" MinWidth="14" />
+                                <ProgressRing IsIndeterminate="{CompiledBinding IsLoadingSaves}"
+                                              IsVisible="{CompiledBinding IsLoadingSaves}"
+                                              Margin="0 0 5 0"
+                                              MinHeight="14"
+                                              MinWidth="14" />
                                 
                                 <InformationBlock Content="{CompiledBinding GameSaves.Count}"
-                                                  Icon="{StaticResource PeopleRegular}"/>
+                                                  Icon="{StaticResource PeopleRegular}"
+                                                  ToolTip.Tip="{StaticResource NumberOfSaveFiles}"/>
                                 
                                 <Border Width="1"
                                         VerticalAlignment="Stretch"
                                         Background="{StaticResource ControlStrokeColorDefaultBrush}" />
                                 
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.IsEnabled>
+                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                            <CompiledBinding Path="!InCreatingBackupProcess" />
+                                            <CompiledBinding Path="!IsLoadingSaves" />
+                                        </MultiBinding>
+                                    </StackPanel.IsEnabled>
+                                    
                                     <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
                                                  CornerRadius="4 0 0 4"
                                                  Padding="8 6"
@@ -76,6 +93,12 @@
                                         Background="{StaticResource ControlStrokeColorDefaultBrush}" />
                                 
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.IsEnabled>
+                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                            <CompiledBinding Path="!InCreatingBackupProcess" />
+                                            <CompiledBinding Path="!IsLoadingSaves" />
+                                        </MultiBinding>
+                                    </StackPanel.IsEnabled>
                                     <Button Padding="8 6"
                                             CornerRadius="4 0 0 4"
                                             ToolTip.Tip="{StaticResource SelectAll}">
@@ -97,13 +120,117 @@
                                         Background="{StaticResource ControlStrokeColorDefaultBrush}" />
                                 
                                 <Button Padding=" 8 6"
+                                        Command="{CompiledBinding LoadingSaves}"
                                         ToolTip.Tip="{StaticResource UpdateList}">
+                                    <Button.IsEnabled>
+                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                            <CompiledBinding Path="!InCreatingBackupProcess" />
+                                            <CompiledBinding Path="!IsLoadingSaves" />
+                                        </MultiBinding>
+                                    </Button.IsEnabled>
+                                    
                                     <Viewbox Width="16" Height="16">
                                         <Path Data="{StaticResource ArrowCounterclockwiseRegular}" />
                                     </Viewbox>
                                 </Button>
                             </StackPanel>
                         </Panel>
+                        <ListBox Grid.Row="1"
+                                 ItemsSource="{CompiledBinding GameSaves}"
+                                 SelectedItems="{CompiledBinding SelectedGameSaves}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                 SelectionMode="Toggle, Multiple"
+                                 AutoScrollToSelectedItem="False"
+                                 Margin="0 10 0 0"
+                                 Padding="10 0">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.DataTemplates>
+                                <DataTemplate DataType="structures:GameSave">
+                                    <Grid RowDefinitions="*,Auto" Width="140" Height="170">
+                                        <Border Grid.Row="0"
+                                                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                                BorderThickness="1"
+                                                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                                CornerRadius="5">
+                                            <Panel>
+                                                <Image Source="{CompiledBinding ImageOfFamily}"
+                                                       Margin="{CompiledBinding ImageOfFamily, Converter={x:Static converters:UnknownIconToMarginConverter.Instance}}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
+                                                
+                                                <Menu VerticalAlignment="Top"
+                                                      HorizontalAlignment="Right"
+                                                      Height="20"
+                                                      Margin="2">
+                                                    <MenuItem Width="20" 
+                                                              Height="20"
+                                                              Margin="0"
+                                                              ToolTip.Tip="{StaticResource Menu}">
+                                                        <MenuItem.Header>
+                                                            <Path Data="{StaticResource MoreRegular}"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Center"
+                                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                                  Stretch="Uniform"
+                                                                  Width="14" />
+                                                        </MenuItem.Header>
+                                                        
+                                                        <MenuItem Header="{StaticResource ProhibitedList}"
+                                                                  CommandParameter="{CompiledBinding}">
+                                                            <MenuItem.Icon>
+                                                                <Viewbox Width="16" Height="16">
+                                                                    <Path Data="{StaticResource PresenceBlockedRegular}"
+                                                                          Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                                          Stretch="Uniform"/>
+                                                                </Viewbox>
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="{StaticResource MoveOldList}"
+                                                                  CommandParameter="{CompiledBinding}" />
+                                                    </MenuItem>
+                                                </Menu>
+                                            </Panel>
+                                        </Border>
+                                        <StackPanel Grid.Row="1" Spacing="5" Margin="0 5 0 0">
+                                            <TextBox Text="{CompiledBinding Name}" 
+                                                     TextAlignment="Center" 
+                                                     Padding="6 2 6 2"
+                                                     IsReadOnly="True"
+                                                     MinHeight="0" />
+                                            <TextBox Text="{CompiledBinding WorldName}" 
+                                                     TextAlignment="Center"
+                                                     Padding="6 2 6 2"
+                                                     IsReadOnly="True"
+                                                     MinHeight="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.DataTemplates>
+                        </ListBox>
+                        
+                        <TextBlock Grid.Row="1"
+                                   Text="{StaticResource SaveFilesNotFound}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   IsVisible="{CompiledBinding !FoundSaveFolder}"
+                                   Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                        <TextBlock Grid.Row="1"
+                                   Text="{StaticResource NoSaveFound}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                            <TextBlock.IsVisible>
+                                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                    <CompiledBinding Path="FoundSaveFolder" />
+                                    <CompiledBinding Path="!GameSaves.Count" />
+                                </MultiBinding>
+                            </TextBlock.IsVisible>
+                        </TextBlock>
                     </Grid>
                 </Border>
                 
@@ -111,6 +238,114 @@
                                     Description="{StaticResource CleaningOptionsDescription}"
                                     Icon="{StaticResource BroomRegular}"
                                     Expands="True">
+                    <OptionsDisplayItem.Content>
+                        <StackPanel Margin="-12">
+                            <StackPanel.Styles>
+                                <Style Selector="Separator">
+                                    <Setter Property="Background" Value="{StaticResource CardStrokeColorDefaultBrush}" />
+                                    <Setter Property="Margin" Value="-5 0" />
+                                </Style>
+                                <Style Selector="CheckBox">
+                                    <Setter Property="Margin" Value="60 7" />
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                </Style>
+                            </StackPanel.Styles>
+                            
+                            <Panel Margin="60 7 45 7">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Button ToolTip.Tip="{StaticResource SelectAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding SelectAllClearOptions}"
+                                            CornerRadius="4 0 0 4">
+                                        <Path Data="{StaticResource SelectallOnRegular}"
+                                              Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                              Stretch="Uniform"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Width="16" />
+                                    </Button>
+                                    <Button ToolTip.Tip="{StaticResource CancelAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding CancelAllClearOptions}"
+                                            CornerRadius="0 4 4 0">
+                                        <Path Data="{StaticResource SelectallOffRegular}"
+                                              Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                              Stretch="Uniform"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Width="16" />
+                                    </Button>
+                                </StackPanel>
+                            </Panel>
+                            
+                            <Separator />
+                            
+                            <CheckBox IsChecked="{CompiledBinding RemoveFamilyPortraits, Source={x:Static core:RegulSettings.Instance}}">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <TextBlock>
+                                            <Run Text="{StaticResource RemoveFamilyPortraits}" />
+                                            &#8203;
+                                            &#8203;
+                                            &#8203;
+                                            <Run Text="{StaticResource Recommended}" Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding RemovePortraitsSims, Source={x:Static core:RegulSettings.Instance}}">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <TextBlock>
+                                            <Run Text="{StaticResource RemovePortraitsOfSims}" />
+                                            &#8203;
+                                            &#8203;
+                                            &#8203;
+                                            <Run Text="{StaticResource Recommended}" Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
+                            <Separator />
+                            <CheckBox Content="{StaticResource RemoveLotThumbnails}"
+                                      IsChecked="{CompiledBinding RemoveLotThumbnails, Source={x:Static core:RegulSettings.Instance}}" />
+                            <Separator />
+                            <CheckBox Content="{StaticResource RemovePhotos}"
+                                      IsChecked="{CompiledBinding RemovePhotos, Source={x:Static core:RegulSettings.Instance}}" />
+                            <Separator />
+                            <CheckBox Content="{StaticResource RemoveGeneratedImages}"
+                                      IsChecked="{CompiledBinding RemoveGeneratedImages, Source={x:Static core:RegulSettings.Instance}}" />
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding RemoveTextures, Source={x:Static core:RegulSettings.Instance}}">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <TextBlock>
+                                            <Run Text="{StaticResource RemoveTextures}" />
+                                            &#8203;
+                                            &#8203;
+                                            &#8203;
+                                            <Run Text="{StaticResource Experimentally}" Foreground="{StaticResource SystemFillColorCautionBrush}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding RemoveOtherTypes, Source={x:Static core:RegulSettings.Instance}}">
+                                <CheckBox.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <TextBlock>
+                                            <Run Text="{StaticResource RemoveOtherTypes}" />
+                                            &#8203;
+                                            &#8203;
+                                            &#8203;
+                                            <Run Text="{StaticResource Experimentally}" Foreground="{StaticResource SystemFillColorCautionBrush}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </CheckBox.Content>
+                            </CheckBox>
+                        </StackPanel>
+                    </OptionsDisplayItem.Content>
                 </OptionsDisplayItem>
                 
                 <OptionsDisplayItem Header="{StaticResource CreateBackup}"
@@ -120,6 +355,37 @@
                         <ToggleSwitch Classes="RightToggle"
                                       IsChecked="{CompiledBinding CreateBackup, Source={x:Static core:RegulSettings.Instance}}" />
                     </OptionsDisplayItem.ActionButton>
+                    <OptionsDisplayItem.Content>
+                        <Panel Margin="48 -3 33 -3" IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBox Width="250"
+                                         Watermark="{StaticResource BackupPath}"
+                                         Text="{CompiledBinding PathToBackup, Source={x:Static core:RegulSettings.Instance}}" />
+                                <Button ToolTip.Tip="{StaticResource ChoosePath}"
+                                        Command="{CompiledBinding SelectBackupPath}"
+                                        Padding="8">
+                                    <Path Data="{StaticResource AttachRegular}"
+                                          Stretch="Uniform"
+                                          VerticalAlignment="Center"
+                                          Width="16"/>
+                                </Button>
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right">
+                                <ProgressRing IsIndeterminate="{CompiledBinding InCreatingBackupProcess}" 
+                                              IsVisible="{CompiledBinding InCreatingBackupProcess}"
+                                              MinHeight="20"
+                                              MinWidth="20" />
+                                
+                                <Button Theme="{StaticResource AccentButton}"
+                                        Content="{StaticResource CreateNow}"
+                                        HorizontalAlignment="Right"
+                                        Padding="20 5" VerticalAlignment="Center"
+                                        Command="{CompiledBinding CreateBackups}"
+                                        IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"/>
+                            </StackPanel>
+                        </Panel>
+                    </OptionsDisplayItem.Content>
                 </OptionsDisplayItem>
                 
                 <OptionsDisplayItem Header="{StaticResource ClearCache}"
@@ -143,7 +409,15 @@
                     Content="{StaticResource StartCleaning}"
                     VerticalAlignment="Center"
                     Command="{CompiledBinding StartCleaning}"
-                    Margin="15 0" />
+                    Margin="15 0">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="!!SelectedGameSaves.Count" />
+                        <CompiledBinding Path="!InCleaningCacheProcess" />
+                        <CompiledBinding Path="!InCreatingBackupProcess" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
         </Border>
     </Grid>
 </UserControl>

@@ -4,9 +4,7 @@ using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Media;
-using Avalonia.Platform.Storage;
 using PleasantUI;
-using PleasantUI.Controls;
 using PleasantUI.Windows;
 using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
@@ -73,6 +71,8 @@ public class MainWindowViewModel : ViewModelBase
         get => _foundSaveFolder;
         set => RaiseAndSet(ref _foundSaveFolder, value);
     }
+    
+    public MainWindowViewModel() { }
 
     public MainWindowViewModel(MainWindow host)
     {
@@ -210,6 +210,8 @@ public class MainWindowViewModel : ViewModelBase
                     await MessageBox.Show(App.MainWindow, App.GetString("AnErrorHasOccured"), string.Empty, additionalText: e.ToString());
                 }
             }
+            
+            break;
         }
 
         IsLoadingSaves = false;

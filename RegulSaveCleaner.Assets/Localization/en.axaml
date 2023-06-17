@@ -23,11 +23,19 @@
     <s:String x:Key="StartCleaning">Start Cleaning</s:String>
     <s:String x:Key="SaveFiles">Save Files</s:String>
     
+    <s:String x:Key="ProhibitedList">Prohibited List</s:String>
+    <s:String x:Key="MoveOldList">Move the old list</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">No save folder was found</s:String>
+    <s:String x:Key="NoSaveFound">No saves found</s:String>
+    
     <s:String x:Key="SelectAll">Select all</s:String>
     <s:String x:Key="CancelAll">Cancel all</s:String>
     <s:String x:Key="UpdateList">Update list</s:String>
     <s:String x:Key="SortByDate">Sort by date</s:String>
     <s:String x:Key="SortByAlphabetical">Sort by alphabetical</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">Number of save files</s:String>
     
     <s:String x:Key="CleaningOptions">Cleaning options</s:String>
     <s:String x:Key="CleaningOptionsDescription">Setting up what you want to clear</s:String>
