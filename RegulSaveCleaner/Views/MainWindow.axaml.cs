@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls.Notifications;
+﻿using Avalonia.Controls;
+using Avalonia.Controls.Notifications;
 using Avalonia.Controls.Primitives;
 using PleasantUI.Controls;
 using PleasantUI.Core;
@@ -10,6 +11,8 @@ namespace RegulSaveCleaner.Views;
 
 public partial class MainWindow : PleasantWindow
 {
+    public MainWindowViewModel ViewModel { get; set; }
+    
     public MainWindow() => InitializeComponent();
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
@@ -18,9 +21,7 @@ public partial class MainWindow : PleasantWindow
         
         Closed += OnClosed;
         
-        MainWindowViewModel viewModel = (DataContext as MainWindowViewModel)!;
-
-        viewModel.NotificationManager = new WindowNotificationManager(this)
+        ViewModel.NotificationManager = new WindowNotificationManager(this)
         {
             Position = NotificationPosition.TopRight,
             MaxItems = 3,
@@ -34,6 +35,12 @@ public partial class MainWindow : PleasantWindow
             TitleBarType = PleasantTitleBarType.Classic;
         }
 #endif
+
+#if DEBUG
+        if (Design.IsDesignMode) return;
+#endif
+        
+        ViewModel.LoadingSaves();
     }
 
     private void OnClosed(object? sender, EventArgs e)

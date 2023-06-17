@@ -6,6 +6,7 @@
              xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
              xmlns:regulSaveCleaner="clr-namespace:RegulSaveCleaner"
              xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+             xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
              x:Class="RegulSaveCleaner.Views.Pages.SettingsPage"
              x:DataType="viewModels:SettingsViewModel">
@@ -160,6 +161,14 @@
                 <OptionsDisplayItem.ActionButton>
                     <StackPanel Orientation="Horizontal" Spacing="5">
                         <CheckBox Content="{StaticResource UseSystemAccentColor}" />
+                        
+                        <Border Background="{StaticResource CheckeredBackgroundBrush}" 
+                                Width="40" 
+                                Height="25" 
+                                CornerRadius="4"
+                                ToolTip.Tip="{CompiledBinding NumericalAccentColor, Source={x:Static PleasantSettings.Instance}, Converter={x:Static converters:UIntToHexConverter.Instance}}">
+                            <Border CornerRadius="4" Background="{CompiledBinding NumericalAccentColor, Source={x:Static PleasantSettings.Instance}, Converter={x:Static ColorConverters.UIntToBrush}}" />
+                        </Border>
                     </StackPanel>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
@@ -167,7 +176,7 @@
             <OptionsDisplayItem Header="{StaticResource Theme}"
                                 Icon="{StaticResource PaintBrushRegular}">
                 <OptionsDisplayItem.ActionButton>
-                    <ComboBox MinWidth="150" SelectedIndex="0">
+                    <ComboBox MinWidth="150" SelectedIndex="{CompiledBinding SelectedIndexTheme}">
                         <ComboBoxItem Content="{StaticResource System}" />
                         <ComboBoxItem Content="{StaticResource Light}" />
                         <ComboBoxItem Content="{StaticResource Dark}" />

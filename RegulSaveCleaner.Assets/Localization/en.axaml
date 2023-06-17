@@ -19,6 +19,8 @@
     <s:String x:Key="Copy">Copy</s:String>
     <s:String x:Key="Paste">Paste</s:String>
     
+    <s:String x:Key="Ok">OK</s:String>
+    
     <!--Cleaner Page-->
     <s:String x:Key="StartCleaning">Start Cleaning</s:String>
     <s:String x:Key="SaveFiles">Save Files</s:String>
@@ -99,9 +101,14 @@
     <!--About-->
     <s:String x:Key="License">License</s:String>
     <s:String x:Key="Version">Version</s:String>
-    <s:String x:Key="ContactAuthor">Contact author</s:String>
-    <s:String x:Key="UsedLibraries">Used libraries</s:String>
-    <s:String x:Key="Links">Links</s:String>
-    
+    <s:String x:Key="Author">Author</s:String>
+    <s:String x:Key="Copyright">Copyright</s:String>
     <s:String x:Key="Description">Description</s:String>
+    <s:String x:Key="Links">Links</s:String>
+    <s:String x:Key="UsedLibraries">Used libraries</s:String>
+    <s:String x:Key="ContactAuthor">Contact the author</s:String>
+    <s:String x:Key="WorksOn">Works on</s:String>
+    <s:String x:Key="RegulDescription1">A tool for cleaning up The Sims™ 3 savegames and keeping them stable.</s:String>
+    <s:String x:Key="RegulDescription2">This program is not endorsed by or affiliated with Electronic Arts or its licensors. The trademarks belong to their respective owners. All rights reserved.</s:String>
+    <s:String x:Key="LicenseDescription">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</s:String>
 </ResourceDictionary>

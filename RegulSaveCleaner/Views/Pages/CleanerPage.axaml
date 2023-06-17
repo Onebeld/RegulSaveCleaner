@@ -6,6 +6,7 @@
              xmlns:core="clr-namespace:RegulSaveCleaner.Core"
              xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
              xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
+             xmlns:views="clr-namespace:RegulSaveCleaner.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegulSaveCleaner.Views.Pages.CleanerPage"
              x:DataType="viewModels:MainWindowViewModel">
@@ -181,7 +182,7 @@
                                                         </MenuItem.Header>
                                                         
                                                         <MenuItem Header="{StaticResource ProhibitedList}"
-                                                                  CommandParameter="{CompiledBinding}">
+                                                                  Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenList}">
                                                             <MenuItem.Icon>
                                                                 <Viewbox Width="16" Height="16">
                                                                     <Path Data="{StaticResource PresenceBlockedRegular}"

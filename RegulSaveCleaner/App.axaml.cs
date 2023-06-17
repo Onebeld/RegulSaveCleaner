@@ -14,7 +14,7 @@ namespace RegulSaveCleaner;
 
 public partial class App : Application
 {
-    public PleasantTheme PleasantTheme { get; private set; }
+    public static PleasantTheme PleasantTheme { get; private set; } = null!;
 
     public static MainWindow MainWindow { get; private set; } = null!;
 
@@ -32,7 +32,7 @@ public partial class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             MainWindow = new MainWindow();
-            MainWindow.DataContext = new MainWindowViewModel(MainWindow);
+            MainWindow.DataContext = MainWindow.ViewModel = new MainWindowViewModel(MainWindow);
             desktop.MainWindow = MainWindow;
         }
         
@@ -65,14 +65,14 @@ public partial class App : Application
             Source = new Uri($"avares://RegulSaveCleaner.Assets/Localization/{key}.axaml")
         };
     }
-    
+
     public static string GetString(string key)
     {
         if (Current!.TryFindResource(key, out object? objectText))
             return objectText as string ?? string.Empty;
         return key;
     }
-    
+
     /// <summary>
     /// Looks for a suitable resource in the program.
     /// </summary>

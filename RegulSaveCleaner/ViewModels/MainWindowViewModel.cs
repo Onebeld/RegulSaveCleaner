@@ -84,6 +84,11 @@ public class MainWindowViewModel : ViewModelBase
         };
     }
 
+    public void OpenList()
+    {
+        MessageBox.Show(App.MainWindow, "Hello!", "Hello world!", MessageBoxButtons.Ok);
+    }
+
     public async void LoadingSaves()
     {
         FoundSaveFolder = false;
