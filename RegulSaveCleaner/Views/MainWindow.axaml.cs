@@ -1,6 +1,10 @@
-﻿using Avalonia.Controls.Primitives;
+﻿using Avalonia.Controls.Notifications;
+using Avalonia.Controls.Primitives;
 using PleasantUI.Controls;
+using PleasantUI.Core;
 using PleasantUI.Core.Enums;
+using RegulSaveCleaner.Core;
+using RegulSaveCleaner.ViewModels;
 
 namespace RegulSaveCleaner.Views;
 
@@ -11,6 +15,17 @@ public partial class MainWindow : PleasantWindow
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
+        
+        Closed += OnClosed;
+        
+        MainWindowViewModel viewModel = (DataContext as MainWindowViewModel)!;
+
+        viewModel.NotificationManager = new WindowNotificationManager(this)
+        {
+            Position = NotificationPosition.TopRight,
+            MaxItems = 3,
+            ZIndex = 1
+        };
 
 #if !NET461
         if (OperatingSystem.IsMacOS())
@@ -19,5 +34,11 @@ public partial class MainWindow : PleasantWindow
             TitleBarType = PleasantTitleBarType.Classic;
         }
 #endif
+    }
+
+    private void OnClosed(object? sender, EventArgs e)
+    {
+        RegulSettings.Save();
+        PleasantSettings.Instance.Save();
     }
 }

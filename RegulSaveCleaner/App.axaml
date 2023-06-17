@@ -5,7 +5,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Icons.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

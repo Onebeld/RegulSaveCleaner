@@ -17,7 +17,7 @@
                 Subtitle="Save Cleaner"
                 EnableTitleBarMargin="False"
                 TitleBarType="ClassicExtended"
-                Icon="icon.ico"
+                Icon="avares://RegulSaveCleaner/icon.ico"
                 x:DataType="viewModels:MainWindowViewModel">
     <NavigationView Header="{x:Null}"
                     IsOpen="False"

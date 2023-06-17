@@ -3,8 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+             xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             xmlns:regulSaveCleaner="clr-namespace:RegulSaveCleaner"
+             xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
-             x:Class="RegulSaveCleaner.Views.Pages.SettingsPage">
+             x:Class="RegulSaveCleaner.Views.Pages.SettingsPage"
+             x:DataType="viewModels:SettingsViewModel">
+    <UserControl.DataContext>
+        <viewModels:SettingsViewModel />
+    </UserControl.DataContext>
     <SmoothScrollViewer>
         <StackPanel Margin="25" Spacing="5">
             <TextBlock Text="{StaticResource Settings}"
@@ -16,7 +23,15 @@
             <OptionsDisplayItem Header="{StaticResource Language}"
                                 Icon="{StaticResource LocalLanguageRegular}">
                 <OptionsDisplayItem.ActionButton>
-                    <ComboBox MinWidth="150" />
+                    <ComboBox MinWidth="150"
+                              ItemsSource="{CompiledBinding Source={x:Static regulSaveCleaner:App.Languages}}"
+                              SelectedItem="{CompiledBinding SelectedLanguage}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="structures:Language">
+                                <TextBlock Text="{CompiledBinding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
             
@@ -31,7 +46,38 @@
             <OptionsDisplayItem Header="{StaticResource PathSettings}"
                                 Description="{StaticResource PathSettingsDescription}"
                                 Expands="True">
-                
+                <OptionsDisplayItem.Content>
+                    <StackPanel Margin="-12">
+                        <Grid ColumnDefinitions="*,1.7*"
+                              Margin="60 10 45 10">
+                            <TextBlock Text="{StaticResource PathToTheSims}" 
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1"
+                                     IsReadOnly="True"
+                                     Text="{CompiledBinding PathToTheSims3Document, Source={x:Static core:RegulSettings.Instance}}"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,1.7*"
+                              Margin="60 0 45 10">
+                            <TextBlock Text="{StaticResource PathToSaves}" 
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1"
+                                     IsReadOnly="True"
+                                     Text="{CompiledBinding PathToSaves, Source={x:Static core:RegulSettings.Instance}}"/>
+                        </Grid>
+                        
+                        <Separator Margin="-5 0" 
+                                   Background="{StaticResource CardStrokeColorDefaultBrush}" />
+                        
+                        <StackPanel Orientation="Horizontal" Margin="60 10 0 10" Spacing="5">
+                            <Button Content="{StaticResource ChoosePath}"
+                                    Command="{CompiledBinding ChoosePath}" />
+                            <Button Content="{StaticResource ChoosePathToSave}"
+                                    Command="{CompiledBinding ChoosePathToSave}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource ResetToDefaultSettings}">
@@ -45,7 +91,16 @@
             <OptionsDisplayItem Header="{StaticResource Font}"
                                 Icon="{StaticResource TextFontRegular}">
                 <OptionsDisplayItem.ActionButton>
-                    <ComboBox MinWidth="150"></ComboBox>
+                    <ComboBox MinWidth="150"
+                              ItemsSource="{CompiledBinding Fonts}"
+                              SelectedItem="{CompiledBinding SelectedFontFamily}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="FontFamily">
+                                <TextBlock Text="{CompiledBinding Name}"
+                                           FontFamily="{CompiledBinding}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
             
@@ -73,6 +128,31 @@
                     <ToggleSwitch Classes="RightToggle"
                                   IsChecked="{CompiledBinding WindowSettings.EnableBlur, Source={x:Static PleasantSettings.Instance}}"/>
                 </OptionsDisplayItem.ActionButton>
+                
+                <OptionsDisplayItem.Content>
+                    <DockPanel Margin="48 0 33 0">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                            <NumericUpDown Value="{CompiledBinding WindowSettings.OpacityLevel, Source={x:Static PleasantSettings.Instance}}"
+                                           Maximum="1"
+                                           Minimum="0"
+                                           Increment="0.1"
+                                           FormatString="P0"
+                                           Width="90"
+                                           HorizontalContentAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           ParsingNumberStyle="Integer"
+                                           Margin="0 0 5 0"/>
+                        
+                            <Slider Width="150"
+                                    Minimum="0" 
+                                    Maximum="1" 
+                                    TickFrequency="0.01"
+                                    Value="{CompiledBinding WindowSettings.OpacityLevel, Source={x:Static PleasantSettings.Instance}}"/>
+                        </StackPanel>
+                        
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource OpacityLevel}" TextWrapping="Wrap" />
+                    </DockPanel>
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource AccentColor}"

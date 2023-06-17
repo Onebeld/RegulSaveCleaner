@@ -83,6 +83,11 @@
     <s:String x:Key="Light">Light</s:String>
     <s:String x:Key="Dark">Dark</s:String>
     
+    <s:String x:Key="PathToTheSims">Path to The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Path to the saves</s:String>
+    <s:String x:Key="ChoosePathToSave">Choose path to saves</s:String>
+    <s:String x:Key="ChoosePath">Choose path</s:String>
+    
     <!--About-->
     <s:String x:Key="License">License</s:String>
     <s:String x:Key="Version">Version</s:String>

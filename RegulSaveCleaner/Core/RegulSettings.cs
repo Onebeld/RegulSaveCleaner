@@ -1,5 +1,9 @@
-﻿using Avalonia.Collections;
+﻿using System.Globalization;
+using System.Text.Json;
+using Avalonia.Collections;
+using Avalonia.Media;
 using PleasantUI;
+using PleasantUI.Core.Constants;
 using RegulSaveCleaner.Structures;
 
 namespace RegulSaveCleaner.Core;
@@ -7,9 +11,10 @@ namespace RegulSaveCleaner.Core;
 public class RegulSettings : ViewModelBase
 {
     private AvaloniaList<GameSaveResource> _gameSaveResource = new();
-    
-    private bool _hardwareAcceleration = true;
-    
+
+    private string _language = null!;
+    private string _fontName;
+
     private bool _removePortraitsSims = true;
     private bool _removeLotThumbnails;
     private bool _removePhotos;
@@ -41,6 +46,59 @@ public class RegulSettings : ViewModelBase
     private bool _dcBackupPackagesClear;
 
     public static RegulSettings Instance = new();
+
+    static RegulSettings()
+    {
+        if (!Directory.Exists(PleasantDirectories.Settings))
+            Directory.CreateDirectory(PleasantDirectories.Settings);
+        
+        string regulSettings = Path.Combine(PleasantDirectories.Settings, "RegulSettings.json");
+        if (!File.Exists(regulSettings)) return;
+
+        if (!File.Exists(regulSettings))
+        {
+            try
+            {
+                using FileStream fileStream = File.OpenRead(Path.Combine(PleasantDirectories.Settings, PleasantFileNames.Settings));
+                Instance = JsonSerializer.Deserialize<RegulSettings>(fileStream) ?? throw new NullReferenceException();
+                
+                return;
+            }
+            catch { }
+        }
+
+        Instance = new RegulSettings
+        {
+            Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
+        };
+        
+        Setup();
+    }
+
+    private static void Setup()
+    {
+        Instance.FontName = FontManager.Current.DefaultFontFamily.Name;
+        
+#if OSX
+        Instance.PathToTheSims3Document =
+ Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", "The Sims 3");
+        Instance.PathToSaves =
+ Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", "The Sims 3", "Saves");
+        Instance.WorldCachesClear = false;
+#else
+        Instance.PathToTheSims3Document = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "Electronic Arts", "The Sims 3");
+        Instance.PathToSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts",
+            "The Sims 3", "Saves");
+        Instance.WorldCachesClear = true;
+#endif
+    }
+
+    public static void Save()
+    {
+        using FileStream fileStream = File.Create(Path.Combine(PleasantDirectories.Settings, "RegulSettings.json"));
+        JsonSerializer.Serialize(fileStream, Instance);
+    }
     
     public AvaloniaList<GameSaveResource> GameSaveResources
     {
@@ -48,12 +106,18 @@ public class RegulSettings : ViewModelBase
         set => RaiseAndSet(ref _gameSaveResource, value);
     }
     
-    public bool HardwareAcceleration
+    public string Language
     {
-        get => _hardwareAcceleration;
-        set => RaiseAndSet(ref _hardwareAcceleration, value);
+        get => _language;
+        set => RaiseAndSet(ref _language, value);
     }
-    
+
+    public string FontName
+    {
+        get => _fontName;
+        set => RaiseAndSet(ref _fontName, value);
+    }
+
     public bool RemovePortraitsSims
     {
         get => _removePortraitsSims;
@@ -215,5 +279,37 @@ public class RegulSettings : ViewModelBase
     {
         get => _dcBackupPackagesClear;
         set => RaiseAndSet(ref _dcBackupPackagesClear, value);
+    }
+
+    public static void Reset()
+    {
+        Setup();
+        
+        Instance.RemovePortraitsSims = true;
+        Instance.RemoveLotThumbnails = false;
+        Instance.RemovePhotos = false;
+        Instance.RemoveTextures = false;
+        Instance.RemoveGeneratedImages = false;
+        Instance.RemoveFamilyPortraits = true;
+        Instance.RemoveOtherTypes = false;
+        Instance.CreateBackup = false;
+        
+        Instance.ClearCache = false;
+        Instance.PathToBackup = string.Empty;
+        
+        Instance.CasPartCacheClear = true;
+        Instance.CompositorCacheClear = true;
+        Instance.ScriptCacheClear = true;
+        Instance.SimCompositorCacheClear = true;
+        Instance.SocialCacheClear = true;
+        Instance.IgaCacheClear = true;
+        Instance.ThumbnailsClear = true;
+        Instance.FeaturedItemsClear = true;
+        Instance.AllXmlClear = true;
+        Instance.DccClear = true;
+        Instance.DownloadedSimsClear = true;
+        Instance.MissingDepsClear = false;
+        Instance.LogClear = true;
+        Instance.DcBackupPackagesClear = false;
     }
 }

@@ -12,6 +12,7 @@ using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
+using RegulSaveCleaner.Views;
 using RegulSaveCleaner.Views.Windows;
 
 namespace RegulSaveCleaner.ViewModels;
@@ -24,11 +25,10 @@ public class MainWindowViewModel : ViewModelBase
     private bool _inCleaningCacheProcess;
     private bool _isLoadingSaves;
     private bool _canBeCleaningCache;
-    private bool _isOpenGeneratedImagesToolTip;
     private bool _foundSaveFolder;
     
     private AvaloniaList<GameSave> _selectedGameSaves = new();
-    private IManagedNotificationManager _notificationManager;
+    private IManagedNotificationManager _notificationManager = null!;
     
     public AvaloniaList<GameSave> GameSaves { get; } = new();
     
@@ -74,6 +74,16 @@ public class MainWindowViewModel : ViewModelBase
         set => RaiseAndSet(ref _foundSaveFolder, value);
     }
 
+    public MainWindowViewModel(MainWindow host)
+    {
+        _notificationManager = new WindowNotificationManager(host)
+        {
+            Position = NotificationPosition.TopRight,
+            MaxItems = 3,
+            ZIndex = 1
+        };
+    }
+
     public async void LoadingSaves()
     {
         FoundSaveFolder = false;
@@ -91,7 +101,7 @@ public class MainWindowViewModel : ViewModelBase
 
                 if (result == "Yes")
                 {
-                    string? path = await OpenFolderDialog(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+                    string? path = await StorageProvider.SelectFolder(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
                     if (!string.IsNullOrWhiteSpace(path))
                     {
@@ -122,7 +132,7 @@ public class MainWindowViewModel : ViewModelBase
 
                     if (result == "Yes")
                     {
-                        string? path = await OpenFolderDialog(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+                        string? path = await StorageProvider.SelectFolder(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
                         if (!string.IsNullOrWhiteSpace(path))
                             RegulSettings.Instance.PathToSaves = path;
@@ -205,18 +215,6 @@ public class MainWindowViewModel : ViewModelBase
         IsLoadingSaves = false;
     }
 
-    private async Task<string?> OpenFolderDialog(PleasantWindow window, string? directory = null)
-    {
-        IReadOnlyList<IStorageFolder> result = await window.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
-        {
-            SuggestedStartLocation = directory is null ? null : await window.StorageProvider.TryGetFolderFromPathAsync(new Uri(directory))
-        });
-        
-        if (result.Count == 0)
-            return null;
-        return result[0].Path.AbsolutePath;
-    }
-
     public void SelectAllSaves() => SelectedGameSaves = new AvaloniaList<GameSave>(GameSaves);
 
     public void CancelAllSaves() => SelectedGameSaves.Clear();
@@ -286,7 +284,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public async void SelectBackupPath()
     {
-        string? path = await OpenFolderDialog(App.MainWindow);
+        string? path = await StorageProvider.SelectFolder(App.MainWindow);
 
         if (path is not null)
             RegulSettings.Instance.PathToBackup = path;
