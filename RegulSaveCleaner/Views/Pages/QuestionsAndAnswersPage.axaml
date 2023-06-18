@@ -12,22 +12,42 @@
             
             <OptionsDisplayItem Header="{StaticResource TheGameIsVerySlow}"
                                 Expands="True">
-                
+                <OptionsDisplayItem.Content>
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="{StaticResource GameIsVerySlowDescription1}" TextWrapping="Wrap" />
+                        <Button x:Name="InstallationButton" Content="{StaticResource GoToInstallation}" HorizontalAlignment="Left" />
+                        
+                        <TextBlock Text="{StaticResource GameIsVerySlowDescription2}" TextWrapping="Wrap" />
+                        <TextBlock Text="• NRaas Overwatch&#10;• NRaas Error Trap&#10;• NRaas Tempest&#10;• NRaas Master Controller&#10;• NRaas Master Controller Integration&#10;• NRaas Register" />
+                        <TextBlock Text="{StaticResource GameIsVerySlowDescription3}" TextWrapping="Wrap" />
+                        
+                        <Button x:Name="OptimizationManualButton" Content="{StaticResource GoToManual}" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource Error12}"
                                 Expands="True">
-                
+                <OptionsDisplayItem.Content>
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="{StaticResource Error12Description1}" TextWrapping="Wrap" />
+                        <Button x:Name="Error12ManualButton" Content="{StaticResource GoToManual}" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource Error16}"
                                 Expands="True">
-                
+                <OptionsDisplayItem.Content>
+                    <TextBlock Text="{StaticResource Error16Description1}" TextWrapping="Wrap" />
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource Error0AfterOpeningSave}"
                                 Expands="True">
-                
+                <OptionsDisplayItem.Content>
+                    <TextBlock Text="{StaticResource Error0Description1}" TextWrapping="Wrap" />
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
         </StackPanel>
     </SmoothScrollViewer>

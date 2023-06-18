@@ -15,6 +15,18 @@ public static class MessageBoxButtons
             Text = App.GetString("No"), Result = "No"
         }
     };
+    
+    public static readonly IReadOnlyList<MessageBoxButton> ReverseYesNo = new []
+    {
+        new MessageBoxButton
+        {
+            Text = App.GetString("Yes"), Result = "Yes"
+        },
+        new MessageBoxButton
+        {
+            Text = App.GetString("No"), Result = "No", IsKeyDown = true, Default = true
+        }
+    };
 
     public static readonly IReadOnlyList<MessageBoxButton> YesNoCancel = new []
     {

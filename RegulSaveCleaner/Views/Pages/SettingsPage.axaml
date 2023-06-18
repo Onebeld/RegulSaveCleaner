@@ -40,6 +40,7 @@
                                 Description="{StaticResource ClearUnnecessaryProhibitedListsDescription}">
                 <OptionsDisplayItem.ActionButton>
                     <Button Content="{StaticResource Clear}"
+                            Command="{CompiledBinding ClearOldProhibitedLists}"
                             Padding="20 5"/>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
@@ -83,7 +84,10 @@
             
             <OptionsDisplayItem Header="{StaticResource ResetToDefaultSettings}">
                 <OptionsDisplayItem.ActionButton>
-                    <Button Content="{StaticResource Reset}" Padding="20 5" />
+                    <Button Theme="{StaticResource DangerButtonTheme}"
+                            Content="{StaticResource Reset}"
+                            Command="{CompiledBinding ResetSettings}"
+                            Padding="20 5" />
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
             
@@ -151,7 +155,7 @@
                                     Value="{CompiledBinding WindowSettings.OpacityLevel, Source={x:Static PleasantSettings.Instance}}"/>
                         </StackPanel>
                         
-                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource OpacityLevel}" TextWrapping="Wrap" />
+                        <TextBlock VerticalAlignment="Center" Text="{StaticResource OpacityLevel}" TextWrapping="Wrap" />
                     </DockPanel>
                 </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
@@ -160,7 +164,8 @@
                                 Icon="{StaticResource ColorRegular}">
                 <OptionsDisplayItem.ActionButton>
                     <StackPanel Orientation="Horizontal" Spacing="5">
-                        <CheckBox Content="{StaticResource UseSystemAccentColor}" />
+                        <CheckBox Content="{StaticResource UseSystemAccentColor}"
+                                  IsChecked="{CompiledBinding UseAccentColor}"/>
                         
                         <Border Background="{StaticResource CheckeredBackgroundBrush}" 
                                 Width="40" 
@@ -169,6 +174,58 @@
                                 ToolTip.Tip="{CompiledBinding NumericalAccentColor, Source={x:Static PleasantSettings.Instance}, Converter={x:Static converters:UIntToHexConverter.Instance}}">
                             <Border CornerRadius="4" Background="{CompiledBinding NumericalAccentColor, Source={x:Static PleasantSettings.Instance}, Converter={x:Static ColorConverters.UIntToBrush}}" />
                         </Border>
+                        
+                        <Button Theme="{StaticResource AppBarButtonTheme}"
+                                Width="30"
+                                Height="30"
+                                ToolTip.Tip="{StaticResource Menu}">
+                            <Button.Flyout>
+                                <MenuFlyout>
+
+                                    <MenuItem Header="{DynamicResource Copy}"
+                                              Command="{CompiledBinding CopyAccentColor}"
+                                              CommandParameter="{CompiledBinding}">
+                                    <MenuItem.Icon>
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource CopyRegular}"
+                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Stretch="Uniform" />
+                                        </Viewbox>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="{DynamicResource Paste}"
+                                          IsEnabled="{CompiledBinding !UseAccentColor}"
+                                          Command="{CompiledBinding PasteAccentColor}"
+                                          CommandParameter="{CompiledBinding}">
+                                    <MenuItem.Icon>
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource ClipboardPasteRegular}"
+                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Stretch="Uniform" />
+                                        </Viewbox>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <Separator />
+
+                                <MenuItem Header="{DynamicResource Change}"
+                                          IsEnabled="{CompiledBinding !UseAccentColor}"
+                                          Command="{CompiledBinding ChangeAccentColor}">
+                                    <MenuItem.Icon>
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource EditRegular}"
+                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Stretch="Uniform" />
+                                        </Viewbox>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                </MenuFlyout>
+                            </Button.Flyout>
+                            
+                            <Viewbox Width="16" Height="16">
+                                <Path Data="{StaticResource MoreRegular}" />
+                            </Viewbox>
+                        </Button>
                     </StackPanel>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>

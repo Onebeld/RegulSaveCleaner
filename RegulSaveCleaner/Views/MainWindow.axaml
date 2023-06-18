@@ -22,6 +22,7 @@
     <NavigationView Header="{x:Null}"
                     IsOpen="False"
                     SelectionMode="AlwaysSelected"
+                    DisplayTopIndent="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"
                     BindWindowSettings="True">
         <NavigationViewItem IsSelected="True"
                             Header="{DynamicResource Cleaner}"

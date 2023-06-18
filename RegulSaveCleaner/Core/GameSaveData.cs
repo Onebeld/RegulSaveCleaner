@@ -12,11 +12,17 @@ public class GameSaveData
     public IImage? FamilyIcon;
 
     public string WorldName = string.Empty;
+    public string Description;
     public ulong ImgInstance;
+    public DateTime LastSaveTime;
     
     public GameSaveData(string strPath)
     {
-        Package package = (Package)Package.OpenPackage(Path.Combine(Path.GetDirectoryName(strPath)!, "Meta.data"));
+        string metaData = Path.Combine(Path.GetDirectoryName(strPath)!, "Meta.data");
+        
+        LastSaveTime = new FileInfo(metaData).LastWriteTime;
+        
+        Package package = (Package)Package.OpenPackage(metaData);
         IResourceIndexEntry rie = package.Find(r => r.ResourceType == 0x628A788F);
         Extract(WrapperDealer.GetResource(package, rie).Stream, strPath);
     }
@@ -42,10 +48,13 @@ public class GameSaveData
 
         WorldName = stringBuilder.ToString();
 
-        // Skip family description
+        // Family description
+        string description = string.Empty;
         int numSymbolForFamilyDescription = checked(fastBinaryReader.ReadInt32() - 1);
-        for (int index = 0; index <= numSymbolForFamilyDescription; index++) 
-            fastBinaryReader.BaseStream.Position += 2;
+        for (int index = 0; index <= numSymbolForFamilyDescription; index++)
+            description += (char)fastBinaryReader.ReadInt16();
+
+        Description = description;
         
         // Get image instance
         ImgInstance = fastBinaryReader.ReadUInt64();

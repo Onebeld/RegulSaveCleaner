@@ -60,11 +60,27 @@
     <s:String x:Key="RemoveTextures">Remove textures</s:String>
     <s:String x:Key="RemoveOtherTypes">Remove other types</s:String>
     
+    <s:String x:Key="All">All</s:String>
+    <s:String x:Key="Files">files</s:String>
+    <s:String x:Key="FromTheFolder">from the folder</s:String>
+    <s:String x:Key="Except">except</s:String>
+    
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Unfortunately, The Sims 3 is very poorly optimized. It consumes a maximum of 4 GB of RAM and uses only one processor core. The first thing you need to install is SmoothPatch by LazyDuchess. It does amazing things in optimization.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">The use of NRaas mods is recommended:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">As you play, the save gets bloated, which can lead to various errors. Use this program to avoid problems. If you want the ultimate experience, use the very good tutorial from Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Go to manual</s:String>
+    <s:String x:Key="GoToInstallation">Go to installation</s:String>
+    
     <s:String x:Key="Error12">Error 12</s:String>
+    <s:String x:Key="Error12Description1">Don't worry! This is because the game does not have enough memory to save your world. Try clearing your inventory of unnecessary debris, removing unnecessary objects in the world, and saving again. If that doesn't help, try the guide from AncientGatekeeper.</s:String>
+    
     <s:String x:Key="Error16">Error 16</s:String>
+    <s:String x:Key="Error16Description1">This is a rather rare error. It occurs when the size of your save reaches 4 GB. There are quite a few reasons: a lot of families, a lot of lots, a lot of garbage inside the save. The first thing to do is to use this program. If that doesn't help much, you need to do a cleanup in the game itself. Because of this error, there is a high probability of losing your save, so try not to bloat your save.</s:String>
+    
     <s:String x:Key="Error0AfterOpeningSave">Error 0 after opening a save</s:String>
+    <s:String x:Key="Error0Description1">Unfortunately, your save has been corrupted. This was due to one of the versions of this program after cleaning. Can occur when a hard disk or SSD sector is corrupted.</s:String>
     
     <!--Settings Page-->
     <s:String x:Key="General">General</s:String>
@@ -89,6 +105,12 @@
     <s:String x:Key="Change">Change</s:String>
     <s:String x:Key="Theme">Theme</s:String>
     
+    <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
+    <s:String x:Key="ColorCopied">Color copied!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">The settings have been reset</s:String>
+    <s:String x:Key="ResetSettingsWarning">Do you really want to reset settings?</s:String>
+    
     <s:String x:Key="System">System</s:String>
     <s:String x:Key="Light">Light</s:String>
     <s:String x:Key="Dark">Dark</s:String>
@@ -97,6 +119,22 @@
     <s:String x:Key="PathToSaves">Path to the saves</s:String>
     <s:String x:Key="ChoosePathToSave">Choose path to saves</s:String>
     <s:String x:Key="ChoosePath">Choose path</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Photos</s:String>
+    <s:String x:Key="PortraitsOfSims">Portraits of Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portraits of Families</s:String>
+    <s:String x:Key="GeneratedImages">Generated images</s:String>
+    <s:String x:Key="LotThumbnails">Lot thumbnails</s:String>
+    <s:String x:Key="SelectOldList">Select the old list</s:String>
+    <s:String x:Key="MergedOldList">The merger was a success!</s:String>
+    <s:String x:Key="NoItems">No items</s:String>
+    <s:String x:Key="ViewImage">View image</s:String>
+    <s:String x:Key="SaveImage">Save image</s:String>
+    <s:String x:Key="Unselect">Unselect</s:String>
+    <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
+    <s:String x:Key="ImageSaved">Image saved!</s:String>
+    <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
     
     <!--About-->
     <s:String x:Key="License">License</s:String>

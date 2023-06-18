@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Text;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -24,11 +25,26 @@ public class MainWindowViewModel : ViewModelBase
     private bool _isLoadingSaves;
     private bool _canBeCleaningCache;
     private bool _foundSaveFolder;
+
+    private bool _sortByAlphabet;
+    private bool _sortByDate = true;
     
     private AvaloniaList<GameSave> _selectedGameSaves = new();
     private IManagedNotificationManager _notificationManager = null!;
     
-    public AvaloniaList<GameSave> GameSaves { get; } = new();
+    public AvaloniaList<GameSave> GameSaves { get; set; } = new();
+
+    public bool IsMacOs
+    {
+        get
+        {
+#if NET461
+            return false;
+#else
+            return OperatingSystem.IsMacOS();
+#endif
+        }
+    }
     
     public IManagedNotificationManager NotificationManager
     {
@@ -71,10 +87,34 @@ public class MainWindowViewModel : ViewModelBase
         get => _foundSaveFolder;
         set => RaiseAndSet(ref _foundSaveFolder, value);
     }
-    
+
+    public bool SortByAlphabet
+    {
+        get => _sortByAlphabet;
+        set
+        {
+            RaiseAndSet(ref _sortByAlphabet, value);
+            
+            if (value)
+                SortGameSaves();
+        }
+    }
+
+    public bool SortByDate
+    {
+        get => _sortByDate;
+        set
+        {
+            RaiseAndSet(ref _sortByDate, value);
+            
+            if (value)
+                SortGameSaves();
+        }
+    }
+
     public MainWindowViewModel() { }
 
-    public MainWindowViewModel(MainWindow host)
+    public MainWindowViewModel(TopLevel host)
     {
         _notificationManager = new WindowNotificationManager(host)
         {
@@ -82,6 +122,23 @@ public class MainWindowViewModel : ViewModelBase
             MaxItems = 3,
             ZIndex = 1
         };
+    }
+
+    private void SortGameSaves()
+    {
+        List<GameSave> selectedGameSave = SelectedGameSaves.ToList();
+        List<GameSave> gameSaves = GameSaves.ToList();
+
+        if (SortByAlphabet)
+            gameSaves = gameSaves.OrderBy(x => x.Name).ToList();
+        else
+            gameSaves = gameSaves.OrderByDescending(x => x.LastSaveTime).ToList();
+        
+        GameSaves.Clear();
+        GameSaves.AddRange(gameSaves);
+        
+        SelectedGameSaves.Clear();
+        SelectedGameSaves.AddRange(selectedGameSave);
     }
 
     public void OpenList()
@@ -198,7 +255,9 @@ public class MainWindowViewModel : ViewModelBase
                                 else gameSave.ImageOfFamily = gameSaveData.FamilyIcon;
 
                                 gameSave.WorldName = gameSaveData.WorldName;
+                                gameSave.Description = gameSaveData.Description;
                                 gameSave.ImageInstance = gameSaveData.ImgInstance;
+                                gameSave.LastSaveTime = gameSaveData.LastSaveTime;
                                 
                                 _synchronizationContext.Send(_ =>
                                 {
@@ -220,6 +279,8 @@ public class MainWindowViewModel : ViewModelBase
         }
 
         IsLoadingSaves = false;
+        
+        SortGameSaves();
     }
 
     public void SelectAllSaves() => SelectedGameSaves = new AvaloniaList<GameSave>(GameSaves);

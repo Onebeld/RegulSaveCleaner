@@ -16,8 +16,9 @@ public class GameSave : ViewModelBase
     }
     public ulong ImageInstance { get; set; }
     public string Directory { get; set; }
-    
     public string WorldName { get; set; }
+    public string Description { get; set; }
+    public DateTime LastSaveTime { get; set; }
 
     public string Name => _name.Value;
     public string Location => _location.Value;
