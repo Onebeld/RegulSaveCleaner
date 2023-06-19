@@ -8,6 +8,7 @@ using PleasantUI.Core.Enums;
 using PleasantUI.Windows;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
+using Color = Avalonia.Media.Color;
 
 namespace RegulSaveCleaner.ViewModels;
 

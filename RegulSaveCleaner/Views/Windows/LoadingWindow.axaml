@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RegulSaveCleaner.Views.Windows.LoadingWindow"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
         MinWidth="0">
     <StackPanel Margin="25 15 25 15" Spacing="10">
         <TextBlock x:Name="TextBlock" Classes="BodyStrongTextBlockStyle" Text="Text" TextAlignment="Center" />

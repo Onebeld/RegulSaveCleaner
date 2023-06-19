@@ -2,8 +2,134 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
+               xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+               xmlns:windows1="clr-namespace:RegulSaveCleaner.Views.Windows"
+               xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
                mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
                x:Class="RegulSaveCleaner.Views.Windows.ProhibitedListWindow"
-               Title="ProhibitedListWindow">
-    Welcome to Avalonia!
+               Title="ProhibitedListWindow"
+               x:DataType="windows:ProhibitedListViewModel">
+    <Grid RowDefinitions="Auto,*" Margin="10">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,*" Margin="0 0 0 10">
+            <TextBlock Grid.Column="0"
+                       Theme="{StaticResource SubtitleTextBlockTheme}"
+                       Margin="20 0"
+                       Text="{StaticResource ProhibitedList}"
+                       VerticalAlignment="Center" />
+            <ProgressRing Grid.Column="1"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          IsVisible="{CompiledBinding IsLoaded}"
+                          IsIndeterminate="{CompiledBinding IsLoaded}" />
+            <Menu Grid.Column="1"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Center"
+                  Height="30"
+                  IsEnabled="{CompiledBinding !IsLoaded}">
+                <MenuItem ToolTip.Tip="{StaticResource Menu}">
+                    <MenuItem.Header>
+                        <Path Data="{StaticResource MoreRegular}"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Fill="{StaticResource TextFillColorPrimaryBrush}"
+                              Stretch="Uniform"
+                              Width="14" />
+                    </MenuItem.Header>
+                    
+                    <MenuItem Header="{StaticResource SaveSelectedImages}"
+                              Command="{CompiledBinding SaveSelectedImages}"
+                              IsEnabled="{CompiledBinding !!SelectedImageResources.Count}">
+                        <MenuItem.Icon>
+                            <Viewbox Width="16" Height="16">
+                                <Path Data="{StaticResource SaveRegular}"
+                                      Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                      Stretch="Uniform"/>
+                            </Viewbox>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    
+                    <MenuItem Header="{StaticResource Unselect}"
+                              Command="{CompiledBinding UnselectResources}" />
+                </MenuItem>
+            </Menu>
+            
+            <ComboBox Grid.Column="2"
+                      IsEnabled="{CompiledBinding !IsLoaded}"
+                      SelectedIndex="{CompiledBinding SelectedTypeIndex}">
+                <ComboBoxItem Content="{StaticResource All}" />
+                <ComboBoxItem Content="{StaticResource Photos}" />
+                <ComboBoxItem Content="{StaticResource GeneratedImages}" />
+                <ComboBoxItem Content="{StaticResource PortraitsOfSims}" />
+                <ComboBoxItem Content="{StaticResource PortraitsOfFamilies}" />
+                <ComboBoxItem Content="{StaticResource LotThumbnails}" />
+            </ComboBox>
+        </Grid>
+        
+        <Border Grid.Row="1"
+                CornerRadius="5"
+                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                BorderThickness="1"
+                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}">
+            <Panel>
+                <ListBox ItemContainerTheme="{StaticResource HorizontalListBoxItem}"
+                         ItemsSource="{CompiledBinding FundedImageResources}"
+                         SelectedItems="{CompiledBinding SelectedFundedImageResources}"
+                         SelectionMode="Toggle, Multiple"
+                         IsEnabled="{CompiledBinding !IsCompleting}"
+                         AutoScrollToSelectedItem="False">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Margin="0 5" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="structures:ImageResource">
+                            <Border Grid.Row="0"
+                                    Margin="0 10"
+                                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                    Width="128"
+                                    Height="128"
+                                    CornerRadius="5"
+                                    ClipToBounds="True">
+                                    <Image Source="{CompiledBinding Image, Converter={x:Static converters:BitmapConverters.Compress}}"
+                                           Width="128"
+                                           Height="128"
+                                           Stretch="Uniform"
+                                           StretchDirection="DownOnly"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
+                <TextBlock Text="{StaticResource NoItems}"
+                           IsVisible="{CompiledBinding !FundedImageResources.Count}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource TextFillColorTertiaryBrush}"/>
+            </Panel>
+        </Border>
+    </Grid>
+    
+    <ContentDialog.BottomPanelContent>
+        <UniformGrid Margin="15 0" Rows="1">
+            <Button Theme="{StaticResource AccentButton}" 
+                    Content="{StaticResource Ok}" 
+                    IsEnabled="{CompiledBinding !IsLoaded}"
+                    VerticalAlignment="Center" 
+                    Margin="5"
+                    Command="{CompiledBinding Close}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+            <Button Content="{StaticResource Cancel}" 
+                    VerticalAlignment="Center" 
+                    IsEnabled="{CompiledBinding !IsCompleting}"
+                    Margin="5"
+                    Command="{CompiledBinding CloseWithoutSave}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+        </UniformGrid>
+    </ContentDialog.BottomPanelContent>
 </ContentDialog>

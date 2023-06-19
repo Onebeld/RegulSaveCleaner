@@ -12,6 +12,7 @@ using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views;
+using RegulSaveCleaner.Views.InformationPages;
 using RegulSaveCleaner.Views.Windows;
 
 namespace RegulSaveCleaner.ViewModels;
@@ -139,11 +140,6 @@ public class MainWindowViewModel : ViewModelBase
         
         SelectedGameSaves.Clear();
         SelectedGameSaves.AddRange(selectedGameSave);
-    }
-
-    public void OpenList()
-    {
-        MessageBox.Show(App.MainWindow, "Hello!", "Hello world!", MessageBoxButtons.Ok);
     }
 
     public async void LoadingSaves()
@@ -283,7 +279,11 @@ public class MainWindowViewModel : ViewModelBase
         SortGameSaves();
     }
 
-    public void SelectAllSaves() => SelectedGameSaves = new AvaloniaList<GameSave>(GameSaves);
+    public void SelectAllSaves()
+    {
+        SelectedGameSaves.Clear();
+        SelectedGameSaves.AddRange(GameSaves);
+    }
 
     public void CancelAllSaves() => SelectedGameSaves.Clear();
 
@@ -350,6 +350,36 @@ public class MainWindowViewModel : ViewModelBase
         RegulSettings.Instance.MissingDepsClear = false;
     }
 
+    public void OpenRemoveFamilyPortraitsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveFamilyPortraitsPage());
+    public void OpenRemovePortraitsSimsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemovePortraitsOfSimsPage());
+    public void OpenRemoveLotThumbnailsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveLotThumbnailsPage());
+    public void OpenRemovePhotosDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemovePhotosPage());
+    public void OpenRemoveGeneratedImagesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveGeneratedImagesPage());
+    public void OpenRemoveTexturesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveTexturesPage());
+    public void OpenRemoveOtherTypesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveOtherTypesPage());
+
+    public async void OpenProhibitedList(GameSave gameSave)
+    {
+        ProhibitedListWindow window = new(gameSave);
+        await window.Show(App.MainWindow);
+        await Task.Delay(1000);
+        ClearGc();
+    }
+    
+    public async void OpenOldProhibitedLists(GameSave gameSave)
+    {
+        OldProhibitedListsWindow window = new(gameSave, GameSaves.Select(x => x.Name));
+        bool result = await window.Show<bool>(App.MainWindow);
+
+        if (result)
+        {
+            NotificationManager.Show(new Notification(App.GetString("Successful"),
+                App.GetString("MergedOldList"),
+                NotificationType.Success,
+                TimeSpan.FromSeconds(3)));
+        }
+    }
+    
     public async void SelectBackupPath()
     {
         string? path = await StorageProvider.SelectFolder(App.MainWindow);
@@ -426,18 +456,28 @@ public class MainWindowViewModel : ViewModelBase
         thread.Start();
     }
 
+    private void OpenCleaningOptionDescriptionWindow(ContentControl userControl)
+    {
+        CleaningOptionDescriptionWindow window = new()
+        {
+            Content = userControl
+        };
+
+        window.Show(App.MainWindow);
+    }
+
     private string BuildClearingResults(List<CleaningResult> cleaningResults, List<string> deletedFiles)
     {
         StringBuilder stringBuilder = new();
 
         foreach (CleaningResult cleaningResult in cleaningResults)
         {
-            stringBuilder.Append($"{App.GetResource<string>("SaveName")}: {cleaningResult.Save}");
-            stringBuilder.Append($"{App.GetResource<string>("TimePassed")}: {cleaningResult.TotalSecond} {App.GetResource<string>("Sec")}");
+            stringBuilder.Append($"{App.GetString("SaveName")}: {cleaningResult.Save}");
+            stringBuilder.Append($"\n{App.GetString("TimePassed")}: {cleaningResult.TotalSecond} {App.GetString("Sec")}");
             
-            stringBuilder.Append($"\n{App.GetResource<string>("OldSize")}: {cleaningResult.OldSize} MB");
-            stringBuilder.Append($"{App.GetResource<string>("NewSize")}: {cleaningResult.NewSize} MB");
-            stringBuilder.Append($"{App.GetResource<string>("Percent")}: {(cleaningResult.OldSize - cleaningResult.NewSize) / cleaningResult.OldSize:P}");
+            stringBuilder.Append($"\n\n{App.GetString("OldSize")}: {cleaningResult.OldSize} MB");
+            stringBuilder.Append($"\n{App.GetString("NewSize")}: {cleaningResult.NewSize} MB");
+            stringBuilder.Append($"\n{App.GetString("Percent")}: {(cleaningResult.OldSize - cleaningResult.NewSize) / cleaningResult.OldSize:P}");
 
             if (cleaningResults.IndexOf(cleaningResult) + 1 < cleaningResults.Count)
                 stringBuilder.Append("\n-----------------------\n");
@@ -445,10 +485,10 @@ public class MainWindowViewModel : ViewModelBase
 
         if (deletedFiles.Count > 0)
         {
-            stringBuilder.Append("\n-----------------------\n");
+            stringBuilder.Append("\n-----------------------");
 
             foreach (string deletedFile in deletedFiles)
-                stringBuilder.Append(deletedFile);
+                stringBuilder.Append($"\n{deletedFile}");
         }
 
         return stringBuilder.ToString();
@@ -728,5 +768,14 @@ public class MainWindowViewModel : ViewModelBase
     {
         File.Delete(path);
         files?.Add(path);
+    }
+    
+    private void ClearGc()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
     }
 }

@@ -103,6 +103,7 @@
                                     </StackPanel.IsEnabled>
                                     <Button Padding="8 6"
                                             CornerRadius="4 0 0 4"
+                                            Command="{CompiledBinding SelectAllSaves}"
                                             ToolTip.Tip="{StaticResource SelectAll}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource SelectallOnRegular}" />
@@ -110,6 +111,7 @@
                                     </Button>
                                     <Button Padding="8 6"
                                             CornerRadius="0 4 4 0"
+                                            Command="{CompiledBinding CancelAllSaves}"
                                             ToolTip.Tip="{StaticResource CancelAll}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource SelectallOffRegular}" />
@@ -192,7 +194,8 @@
                                                     <Button.Flyout>
                                                         <MenuFlyout>
                                                             <MenuItem Header="{StaticResource ProhibitedList}"
-                                                                      Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenList}">
+                                                                      Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenProhibitedList}"
+                                                                      CommandParameter="{CompiledBinding}">
                                                                 <MenuItem.Icon>
                                                                     <Viewbox Width="16" Height="16">
                                                                         <Path
@@ -204,6 +207,7 @@
                                                             </MenuItem>
                                                             
                                                             <MenuItem Header="{StaticResource MoveOldList}"
+                                                                      Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenOldProhibitedLists}"
                                                                       CommandParameter="{CompiledBinding}" />
                                                         </MenuFlyout>
                                                     </Button.Flyout>
@@ -296,6 +300,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveFamilyPortraitsDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -323,6 +328,7 @@
 
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemovePortraitsSimsDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -350,6 +356,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveLotThumbnailsDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -365,6 +372,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemovePhotosDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -380,6 +388,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveGeneratedImagesDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -395,6 +404,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveTexturesDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">
@@ -402,8 +412,7 @@
                                         <Path Data="{StaticResource InfoRegular}" />
                                     </Viewbox>
                                 </Button>
-                                <CheckBox
-                                    IsChecked="{CompiledBinding RemoveTextures, Source={x:Static core:RegulSettings.Instance}}">
+                                <CheckBox IsChecked="{CompiledBinding RemoveTextures, Source={x:Static core:RegulSettings.Instance}}">
                                     <CheckBox.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="15">
                                             <TextBlock>
@@ -422,6 +431,7 @@
                             
                             <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
                                 <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveOtherTypesDescriptionWindow}"
                                         VerticalAlignment="Center"
                                         Width="30"
                                         Height="30">

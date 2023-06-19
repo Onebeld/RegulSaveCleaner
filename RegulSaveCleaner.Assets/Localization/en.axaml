@@ -20,6 +20,10 @@
     <s:String x:Key="Paste">Paste</s:String>
     
     <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Cancel</s:String>
+    
+    <s:String x:Key="AddYourNewColor">Add your new color!</s:String>
+    <s:String x:Key="AddColor">Add color</s:String>
     
     <!--Cleaner Page-->
     <s:String x:Key="StartCleaning">Start Cleaning</s:String>
@@ -52,6 +56,17 @@
     <s:String x:Key="Experimentally">Experimentally</s:String>
     <s:String x:Key="ReadMore">Read more</s:String>
     
+    <s:String x:Key="SaveCleared">The save has been successfully cleared!</s:String>
+    <s:String x:Key="SavesCleared">Saves successfully cleared!</s:String>
+    <s:String x:Key="ResultsBelow">You can see the result below.</s:String>
+    
+    <s:String x:Key="SaveName">Save name</s:String>
+    <s:String x:Key="TimePassed">Time passed</s:String>
+    <s:String x:Key="OldSize">Old size</s:String>
+    <s:String x:Key="NewSize">New size</s:String>
+    <s:String x:Key="Percent">Percent</s:String>
+    <s:String x:Key="Sec">sec</s:String>
+    
     <s:String x:Key="RemoveFamilyPortraits">Remove family portraits</s:String>
     <s:String x:Key="RemovePortraitsOfSims">Remove portraits of Sims</s:String>
     <s:String x:Key="RemoveLotThumbnails">Remove lot thumbnails</s:String>
@@ -64,6 +79,28 @@
     <s:String x:Key="Files">files</s:String>
     <s:String x:Key="FromTheFolder">from the folder</s:String>
     <s:String x:Key="Except">except</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Deletes images that the game creates itself.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">This includes: selfies, greeting cards, photos from the photo booth, photos from graduation ball.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Use the Prohibited list to save some of them.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Removes portraits that appear when you select saves, in this program, and when you select family. Saves the portrait that appears in the program.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Removes portraits of Sims. They appear almost everywhere: in the Relationships panel, in the Thought Cloud, and so on.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Side effect:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">when you enter the city editor, it will take a long time to load it, because the game is busy creating portraits, and portraits will only have one pose.</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">Removes lot thumbnails that appear when you select save or a lot.</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">Use the Prohibited list to save only some of your photos.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Use the Prohibited list to save only some of your photos.</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">Removes lot textures that are created after you place a new lot in a city. This does not apply to lots that were already in town (not counting some that are automatically placed if you have a certain expansion pack).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Keep in mind that after clearing the save, the lot you placed will look like the ground (see screenshot before and after).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">It is recommended that you back up, as some players say the game is saved indefinitely.</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">This option works like "Clear Memories" in Kuree's program. According to reviews, it does not clear memories, so the option has been renamed. It is recommended that you back it up, as it is unknown what it clears.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">It is recommended that you back it up, as it is unknown what it clears.</s:String>
     
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>

@@ -2,8 +2,61 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+        xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RegulSaveCleaner.Views.Windows.OldProhibitedListsWindow"
-        Title="OldProhibitedListsWindow">
-    Welcome to Avalonia!
+        Title="OldProhibitedListsWindow"
+        MaxWidth="400"
+        MaxHeight="550"
+        x:DataType="windows:OldProhibitedListsViewModel">
+    <Grid RowDefinitions="Auto,*" Margin="15">
+        <TextBlock Grid.Row="0"
+                   Text="{StaticResource SelectOldList}"
+                   Theme="{StaticResource SubtitleTextBlockTheme}"
+                   Margin="5 0 0 10"
+                   VerticalAlignment="Center"/>
+        
+        <Border Grid.Row="1"
+                CornerRadius="5"
+                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                BorderThickness="1"
+                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                Padding="5">
+            <Panel>
+                <ListBox SelectionMode="Single"
+                         ItemsSource="{CompiledBinding GameSaveResourcesList}"
+                         SelectedItem="{CompiledBinding SelectedGameSaveResources}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate DataType="structures:GameSaveResource">
+                            <TextBlock Classes="BodyTextBlockStyle" Text="{CompiledBinding Id}" />
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+
+                <TextBlock Text="{StaticResource NoItems}"
+                           IsVisible="{CompiledBinding !GameSaveResourcesList.Count}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+            </Panel>
+        </Border>
+    </Grid>
+    
+    <ContentDialog.BottomPanelContent>
+        <UniformGrid Margin="15 0" Rows="1">
+            <Button Theme="{StaticResource AccentButton}" 
+                    IsEnabled="{CompiledBinding SelectedGameSaveResources, Converter={x:Static ObjectConverters.IsNotNull}}"
+                    Content="{StaticResource Ok}" 
+                    VerticalAlignment="Center" 
+                    Margin="5"
+                    Command="{CompiledBinding CloseWithSave}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+            <Button Content="{StaticResource Cancel}" 
+                    VerticalAlignment="Center" 
+                    Margin="5"
+                    Command="{CompiledBinding Close}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+        </UniformGrid>
+    </ContentDialog.BottomPanelContent>
 </ContentDialog>
