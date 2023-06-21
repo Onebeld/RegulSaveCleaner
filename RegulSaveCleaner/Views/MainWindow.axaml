@@ -3,9 +3,11 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
-                xmlns:pages="clr-namespace:RegulSaveCleaner.Views.Pages"
+                xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+                xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
                 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
                 x:Class="RegulSaveCleaner.Views.MainWindow"
+                FontFamily="{CompiledBinding FontName, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FontNameConverters.NameToFontFamily}}"
                 Width="860"
                 Height="600"
                 MinWidth="590"
@@ -19,28 +21,28 @@
                 TitleBarType="ClassicExtended"
                 Icon="avares://RegulSaveCleaner/icon.ico"
                 x:DataType="viewModels:MainWindowViewModel">
-    <NavigationView Header="{x:Null}"
+    <NavigationView x:Name="NavigationView"
+                    Header="{x:Null}"
                     IsOpen="False"
                     SelectionMode="AlwaysSelected"
                     DisplayTopIndent="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"
                     BindWindowSettings="True">
-        <NavigationViewItem IsSelected="True"
+        <NavigationViewItem x:Name="CleanerPage"
+                            IsSelected="True"
                             Header="{DynamicResource Cleaner}"
-                            Icon="{StaticResource BroomRegular}"
-                            TypeContent="{x:Type pages:CleanerPage}" />
-        <NavigationViewItem Header="{DynamicResource QuestionsAndAnswers}"
+                            Icon="{StaticResource BroomRegular}" />
+        <NavigationViewItem x:Name="QuestionsAndAnswersPage" Header="{DynamicResource QuestionsAndAnswers}"
                             Margin="0 5 0 0"
-                            Icon="{StaticResource QuestionCircleRegular}"
-                            TypeContent="{x:Type pages:QuestionsAndAnswersPage}" />
+                            Icon="{StaticResource QuestionCircleRegular}" />
         
-        <NavigationViewItem Header="{DynamicResource About}"
+        <NavigationViewItem x:Name="AboutPage"
+                            Header="{DynamicResource About}"
                             Icon="{StaticResource InfoRegular}"
                             Margin="0 5"
-                            TypeContent="{x:Type pages:AboutPage}"
                             DockPanel.Dock="Bottom" />
-        <NavigationViewItem Header="{DynamicResource Settings}"
+        <NavigationViewItem x:Name="SettingsPage"
+                            Header="{DynamicResource Settings}"
                             Icon="{StaticResource SettingsRegular}"
-                            TypeContent="{x:Type pages:SettingsPage}"
                             DockPanel.Dock="Bottom" />
         
         <Panel />

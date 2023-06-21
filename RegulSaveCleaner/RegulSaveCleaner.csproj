@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFrameworks>net6.0;net461</TargetFrameworks>
+        <OutputType Condition="'$(Configuration.toUpper())' != 'DEBUG'">WinExe</OutputType>
+        <OutputType Condition="'$(Configuration.toUpper())' == 'DEBUG'">Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -10,19 +11,32 @@
         <FileVersion>3.1.0</FileVersion>
         <LangVersion>preview</LangVersion>
         <Product>Regul Save Cleaner</Product>
+        <PublishAot>true</PublishAot>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
         <PackageReference Include="Avalonia.Desktop" Version="11.0.0-rc1.1" />
         <PackageReference Include="Pfim" Version="0.11.2" />
-        <PackageReference Include="PleasantUI" Version="3.0.2" />
-        <PackageReference Include="SixLabors.ImageSharp" Version="2.1.4" />
+        <PackageReference Include="PleasantUI" Version="3.0.3" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.0.1" />
     </ItemGroup>
+
+    <PropertyGroup>
+        <IsWindows Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</IsWindows>
+        <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
+        <IsOSX Condition="$([MSBuild]::IsOSPlatform('OSX'))">true</IsOSX>
+
+        <DefineConstants Condition="'$(IsWindows)'=='true'">Windows</DefineConstants>
+        <DefineConstants Condition="'$(IsOSX)'=='true'">OSX</DefineConstants>
+        <DefineConstants Condition="'$(IsLinux)'=='true'">Linux</DefineConstants>
+    </PropertyGroup>
 
     <ItemGroup>
         <AdditionalFiles Include="**\*.axaml" />
         <Compile Update="**\*.axaml.cs" />
+
+        <RdXmlFile Include="rd.xml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -33,4 +47,20 @@
       <ProjectReference Include="..\RegulSaveCleaner.S3PI\RegulSaveCleaner.S3PI.csproj" />
       <ProjectReference Include="..\RegulSaveCleaner.Assets\RegulSaveCleaner.Assets.csproj" />
     </ItemGroup>
+
+    <PropertyGroup>
+        <CFBundleName>$(AssemblyName)</CFBundleName>
+        <CFBundleDisplayName>$(AssemblyName)</CFBundleDisplayName>
+        <CFBundleIdentifier>com.$(username).$(AssemblyName)</CFBundleIdentifier>
+        <CFBundleVersion>3.1.0</CFBundleVersion>
+        <CFBundlePackageType>APPL</CFBundlePackageType>
+        <!--<CFBundleSignature>????</CFBundleSignature>-->
+        <CFBundleExecutable>$(AssemblyName)</CFBundleExecutable>
+        <CFBundleIconFile>Assets/app.icns</CFBundleIconFile>
+        <NSPrincipalClass>NSApplication</NSPrincipalClass>
+        <NSHighResolutionCapable>true</NSHighResolutionCapable>
+        <CFBundleShortVersionString>1.0</CFBundleShortVersionString>
+        <!-- Optional -->
+        <NSRequiresAquaSystemAppearance>true</NSRequiresAquaSystemAppearance>
+    </PropertyGroup>
 </Project>

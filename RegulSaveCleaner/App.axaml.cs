@@ -2,7 +2,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 using PleasantUI;
 using RegulSaveCleaner.Core;
@@ -19,12 +18,11 @@ public partial class App : Application
     public static MainWindow MainWindow { get; private set; } = null!;
 
     public App() => AvaloniaXamlLoader.Load(this);
-    
-    public static ResourceInclude LanguageResourceInclude { get; private set; } = null!;
 
     public override void OnFrameworkInitializationCompleted()
     {
-        InitializeLanguage();
+        LoadAllLanguages();
+        ChangeLanguage();
         
         PleasantTheme = new PleasantTheme();
         Styles.Add(PleasantTheme);
@@ -39,10 +37,9 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private void InitializeLanguage()
+    public static void ChangeLanguage()
     {
-        Language? language = Languages.FirstOrDefault(x => x.Key == RegulSettings.Instance.Language 
-                                                           || x.AdditionalKeys.Any(lang => lang == RegulSettings.Instance.Language));
+        Language? language = Languages.FirstOrDefault(x => x.Key == RegulSettings.Instance.Language || x.AdditionalKeys.Any(lang => lang == RegulSettings.Instance.Language));
 
         string? key = language.Value.Key;
 
@@ -51,19 +48,20 @@ public partial class App : Application
 
         RegulSettings.Instance.Language = key;
 
-        LanguageResourceInclude = new ResourceInclude((Uri?)null)
+        foreach (IResourceProvider resourceProvider in _xamlLanguages)
         {
-            Source = new Uri($"avares://RegulSaveCleaner.Assets/Localization/{RegulSettings.Instance.Language}.axaml")
-        };
-        Resources.MergedDictionaries.Add(LanguageResourceInclude);
-    }
+            if (resourceProvider is not ResourceDictionary resourceDictionary) continue;
 
-    public static void ChangeLanguage(string key)
-    {
-        LanguageResourceInclude = new ResourceInclude((Uri?)null)
-        {
-            Source = new Uri($"avares://RegulSaveCleaner.Assets/Localization/{key}.axaml")
-        };
+            if (resourceDictionary.TryGetResource("LanguageKey", null, out object? value) && value as string == RegulSettings.Instance.Language)
+            {
+                if (CurrentLanguage is null)
+                {
+                    CurrentLanguage = resourceDictionary;
+                    Current?.Resources.MergedDictionaries.Add(CurrentLanguage);
+                }
+                else CurrentLanguage = resourceDictionary;
+            }
+        }
     }
 
     public static string GetString(string key)
@@ -72,6 +70,9 @@ public partial class App : Application
             return objectText as string ?? string.Empty;
         return key;
     }
+
+    private static List<IResourceProvider> _xamlLanguages = new();
+    public static ResourceDictionary? CurrentLanguage { get; private set; }
 
     /// <summary>
     /// Looks for a suitable resource in the program.
@@ -105,4 +106,12 @@ public partial class App : Application
     {
         new("English (English)", "en")
     };
+
+    private void LoadAllLanguages()
+    {
+        IList<IResourceProvider> resourceProviders = GetResource<ResourceDictionary>("LanguageDictionary").MergedDictionaries;
+
+        foreach (IResourceProvider resourceProvider in resourceProviders)
+            _xamlLanguages.Add(resourceProvider);
+    }
 }

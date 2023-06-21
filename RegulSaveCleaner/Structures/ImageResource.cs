@@ -9,4 +9,5 @@ public class ImageResource
     public ulong Instance { get; set; }
     
     public Bitmap? Image { get; set; }
+    public Bitmap? CompressedImage { get; set; }
 }

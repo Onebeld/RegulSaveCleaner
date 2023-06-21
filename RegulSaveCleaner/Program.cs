@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.OpenGL;
 using Avalonia.Win32;
 
 namespace RegulSaveCleaner;
@@ -62,7 +63,8 @@ public class Program
     {
         AppBuilder appBuilder = AppBuilder.Configure<App>();
         appBuilder.UseSkia();
-        
+
+#if Windows
         appBuilder.UseWin32()
             .With(new AngleOptions
             {
@@ -71,24 +73,43 @@ public class Program
                     AngleOptions.PlatformApi.DirectX11
                 }
             });
+#else
+        appBuilder.UsePlatformDetect();
+#endif
 
         appBuilder
+#if Windows
             .With(new Win32PlatformOptions
             {
                 AllowEglInitialization = true,
                 OverlayPopups = true,
                 UseWgl = false,
                 UseWindowsUIComposition = true,
-            })
+            });
+#endif
+#if OSX
             .With(new MacOSPlatformOptions
             {
                 DisableDefaultApplicationMenuItems = true,
-                ShowInDock = false
+                ShowInDock = false,
+                DisableNativeMenus = true
             })
             .With(new AvaloniaNativePlatformOptions
             {
                 UseGpu = true,
             });
+#endif
+
+#if Linux
+            .With(new X11PlatformOptions()
+            {
+                UseGpu = true,
+                OverlayPopups = true,
+
+            });
+#endif
+            
+            
 
         return appBuilder.LogToTrace();
     }

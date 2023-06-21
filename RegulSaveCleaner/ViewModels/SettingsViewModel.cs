@@ -31,7 +31,7 @@ public class SettingsViewModel : ViewModelBase
         set
         {
             RegulSettings.Instance.Language = value.Key;
-            App.ChangeLanguage(value.Key);
+            App.ChangeLanguage();
         }
     }
 
@@ -194,7 +194,7 @@ public class SettingsViewModel : ViewModelBase
         RegulSettings.Reset();
         PleasantSettings.Instance.Reset();
 
-        App.ChangeLanguage(RegulSettings.Instance.Language);
+        App.ChangeLanguage();
         
         RaisePropertyChanged(nameof(SelectedLanguage));
         RaisePropertyChanged(nameof(SelectedFontFamily));

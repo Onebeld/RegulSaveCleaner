@@ -1,5 +1,4 @@
 ﻿using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Reactive.Linq;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -8,8 +7,8 @@ using Avalonia.Media.Imaging;
 using Pfim;
 using PleasantUI;
 using PleasantUI.Extensions;
-using PleasantUI.Windows;
 using RegulSaveCleaner.Core;
+using RegulSaveCleaner.Core.Extensions;
 using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Structures;
@@ -248,7 +247,8 @@ public class ProhibitedListViewModel : ViewModelBase
                         Instance = resource.Instance,
                         Type = resource.ResourceType,
                         Group = resource.ResourceGroup,
-                        Image = bitmap
+                        Image = bitmap,
+                        CompressedImage = bitmap.Compress()
                     };
 
                     _synchronizationContext.Send(_ => { ImageResources.Add(imageResource); }, "");

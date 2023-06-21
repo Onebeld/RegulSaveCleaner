@@ -6,14 +6,23 @@ using PleasantUI.Core;
 using PleasantUI.Core.Enums;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.ViewModels;
+using RegulSaveCleaner.Views.Pages;
 
 namespace RegulSaveCleaner.Views;
 
 public partial class MainWindow : PleasantWindow
 {
-    public MainWindowViewModel ViewModel { get; set; }
+    public MainWindowViewModel ViewModel { get; set; } = null!;
     
-    public MainWindow() => InitializeComponent();
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        CleanerPage.FuncControl += () => new CleanerPage();
+        QuestionsAndAnswersPage.FuncControl += () => new QuestionsAndAnswersPage();
+        SettingsPage.FuncControl += () => new SettingsPage();
+        AboutPage.FuncControl += () => new AboutPage();
+    }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
@@ -27,15 +36,13 @@ public partial class MainWindow : PleasantWindow
             MaxItems = 3,
             ZIndex = 1
         };
-
-#if !NET461
-        if (OperatingSystem.IsMacOS())
-        {
-            EnableTitleBarMargin = true;
-            TitleBarType = PleasantTitleBarType.Classic;
-        }
+        
+#if OSX
+        EnableTitleBarMargin = true;
+        TitleBarType = PleasantTitleBarType.Classic;
+        TitleBarStyle = PleasantTitleBarStyle.MacOS;
 #endif
-
+        
 #if DEBUG
         if (Design.IsDesignMode) return;
 #endif

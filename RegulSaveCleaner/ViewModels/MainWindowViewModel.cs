@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -11,7 +10,6 @@ using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
-using RegulSaveCleaner.Views;
 using RegulSaveCleaner.Views.InformationPages;
 using RegulSaveCleaner.Views.Windows;
 

@@ -8,6 +8,12 @@
     </ItemGroup>
 
     <ItemGroup>
+        <AdditionalFiles Include="**\*.axaml" />
+        <Compile Update="**\*.axaml.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <AvaloniaResource Include="Images\**" />
+        <AvaloniaResource Include="Localization\**" />
     </ItemGroup>
 </Project>

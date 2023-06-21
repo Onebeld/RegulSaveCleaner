@@ -7,5 +7,11 @@
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Icons.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="LanguageDictionary">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
