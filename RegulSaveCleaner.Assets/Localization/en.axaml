@@ -3,7 +3,7 @@
                     xmlns:s="clr-namespace:System;assembly=netstandard">
     <s:String x:Key="LanguageKey">en</s:String>
     
-    <!-- -->
+    <!---->
     <s:String x:Key="Collapse">Collapse</s:String>
     <s:String x:Key="Expand">Expand</s:String>
     <s:String x:Key="Reestablish">Reestablish</s:String>
@@ -43,8 +43,13 @@
     <s:String x:Key="UpdateList">Update list</s:String>
     <s:String x:Key="SortByDate">Sort by date</s:String>
     <s:String x:Key="SortByAlphabetical">Sort by alphabetical</s:String>
+    <s:String x:Key="Selected">Selected</s:String>
     
     <s:String x:Key="NumberOfSaveFiles">Number of save files</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">Could not find the folder "The Sims 3" in the documents.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">There has been an error!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Do you want to choose this folder yourself?</s:String>
     
     <s:String x:Key="CleaningOptions">Cleaning options</s:String>
     <s:String x:Key="CleaningOptionsDescription">Setting up what you want to clear</s:String>
@@ -105,6 +110,17 @@
     <s:String x:Key="RemoveOtherTypesDescription1">This option works like "Clear Memories" in Kuree's program. According to reviews, it does not clear memories, so the option has been renamed. It is recommended that you back it up, as it is unknown what it clears.</s:String>
     <s:String x:Key="RemoveOtherTypesDescription2">It is recommended that you back it up, as it is unknown what it clears.</s:String>
     
+    <s:String x:Key="YouHaveTooManySaves">You have too many saves</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">It is recommended to move unnecessary saves to another folder. Use the built-in Regul Save Cleaner functionality.</s:String>
+    <s:String x:Key="ShowNoMore">Show no more</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Move saves to a spare folder</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Your saves have been moved!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Your save has been moved!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Moving is not possible. Check access to the folder you tried to move your save.</s:String>
+    <s:String x:Key="RestoreOldSaves">Restore old saves</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Select saves to transfer</s:String>
+    <s:String x:Key="MoveToSpareFolder">Move to a spare folder</s:String>
+    
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>
     <s:String x:Key="GameIsVerySlowDescription1">Unfortunately, The Sims 3 is very poorly optimized. It consumes a maximum of 4 GB of RAM and uses only one processor core. The first thing you need to install is SmoothPatch by LazyDuchess. It does amazing things in optimization.</s:String>
@@ -144,6 +160,9 @@
     <s:String x:Key="UseSystemAccentColor">Use system accent color</s:String>
     <s:String x:Key="Change">Change</s:String>
     <s:String x:Key="Theme">Theme</s:String>
+    <s:String x:Key="FolderForOldSaves">Folder for old saves</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Show a warning about a large number of saves</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Number of saves, at which the warning is displayed</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
@@ -175,6 +194,7 @@
     <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
     <s:String x:Key="ImageSaved">Image saved!</s:String>
     <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Number of images in list</s:String>
     
     <!--About-->
     <s:String x:Key="License">License</s:String>

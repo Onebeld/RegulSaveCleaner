@@ -37,7 +37,8 @@
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource ClearUnnecessaryProhibitedLists}"
-                                Description="{StaticResource ClearUnnecessaryProhibitedListsDescription}">
+                                Description="{StaticResource ClearUnnecessaryProhibitedListsDescription}"
+                                Icon="{StaticResource DeleteRegular}">
                 <OptionsDisplayItem.ActionButton>
                     <Button Content="{StaticResource Clear}"
                             Command="{CompiledBinding ClearOldProhibitedLists}"
@@ -45,8 +46,52 @@
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
             
+            <OptionsDisplayItem Header="{StaticResource ShowWarningAboutLargeNumberOfSaves}"
+                                Icon="{StaticResource WarningRegular}"
+                                Expands="True">
+                <OptionsDisplayItem.ActionButton>
+                    <ToggleSwitch Classes="RightToggle"
+                                  IsChecked="{CompiledBinding ShowWarningAboutLargeNumberOfSaves, Source={x:Static core:RegulSettings.Instance}}"/>
+                </OptionsDisplayItem.ActionButton>
+                <OptionsDisplayItem.Content>
+                    <DockPanel Margin="48 0 33 0">
+                        <NumericUpDown DockPanel.Dock="Right"
+                                       Value="{CompiledBinding NumberOfSavesWhenWarningIsDisplayed, Source={x:Static core:RegulSettings.Instance}}"
+                                       Minimum="1"
+                                       Increment="1"
+                                       FormatString="{}{0}"
+                                       Width="90"
+                                       HorizontalContentAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       ParsingNumberStyle="Integer"
+                                       Margin="0 0 5 0" />
+                        
+                        <TextBlock VerticalAlignment="Center" Text="{StaticResource NumberOfSavesWitchWarningIsDisplayed}" TextWrapping="Wrap" />
+                    </DockPanel>
+                </OptionsDisplayItem.Content>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource FolderForOldSaves}"
+                                Icon="{StaticResource FolderRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBox Text="{CompiledBinding PathToFolderWithOldSaves, Source={x:Static core:RegulSettings.Instance}}"
+                                 MaxWidth="300"
+                                 IsReadOnly="True" />
+                        <Button ToolTip.Tip="{StaticResource ChoosePath}"
+                                Command="{CompiledBinding ChoosePathForOldSaves}"
+                                Padding="8">
+                            <Viewbox Width="16" Height="16">
+                                <Path Data="{StaticResource AttachRegular}" />
+                            </Viewbox>
+                        </Button>
+                    </StackPanel>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
             <OptionsDisplayItem Header="{StaticResource PathSettings}"
                                 Description="{StaticResource PathSettingsDescription}"
+                                Icon="{StaticResource AttachRegular}"
                                 Expands="True">
                 <OptionsDisplayItem.Content>
                     <StackPanel Margin="-12">
@@ -55,34 +100,48 @@
                             <TextBlock Text="{StaticResource PathToTheSims}" 
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
-                            <TextBox Grid.Column="1"
-                                     IsReadOnly="True"
-                                     Text="{CompiledBinding PathToTheSims3Document, Source={x:Static core:RegulSettings.Instance}}"/>
+                            <DockPanel Grid.Column="1">
+                                <Button ToolTip.Tip="{StaticResource ChoosePath}"
+                                        Command="{CompiledBinding ChoosePathToTheSims3Documents}"
+                                        Padding="8"
+                                        DockPanel.Dock="Right">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource AttachRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <TextBox IsReadOnly="True"
+                                         Text="{CompiledBinding PathToTheSims3Document, Source={x:Static core:RegulSettings.Instance}}"
+                                         Margin="0 0 5 0" />
+                            </DockPanel>
                         </Grid>
                         <Grid ColumnDefinitions="*,1.7*"
                               Margin="60 0 45 10">
                             <TextBlock Text="{StaticResource PathToSaves}" 
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
-                            <TextBox Grid.Column="1"
-                                     IsReadOnly="True"
-                                     Text="{CompiledBinding PathToSaves, Source={x:Static core:RegulSettings.Instance}}"/>
+                            
+                            <DockPanel Grid.Column="1">
+                                <Button ToolTip.Tip="{StaticResource ChoosePath}"
+                                        Command="{CompiledBinding ChoosePathToSave}"
+                                        Padding="8"
+                                        DockPanel.Dock="Right">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource AttachRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <TextBox IsReadOnly="True"
+                                         Text="{CompiledBinding PathToSaves, Source={x:Static core:RegulSettings.Instance}}"
+                                         Margin="0 0 5 0" />
+                            </DockPanel>
                         </Grid>
-                        
-                        <Separator Margin="-5 0" 
-                                   Background="{StaticResource CardStrokeColorDefaultBrush}" />
-                        
-                        <StackPanel Orientation="Horizontal" Margin="60 10 0 10" Spacing="5">
-                            <Button Content="{StaticResource ChoosePath}"
-                                    Command="{CompiledBinding ChoosePath}" />
-                            <Button Content="{StaticResource ChoosePathToSave}"
-                                    Command="{CompiledBinding ChoosePathToSave}"/>
-                        </StackPanel>
                     </StackPanel>
                 </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
-            <OptionsDisplayItem Header="{StaticResource ResetToDefaultSettings}">
+            <OptionsDisplayItem Header="{StaticResource ResetToDefaultSettings}"
+                                Icon="{StaticResource HistoryRegular}">
                 <OptionsDisplayItem.ActionButton>
                     <Button Theme="{StaticResource DangerButtonTheme}"
                             Content="{StaticResource Reset}"
@@ -119,7 +178,8 @@
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource EnableCustomTitleBar}"
-                                Icon="{StaticResource WindowRegular}">
+                                Icon="{StaticResource WindowRegular}"
+                                IsVisible="{CompiledBinding !IsLinux}">
                 <OptionsDisplayItem.ActionButton>
                     <ToggleSwitch Classes="RightToggle"
                                   IsChecked="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"/>
@@ -128,7 +188,8 @@
             
             <OptionsDisplayItem Header="{StaticResource EnableBlur}"
                                 Icon="{StaticResource WindowInprivateRegular}"
-                                Expands="True">
+                                Expands="True"
+                                IsVisible="{CompiledBinding !IsLinux}">
                 <OptionsDisplayItem.ActionButton>
                     <ToggleSwitch Classes="RightToggle"
                                   IsChecked="{CompiledBinding WindowSettings.EnableBlur, Source={x:Static PleasantSettings.Instance}}"/>

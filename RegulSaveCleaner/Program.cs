@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.OpenGL;
 using Avalonia.Win32;
 
 namespace RegulSaveCleaner;

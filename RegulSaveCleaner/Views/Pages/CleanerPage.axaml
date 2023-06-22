@@ -27,6 +27,7 @@
                         <Panel Grid.Row="0" Margin="10 10 10 0">
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Left"
+                                        Spacing="10"
                                         Margin="5 0 0 0">
                                 <TextBlock Text="{StaticResource SaveFiles}"
                                            VerticalAlignment="Center"
@@ -34,23 +35,40 @@
                                 
                                 <TextBlock FontSize="12"
                                            VerticalAlignment="Center"
-                                           Margin="10 0 0 0"
                                            Foreground="{StaticResource TextFillColorTertiaryBrush}"
                                            IsVisible="{CompiledBinding !!SelectedGameSaves.Count}">
-                                    <Run Text="Selected" /><Run Text=":" />
+                                    <Run Text="{StaticResource Selected}" /><Run Text=":" />
                                     <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
                                 </TextBlock>
+                                
+                                <ProgressRing IsIndeterminate="{CompiledBinding IsLoadingSaves}"
+                                              IsVisible="{CompiledBinding IsLoadingSaves}"
+                                              MinHeight="14"
+                                              MinWidth="14" />
                             </StackPanel>
                             
                             
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right"
                                         Spacing="5">
-                                <ProgressRing IsIndeterminate="{CompiledBinding IsLoadingSaves}"
-                                              IsVisible="{CompiledBinding IsLoadingSaves}"
-                                              Margin="0 0 5 0"
-                                              MinHeight="14"
-                                              MinWidth="14" />
+                                <Button Theme="{StaticResource AppBarButtonTheme}"
+                                        Padding="8 6"
+                                        ToolTip.Tip="{StaticResource Menu}">
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuItem Header="{StaticResource MoveSavesToSpareFolder}"
+                                                      IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"
+                                                      Command="{CompiledBinding MoveSavesToSpareFolder}" />
+                                            <MenuItem Header="{StaticResource RestoreOldSaves}"
+                                                      Command="{CompiledBinding OpenGameSavesTransferWindow}"
+                                                      IsEnabled="{CompiledBinding FoundSaveFolder}" />
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                    
+                                    <Viewbox Width="14" Height="14">
+                                        <Path Data="{StaticResource MoreRegular}" />
+                                    </Viewbox>
+                                </Button>
                                 
                                 <InformationBlock Content="{CompiledBinding GameSaves.Count}"
                                                   Icon="{StaticResource PeopleRegular}"
@@ -72,7 +90,7 @@
                                                  CornerRadius="4 0 0 4"
                                                  Padding="8 6"
                                                  IsChecked="{CompiledBinding SortByAlphabet}"
-                                                 GroupName="Sorting"
+                                                 GroupName="SortingSaves"
                                                  ToolTip.Tip="{StaticResource SortByAlphabetical}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource AlphabetRegular}" />
@@ -82,7 +100,7 @@
                                                  CornerRadius="0 4 4 0"
                                                  Padding="8 6"
                                                  IsChecked="{CompiledBinding SortByDate}"
-                                                 GroupName="Sorting"
+                                                 GroupName="SortingSaves"
                                                  ToolTip.Tip="{StaticResource SortByDate}">
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource CalendarRegular}" />
@@ -96,9 +114,10 @@
                                 
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel.IsEnabled>
-                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
                                             <CompiledBinding Path="!InCreatingBackupProcess" />
                                             <CompiledBinding Path="!IsLoadingSaves" />
+                                            <CompiledBinding Path="!!GameSaves.Count" />
                                         </MultiBinding>
                                     </StackPanel.IsEnabled>
                                     <Button Padding="8 6"
@@ -208,6 +227,12 @@
                                                             
                                                             <MenuItem Header="{StaticResource MoveOldList}"
                                                                       Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenOldProhibitedLists}"
+                                                                      CommandParameter="{CompiledBinding}" />
+                                                            
+                                                            <Separator />
+                                                            
+                                                            <MenuItem Header="{StaticResource MoveToSpareFolder}"
+                                                                      Command="{CompiledBinding $parent[views:MainWindow].ViewModel.StartMovingSave}"
                                                                       CommandParameter="{CompiledBinding}" />
                                                         </MenuFlyout>
                                                     </Button.Flyout>
@@ -474,10 +499,9 @@
                                 <Button ToolTip.Tip="{StaticResource ChoosePath}"
                                         Command="{CompiledBinding SelectBackupPath}"
                                         Padding="8">
-                                    <Path Data="{StaticResource AttachRegular}"
-                                          Stretch="Uniform"
-                                          VerticalAlignment="Center"
-                                          Width="16"/>
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource AttachRegular}" />
+                                    </Viewbox>
                                 </Button>
                             </StackPanel>
                             

@@ -25,6 +25,8 @@ public class GameSaveData
         Package package = (Package)Package.OpenPackage(metaData);
         IResourceIndexEntry rie = package.Find(r => r.ResourceType == 0x628A788F);
         Extract(WrapperDealer.GetResource(package, rie).Stream, strPath);
+        
+        Package.ClosePackage(package);
     }
 
     private void Extract(Stream s, string nhdPath)
@@ -72,5 +74,6 @@ public class GameSaveData
             }
 
         FamilyIcon = rie != null ? new Bitmap(WrapperDealer.GetResource(pkg, rie).Stream) : null;
+        Package.ClosePackage(pkg);
     }
 }

@@ -14,7 +14,6 @@ namespace RegulSaveCleaner.ViewModels;
 
 public class SettingsViewModel : ViewModelBase
 {
-    private readonly SynchronizationContext _synchronizationContext = SynchronizationContext.Current!;
     private bool _isClearingOldProhibitedLists;
     
     public AvaloniaList<FontFamily> Fonts { get; } = new();
@@ -84,12 +83,32 @@ public class SettingsViewModel : ViewModelBase
         set => RaiseAndSet(ref _isClearingOldProhibitedLists, value);
     }
 
+    public bool IsLinux
+    {
+        get
+        {
+#if Linux
+            return true;
+#else
+            return false;
+#endif
+        }
+    }
+
     public SettingsViewModel()
     {
         Fonts.AddRange(FontManager.Current.SystemFonts.OrderBy(x => x.Name));
     }
+
+    public async void ChoosePathForOldSaves()
+    {
+        string? path = await StorageProvider.SelectFolder(App.MainWindow);
+
+        if (!string.IsNullOrWhiteSpace(path))
+            RegulSettings.Instance.PathToFolderWithOldSaves = path;
+    }
     
-    public async void ChoosePath()
+    public async void ChoosePathToTheSims3Documents()
     {
         string? path = await StorageProvider.SelectFolder(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 

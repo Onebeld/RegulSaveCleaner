@@ -50,6 +50,7 @@
                 </Panel>
             
             <OptionsDisplayItem Header="{StaticResource UsedLibraries}"
+                                Icon="{StaticResource AppFolderRegular}"
                                 Margin="0 10 0 0"
                                 Expands="True">
                 <OptionsDisplayItem.Content>

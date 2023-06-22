@@ -10,6 +10,7 @@
                        Text="{StaticResource RemoveFamilyPortraits}"
                        Theme="{StaticResource SubtitleTextBlockTheme}"
                        Margin="5 0 0 10"
+                       TextWrapping="Wrap"
                        VerticalAlignment="Center"/>
             
             <StackPanel Grid.Row="1" Spacing="10">

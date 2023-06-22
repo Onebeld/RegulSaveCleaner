@@ -1,0 +1,184 @@
+﻿<ContentDialog xmlns="https://github.com/avaloniaui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
+               xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+               xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
+               mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+               x:Class="RegulSaveCleaner.Views.Windows.GameSavesTransferWindow"
+               Title="GameSavesTransferWindow"
+               x:DataType="windows:GameSavesTransferViewModel"
+               MaxWidth="800">
+    <Design.DataContext>
+        <windows:GameSavesTransferViewModel />
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*" Margin="15">
+        <StackPanel Grid.Row="0" Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left" Spacing="10">
+            <TextBlock Text="{StaticResource SelectSavesToTransfer}"
+                       Theme="{StaticResource SubtitleTextBlockTheme}" />
+            
+            <TextBlock VerticalAlignment="Center"
+                       Foreground="{StaticResource TextFillColorTertiaryBrush}"
+                       IsVisible="{CompiledBinding !!SelectedGameSaves.Count}">
+                <Run Text="{StaticResource Selected}" /><Run Text=":" />
+                <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
+            </TextBlock>
+            
+            <ProgressRing IsIndeterminate="{CompiledBinding IsLoadingSaves}"
+                          IsVisible="{CompiledBinding IsLoadingSaves}"
+                          VerticalAlignment="Center"
+                          MinHeight="22"
+                          MinWidth="22" />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Spacing="5" Orientation="Horizontal">
+            <InformationBlock VerticalAlignment="Center"
+                              Content="{CompiledBinding GameSaves.Count}"
+                              Icon="{StaticResource PeopleRegular}"
+                              ToolTip.Tip="{StaticResource NumberOfSaveFiles}"/>
+            
+            <Border Width="1"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.IsEnabled>
+                    <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                        <CompiledBinding Path="!IsLoadingSaves" />
+                    </MultiBinding>
+                </StackPanel.IsEnabled>
+
+                <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                             CornerRadius="4 0 0 4"
+                             Padding="8 6"
+                             IsChecked="{CompiledBinding SortByAlphabet}"
+                             GroupName="SortingOldSaves"
+                             ToolTip.Tip="{StaticResource SortByAlphabetical}">
+                    <Viewbox Width="16" Height="16">
+                        <Path Data="{StaticResource AlphabetRegular}" />
+                    </Viewbox>
+                </RadioButton>
+                <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                             CornerRadius="0 4 4 0"
+                             Padding="8 6"
+                             IsChecked="{CompiledBinding SortByDate}"
+                             GroupName="SortingOldSaves"
+                             ToolTip.Tip="{StaticResource SortByDate}">
+                    <Viewbox Width="16" Height="16">
+                        <Path Data="{StaticResource CalendarRegular}" />
+                    </Viewbox>
+                </RadioButton>
+            </StackPanel>
+            
+            <Border Width="1"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+            
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.IsEnabled>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="!IsLoadingSaves" />
+                        <CompiledBinding Path="!!GameSaves.Count" />
+                    </MultiBinding>
+                </StackPanel.IsEnabled>
+                <Button Padding="8 6"
+                        CornerRadius="4 0 0 4"
+                        Command="{CompiledBinding SelectAllSaves}"
+                        ToolTip.Tip="{StaticResource SelectAll}">
+                    <Viewbox Width="16" Height="16">
+                        <Path Data="{StaticResource SelectallOnRegular}" />
+                    </Viewbox>
+                </Button>
+                <Button Padding="8 6"
+                        CornerRadius="0 4 4 0"
+                        Command="{CompiledBinding CancelAllSaves}"
+                        ToolTip.Tip="{StaticResource CancelAll}">
+                    <Viewbox Width="16" Height="16">
+                        <Path Data="{StaticResource SelectallOffRegular}" />
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        
+        
+        <Border Grid.Row="1"
+                CornerRadius="5"
+                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                BorderThickness="1"
+                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                Padding="5"
+                Margin="0 10 0 0">
+            <Panel>
+                <ListBox ItemsSource="{CompiledBinding GameSaves}"
+                         SelectedItems="{CompiledBinding SelectedGameSaves}"
+                         SelectionMode="Toggle, Multiple">
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="ToolTip.Tip">
+                                <Template>
+                                    <StackPanel x:DataType="structures:GameSave">
+                                        <TextBlock Text="{CompiledBinding Name}"
+                                                   Theme="{StaticResource BodyStrongTextBlockTheme}" />
+                                        <TextBlock Text="{CompiledBinding LastSaveTime}" />
+
+                                        <TextBlock Text="{CompiledBinding Description}"
+                                                   Margin="0 10 0 0"
+                                                   IsVisible="{CompiledBinding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                                    </StackPanel>
+                                </Template>
+                            </Setter>
+                        </Style>
+                    </ListBox.Styles>
+                    <ListBox.DataTemplates>
+                        <DataTemplate DataType="structures:GameSave">
+                            <Grid ColumnDefinitions="Auto,*" Height="100" Margin="5">
+                                <Border Grid.Column="0"
+                                        Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                        BorderThickness="1"
+                                        BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                        CornerRadius="5"
+                                        Margin="0 0 10 0">
+                                    <Image Source="{CompiledBinding ImageOfFamily}"
+                                           Margin="{CompiledBinding ImageOfFamily, Converter={x:Static converters:UnknownIconToMarginConverter.Instance}}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" />
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{CompiledBinding Name}"
+                                               Theme="{StaticResource SubtitleTextBlockTheme}"/>
+                                    <TextBlock Text="{CompiledBinding WorldName}" Margin="0 5 0 0" />
+                                    <TextBlock Text="{CompiledBinding LastSaveTime}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+
+                <TextBlock Text="{StaticResource NoItems}"
+                           IsVisible="{CompiledBinding !GameSaves.Count}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+            </Panel>
+        </Border>
+    </Grid>
+    
+    <ContentDialog.BottomPanelContent>
+        <UniformGrid Margin="15 0" Rows="1">
+            <Button Theme="{StaticResource AccentButton}" 
+                    Content="{StaticResource Ok}" 
+                    IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"
+                    VerticalAlignment="Center" 
+                    Margin="5"
+                    Command="{CompiledBinding CloseWithResult}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+            <Button Content="{StaticResource Cancel}" 
+                    VerticalAlignment="Center" 
+                    Margin="5"
+                    Command="{CompiledBinding Close}"
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
+        </UniformGrid>
+    </ContentDialog.BottomPanelContent>
+</ContentDialog>

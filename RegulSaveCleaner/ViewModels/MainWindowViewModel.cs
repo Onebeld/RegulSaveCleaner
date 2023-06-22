@@ -37,10 +37,10 @@ public class MainWindowViewModel : ViewModelBase
     {
         get
         {
-#if NET461
-            return false;
-#else
+#if OSX
             return OperatingSystem.IsMacOS();
+#else
+            return false;
 #endif
         }
     }
@@ -265,7 +265,7 @@ public class MainWindowViewModel : ViewModelBase
                 }
                 catch (Exception e)
                 {
-                    await MessageBox.Show(App.MainWindow, App.GetString("AnErrorHasOccured"), string.Empty, additionalText: e.ToString());
+                    await MessageBox.Show(App.MainWindow, "AnErrorHasOccurred", string.Empty, additionalText: e.ToString());
                 }
             }
             
@@ -275,6 +275,9 @@ public class MainWindowViewModel : ViewModelBase
         IsLoadingSaves = false;
         
         SortGameSaves();
+
+        if (CheckNumberOfSaves())
+            await new WarningAboutLargeNumberOfSavesWindow().Show(App.MainWindow);
     }
 
     public void SelectAllSaves()
@@ -370,11 +373,18 @@ public class MainWindowViewModel : ViewModelBase
         bool result = await window.Show<bool>(App.MainWindow);
 
         if (result)
+            ShowNotification("Successful", "MergedOldList", NotificationType.Success, TimeSpan.FromSeconds(3));
+    }
+
+    public async void OpenGameSavesTransferWindow()
+    {
+        GameSavesTransferWindow window = new();
+        bool result = await window.Show<bool>(App.MainWindow);
+
+        if (result)
         {
-            NotificationManager.Show(new Notification(App.GetString("Successful"),
-                App.GetString("MergedOldList"),
-                NotificationType.Success,
-                TimeSpan.FromSeconds(3)));
+            LoadingSaves();
+            ShowNotification("Successful", "YourSavesHaveBeenMoved", NotificationType.Success, TimeSpan.FromSeconds(3));
         }
     }
     
@@ -393,12 +403,62 @@ public class MainWindowViewModel : ViewModelBase
         await Task.Run(() =>
         {
             foreach (GameSave gameSave in SelectedGameSaves.Where(_ => !string.IsNullOrWhiteSpace(RegulSettings.Instance.PathToSaves)))
-                DirectoryCopy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToBackup, gameSave.Name + ".sims3"), true);
+                DirectoryManager.Copy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToBackup, gameSave.Name + ".sims3"), true);
         });
 
         InCreatingBackupProcess = false;
         
-        ShowNotification("Successful", "BackupCreated", NotificationType.Success);
+        ShowNotification("Successful", "YourSavesHaveBeenTransferred", NotificationType.Success, TimeSpan.FromSeconds(3));
+    }
+
+    private bool CheckNumberOfSaves()
+    {
+        if (!RegulSettings.Instance.ShowWarningAboutLargeNumberOfSaves) return false;
+        return GameSaves.Count >= RegulSettings.Instance.NumberOfSavesWhenWarningIsDisplayed;
+    }
+
+    public void StartMovingSave(GameSave gameSave)
+    {
+        try
+        {
+            MoveSaveToSpareFolder(gameSave);
+        }
+        catch
+        {
+            ShowNotification("Error", "MovingIsNotPossible", NotificationType.Error, TimeSpan.FromSeconds(5));
+            return;
+        }
+        
+        LoadingSaves();
+
+        ShowNotification("Successful", "YourSaveHasBeenMoved", NotificationType.Success);
+    }
+
+    public void MoveSavesToSpareFolder()
+    {
+        try
+        {
+            foreach (GameSave gameSave in SelectedGameSaves)
+                MoveSaveToSpareFolder(gameSave);
+        }
+        catch
+        {
+            ShowNotification("Error", "MovingIsNotPossible", NotificationType.Error, TimeSpan.FromSeconds(5));
+            return;
+        }
+        
+        LoadingSaves();
+        
+        ShowNotification("Successful", "YourSavesHaveBeenMoved", NotificationType.Success);
+    }
+
+    public void MoveSaveToSpareFolder(GameSave gameSave)
+    {
+        if (!Directory.Exists(RegulSettings.Instance.PathToFolderWithOldSaves))
+            Directory.CreateDirectory(RegulSettings.Instance.PathToFolderWithOldSaves);
+        
+        DirectoryManager.Copy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToFolderWithOldSaves, gameSave.Name + ".sims3"), true);
+        Directory.Delete(gameSave.Directory, true);
     }
 
     public async void StartCleaningCache()
@@ -509,34 +569,6 @@ public class MainWindowViewModel : ViewModelBase
         }, "");
     }
 
-    private void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
-    {
-        DirectoryInfo dir = new(sourceDirName);
-
-        if (!dir.Exists)
-            throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + sourceDirName);
-
-        DirectoryInfo[] dirs = dir.GetDirectories();
-
-        Directory.CreateDirectory(destDirName);
-
-        FileInfo[] files = dir.GetFiles();
-        foreach (FileInfo file in files)
-        {
-            string tempPath = Path.Combine(destDirName, file.Name);
-            file.CopyTo(tempPath, true);
-        }
-
-        if (copySubDirs)
-        {
-            foreach (DirectoryInfo subDir in dirs)
-            {
-                string tempPath = Path.Combine(destDirName, subDir.Name);
-                DirectoryCopy(subDir.FullName, tempPath, true);
-            }
-        }
-    }
-
     private void CompressResource(IResourceIndexEntry entry)
     {
         if (entry.Compressed == 0 && entry.Filesize != entry.Memsize)
@@ -585,7 +617,7 @@ public class MainWindowViewModel : ViewModelBase
             {
                 UpdateLoadingWindow(loadingWindow, 0, true, 100, $"{gameSave.Name}\n{App.GetString("CreatingABackup")}");
                 
-                DirectoryCopy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToBackup, gameSave.Name + ".sims3"), true);
+                DirectoryManager.Copy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToBackup, gameSave.Name + ".sims3"), true);
             }
 
             Stopwatch stopwatch = new();

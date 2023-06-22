@@ -13,7 +13,10 @@ public class RegulSettings : ViewModelBase
     private AvaloniaList<GameSaveResource> _gameSaveResource = new();
 
     private string _language = null!;
-    private string _fontName;
+    private string _fontName = null!;
+
+    private bool _showWarningAboutLargeNumberOfSaves = true;
+    private int _numberOfSavesWhenWarningIsDisplayed = 10;
 
     private bool _removePortraitsSims = true;
     private bool _removeLotThumbnails;
@@ -28,6 +31,7 @@ public class RegulSettings : ViewModelBase
     private string _pathToTheSims3Document = null!;
     private string _pathToSaves = null!;
     private string _pathToBackup = string.Empty;
+    private string _pathToFolderWithOldSaves = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OldSaves");
     
     private bool _casPartCacheClear = true;
     private bool _compositorCacheClear = true;
@@ -53,26 +57,33 @@ public class RegulSettings : ViewModelBase
             Directory.CreateDirectory(PleasantDirectories.Settings);
         
         string regulSettings = Path.Combine(PleasantDirectories.Settings, "RegulSettings.json");
-        if (!File.Exists(regulSettings)) return;
 
-        if (!File.Exists(regulSettings))
+        if (File.Exists(regulSettings))
         {
             try
             {
-                using FileStream fileStream = File.OpenRead(Path.Combine(PleasantDirectories.Settings, PleasantFileNames.Settings));
+                using FileStream fileStream = File.OpenRead(Path.Combine(PleasantDirectories.Settings, regulSettings));
                 Instance = JsonSerializer.Deserialize<RegulSettings>(fileStream) ?? throw new NullReferenceException();
-                
-                return;
             }
-            catch { }
-        }
-
-        Instance = new RegulSettings
-        {
-            Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
-        };
+            catch
+            {
+                Instance = new RegulSettings
+                {
+                    Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
+                };
         
-        Setup();
+                Setup();
+            }
+        }
+        else
+        {
+            Instance = new RegulSettings
+            {
+                Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
+            };
+        
+            Setup();
+        }
     }
 
     private static void Setup()
@@ -85,6 +96,15 @@ public class RegulSettings : ViewModelBase
         Instance.PathToSaves =
  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", "The Sims 3", "Saves");
         Instance.WorldCachesClear = false;
+#elif Linux
+        Instance.PathToTheSims3Document = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "Electronic Arts", "The Sims 3");
+        Instance.PathToSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts",
+            "The Sims 3", "Saves");
+        Instance.WorldCachesClear = true;
+        
+        PleasantSettings.Instance.WindowSettings.EnableBlur = false;
+        PleasantSettings.Instance.WindowSettings.EnableCustomTitleBar = false;
 #else
         Instance.PathToTheSims3Document = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
             "Electronic Arts", "The Sims 3");
@@ -116,6 +136,18 @@ public class RegulSettings : ViewModelBase
     {
         get => _fontName;
         set => RaiseAndSet(ref _fontName, value);
+    }
+
+    public bool ShowWarningAboutLargeNumberOfSaves
+    {
+        get => _showWarningAboutLargeNumberOfSaves;
+        set => RaiseAndSet(ref _showWarningAboutLargeNumberOfSaves, value);
+    }
+
+    public int NumberOfSavesWhenWarningIsDisplayed
+    {
+        get => _numberOfSavesWhenWarningIsDisplayed;
+        set => RaiseAndSet(ref _numberOfSavesWhenWarningIsDisplayed, value);
     }
 
     public bool RemovePortraitsSims
@@ -188,6 +220,12 @@ public class RegulSettings : ViewModelBase
     {
         get => _pathToBackup;
         set => RaiseAndSet(ref _pathToBackup, value);
+    }
+
+    public string PathToFolderWithOldSaves
+    {
+        get => _pathToFolderWithOldSaves;
+        set => RaiseAndSet(ref _pathToFolderWithOldSaves, value);
     }
 
     // Clear cache
