@@ -72,10 +72,14 @@ public class Program
                     AngleOptions.PlatformApi.DirectX11
                 }
             });
+#elif Linux
+        appBuilder.UseX11();
+#elif OSX
+        appBuilder.UseAvaloniaNative();
 #else
         appBuilder.UsePlatformDetect();
 #endif
-
+        
         appBuilder
 #if Windows
             .With(new Win32PlatformOptions
@@ -95,20 +99,16 @@ public class Program
             })
             .With(new AvaloniaNativePlatformOptions
             {
-                UseGpu = true,
+                UseGpu = true
             });
 #endif
-
 #if Linux
             .With(new X11PlatformOptions()
             {
                 UseGpu = true,
-                OverlayPopups = true,
-
+                OverlayPopups = true
             });
 #endif
-            
-            
 
         return appBuilder.LogToTrace();
     }

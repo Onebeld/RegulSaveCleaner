@@ -8,10 +8,10 @@ namespace RegulSaveCleaner.ViewModels.Windows;
 
 public class OldProhibitedListsViewModel : ViewModelBase
 {
-    private GameSave _saveFile;
-    private GameSaveResource _selectedGameGameSaveResource;
+    private readonly GameSave _saveFile;
+    private GameSaveResource? _selectedGameGameSaveResource;
 
-    public GameSaveResource SelectedGameSaveResources
+    public GameSaveResource? SelectedGameSaveResources
     {
         get => _selectedGameGameSaveResource;
         set => RaiseAndSet(ref _selectedGameGameSaveResource, value);
@@ -28,6 +28,8 @@ public class OldProhibitedListsViewModel : ViewModelBase
 
     public void CloseWithSave(OldProhibitedListsWindow window)
     {
+        if (SelectedGameSaveResources is null) return;
+        
         GameSaveResource? saveResources = RegulSettings.Instance.GameSaveResources.FirstOrDefault(x => x.Id == _saveFile.Name);
 
         if (saveResources is null)

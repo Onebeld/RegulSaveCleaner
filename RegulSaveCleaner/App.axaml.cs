@@ -11,7 +11,7 @@ using RegulSaveCleaner.Views;
 
 namespace RegulSaveCleaner;
 
-public partial class App : Application
+public class App : Application
 {
     public static PleasantTheme PleasantTheme { get; private set; } = null!;
 
@@ -59,7 +59,12 @@ public partial class App : Application
                     CurrentLanguage = resourceDictionary;
                     Current?.Resources.MergedDictionaries.Add(CurrentLanguage);
                 }
-                else CurrentLanguage = resourceDictionary;
+                else
+                {
+                    Current?.Resources.MergedDictionaries.Remove(CurrentLanguage);
+                    CurrentLanguage = resourceDictionary;
+                    Current?.Resources.MergedDictionaries.Add(CurrentLanguage);
+                }
             }
         }
     }
@@ -71,8 +76,9 @@ public partial class App : Application
         return key;
     }
 
-    private static List<IResourceProvider> _xamlLanguages = new();
-    public static ResourceDictionary? CurrentLanguage { get; private set; }
+    private static readonly List<IResourceProvider> _xamlLanguages = new();
+
+    private static ResourceDictionary? CurrentLanguage { get; set; }
 
     /// <summary>
     /// Looks for a suitable resource in the program.
@@ -104,7 +110,9 @@ public partial class App : Application
 
     public static readonly Language[] Languages =
     {
-        new("English (English)", "en")
+        new("English (English)", "en"),
+        new("Русский (Russian)", "ru"),
+        new("Français (French)", "fr")
     };
 
     private void LoadAllLanguages()

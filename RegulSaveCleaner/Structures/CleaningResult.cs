@@ -2,10 +2,10 @@
 
 public struct CleaningResult
 {
-    public float OldSize;
-    public float NewSize;
-    public string Save;
-    public double TotalSecond;
+    public readonly float OldSize;
+    public readonly float NewSize;
+    public readonly string Save;
+    public readonly double TotalSecond;
 
     public CleaningResult(float oldSize, float newSize, double totalSecond, string save)
     {

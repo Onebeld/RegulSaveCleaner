@@ -1,28 +1,25 @@
 ﻿using System.Collections.Specialized;
-using System.Reactive.Linq;
 using Avalonia.Collections;
-using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Media.Imaging;
 using Pfim;
 using PleasantUI;
 using PleasantUI.Extensions;
+using PleasantUI.Reactive;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Core.Extensions;
 using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.Windows;
-using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace RegulSaveCleaner.ViewModels.Windows;
 
 public class ProhibitedListViewModel : ViewModelBase
 {
-    private SynchronizationContext _synchronizationContext = SynchronizationContext.Current!;
+    private readonly SynchronizationContext _synchronizationContext = SynchronizationContext.Current!;
     
     private static readonly object Obj = new();
     
@@ -30,8 +27,8 @@ public class ProhibitedListViewModel : ViewModelBase
     private bool _isCompleting;
     private int _selectedTypeIndex;
 
-    private string _saveId;
-    private GameSave _gameSave;
+    private readonly string _saveId;
+    private readonly GameSave _gameSave;
     
     private AvaloniaList<ImageResource> _selectedFundedImageResources = new();
     private AvaloniaList<ImageResource> _fundedImageResources = new();
@@ -183,9 +180,8 @@ public class ProhibitedListViewModel : ViewModelBase
             {
                 IPackage package = Package.OpenPackage(file);
 
-                Parallel.For(0, package.GetResourceList.Count, index =>
+                Parallel.ForEach(package.GetResourceList, resource =>
                 {
-                    IResourceIndexEntry resource = package.GetResourceList[index];
                     Bitmap bitmap;
 
                     switch (resource.ResourceType)
@@ -199,10 +195,8 @@ public class ProhibitedListViewModel : ViewModelBase
                         case 0x0580A2CF:
                         case 0x6B6D837F:
                             lock (Obj)
-                            {
                                 bitmap = new Bitmap(S3PI.WrapperDealer.GetResource(package, resource).Stream);
-                            }
-                            
+
                             break;
 
                         //Generated images
@@ -211,26 +205,16 @@ public class ProhibitedListViewModel : ViewModelBase
                         case 0x00B2D882 when resource.ResourceGroup == 0x269D005:
                             IResource resource1;
                             lock (Obj)
-                            {
                                 resource1 = S3PI.WrapperDealer.GetResource(package, resource);
-                            }
-                            
-                            Pfim.IImage image =
+
+                            IImage image =
                                 Dds.Create(resource1.Stream,
                                 new PfimConfig());
 
-                            byte[] data = image.Format switch
+                            byte[] data = GetData<Bgra32>(new PngEncoder
                             {
-                                ImageFormat.R5g6b5 => GetData<Bgr565>(
-                                    new PngEncoder { ColorType = PngColorType.RgbWithAlpha }, image),
-                                ImageFormat.R5g5b5a1 => GetData<Bgra5551>(
-                                    new PngEncoder { ColorType = PngColorType.RgbWithAlpha }, image),
-                                ImageFormat.Rgb24 => GetData<Rgb24>(
-                                    new PngEncoder { ColorType = PngColorType.RgbWithAlpha }, image),
-                                ImageFormat.Rgba32 => GetData<Bgra32>(
-                                    new PngEncoder { ColorType = PngColorType.RgbWithAlpha }, image),
-                                _ => throw new NotImplementedException($"Unsupported pixel format ({image.Format})")
-                            };
+                                ColorType = PngColorType.RgbWithAlpha
+                            }, image);
 
                             using (MemoryStream stream = new(data))
                                 bitmap = new Bitmap(stream);
@@ -255,10 +239,8 @@ public class ProhibitedListViewModel : ViewModelBase
 
                     if (gameSaveResource is not null)
                     {
-                        for (int i = 0; i < gameSaveResource.ProhibitedResources.Count; i++)
+                        foreach (ProhibitedResource prohibitedResource in gameSaveResource.ProhibitedResources)
                         {
-                            ProhibitedResource prohibitedResource = gameSaveResource.ProhibitedResources[i];
-                            
                             if (imageResource.Type == prohibitedResource.Type &&
                                 imageResource.Group == prohibitedResource.Group &&
                                 imageResource.Instance == prohibitedResource.Instance)
@@ -320,36 +302,7 @@ public class ProhibitedListViewModel : ViewModelBase
         window.Close();
     }
 
-    public void CloseWithoutSave(ProhibitedListWindow window)
-    {
-        window.Close();
-    }
-
-    public async void SaveImage(Bitmap bitmap)
-    {
-        SaveFileDialog dialog = new()
-        {
-            Filters = new List<FileDialogFilter>
-            {
-                new()
-                {
-                    Name = "PNG-" + App.GetResource<string>("Files"),
-                    Extensions = new List<string> { "png" }
-                }
-            }
-        };
-        string? path = await dialog.ShowAsync(App.MainWindow);
-
-        if (!string.IsNullOrWhiteSpace(path))
-        {
-            bitmap.Save(path);
-            
-            App.MainWindow.ViewModel.NotificationManager.Show(new Notification(App.GetString("Successful"),
-                App.GetString("ImageSaved"),
-                NotificationType.Success,
-                TimeSpan.FromSeconds(3)));
-        }
-    }
+    public void CloseWithoutSave(ProhibitedListWindow window) => window.Close();
 
     public async void SaveSelectedImages()
     {
@@ -378,25 +331,15 @@ public class ProhibitedListViewModel : ViewModelBase
         }
     }
 
-    public void ViewImage(Bitmap bitmap)
-    {
-        ImageViewerWindow window = new()
-        {
-            Image = { Source = bitmap }
-        };
-
-        window.Show(App.MainWindow);
-    }
-
     public void UnselectResources()
     {
         SelectedImageResources.Clear();
         SelectedFundedImageResources.Clear();
     }
 
-    private static byte[] GetData<T>(IImageEncoder encoder, Pfim.IImage dds) where T : unmanaged, IPixel<T>
+    private static byte[] GetData<T>(IImageEncoder encoder, IImage dds) where T : unmanaged, IPixel<T>
     {
-        Image<T> image = SixLabors.ImageSharp.Image.LoadPixelData<T>(dds.Data, dds.Width, dds.Height);
+        Image<T> image = Image.LoadPixelData<T>(dds.Data, dds.Width, dds.Height);
         using MemoryStream stream = new();
         image.Save(stream, encoder);
         return stream.ToArray();

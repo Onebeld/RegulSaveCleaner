@@ -12,7 +12,7 @@ public class GameSaveData
     public IImage? FamilyIcon;
 
     public string WorldName = string.Empty;
-    public string Description;
+    public string Description = string.Empty;
     public ulong ImgInstance;
     public DateTime LastSaveTime;
     
@@ -50,7 +50,7 @@ public class GameSaveData
 
         WorldName = stringBuilder.ToString();
 
-        // Family description
+        // Get Family description
         string description = string.Empty;
         int numSymbolForFamilyDescription = checked(fastBinaryReader.ReadInt32() - 1);
         for (int index = 0; index <= numSymbolForFamilyDescription; index++)

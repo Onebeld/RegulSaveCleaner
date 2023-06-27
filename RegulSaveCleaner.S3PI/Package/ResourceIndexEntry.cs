@@ -28,11 +28,6 @@ namespace RegulSaveCleaner.S3PI.Package;
 /// </summary>
 public class ResourceIndexEntry : AResourceIndexEntry
 {
-    #region AApiVersionedFields
-
-    //No ContentFields override as we don't want to make anything more public than AResourceIndexEntry provides
-    #endregion
-
     #region AResourceIndexEntry
     /// <summary>
     /// The "type" of the resource
@@ -40,7 +35,6 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override uint ResourceType
     {
         get => BitConverter.ToUInt32(_indexEntry, 4);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 4, src.Length); OnElementChanged(); }
     }
     /// <summary>
     /// The "group" the resource is part of
@@ -48,7 +42,6 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override uint ResourceGroup
     {
         get => BitConverter.ToUInt32(_indexEntry, 8);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 8, src.Length); OnElementChanged(); }
     }
     /// <summary>
     /// The "instance" number of the resource
@@ -56,12 +49,6 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override ulong Instance
     {
         get => ((ulong)BitConverter.ToUInt32(_indexEntry, 12) << 32) | BitConverter.ToUInt32(_indexEntry, 16);
-        set
-        {
-            byte[] src = BitConverter.GetBytes((uint)(value >> 32)); Array.Copy(src, 0, _indexEntry, 12, src.Length);
-            src = BitConverter.GetBytes((uint)(value & 0xffffffff)); Array.Copy(src, 0, _indexEntry, 16, src.Length);
-            OnElementChanged();
-        }
     }
     /// <summary>
     /// If the resource was read from a package, the location in the package the resource was read from
@@ -69,7 +56,9 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override uint Chunkoffset
     {
         get => BitConverter.ToUInt32(_indexEntry, 20);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 20, src.Length); OnElementChanged(); }
+        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 20, src.Length);
+            IsDirty = true;
+        }
     }
     /// <summary>
     /// The number of bytes the resource uses within the package
@@ -77,7 +66,6 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override uint Filesize
     {
         get => BitConverter.ToUInt32(_indexEntry, 24) & 0x7fffffff;
-        set { byte[] src = BitConverter.GetBytes(value | 0x80000000); Array.Copy(src, 0, _indexEntry, 24, src.Length); OnElementChanged(); OnElementChanged(); }
     }
     /// <summary>
     /// The number of bytes the resource uses in memory
@@ -85,7 +73,6 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override uint Memsize
     {
         get => BitConverter.ToUInt32(_indexEntry, 28);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 28, src.Length); OnElementChanged(); }
     }
     /// <summary>
     /// 0xFFFF if Filesize != Memsize, else 0x0000
@@ -93,15 +80,7 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public override ushort Compressed
     {
         get => BitConverter.ToUInt16(_indexEntry, 32);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 32, src.Length); OnElementChanged(); }
-    }
-    /// <summary>
-    /// Always 0x0001
-    /// </summary>
-    public override ushort Unknown2
-    {
-        get => BitConverter.ToUInt16(_indexEntry, 34);
-        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 34, src.Length); OnElementChanged(); }
+        set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 32, src.Length); IsDirty = true; }
     }
 
     /// <summary>
@@ -113,7 +92,7 @@ public class ResourceIndexEntry : AResourceIndexEntry
     /// True if the index entry has been deleted from the package index
     /// </summary>
     public override bool IsDeleted { get => _isDeleted;
-        set { if (_isDeleted != value) { _isDeleted = value; OnElementChanged(); } } }
+        set { if (_isDeleted != value) { _isDeleted = value; IsDirty = true; } } }
 
     /// <summary>
     /// Get a copy of this element but with a new change event handler
@@ -122,39 +101,17 @@ public class ResourceIndexEntry : AResourceIndexEntry
     public virtual ResourceIndexEntry Clone() { return new ResourceIndexEntry(_indexEntry); }
     #endregion
 
-    #region IEquatable<IResourceIndexEntry>
-    /// <summary>
-    /// Indicates whether the current <see cref="ResourceIndexEntry"/> instance is equal to another <see cref="IResourceIndexEntry"/> instance.
-    /// </summary>
-    /// <param name="other">An <see cref="IResourceIndexEntry"/> instance to compare with this instance.</param>
-    /// <returns>true if the current instance is equal to the <paramref name="other"/> parameter; otherwise, false.</returns>
-    public override bool Equals(IResourceIndexEntry other) => other is ResourceIndexEntry entry && _indexEntry == entry._indexEntry;
-
-    /// <summary>
-    /// Returns the hash code for this instance.
-    /// </summary>
-    /// <returns>A 32-bit signed integer that is the hash code for this instance.</returns>
-    public override int GetHashCode() => _indexEntry.GetHashCode();
-
-    #endregion
-
 
     #region Implementation
     /// <summary>
     /// The index entry data
     /// </summary>
-    byte[] _indexEntry;
+    readonly byte[] _indexEntry;
 
     /// <summary>
     /// True if the index entry should be treated as deleted
     /// </summary>
     bool _isDeleted;
-
-    /// <summary>
-    /// The uncompressed resource data associated with this index entry
-    /// (used to save having to uncompress the same entry again if it's requested more than once)
-    /// </summary>
-    Stream _resourceStream;
 
     /// <summary>
     /// Create a new index entry as a byte-for-byte copy of <paramref name="indexEntry"/>
@@ -190,31 +147,17 @@ public class ResourceIndexEntry : AResourceIndexEntry
     }
 
     /// <summary>
-    /// Flag this index entry as deleted
-    /// </summary>
-    /// <remarks>Use APackage.RemoveResource() from user code</remarks>
-    internal void Delete()
-    {
-        _isDeleted = true;
-        OnElementChanged();
-    }
-
-    /// <summary>
     /// The uncompressed resource data associated with this index entry
     /// (used to save having to uncompress the same entry again if it's requested more than once)
     /// Setting the stream updates the Memsize
     /// </summary>
     /// <remarks>Use Package.ReplaceResource() from user code</remarks>
-    internal Stream ResourceStream
-    {
-        get => _resourceStream;
-        set { if (_resourceStream != value) { _resourceStream = value; if (Memsize != (uint)_resourceStream.Length) Memsize = (uint)_resourceStream.Length; else OnElementChanged(); } }
-    }
+    internal Stream ResourceStream { get; }
 
     /// <summary>
     /// True if the index entry should be treated as dirty - e.g. the ResourceStream has been replaced
     /// </summary>
-    internal bool IsDirty => dirty;
+    internal bool IsDirty { get; set; }
 
     #endregion
 }

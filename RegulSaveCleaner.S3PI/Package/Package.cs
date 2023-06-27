@@ -28,14 +28,8 @@ namespace RegulSaveCleaner.S3PI.Package;
 /// <summary>
 /// Implementation of a package
 /// </summary>
-public class Package : APackage
+public sealed class Package : APackage
 {
-
-    #region AApiVersionedFields
-
-    //No ContentFields override as we don't want to make anything more public than APackage provides
-    #endregion
-
     #region APackage
     #region Whole package
     /// <summary>
@@ -77,7 +71,7 @@ public class Package : APackage
     /// Save the package to a given stream
     /// </summary>
     /// <param name="s">Stream to save to</param>
-    public virtual void SaveAs(Stream s)
+    public void SaveAs(Stream s)
     {
         BinaryWriter w = new(s);
         w.Write(_header);
@@ -102,7 +96,9 @@ public class Package : APackage
 
             byte[] value = PackedChunk(ie as ResourceIndexEntry);
 
-            newIe.Chunkoffset = (uint)s.Position;
+            if (newIe != null)
+                newIe.Chunkoffset = (uint)s.Position;
+
             w.Write(value);
             w.Flush();
         }
@@ -122,7 +118,7 @@ public class Package : APackage
     /// Save the package to a given file
     /// </summary>
     /// <param name="path">File to save to - will be overwritten or created</param>
-    public virtual void SaveAs(string path)
+    public void SaveAs(string path)
     {
         using FileStream fs = new(path, FileMode.Create);
         SaveAs(fs);
@@ -191,7 +187,13 @@ public class Package : APackage
     {
         if (pkg is Package p)
         {
-            if (p._packageStream != null) { try { p._packageStream.Close(); } catch { } p._packageStream = null; }
+            if (p._packageStream != null) { try { p._packageStream.Close(); }
+                catch
+                {
+                    // ignored
+                }
+
+                p._packageStream = null; }
             p._header = null;
             p._index = null;
         }
@@ -199,74 +201,24 @@ public class Package : APackage
     #endregion
 
     #region Package header
-    /// <summary>
-    /// Package header: "DBPF" bytes
-    /// </summary>
-    [ElementPriority(1)]
-    public override byte[] Magic { get { byte[] res = new byte[4]; Array.Copy(_header, 0, res, 0, res.Length); return res; } }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(2)]
-    public override byte[] Unknown1 { get { byte[] res = new byte[24]; Array.Copy(_header, 12, res, 0, res.Length); return res; } }
+
     /// <summary>
     /// Package header: number of entries in the package index
     /// </summary>
-    [ElementPriority(3)]
-    public override int Indexcount => BitConverter.ToInt32(_header, 36);
-
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(4)]
-    public override byte[] Unknown2 { get { byte[] res = new byte[4]; Array.Copy(_header, 40, res, 0, res.Length); return res; } }
-    /// <summary>
-    /// Package header: index size on disk in bytes
-    /// </summary>
-    [ElementPriority(5)]
-    public override int Indexsize => BitConverter.ToInt32(_header, 44);
-
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(6)]
-    public override byte[] Unknown3 { get { byte[] res = new byte[12]; Array.Copy(_header, 48, res, 0, res.Length); return res; } }
-    /// <summary>
-    /// Package header: always 3?
-    /// </summary>
-    [ElementPriority(7)]
-    public override int Indexversion => BitConverter.ToInt32(_header, 60);
+    public int Indexcount => BitConverter.ToInt32(_header, 36);
 
     /// <summary>
     /// Package header: index position in file
     /// </summary>
-    [ElementPriority(8)]
-    public override int Indexposition { get { int i = BitConverter.ToInt32(_header, 64); return i != 0 ? i : BitConverter.ToInt32(_header, 40); } }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(9)]
-    public override byte[] Unknown4 { get { byte[] res = new byte[28]; Array.Copy(_header, 68, res, 0, res.Length); return res; } }
-
-    /// <summary>
-    /// A MemoryStream covering the package header bytes
-    /// </summary>
-    [ElementPriority(10)]
-    public override Stream HeaderStream => throw new NotImplementedException();
+    public int Indexposition { get { int i = BitConverter.ToInt32(_header, 64); return i != 0 ? i : BitConverter.ToInt32(_header, 40); } }
 
     #endregion
 
     #region Package index
-    /// <summary>
-    /// Package index: the index format in use
-    /// </summary>
-    [ElementPriority(11)]
-    public override uint Indextype => ((PackageIndex)GetResourceList).Indextype;
 
     /// <summary>
     /// Package index: the index
     /// </summary>
-    [ElementPriority(12)]
     public override List<IResourceIndexEntry> GetResourceList => Index;
 
     /// <summary>
@@ -277,27 +229,16 @@ public class Package : APackage
     /// <param name="match"><c>Predicate&lt;IResourceIndexEntry&gt;</c> defining matching conditions.</param>
     /// <returns>The first matching <see cref="IResourceIndexEntry"/>, if any; otherwise null.</returns>
     /// <remarks>Note that entries marked as deleted will not be returned.</remarks>
-    public virtual IResourceIndexEntry Find(Predicate<IResourceIndexEntry> match) { return Index.Find(x => !x.IsDeleted && match(x)); }
+    public IResourceIndexEntry Find(Predicate<IResourceIndexEntry> match) { return Index.Find(x => !x.IsDeleted && match(x)); }
 
     #endregion
-
-    #region Package content
-
-    /// <summary>
-    /// Tell the package to delete the resource indexed by <paramref name="rc"/>
-    /// </summary>
-    /// <param name="rc">Target resource index</param>
-    public override void DeleteResource(IResourceIndexEntry rc)
-    {
-        if (!rc.IsDeleted)
-            (rc as ResourceIndexEntry)?.Delete();
-    }
-    #endregion
+    
     #endregion
 
 
     #region Package implementation
-    Stream _packageStream;
+
+    private Stream _packageStream;
 
     private Package(Stream s)
     {
@@ -336,7 +277,6 @@ public class Package : APackage
 
     void SetIndexcount(BinaryWriter w, int c) { w.BaseStream.Position = 36; w.Write(c); }
     void SetIndexsize(BinaryWriter w, int c) { w.BaseStream.Position = 44; w.Write(c); }
-    void SetIndexversion(BinaryWriter w) { w.BaseStream.Position = 60; w.Write(3); }
     void SetIndexposition(BinaryWriter w, int c) { w.BaseStream.Position = 40; w.Write(0); w.BaseStream.Position = 64; w.Write(c); }
     #endregion
 
@@ -349,7 +289,7 @@ public class Package : APackage
         {
             if (_index != null) return _index;
                 
-            _index = new PackageIndex(_packageStream, Indexposition, Indexsize, Indexcount);
+            _index = new PackageIndex(_packageStream, Indexposition, Indexcount);
             return _index;
         }
     }

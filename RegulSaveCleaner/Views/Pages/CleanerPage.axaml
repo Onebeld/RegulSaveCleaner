@@ -41,10 +41,21 @@
                                     <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
                                 </TextBlock>
                                 
-                                <ProgressRing IsIndeterminate="{CompiledBinding IsLoadingSaves}"
-                                              IsVisible="{CompiledBinding IsLoadingSaves}"
-                                              MinHeight="14"
-                                              MinWidth="14" />
+                                <ProgressRing MinHeight="14"
+                                              MinWidth="14">
+                                    <ProgressRing.IsIndeterminate>
+                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                            <CompiledBinding Path="IsLoadingSaves" />
+                                            <CompiledBinding Path="IsMovingSaves" />
+                                        </MultiBinding>
+                                    </ProgressRing.IsIndeterminate>
+                                    <ProgressRing.IsVisible>
+                                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                            <CompiledBinding Path="IsLoadingSaves" />
+                                            <CompiledBinding Path="IsMovingSaves" />
+                                        </MultiBinding>
+                                    </ProgressRing.IsVisible>
+                                </ProgressRing>
                             </StackPanel>
                             
                             
@@ -83,6 +94,7 @@
                                         <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                             <CompiledBinding Path="!InCreatingBackupProcess" />
                                             <CompiledBinding Path="!IsLoadingSaves" />
+                                            <CompiledBinding Path="!IsMovingSaves" />
                                         </MultiBinding>
                                     </StackPanel.IsEnabled>
                                     
@@ -117,6 +129,7 @@
                                         <MultiBinding Converter="{x:Static BoolConverters.And}">
                                             <CompiledBinding Path="!InCreatingBackupProcess" />
                                             <CompiledBinding Path="!IsLoadingSaves" />
+                                            <CompiledBinding Path="!IsMovingSaves" />
                                             <CompiledBinding Path="!!GameSaves.Count" />
                                         </MultiBinding>
                                     </StackPanel.IsEnabled>
@@ -149,6 +162,7 @@
                                         <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                             <CompiledBinding Path="!InCreatingBackupProcess" />
                                             <CompiledBinding Path="!IsLoadingSaves" />
+                                            <CompiledBinding Path="!IsMovingSaves" />
                                         </MultiBinding>
                                     </Button.IsEnabled>
                                     
@@ -167,7 +181,8 @@
                                  SelectionMode="Toggle, Multiple"
                                  AutoScrollToSelectedItem="False"
                                  Margin="0 10 0 0"
-                                 Padding="10 0">
+                                 Padding="10 0"
+                                 IsEnabled="{CompiledBinding !IsMovingSaves}">
                             <ListBox.Styles>
                                 <Style Selector="ListBoxItem">
                                     <Setter Property="ToolTip.Tip">
@@ -192,12 +207,15 @@
                             </ListBox.ItemsPanel>
                             <ListBox.DataTemplates>
                                 <DataTemplate DataType="structures:GameSave">
-                                    <Grid RowDefinitions="*,Auto" Width="140" Height="170" Margin="10">
+                                    <Grid RowDefinitions="*,Auto" Margin="10">
                                         <Border Grid.Row="0"
+                                                HorizontalAlignment="Center"
                                                 Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
                                                 BorderThickness="1"
                                                 BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
-                                                CornerRadius="5">
+                                                CornerRadius="5"
+                                                Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25.0}" 
+                                                Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
                                             <Panel>
                                                 <Image Source="{CompiledBinding ImageOfFamily}"
                                                        Margin="{CompiledBinding ImageOfFamily, Converter={x:Static converters:UnknownIconToMarginConverter.Instance}}"
@@ -243,13 +261,16 @@
                                                 </Button>
                                             </Panel>
                                         </Border>
-                                        <StackPanel Grid.Row="1" Spacing="5" Margin="0 5 0 0">
-                                            <TextBox Text="{CompiledBinding Name}" 
+                                        <StackPanel Grid.Row="1"
+                                                    Spacing="5"
+                                                    Margin="0 5 0 0"
+                                                    Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25}">
+                                            <TextBox Text="{CompiledBinding Name}"
                                                      TextAlignment="Center" 
                                                      Padding="6 2 6 2"
                                                      IsReadOnly="True"
                                                      MinHeight="0" />
-                                            <TextBox Text="{CompiledBinding WorldName}" 
+                                            <TextBox Text="{CompiledBinding WorldName}"
                                                      TextAlignment="Center"
                                                      Padding="6 2 6 2"
                                                      IsReadOnly="True"
@@ -515,8 +536,14 @@
                                         Content="{StaticResource CreateNow}"
                                         HorizontalAlignment="Right"
                                         Padding="20 5" VerticalAlignment="Center"
-                                        Command="{CompiledBinding CreateBackups}"
-                                        IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"/>
+                                        Command="{CompiledBinding CreateBackups}">
+                                    <Button.IsEnabled>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <CompiledBinding Path="!IsMovingSaves" />
+                                            <CompiledBinding Path="!!SelectedGameSaves.Count" />
+                                        </MultiBinding>
+                                    </Button.IsEnabled>
+                                </Button>
                             </StackPanel>
                         </Panel>
                     </OptionsDisplayItem.Content>
@@ -538,11 +565,13 @@
                                     <Setter Property="Background" Value="{StaticResource CardStrokeColorDefaultBrush}" />
                                     <Setter Property="Margin" Value="-5 0" />
                                 </Style>
-                                <Style Selector="CheckBox">
-                                    <Setter Property="Margin" Value="60 7" />
-                                </Style>
                                 <Style Selector="TextBlock">
                                     <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                                <Style Selector="Button.ReadMore">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="30" />
+                                    <Setter Property="Height" Value="30" />
                                 </Style>
                             </StackPanel.Styles>
                             <Panel Margin="60 7 45 7">
@@ -588,32 +617,105 @@
                             </Panel>
                             
                             <Separator />
-                            <CheckBox Content="CASPartCache.package"
-                                      IsChecked="{CompiledBinding CasPartCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenCASPartCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="CASPartCache.package"
+                                          IsChecked="{CompiledBinding CasPartCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox Content="compositorCache.package"
-                                      IsChecked="{CompiledBinding CompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenCompositorCacheClearDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="compositorCache.package"
+                                          IsChecked="{CompiledBinding CompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox Content="scriptCache.package"
-                                      IsChecked="{CompiledBinding ScriptCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenScriptCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="scriptCache.package"
+                                          IsChecked="{CompiledBinding ScriptCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox Content="simCompositorCache.package"
-                                      IsChecked="{CompiledBinding SimCompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenSimCompositorCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="simCompositorCache.package"
+                                          IsChecked="{CompiledBinding SimCompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox Content="socialCache.package"
-                                      IsChecked="{CompiledBinding SocialCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenSocialCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="socialCache.package"
+                                          IsChecked="{CompiledBinding SocialCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding WorldCachesClear, Source={x:Static core:RegulSettings.Instance}}"
-                                      IsEnabled="{CompiledBinding !IsMacOs}">
-                                <TextBlock >
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;WorldCaches
-                                </TextBlock>
-                            </CheckBox>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenWorldCachesDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding WorldCachesClear, Source={x:Static core:RegulSettings.Instance}}"
+                                          IsEnabled="{CompiledBinding !IsMacOs}">
+                                    <TextBlock>
+                                        <Run Text="{StaticResource All}" />
+                                        &#8203;<Run Text="{StaticResource Files}" />
+                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+                                        &#8203;WorldCaches
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding IgaCacheClear, Source={x:Static core:RegulSettings.Instance}}">
+                            
+                            <CheckBox IsChecked="{CompiledBinding IgaCacheClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
                                 <TextBlock>
                                     <Run Text="{StaticResource All}" />
                                     &#8203;<Run Text="{StaticResource Files}" />
@@ -621,26 +723,51 @@
                                     &#8203;IGACache
                                 </TextBlock>
                             </CheckBox>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding ThumbnailsClear, Source={x:Static core:RegulSettings.Instance}}">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;Thumbnails
-                                </TextBlock>
-                            </CheckBox>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenThumbnailsDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding ThumbnailsClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock>
+                                        <Run Text="{StaticResource All}" />
+                                        &#8203;<Run Text="{StaticResource Files}" />
+                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+                                        &#8203;Thumbnails
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding FeaturedItemsClear, Source={x:Static core:RegulSettings.Instance}}">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;FeaturedItems
-                                </TextBlock>
-                            </CheckBox>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenFeaturedItemsDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding FeaturedItemsClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock>
+                                        <Run Text="{StaticResource All}" />
+                                        &#8203;<Run Text="{StaticResource Files}" />
+                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+                                        &#8203;FeaturedItems
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding DcBackupPackagesClear, Source={x:Static core:RegulSettings.Instance}}">
+                            <CheckBox IsChecked="{CompiledBinding DcBackupPackagesClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
                                 <TextBlock>
                                     <Run Text="{StaticResource All}" />
                                     &#8203;Package
@@ -652,15 +779,27 @@
                                 </TextBlock>
                             </CheckBox>
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding AllXmlClear, Source={x:Static core:RegulSettings.Instance}}">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;XML ScriptError
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                </TextBlock>
-                            </CheckBox>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenAllXmlDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding AllXmlClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock>
+                                        <Run Text="{StaticResource All}" />
+                                        &#8203;XML ScriptError
+                                        &#8203;<Run Text="{StaticResource Files}" />
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding LogClear, Source={x:Static core:RegulSettings.Instance}}">
+                            <CheckBox IsChecked="{CompiledBinding LogClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
                                 <TextBlock>
                                     <Run Text="{StaticResource All}" />
                                     &#8203;LOG
@@ -668,15 +807,27 @@
                                 </TextBlock>
                             </CheckBox>
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding DccClear, Source={x:Static core:RegulSettings.Instance}}">
-                                <TextBlock>
-                                    dcc.ent
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;DCCache
-                                </TextBlock>
-                            </CheckBox>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenDCCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding DccClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock>
+                                        dcc.ent
+                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+                                        &#8203;DCCache
+                                    </TextBlock>
+                                </CheckBox>
+                            </StackPanel>
+                            
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding MissingDepsClear, Source={x:Static core:RegulSettings.Instance}}">
+                            <CheckBox IsChecked="{CompiledBinding MissingDepsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
                                 <TextBlock>
                                     missingdeps.idx
                                     &#8203;<Run Text="{StaticResource FromTheFolder}" />
@@ -684,7 +835,7 @@
                                 </TextBlock>
                             </CheckBox>
                             <Separator />
-                            <CheckBox IsChecked="{CompiledBinding DownloadedSimsClear, Source={x:Static core:RegulSettings.Instance}}">
+                            <CheckBox IsChecked="{CompiledBinding DownloadedSimsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
                                 <TextBlock>
                                     Downloadedsims.index
                                     &#8203;<Run Text="{StaticResource FromTheFolder}" />
@@ -712,6 +863,7 @@
                         <CompiledBinding Path="!!SelectedGameSaves.Count" />
                         <CompiledBinding Path="!InCleaningCacheProcess" />
                         <CompiledBinding Path="!InCreatingBackupProcess" />
+                        <CompiledBinding Path="!IsMovingSaves" />
                     </MultiBinding>
                 </Button.IsEnabled>
             </Button>

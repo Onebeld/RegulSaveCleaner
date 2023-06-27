@@ -31,6 +31,9 @@ public class SettingsViewModel : ViewModelBase
         {
             RegulSettings.Instance.Language = value.Key;
             App.ChangeLanguage();
+
+            App.MainWindow.SettingsPage.IsSelected = false;
+            App.MainWindow.SettingsPage.IsSelected = true;
         }
     }
 

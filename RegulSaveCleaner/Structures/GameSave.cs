@@ -7,17 +7,20 @@ public class GameSave : ViewModelBase
 {
     private readonly Lazy<string> _name;
     private readonly Lazy<string> _location;
-    private IImage _imageOfFamily;
+    private IImage? _imageOfFamily;
 
-    public IImage ImageOfFamily
+    public IImage? ImageOfFamily
     {
         get => _imageOfFamily;
         set => RaiseAndSet(ref _imageOfFamily, value);
     }
     public ulong ImageInstance { get; set; }
-    public string Directory { get; set; }
-    public string WorldName { get; set; }
-    public string Description { get; set; }
+
+    public string Directory { get; }
+
+    public string WorldName { get; set; } = string.Empty;
+
+    public string Description { get; set; } = string.Empty;
     public DateTime LastSaveTime { get; set; }
 
     public string Name => _name.Value;

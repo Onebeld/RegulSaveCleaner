@@ -5,16 +5,14 @@ namespace RegulSaveCleaner.S3PI;
 
 public class FastBinaryReader : IDisposable
 {
-    private static byte[] buffer = new byte[50];
+    private static readonly byte[] buffer = new byte[50];
     
-    public Stream BaseStream { get; private set; }
+    public Stream BaseStream { get; }
 
     public FastBinaryReader(Stream input)
     {
         BaseStream = input;
     }
-
-    public byte ReadByte() => (byte)BaseStream.ReadByte();
 
     public unsafe short ReadInt16()
     {
@@ -31,14 +29,6 @@ public class FastBinaryReader : IDisposable
         fixed (byte* numRef = &buffer[0])
             return *(int*)numRef;
     }
-    
-    public unsafe uint ReadUInt32()
-    {
-        BaseStream.Read(buffer, 0, 4);
-        
-        fixed (byte* numRef = &buffer[0])
-            return *(uint*)numRef;
-    }
 
     public unsafe ulong ReadUInt64()
     {
@@ -48,7 +38,7 @@ public class FastBinaryReader : IDisposable
             return *(ulong*)numRef;
     }
 
-    public unsafe byte[] ReadBytes(int count)
+    public byte[] ReadBytes(int count)
     {
         byte[] arr = new byte[count];
         BaseStream.Read(arr, 0, count);

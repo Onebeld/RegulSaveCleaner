@@ -26,16 +26,8 @@ namespace RegulSaveCleaner.S3PI.Interfaces;
 /// <summary>
 /// Abstract definition of a package
 /// </summary>
-public abstract class APackage : AApiVersionedFields, IPackage
+public abstract class APackage : IPackage
 {
-    #region AApiVersionedFields
-    /// <summary>
-    /// The list of available field names on this API object
-    /// </summary>
-    public override List<string> ContentFields => GetContentFields(GetType());
-
-    #endregion
-
     #region IPackage Members
 
     #region Whole package
@@ -46,83 +38,13 @@ public abstract class APackage : AApiVersionedFields, IPackage
 
     #endregion
 
-    #region Package header
-    /// <summary>
-    /// Package header: "DBPF" bytes
-    /// </summary>
-    [ElementPriority(1)]
-    public abstract byte[] Magic { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(2)]
-    public abstract byte[] Unknown1 { get; }
-    /// <summary>
-    /// Package header: number of entries in the package index
-    /// </summary>
-    [ElementPriority(3)]
-    public abstract int Indexcount { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(4)]
-    public abstract byte[] Unknown2 { get; }
-    /// <summary>
-    /// Package header: index size on disk in bytes
-    /// </summary>
-    [ElementPriority(5)]
-    public abstract int Indexsize { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(6)]
-    public abstract byte[] Unknown3 { get; }
-    /// <summary>
-    /// Package header: always 3?
-    /// </summary>
-    [ElementPriority(7)]
-    public abstract int Indexversion { get; }
-    /// <summary>
-    /// Package header: index position in file
-    /// </summary>
-    [ElementPriority(8)]
-    public abstract int Indexposition { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(9)]
-    public abstract byte[] Unknown4 { get; }
-
-    /// <summary>
-    /// A MemoryStream covering the package header bytes
-    /// </summary>
-    [ElementPriority(10)]
-    public abstract Stream HeaderStream { get; }
-    #endregion
-
     #region Package index
-
-    /// <summary>
-    /// Package index: the index format in use
-    /// </summary>
-    [ElementPriority(11)]
-    public abstract uint Indextype { get; }
 
     /// <summary>
     /// Package index: the index
     /// </summary>
-    [ElementPriority(12)]
     public abstract List<IResourceIndexEntry> GetResourceList { get; }
 
-    #endregion
-
-    #region Package content
-
-    /// <summary>
-    /// Tell the package to delete the resource indexed by <paramref name="rc"/>
-    /// </summary>
-    /// <param name="rc">Target resource index</param>
-    public abstract void DeleteResource(IResourceIndexEntry rc);
     #endregion
 
     #endregion

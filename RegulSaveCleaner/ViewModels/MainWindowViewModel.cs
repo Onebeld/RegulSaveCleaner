@@ -10,7 +10,8 @@ using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
-using RegulSaveCleaner.Views.InformationPages;
+using RegulSaveCleaner.Views.InformationPages.ClearCache;
+using RegulSaveCleaner.Views.InformationPages.ClearSaves;
 using RegulSaveCleaner.Views.Windows;
 
 namespace RegulSaveCleaner.ViewModels;
@@ -24,6 +25,7 @@ public class MainWindowViewModel : ViewModelBase
     private bool _isLoadingSaves;
     private bool _canBeCleaningCache;
     private bool _foundSaveFolder;
+    private bool _isMovingSaves;
 
     private bool _sortByAlphabet;
     private bool _sortByDate = true;
@@ -38,7 +40,7 @@ public class MainWindowViewModel : ViewModelBase
         get
         {
 #if OSX
-            return OperatingSystem.IsMacOS();
+            return true;
 #else
             return false;
 #endif
@@ -85,6 +87,12 @@ public class MainWindowViewModel : ViewModelBase
     {
         get => _foundSaveFolder;
         set => RaiseAndSet(ref _foundSaveFolder, value);
+    }
+
+    public bool IsMovingSaves
+    {
+        get => _isMovingSaves;
+        set => RaiseAndSet(ref _isMovingSaves, value);
     }
 
     public bool SortByAlphabet
@@ -315,12 +323,11 @@ public class MainWindowViewModel : ViewModelBase
         RegulSettings.Instance.ScriptCacheClear = true;
         RegulSettings.Instance.SimCompositorCacheClear = true;
         RegulSettings.Instance.SocialCacheClear = true;
-
-#if !NET461
-        if (!OperatingSystem.IsMacOS())
+        
+#if !OSX
+        RegulSettings.Instance.WorldCachesClear = true; 
 #endif
-            RegulSettings.Instance.WorldCachesClear = true;
-
+        
         RegulSettings.Instance.IgaCacheClear = true;
         RegulSettings.Instance.ThumbnailsClear = true;
         RegulSettings.Instance.FeaturedItemsClear = true;
@@ -358,13 +365,22 @@ public class MainWindowViewModel : ViewModelBase
     public void OpenRemoveGeneratedImagesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveGeneratedImagesPage());
     public void OpenRemoveTexturesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveTexturesPage());
     public void OpenRemoveOtherTypesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveOtherTypesPage());
+    
+    public void OpenCASPartCacheDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new CASPartCachePage());
+    public void OpenCompositorCacheClearDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new CompositorCacheClearPage());
+    public void OpenScriptCacheDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new ScriptCachePage());
+    public void OpenSimCompositorCacheDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new SimCompositorCachePage());
+    public void OpenSocialCacheDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new SocialCachePage());
+    public void OpenWorldCachesDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new WorldCachesPage());
+    public void OpenThumbnailsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new ThumbnailsPage());
+    public void OpenFeaturedItemsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new FeaturedItemsPages());
+    public void OpenAllXmlDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new AllXmlPage());
+    public void OpenDCCacheDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new DCCachePage());
 
-    public async void OpenProhibitedList(GameSave gameSave)
+    public void OpenProhibitedList(GameSave gameSave)
     {
         ProhibitedListWindow window = new(gameSave);
-        await window.Show(App.MainWindow);
-        await Task.Delay(1000);
-        ClearGc();
+        window.Show(App.MainWindow);
     }
     
     public async void OpenOldProhibitedLists(GameSave gameSave)
@@ -408,7 +424,7 @@ public class MainWindowViewModel : ViewModelBase
 
         InCreatingBackupProcess = false;
         
-        ShowNotification("Successful", "YourSavesHaveBeenTransferred", NotificationType.Success, TimeSpan.FromSeconds(3));
+        ShowNotification("Successful", "BackupCreated", NotificationType.Success, TimeSpan.FromSeconds(3));
     }
 
     private bool CheckNumberOfSaves()
@@ -417,35 +433,48 @@ public class MainWindowViewModel : ViewModelBase
         return GameSaves.Count >= RegulSettings.Instance.NumberOfSavesWhenWarningIsDisplayed;
     }
 
-    public void StartMovingSave(GameSave gameSave)
+    public async void StartMovingSave(GameSave gameSave)
     {
+        IsMovingSaves = true;
         try
         {
-            MoveSaveToSpareFolder(gameSave);
+            await Task.Run(() =>
+            {
+                MoveSaveToSpareFolder(gameSave);
+            });
         }
         catch
         {
+            IsMovingSaves = false;
             ShowNotification("Error", "MovingIsNotPossible", NotificationType.Error, TimeSpan.FromSeconds(5));
             return;
         }
+
+        IsMovingSaves = false;
         
         LoadingSaves();
 
         ShowNotification("Successful", "YourSaveHasBeenMoved", NotificationType.Success);
     }
 
-    public void MoveSavesToSpareFolder()
+    public async void MoveSavesToSpareFolder()
     {
+        IsMovingSaves = true;
         try
         {
-            foreach (GameSave gameSave in SelectedGameSaves)
-                MoveSaveToSpareFolder(gameSave);
+            await Task.Run(() =>
+            {
+                foreach (GameSave gameSave in SelectedGameSaves)
+                    MoveSaveToSpareFolder(gameSave);
+            });
         }
         catch
         {
+            IsMovingSaves = false;
             ShowNotification("Error", "MovingIsNotPossible", NotificationType.Error, TimeSpan.FromSeconds(5));
             return;
         }
+        IsMovingSaves = false;
         
         LoadingSaves();
         
@@ -736,19 +765,14 @@ public class MainWindowViewModel : ViewModelBase
         DeleteCache(RegulSettings.Instance.SimCompositorCacheClear, "simCompositorCache.package", deletedFiles);
         DeleteCache(RegulSettings.Instance.SocialCacheClear, "socialCache.package", deletedFiles);
 
-#if !NET461
-        if (!OperatingSystem.IsMacOS())
+#if !OSX
+        DeleteCache(RegulSettings.Instance.WorldCachesClear, "WorldCaches", deletedFiles);
 #endif
-            DeleteCache(RegulSettings.Instance.WorldCachesClear, "WorldCaches", deletedFiles);
         
         DeleteCache(RegulSettings.Instance.IgaCacheClear, "IGACache", deletedFiles);
         DeleteCache(RegulSettings.Instance.ThumbnailsClear, "Thumbnails", deletedFiles);
-
-        try
-        {
-            DeleteCache(RegulSettings.Instance.FeaturedItemsClear, "FeaturedItems", deletedFiles);
-        }
-        catch { }
+        
+        DeleteCache(RegulSettings.Instance.FeaturedItemsClear, "FeaturedItems", deletedFiles);
         
         DeleteCache(RegulSettings.Instance.AllXmlClear, "", deletedFiles, "ScriptError_*.xml");
         DeleteCache(RegulSettings.Instance.DccClear, Path.Combine("DCCache", "dcc.ent"), deletedFiles);
@@ -784,28 +808,26 @@ public class MainWindowViewModel : ViewModelBase
 
         FileAttributes attributes = File.GetAttributes(pathToCache);
 
-        if (attributes.HasFlag(FileAttributes.Directory))
+        try
         {
-            Parallel.ForEach(Directory.EnumerateFiles(pathToCache, searchPattern), file =>
+            if (attributes.HasFlag(FileAttributes.Directory))
             {
-                DeleteFile(file, deletedFiles);
-            });
+                Parallel.ForEach(Directory.EnumerateFiles(pathToCache, searchPattern), file =>
+                {
+                    DeleteFile(file, deletedFiles);
+                });
+            }
+            else DeleteFile(pathToCache, deletedFiles);
         }
-        else DeleteFile(pathToCache, deletedFiles);
+        catch
+        {
+            // ignored
+        }
     }
     
     private void DeleteFile(string path, ICollection<string>? files = null)
     {
         File.Delete(path);
         files?.Add(path);
-    }
-    
-    private void ClearGc()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
     }
 }

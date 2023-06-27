@@ -19,14 +19,13 @@
  ***************************************************************************/
 
 using System.Collections.Generic;
-using System.IO;
 
 namespace RegulSaveCleaner.S3PI.Interfaces;
 
 /// <summary>
 /// Representation of a Sims 3 Package
 /// </summary>
-public interface IPackage : IContentFields
+public interface IPackage
 {
     #region Whole package
     /// <summary>
@@ -36,72 +35,8 @@ public interface IPackage : IContentFields
 
     #endregion
 
-    #region Package header
-    /// <summary>
-    /// Package header: "DBPF" bytes
-    /// </summary>
-    [ElementPriority(1)]
-    byte[] Magic { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(2)]
-    byte[] Unknown1 { get; }
-    /// <summary>
-    /// Package header: number of entries in the package index
-    /// </summary>
-    [ElementPriority(3)]
-    int Indexcount { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(4)]
-    byte[] Unknown2 { get; }
-    /// <summary>
-    /// Package header: index size on disk in bytes
-    /// </summary>
-    [ElementPriority(5)]
-    int Indexsize { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(6)]
-    byte[] Unknown3 { get; }
-    /// <summary>
-    /// Package header: always 3?
-    /// </summary>
-    [ElementPriority(7)]
-    int Indexversion { get; }
-    /// <summary>
-    /// Package header: index position in file
-    /// </summary>
-    [ElementPriority(8)]
-    int Indexposition { get; }
-    /// <summary>
-    /// Package header: unused
-    /// </summary>
-    [ElementPriority(9)]
-    byte[] Unknown4 { get; }
-
-    /// <summary>
-    /// A <see cref="MemoryStream"/> covering the package header bytes
-    /// </summary>
-    [ElementPriority(10)]
-    Stream HeaderStream { get; }
-    #endregion
-
     #region Package index
-
-    /// <summary>
-    /// Package index: the index format in use
-    /// </summary>
-    [ElementPriority(11)]
-    uint Indextype { get; }
-
-    /// <summary>
-    /// Package index: the index as a <see cref="IResourceIndexEntry"/> list
-    /// </summary>
-    [ElementPriority(12)]
+    
     List<IResourceIndexEntry> GetResourceList { get; }
 
     #endregion

@@ -18,7 +18,6 @@
  *  along with s3pi.  If not, see <http://www.gnu.org/licenses/>.          *
  ***************************************************************************/
 
-using System.Collections.Generic;
 using System.IO;
 
 namespace RegulSaveCleaner.S3PI.Interfaces
@@ -26,7 +25,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
     /// <summary>
     /// A resource contained in a package.
     /// </summary>
-    public abstract class AResource : AApiVersionedFields, IResource
+    public abstract class AResource : IResource
     {
         #region Attributes
         /// <summary>
@@ -51,14 +50,6 @@ namespace RegulSaveCleaner.S3PI.Interfaces
         }
         #endregion
 
-        #region AApiVersionedFields
-        /// <summary>
-        /// A <see cref="List{String}"/> of available field names on object
-        /// </summary>
-        public override List<string> ContentFields => GetContentFields(GetType());
-
-        #endregion
-
         #region IResource Members
         /// <summary>
         /// The resource content as a <see cref="System.IO.Stream"/>.
@@ -75,19 +66,6 @@ namespace RegulSaveCleaner.S3PI.Interfaces
                 }
                 stream.Position = 0;
                 return stream;
-            }
-        }
-        /// <summary>
-        /// The resource content as a <see cref="byte"/> array
-        /// </summary>
-        public virtual byte[] AsBytes
-        {
-            get
-            {
-                if (Stream is MemoryStream s) return s.ToArray();
-
-                stream.Position = 0;
-                return (new BinaryReader(stream)).ReadBytes((int)stream.Length);
             }
         }
 

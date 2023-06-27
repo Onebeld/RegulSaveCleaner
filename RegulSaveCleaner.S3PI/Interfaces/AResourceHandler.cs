@@ -29,11 +29,11 @@ namespace RegulSaveCleaner.S3PI.Interfaces
     /// supports one or more ResourceTypes (List&lt;string&gt; value).  The single
     /// AResourceHandler implementation summarises what the assembly provides.
     /// </summary>
-    public abstract class AResourceHandler : Dictionary<Type, List<string>>, IDictionary<Type, List<string>>
+    public abstract class AResourceHandler : Dictionary<Type, List<string>>
     {
         /// <summary>
         /// Create the content of the Dictionary
         /// </summary>
-        public AResourceHandler() { }
+        protected AResourceHandler() { }
     }
 }

@@ -1,0 +1,235 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">ru</s:String>
+    
+    <!---->
+    <s:String x:Key="Collapse">Свернуть</s:String>
+    <s:String x:Key="Expand">Развернуть</s:String>
+    <s:String x:Key="Reestablish">Восстановить</s:String>
+    <s:String x:Key="Close">Закрыть</s:String>
+    
+    <s:String x:Key="Menu">Меню</s:String>
+    <s:String x:Key="Cleaner">Очиститель</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Вопросы и ответы</s:String>
+    <s:String x:Key="Settings">Настройки</s:String>
+    <s:String x:Key="About">О программе</s:String>
+    
+    <s:String x:Key="On">Вкл</s:String>
+    <s:String x:Key="Off">Выкл</s:String>
+    
+    <s:String x:Key="Cut">Вырезать</s:String>
+    <s:String x:Key="Copy">Копировать</s:String>
+    <s:String x:Key="Paste">Вставить</s:String>
+    
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Отмена</s:String>
+    
+    <s:String x:Key="AddYourNewColor">Добавьте свой новый цвет!</s:String>
+    <s:String x:Key="AddColor">Добавить цвет</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Начать очистку</s:String>
+    <s:String x:Key="SaveFiles">Файлы сохранений</s:String>
+    
+    <s:String x:Key="ProhibitedList">Запрещенный список</s:String>
+    <s:String x:Key="MoveOldList">Переместить старый список</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">Папка с сохранениями не найдена</s:String>
+    <s:String x:Key="NoSaveFound">Сохранения не найдены</s:String>
+    
+    <s:String x:Key="SelectAll">Выбрать все</s:String>
+    <s:String x:Key="CancelAll">Отменить все</s:String>
+    <s:String x:Key="UpdateList">Обновить список</s:String>
+    <s:String x:Key="SortByDate">Сортировка по дате</s:String>
+    <s:String x:Key="SortByAlphabetical">Сортировка по алфавиту</s:String>
+    <s:String x:Key="Selected">Выбрано</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">Количество файлов сохранений</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">Не удалось найти папку "The Sims 3" в документах.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Произошла ошибка!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Вы хотите выбрать эту папку самостоятельно?</s:String>
+    
+    <s:String x:Key="CleaningOptions">Варианты очистки</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Настройка того, что вы хотите очистить</s:String>
+    <s:String x:Key="CreateBackup">Создать резервную копию</s:String>
+    <s:String x:Key="ClearCache">Очистить кэш</s:String>
+    <s:String x:Key="ClearCacheDescription">Настройка очистки</s:String>
+    <s:String x:Key="BackupPath">Резервный путь</s:String>
+    <s:String x:Key="CreateNow">Создать сейчас</s:String>
+    <s:String x:Key="ClearNow">Очистить сейчас</s:String>
+    
+    <s:String x:Key="Recommended">Рекомендуется</s:String>
+    <s:String x:Key="Experimentally">Экспериментально</s:String>
+    <s:String x:Key="ReadMore">Подробнее</s:String>
+    
+    <s:String x:Key="SaveCleared">Сохранение успешно очищено!</s:String>
+    <s:String x:Key="SavesCleared">Сохранения успешно очищены!</s:String>
+    <s:String x:Key="ResultsBelow">Вы можете увидеть результат ниже.</s:String>
+    <s:String x:Key="CacheCleared">Кэш успешно очищен!</s:String>
+    <s:String x:Key="BackupCreated">Резервная копия успешно создана!</s:String>
+    <s:String x:Key="Successful">Успешно!</s:String>
+    <s:String x:Key="Information">Информация</s:String>
+    <s:String x:Key="Yes">Да</s:String>
+    <s:String x:Key="No">Нет</s:String>
+    
+    <s:String x:Key="SaveName">Имя сохранения</s:String>
+    <s:String x:Key="TimePassed">Прошло времени</s:String>
+    <s:String x:Key="OldSize">Старый размер</s:String>
+    <s:String x:Key="NewSize">Новый размер</s:String>
+    <s:String x:Key="Percent">Процент</s:String>
+    <s:String x:Key="Sec">сек</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">Удалить семейные портреты</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Удалить портреты симов</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Удалить миниатюры лотов</s:String>
+    <s:String x:Key="RemovePhotos">Удалить фотографии</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Удалить сгенерированные изображения</s:String>
+    <s:String x:Key="RemoveTextures">Удалить текстуры</s:String>
+    <s:String x:Key="RemoveOtherTypes">Удалить другие типы</s:String>
+    
+    <s:String x:Key="All">Все</s:String>
+    <s:String x:Key="Files">файлы</s:String>
+    <s:String x:Key="FromTheFolder">из папки</s:String>
+    <s:String x:Key="Except">кроме</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Удаляет изображения, которые игра создает сама.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Сюда входят: селфи, поздравительные открытки, фотографии из фотобудки, фотографии с выпускного бала.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Используйте запрещенный список, чтобы сохранить некоторые из них.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Удаляет портреты, которые появляются при выборе сохранения, в этой программе и при выборе семьи. Сохраняет портрет, который отображается в программе.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Удаляет портреты симов. Они появляются практически везде: на панели «Отношения», в «Облаке мыслей» и так далее.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Побочный эффект:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">при входе в редактор города он будет долго загружаться, потому что игра занята созданием портретов, а у портретов будет только одна поза.</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">Удаляет миниатюры лотов, которые появляются при выборе сохранения или лота.</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">Удаляет фотографии, сделанные вашими симами.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Используйте запрещенный список, чтобы сохранить только некоторые из ваших фотографий.</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">Удаляет текстуры участков, созданные после размещения нового участка в городе. Это не относится к лотам, которые уже были в городе (не считая тех, которые размещаются автоматически, если у вас есть определенный пакет расширения).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Имейте в виду, что после очистки сохранения размещенный вами участок будет выглядеть как земля (см. скриншоты до и после).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Рекомендуется сделать резервную копию, так как некоторые игроки говорят, что игра сохраняется на неопределенный срок.</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">Эта опция работает как «Очистить память» в программе Kuree. По отзывам не стирает воспоминания, поэтому вариант переименован.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Рекомендуется сделать резервную копию, так как неизвестно, что он очищает.</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">Части CAS, которые появляются в Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Новые объекты, которые появятся в режиме покупки/строительства.</s:String>
+    <s:String x:Key="ScriptCacheDescription">Моды или хаки</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Новые симы, скины по умолчанию</s:String>
+    <s:String x:Key="SocialCacheDescription">Информация о социальных аспектах (введено в патче 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Кэш-файлы для ваших установленных миров. Нет файлов WorldCache для миров, которые поставлялись с игрой и не устанавливались через программу запуска, например Сансет Велли, Твинбурк или Бриджпорт.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Кэшированные миниатюры изображений. Сохранены для более быстрой загрузки при следующем запуске игры. Если у вас возникли проблемы со странными миниатюрами в игре, удалите их. Они будут воссозданы в следующий раз, когда вы запустите игру, хотя игра будет работать немного медленнее при первой загрузке, после того как содержимое этой папки будет удалено.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Ошибки игры, обнаруженные модом NRaas ErrorTrap. В игре они не используются. Удалите или опубликуйте в NRaas Industries, если потребуется. Они содержат информацию, которая была вызвана его модом ErrorTrap, и могут помочь ему в устранении ошибок (вызванных кодом EA или его модами), которые вызывают ошибку. Если у вас нет этого мода и вы не планируете когда-либо обращаться к EA за помощью в устранении этих ошибок, вы можете просто удалить их.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Представлен в патче 1.29. Предполагается, что он содержит изображения для избранных товаров в магазине, которые будут отображаться в каталоге CAH/Buy/Build, но вызывает сбои.</s:String>
+    <s:String x:Key="DCCacheDescription">Содержит все установленные элементы Custom Content/Exchange/Store, которые вы установили через лаунчер. Отображается на вкладке лаунчера «Установленный контент».</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Категорически запрещается удалять эту папку в macOS, так как это может сломать ваши сохранения. Таким образом, эта опция отключена и поэтому не может быть включена.</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">У вас слишком много сохранений</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Ненужные сохранения рекомендуется переместить в другую папку. Используйте встроенный функционал Regul Save Cleaner.</s:String>
+    <s:String x:Key="ShowNoMore">Больше не показывать</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Переместить сохранения в запасную папку</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Ваши сохранения перемещены!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Ваше сохранение перемещено!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Перемещение невозможно. Проверьте доступ к папке, в которую вы пытались переместить сохранение.</s:String>
+    <s:String x:Key="RestoreOldSaves">Вернуть старые сохранения</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Выберите сохранения для перемещения</s:String>
+    <s:String x:Key="MoveToSpareFolder">Переместить в запасную папку</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Игра очень медленная</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">К сожалению, The Sims 3 очень плохо оптимизирована. Она потребляет максимум 4 ГБ оперативной памяти и использует только одно ядро процессора. Первое, что вам нужно установить, это SmoothPatch от LazyDuchess. Он делает удивительные вещи в оптимизации.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Рекомендуется использовать моды NRaas:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">По мере игры сохранение раздувается, что может привести к различным ошибкам. Используйте эту программу, чтобы избежать проблем. Если вам нужен максимальный опыт, воспользуйтесь очень хорошим туториалом от Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Перейти к руководству (на английском)</s:String>
+    <s:String x:Key="GoToInstallation">Перейти к установке</s:String>
+    
+    <s:String x:Key="Error12">Ошибка 12</s:String>
+    <s:String x:Key="Error12Description1">Не волнуйтесь! Это потому, что игре не хватает памяти, чтобы сохранить ваш мир. Попробуйте очистить свой инвентарь от ненужного мусора, удалить ненужные объекты в мире и снова сохраниться. Если это не поможет, попробуйте руководство от AncientGatekeeper.</s:String>
+    
+    <s:String x:Key="Error16">Ошибка 16</s:String>
+    <s:String x:Key="Error16Description1">Это довольно редкая ошибка. Это происходит, когда размер вашего сохранения достигает 4 ГБ. Причин довольно много: много семей, много лотов, много мусора внутри сейва. Первое, что нужно сделать, это использовать эту программу. Если это не сильно поможет, вам нужно сделать очистку в самой игре. Из-за этой ошибки велика вероятность потерять сохранение, поэтому постарайтесь не раздувать свое сохранение.</s:String>
+    
+    <s:String x:Key="Error0AfterOpeningSave">Ошибка 0 после открытия сохранения</s:String>
+    <s:String x:Key="Error0Description1">К сожалению, ваше сохранение было повреждено. Это было связано с одной из версий этой программы после очистки. Может возникнуть при повреждении жесткого диска или сектора SSD.</s:String>
+    
+    <!--Settings Page-->
+    <s:String x:Key="General">Основное</s:String>
+    
+    <s:String x:Key="Language">Язык</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Очистить ненужные запрещенные списки</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Если вы удалили сохранение и не хотите дальше пользоваться списками, нажмите на кнопку удалить</s:String>
+    <s:String x:Key="PathSettings">Настройки путей</s:String>
+    <s:String x:Key="PathSettingsDescription">Настройте, если изменился путь к папке с игрой</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Сбросить настройки по умолчанию</s:String>
+    <s:String x:Key="Clear">Очистить</s:String>
+    <s:String x:Key="Reset">Сбросить</s:String>
+    <s:String x:Key="Appearance">Внешний вид</s:String>
+    <s:String x:Key="Font">Шрифт</s:String>
+    <s:String x:Key="EnableShadow">Включить тень</s:String>
+    <s:String x:Key="EnableShadowDescription">Если у вас проблемы с производительностью, отключите этот параметр.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Включить пользовательскую строку заголовка</s:String>
+    <s:String x:Key="EnableBlur">Включить размытие</s:String>
+    <s:String x:Key="OpacityLevel">Уровень прозрачности</s:String>
+    <s:String x:Key="AccentColor">Акцентный цвет</s:String>
+    <s:String x:Key="UseSystemAccentColor">Использовать системный акцентный цвет</s:String>
+    <s:String x:Key="Change">Изменит</s:String>
+    <s:String x:Key="Theme">Тема</s:String>
+    <s:String x:Key="FolderForOldSaves">Папка для старых сохранений</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Показывать предупреждение о большом количестве сохранений</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Количество сохранений, при которых отображается предупреждение</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Настройка размера миниатюр сохранения</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Размер миниатюры сохранения</s:String>
+    <s:String x:Key="Preview">Предварительный просмотр</s:String>
+    <s:String x:Key="EnableHardwareAcceleration">Включить аппаратное ускорение</s:String>
+    <s:String x:Key="EnableHardwareAccelerationDescription">Позволяет включить прозрачность, делает анимацию более плавной. Требуется перезапустить программу, чтобы изменения вступили в силу.</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">Неиспользуемые запрещенные списки успешно очищены!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">В настоящее время нет неиспользуемых запрещенных списков.</s:String>
+    <s:String x:Key="ColorCopied">Цвет скопирован!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Настройки были сброшены</s:String>
+    <s:String x:Key="ResetSettingsWarning">Вы действительно хотите сбросить настройки?</s:String>
+    
+    <s:String x:Key="System">Системная</s:String>
+    <s:String x:Key="Light">Светлая</s:String>
+    <s:String x:Key="Dark">Темная</s:String>
+    
+    <s:String x:Key="PathToTheSims">Путь к The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Путь к сохранениям</s:String>
+    <s:String x:Key="ChoosePath">Выбрать путь</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Фотографии</s:String>
+    <s:String x:Key="PortraitsOfSims">Портреты симов</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Портреты семей</s:String>
+    <s:String x:Key="GeneratedImages">Сгенерированные изображения</s:String>
+    <s:String x:Key="LotThumbnails">Эскизы лотов</s:String>
+    <s:String x:Key="SelectOldList">Выбрать старый список</s:String>
+    <s:String x:Key="MergedOldList">Объединение прошло успешно!</s:String>
+    <s:String x:Key="NoItems">Нет элементов</s:String>
+    <s:String x:Key="Unselect">Отменить выбор</s:String>
+    <s:String x:Key="SaveSelectedImages">Сохранить выбранные изображения</s:String>
+    <s:String x:Key="ImagesSaved">Изображения сохранены!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Количество изображений в списке</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">Лицензия</s:String>
+    <s:String x:Key="Version">Версия</s:String>
+    <s:String x:Key="Author">Автор</s:String>
+    <s:String x:Key="Copyright">Авторские права</s:String>
+    <s:String x:Key="Description">Описание</s:String>
+    <s:String x:Key="Links">Ссылки</s:String>
+    <s:String x:Key="UsedLibraries">Используемые библиотеки</s:String>
+    <s:String x:Key="ContactAuthor">Связаться с автором</s:String>
+    <s:String x:Key="WorksOn">Работает на</s:String>
+    <s:String x:Key="WriteLetter">Написать письмо</s:String>
+    <s:String x:Key="SocialNetwork">Социальные сети</s:String>
+    <s:String x:Key="ModTheSims">Описание каждого варианта очистки кеша взято с сайта ModTheSims.</s:String>
+    <s:String x:Key="RegulDescription1">Инструмент для очистки сохраненных игр The Sims™ 3 и обеспечения их стабильной работы.</s:String>
+    <s:String x:Key="RegulDescription2">Эта программа не одобрена и не связана с Electronic Arts или ее лицензиарами. Торговые марки принадлежат их соответствующим владельцам. Все права защищены.</s:String>
+    <s:String x:Key="LicenseDescription">ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, ПОМИМО ПРОЧЕГО, ГАРАНТИИ КОММЕРЧЕСКОЙ ПРИГОДНОСТИ, ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И НЕНАРУШЕНИЯ ПРАВ. НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ АВТОРЫ ИЛИ ОБЛАДАТЕЛИ АВТОРСКИМ ПРАВОМ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, УЩЕРБ ИЛИ ИНУЮ ОТВЕТСТВЕННОСТЬ, БУДУТ СВЯЗАННЫЕ С ДОГОВОРОМ, ДЕЛОМ ИЛИ ИНЫМ ОБРАЗОМ, ВОЗНИКАЮЩИЕ ИЗ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИСПОЛЬЗОВАНИЯ, ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ, ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ СДЕЛКАМИ В ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ.</s:String>
+</ResourceDictionary>

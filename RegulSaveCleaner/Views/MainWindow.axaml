@@ -10,7 +10,7 @@
                 FontFamily="{CompiledBinding FontName, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FontNameConverters.NameToFontFamily}}"
                 Width="860"
                 Height="600"
-                MinWidth="590"
+                MinWidth="600"
                 MinHeight="450"
                 WindowStartupLocation="CenterScreen"
                 Title="Regul Save Cleaner"
@@ -21,8 +21,7 @@
                 TitleBarType="ClassicExtended"
                 Icon="avares://RegulSaveCleaner/icon.ico"
                 x:DataType="viewModels:MainWindowViewModel">
-    <NavigationView x:Name="NavigationView"
-                    Header="{x:Null}"
+    <NavigationView Header="{x:Null}"
                     IsOpen="False"
                     SelectionMode="AlwaysSelected"
                     DisplayTopIndent="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"

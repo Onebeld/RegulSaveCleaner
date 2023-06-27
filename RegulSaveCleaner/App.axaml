@@ -11,6 +11,8 @@
         <ResourceDictionary x:Key="LanguageDictionary">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fr.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

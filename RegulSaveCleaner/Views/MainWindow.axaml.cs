@@ -3,7 +3,6 @@ using Avalonia.Controls.Notifications;
 using Avalonia.Controls.Primitives;
 using PleasantUI.Controls;
 using PleasantUI.Core;
-using PleasantUI.Core.Enums;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.ViewModels;
 using RegulSaveCleaner.Views.Pages;

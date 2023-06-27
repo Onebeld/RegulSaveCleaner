@@ -40,12 +40,77 @@
                                    FontSize="12"
                                    TextAlignment="Right"
                                    Foreground="{StaticResource TextFillColorTertiaryBrush}" />
-                        <Button Theme="{StaticResource AppBarButtonTheme}"
+                        <Button x:Name="ContactAuthorButton"
+                                Theme="{StaticResource AppBarButtonTheme}"
                                 Content="{StaticResource ContactAuthor}"
                                 Foreground="{StaticResource SystemAccentLightColor1Brush}"
                                 Padding="0 0"
                                 FontSize="12"
-                                HorizontalAlignment="Right" />
+                                HorizontalAlignment="Right">
+                            <Button.Flyout>
+                            <Flyout Placement="Bottom" ShowMode="Transient">
+                                <UniformGrid Columns="3" Margin="15">
+                                    <DockPanel Margin="5">
+                                        <TextBlock Text="{StaticResource WriteLetter}"
+                                                   DockPanel.Dock="Bottom"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Margin="0 5 0 0"
+                                                   FontSize="12" />
+                                        <Button x:Name="MailButton"
+                                                Padding="40 14">
+                                            <Viewbox Width="16" Height="16">
+                                                <Path Data="{StaticResource MailRegular}" />
+                                            </Viewbox>
+                                        </Button>
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Text="Discord"
+                                                   DockPanel.Dock="Bottom"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Margin="0 5 0 0"
+                                                   FontSize="12" />
+                                        <Button x:Name="DiscordButton"
+                                                Padding="40 14">
+                                            <Viewbox Width="16" Height="16">
+                                                <Path Data="{StaticResource DiscordRegular}" />
+                                            </Viewbox>
+                                        </Button>
+                                    </DockPanel>
+                                    <DockPanel x:Name="SocialNetwork" Margin="5">
+                                        <TextBlock Text="{StaticResource SocialNetwork}"
+                                                   DockPanel.Dock="Bottom"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Margin="0 5 0 0"
+                                                   FontSize="12" />
+                                        <Button x:Name="SocialNetworkButton"
+                                                Padding="40 14">
+                                            <Viewbox Width="16" Height="16">
+                                                <Path Data="{StaticResource PeopleRegular}" />
+                                            </Viewbox>
+                                        </Button>
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Text="Telegram"
+                                                   DockPanel.Dock="Bottom"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Margin="0 5 0 0"
+                                                   FontSize="12" />
+                                        <Button x:Name="TelegramButton"
+                                                Padding="40 14"
+                                                Classes="EnabledIconAnimation">
+                                            <Viewbox Width="16" Height="16">
+                                                <Path Data="{StaticResource TelegramIcon}" />
+                                            </Viewbox>
+                                        </Button>
+                                    </DockPanel>
+                                </UniformGrid>
+                            </Flyout>
+                        </Button.Flyout>
+                        </Button>
                     </StackPanel>
                 </Panel>
             
@@ -70,12 +135,17 @@
                         </Panel>
                         <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />
                         <Panel Margin="5">
-                            <StackPanel >
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <Image Source="{StaticResource PleasantUIIcon}" Width="30" Height="30" />
+                                <Image Source="{StaticResource PleasantUI}" Width="150" VerticalAlignment="Center" />
+                            </StackPanel>
+                            
+                            <StackPanel>
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
                                            Foreground="{StaticResource TextFillColorTertiaryBrush}">
                                     <Run Text="{StaticResource Version}" /><Run Text=":" />
-                                    &#8203;<Run Text="3.0.2" />
+                                    &#8203;<Run Text="3.0.4" />
                                 </TextBlock>
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
@@ -153,6 +223,7 @@
                 <StackPanel>
                     <TextBlock Text="{StaticResource Description}" FontWeight="Bold" Margin="0 0 0 10" />
                     <TextBlock Text="{StaticResource RegulDescription1}" TextWrapping="Wrap" />
+                    <TextBlock Text="{StaticResource ModTheSims}" TextWrapping="Wrap" Margin="0 10 0 0" />
                     <TextBlock Text="{StaticResource RegulDescription2}" TextWrapping="Wrap" Margin="0 10 0 0" />
                     <TextBlock TextWrapping="Wrap" Margin="0 10 0 0">
                         <Run Text="{StaticResource WorksOn}" /><Run Text=":" />

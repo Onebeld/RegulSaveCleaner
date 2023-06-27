@@ -67,6 +67,12 @@
     <s:String x:Key="SaveCleared">The save has been successfully cleared!</s:String>
     <s:String x:Key="SavesCleared">Saves successfully cleared!</s:String>
     <s:String x:Key="ResultsBelow">You can see the result below.</s:String>
+    <s:String x:Key="CacheCleared">The cache has been successfully cleared!</s:String>
+    <s:String x:Key="BackupCreated">Backup has been successfully created!</s:String>
+    <s:String x:Key="Successful">Successful!</s:String>
+    <s:String x:Key="Information">Information</s:String>
+    <s:String x:Key="Yes">Yes</s:String>
+    <s:String x:Key="No">No</s:String>
     
     <s:String x:Key="SaveName">Save name</s:String>
     <s:String x:Key="TimePassed">Time passed</s:String>
@@ -100,7 +106,7 @@
     
     <s:String x:Key="RemoveLotThumbnailsDescription">Removes lot thumbnails that appear when you select save or a lot.</s:String>
     
-    <s:String x:Key="RemovePhotosDescription1">Use the Prohibited list to save only some of your photos.</s:String>
+    <s:String x:Key="RemovePhotosDescription1">Deletes photos taken by your sims.</s:String>
     <s:String x:Key="RemovePhotosDescription2">Use the Prohibited list to save only some of your photos.</s:String>
     
     <s:String x:Key="RemoveTexturesDescription1">Removes lot textures that are created after you place a new lot in a city. This does not apply to lots that were already in town (not counting some that are automatically placed if you have a certain expansion pack).</s:String>
@@ -109,6 +115,19 @@
     
     <s:String x:Key="RemoveOtherTypesDescription1">This option works like "Clear Memories" in Kuree's program. According to reviews, it does not clear memories, so the option has been renamed. It is recommended that you back it up, as it is unknown what it clears.</s:String>
     <s:String x:Key="RemoveOtherTypesDescription2">It is recommended that you back it up, as it is unknown what it clears.</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">CAS parts that appear in Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">New objects that would appear in Buy/Build mode</s:String>
+    <s:String x:Key="ScriptCacheDescription">Mods or Hacks</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">New Sims, default skins</s:String>
+    <s:String x:Key="SocialCacheDescription">Information about the social aspects (Introduced with Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cache files for your installed worlds. There are no WorldCache files for worlds that came with the game and were not installed through the Launcher like Sunset Valley, Twinbrooks or Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Cached thumbnail pics. Saved here for faster loading the next time you start your game. If you have any trouble with strange thumbnails in game, delete these. They will be recreated next time you start the game, albeit a slightly slower game when it is first loaded, after the contents of this folder had been deleted.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Errors produced by the game that were caught by NRaas' ErrorTrap mod. They are not used in the game. Delete or post at NRaas Industries, if requested. They contain information that were caused by his ErrorTrap mod and would assist him in troubleshooting the bugs (caused by EA code or his mods) that trigger the error. If you do not have this mod and you don't plan to ever contact EA for help in troubleshooting these errors, then you can simply delete them.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Introduced in patch 1.29. Supposed to contain images for Featured Store Items to be shown in the CAH/Buy/Build Catalog, but is causing crashing issues.</s:String>
+    <s:String x:Key="DCCacheDescription">Contains all installed Custom Content/Exchange/Store items that you installed through the Launcher. Shows up in Launcher's Installed Content tab.</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">It is strictly forbidden to delete this folder in macOS, as it may break your saves. Therefore, this option is disabled and therefore cannot be enabled.</s:String>
     
     <s:String x:Key="YouHaveTooManySaves">You have too many saves</s:String>
     <s:String x:Key="YouHaveTooManySavesDescription">It is recommended to move unnecessary saves to another folder. Use the built-in Regul Save Cleaner functionality.</s:String>
@@ -163,6 +182,11 @@
     <s:String x:Key="FolderForOldSaves">Folder for old saves</s:String>
     <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Show a warning about a large number of saves</s:String>
     <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Number of saves, at which the warning is displayed</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Setting the size of save's thumbnails</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Size of save's thumbnail</s:String>
+    <s:String x:Key="Preview">Preview</s:String>
+    <s:String x:Key="EnableHardwareAcceleration">Enable hardware acceleration</s:String>
+    <s:String x:Key="EnableHardwareAccelerationDescription">Allows you to enable transparency, makes animations smoother. Requires you to restart the program for the changes to take effect.</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
@@ -176,7 +200,6 @@
     
     <s:String x:Key="PathToTheSims">Path to The Sims 3</s:String>
     <s:String x:Key="PathToSaves">Path to the saves</s:String>
-    <s:String x:Key="ChoosePathToSave">Choose path to saves</s:String>
     <s:String x:Key="ChoosePath">Choose path</s:String>
     
     <!--Prohibited List-->
@@ -188,11 +211,8 @@
     <s:String x:Key="SelectOldList">Select the old list</s:String>
     <s:String x:Key="MergedOldList">The merger was a success!</s:String>
     <s:String x:Key="NoItems">No items</s:String>
-    <s:String x:Key="ViewImage">View image</s:String>
-    <s:String x:Key="SaveImage">Save image</s:String>
     <s:String x:Key="Unselect">Unselect</s:String>
     <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
-    <s:String x:Key="ImageSaved">Image saved!</s:String>
     <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
     <s:String x:Key="NumberOfImagesInList">Number of images in list</s:String>
     
@@ -206,7 +226,10 @@
     <s:String x:Key="UsedLibraries">Used libraries</s:String>
     <s:String x:Key="ContactAuthor">Contact the author</s:String>
     <s:String x:Key="WorksOn">Works on</s:String>
-    <s:String x:Key="RegulDescription1">A tool for cleaning up The Sims™ 3 savegames and keeping them stable.</s:String>
+    <s:String x:Key="WriteLetter">Write a letter</s:String>
+    <s:String x:Key="SocialNetwork">Social network</s:String>
+    <s:String x:Key="ModTheSims">The description of each option for clearing the cache was taken from the ModTheSims website.</s:String>
+    <s:String x:Key="RegulDescription1">A tool for cleaning up The Sims™ 3 save games and keeping them stable.</s:String>
     <s:String x:Key="RegulDescription2">This program is not endorsed by or affiliated with Electronic Arts or its licensors. The trademarks belong to their respective owners. All rights reserved.</s:String>
     <s:String x:Key="LicenseDescription">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</s:String>
 </ResourceDictionary>

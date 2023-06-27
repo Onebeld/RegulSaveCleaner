@@ -109,7 +109,7 @@ namespace RegulSaveCleaner.S3PI.Package
                 len -= b.Length;
 
                 s.Position -= offset;
-                s.Read(b, 0, b.Length);
+                _ = s.Read(b, 0, b.Length);
 
                 s.Position = dst;
                 s.Write(b, 0, b.Length);

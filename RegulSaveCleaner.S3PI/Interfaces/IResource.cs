@@ -25,7 +25,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
     /// <summary>
     /// Minimal resource interface
     /// </summary>
-    public interface IResource : IContentFields
+    public interface IResource
     {
         /// <summary>
         /// The resource content as a <see cref="System.IO.Stream"/>.

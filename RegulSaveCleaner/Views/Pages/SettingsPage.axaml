@@ -168,6 +168,84 @@
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>
             
+            <OptionsDisplayItem Header="{StaticResource SettingsSizeOfSaveThumbnails}"
+                                Icon="{StaticResource ImageRegular}"
+                                Expands="True">
+                <OptionsDisplayItem.Content>
+                    <StackPanel Margin="48 0 33 0">
+                        <DockPanel>
+                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                                <NumericUpDown Value="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}"
+                                               Maximum="200"
+                                               Minimum="75"
+                                               Increment="1"
+                                               FormatString="{}{0}"
+                                               Width="90"
+                                               HorizontalContentAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               ParsingNumberStyle="Integer"
+                                               Margin="0 0 5 0"/>
+                        
+                                <Slider Width="150"
+                                        Minimum="75" 
+                                        Maximum="200" 
+                                        TickFrequency="1"
+                                        Value="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}"/>
+                            </StackPanel>
+                        
+                            <TextBlock VerticalAlignment="Center" Text="{StaticResource SizeOfSaveThumbnail}" TextWrapping="Wrap" />
+                        </DockPanel>
+                        
+                        <Separator Margin="-60 10 -45 10" Background="{StaticResource CardStrokeColorDefaultBrush}" />
+                        
+                        <TextBlock Text="{StaticResource Preview}" FontWeight="Bold" />
+
+                        <Grid RowDefinitions="*,Auto" HorizontalAlignment="Left" Margin="0 10 0 0">
+                            <Border Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                    CornerRadius="5"
+                                    Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25}"
+                                    Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
+                                <Panel>
+                                    <Image Source="{StaticResource UnknownIcon}"
+                                           Margin="30"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" />
+
+                                    <Button Theme="{StaticResource AppBarButtonTheme}"
+                                            Height="20"
+                                            Width="20"
+                                            Margin="2"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right">
+
+                                        <Viewbox Width="14">
+                                            <Path Data="{StaticResource MoreRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                                </Panel>
+                            </Border>
+                            <StackPanel Grid.Row="1"
+                                        Spacing="5"
+                                        Margin="0 5 0 0"
+                                        Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25}">
+                                <TextBox TextAlignment="Center"
+                                         Padding="6 2 6 2"
+                                         IsReadOnly="True"
+                                         MinHeight="0" />
+                                <TextBox TextAlignment="Center"
+                                         Padding="6 2 6 2"
+                                         IsReadOnly="True"
+                                         MinHeight="0" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </OptionsDisplayItem.Content>
+            </OptionsDisplayItem>
+            
             <OptionsDisplayItem Header="{StaticResource EnableShadow}"
                                 Description="{StaticResource EnableShadowDescription}"
                                 Icon="{StaticResource SparkleRegular}">

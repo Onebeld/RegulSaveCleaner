@@ -48,8 +48,8 @@ internal class PackageIndex : List<IResourceIndexEntry>
     }
 
     public PackageIndex() { }
-    public PackageIndex(uint type) { _indextype = type; }
-    public PackageIndex(Stream s, int indexposition, int indexsize, int indexcount)
+
+    public PackageIndex(Stream s, int indexposition, int indexcount)
     {
         if (s == null) return;
         if (indexposition == 0) return;

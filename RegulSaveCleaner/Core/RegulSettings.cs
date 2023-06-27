@@ -6,6 +6,10 @@ using PleasantUI;
 using PleasantUI.Core.Constants;
 using RegulSaveCleaner.Structures;
 
+#if Linux
+using PleasantUI.Core;
+#endif
+
 namespace RegulSaveCleaner.Core;
 
 public class RegulSettings : ViewModelBase
@@ -17,6 +21,7 @@ public class RegulSettings : ViewModelBase
 
     private bool _showWarningAboutLargeNumberOfSaves = true;
     private int _numberOfSavesWhenWarningIsDisplayed = 10;
+    private double _sizeOfSaveThumbnails = 115;
 
     private bool _removePortraitsSims = true;
     private bool _removeLotThumbnails;
@@ -49,7 +54,7 @@ public class RegulSettings : ViewModelBase
     private bool _logClear = true;
     private bool _dcBackupPackagesClear;
 
-    public static RegulSettings Instance = new();
+    public static readonly RegulSettings Instance;
 
     static RegulSettings()
     {
@@ -63,7 +68,7 @@ public class RegulSettings : ViewModelBase
             try
             {
                 using FileStream fileStream = File.OpenRead(Path.Combine(PleasantDirectories.Settings, regulSettings));
-                Instance = JsonSerializer.Deserialize<RegulSettings>(fileStream) ?? throw new NullReferenceException();
+                Instance = JsonSerializer.Deserialize(fileStream, RegulSettingsGenerationContext.Default.RegulSettings) ?? throw new NullReferenceException();
             }
             catch
             {
@@ -92,24 +97,24 @@ public class RegulSettings : ViewModelBase
         
 #if OSX
         Instance.PathToTheSims3Document =
- Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", "The Sims 3");
+ Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", LocalizedNames.TheSims3);
         Instance.PathToSaves =
- Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", "The Sims 3", "Saves");
+ Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", LocalizedNames.TheSims3, "Saves");
         Instance.WorldCachesClear = false;
 #elif Linux
         Instance.PathToTheSims3Document = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "Electronic Arts", "The Sims 3");
+            "Electronic Arts", LocalizedNames.TheSims3);
         Instance.PathToSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts",
-            "The Sims 3", "Saves");
+            LocalizedNames.TheSims3, "Saves");
         Instance.WorldCachesClear = true;
         
         PleasantSettings.Instance.WindowSettings.EnableBlur = false;
         PleasantSettings.Instance.WindowSettings.EnableCustomTitleBar = false;
 #else
         Instance.PathToTheSims3Document = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "Electronic Arts", "The Sims 3");
+            "Electronic Arts", LocalizedNames.TheSims3);
         Instance.PathToSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts",
-            "The Sims 3", "Saves");
+            LocalizedNames.TheSims3, "Saves");
         Instance.WorldCachesClear = true;
 #endif
     }
@@ -117,9 +122,9 @@ public class RegulSettings : ViewModelBase
     public static void Save()
     {
         using FileStream fileStream = File.Create(Path.Combine(PleasantDirectories.Settings, "RegulSettings.json"));
-        JsonSerializer.Serialize(fileStream, Instance);
+        JsonSerializer.Serialize(fileStream, Instance, RegulSettingsGenerationContext.Default.RegulSettings);
     }
-    
+
     public AvaloniaList<GameSaveResource> GameSaveResources
     {
         get => _gameSaveResource;
@@ -148,6 +153,12 @@ public class RegulSettings : ViewModelBase
     {
         get => _numberOfSavesWhenWarningIsDisplayed;
         set => RaiseAndSet(ref _numberOfSavesWhenWarningIsDisplayed, value);
+    }
+
+    public double SizeOfSaveThumbnails
+    {
+        get => _sizeOfSaveThumbnails;
+        set => RaiseAndSet(ref _sizeOfSaveThumbnails, value);
     }
 
     public bool RemovePortraitsSims

@@ -18,7 +18,6 @@
  *  along with s3pi.  If not, see <http://www.gnu.org/licenses/>.          *
  ***************************************************************************/
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization;
 
@@ -28,7 +27,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
     /// A tuple associating a data type (or class) with a value object (of the given type)
     /// </summary>
     [Serializable]
-    public class TypedValue : IComparable<TypedValue>, IEqualityComparer<TypedValue>, IEquatable<TypedValue>, IConvertible, ICloneable, ISerializable
+    public class TypedValue : IConvertible, ICloneable, ISerializable
     {
         /// <summary>
         /// The data type
@@ -39,7 +38,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
         /// </summary>
         public readonly object Value;
 
-        string _format = "";
+        string _format;
 
         /// <summary>
         /// Create a new <see cref="TypedValue"/>
@@ -102,17 +101,11 @@ namespace RegulSaveCleaner.S3PI.Interfaces
                 string s = typeof(string).IsAssignableFrom(Type) ? (string)Value : new string((char[])Value);
                 // -- It is not necessarily correct that a zero byte indicates a unicode string; these should have been
                 // correctly read in already so no translation should be needed... so the ToANSIString is currently commented out
-                if (s.IndexOf((char)0) != -1) return /*s.Length % 2 == 0 ? ToANSIString(s) :/**/ ToDisplayString(s.ToCharArray());
-                return s.Normalize();
+                return s.IndexOf((char)0) != -1 /*s.Length % 2 == 0 ? ToANSIString(s) :/**/ ? ToDisplayString(s.ToCharArray()) : s.Normalize();
             }
 
             if (Type.HasElementType) // it's an array
-            {
-                if (typeof(AApiVersionedFields).IsAssignableFrom(Type.GetElementType()))
-                    return FromAApiVersionedFieldsArray(Type.GetElementType(), (Array)Value);
-                
-                return FromSimpleArray(Type.GetElementType(), (Array)Value);
-            }
+                return FromSimpleArray((Array)Value);
 
             return Value.ToString();
         }
@@ -125,7 +118,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
             return t.ToString().Normalize();
         }
 
-        static string FromSimpleArray(Type type, Array ary)
+        static string FromSimpleArray(Array ary)
         {
             StringBuilder sb = new();
             for (int i = 0; i < ary.Length; i++)
@@ -138,22 +131,7 @@ namespace RegulSaveCleaner.S3PI.Interfaces
             return sb.ToString().TrimStart().TrimEnd('\n');
         }
 
-        static string FromAApiVersionedFieldsArray(Type type, Array ary)
-        {
-            StringBuilder sb = new();
-            string fmt = "[{0:X}" + (type.IsAbstract ? " {1}" : "") + "]: {2}\n";
-            for (int i = 0; i < ary.Length; i++)
-            {
-                AApiVersionedFields value = (AApiVersionedFields)ary.GetValue(i);
-                if (value.ContentFields.Contains("Value"))
-                    sb.Append(string.Format(fmt, i, value.GetType(), value["Value"]));
-                else
-                    sb.Append(string.Format(fmt, i, value.GetType(), value));
-            }
-            return sb.ToString().Trim('\n');
-        }
-
-        static readonly string[] LowNames = {
+        private static readonly string[] LowNames = {
                                                 "NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL",
                                                 "BS", "HT", /*"LF",**/ "VT", "FF", "CR", "SO", "SI",
                                                 "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB",
@@ -176,95 +154,14 @@ namespace RegulSaveCleaner.S3PI.Interfaces
             return t.ToString().Normalize();
         }
         #endregion
-
-        #region IComparable<TypedValue> Members
-
-        /// <summary>
-        /// Compare this <see cref="TypedValue"/> to another for sort order purposes
-        /// </summary>
-        /// <param name="other">Target <see cref="TypedValue"/></param>
-        /// <returns>A 32-bit signed integer that indicates the relative order of the objects being compared.  The return value has these meanings:
-        /// <table>
-        /// <thead><tr><td><strong>Value</strong></td><td><strong>Meaning</strong></td></tr></thead>
-        /// <tbody>
-        /// <tr><td>Less than zero</td><td>This instance is less than <paramref name="other"/>.</td></tr>
-        /// <tr><td>Zero</td><td>This instance is equal to <paramref name="other"/>.</td></tr>
-        /// <tr><td>Greater than zero</td><td>This instance is greater than <paramref name="other"/>.</td></tr>
-        /// </tbody>
-        /// </table>
-        /// </returns>
-        /// <exception cref="NotImplementedException">Either this object's Type or the target's is not comparable</exception>
-        /// <exception cref="ArgumentException">The target is not comparable with this object</exception>
-        public int CompareTo(TypedValue other)
-        {
-            if (!Type.IsAssignableFrom(other.Type) || !(Type is IComparable) || !(other.Type is IComparable))
-                throw new NotImplementedException();
-            return ((IComparable)Value).CompareTo((IComparable)other.Value);
-        }
-
-        #endregion
-
-        #region IEqualityComparer<TypedValue> Members
-
-        /// <summary>
-        /// Determines whether the specified <see cref="TypedValue"/> instances are equal.
-        /// </summary>
-        /// <param name="x">The first <see cref="TypedValue"/> to compare.</param>
-        /// <param name="y">The second <see cref="TypedValue"/> to compare.</param>
-        /// <returns>true if the specified <see cref="TypedValue"/> instances are equal; otherwise, false.</returns>
-        public bool Equals(TypedValue x, TypedValue y) { return x.Equals(y); }
-
-        /// <summary>
-        /// Returns a hash code for the specified <see cref="TypedValue"/>.
-        /// </summary>
-        /// <param name="obj">The <see cref="TypedValue"/> for which a hash code is to be returned.</param>
-        /// <returns>A hash code for the specified object.</returns>
-        /// <exception cref="ArgumentNullException">The type of <paramref name="obj"/> is a reference type and
-        /// <paramref name="obj"/> is null.</exception>
-        public int GetHashCode(TypedValue obj) { return obj.GetHashCode(); }
-
-        #endregion
-
-        #region IEquatable<TypedValue> Members
-
-        /// <summary>
-        /// Indicates whether the current <see cref="TypedValue"/> instance is equal to another <see cref="TypedValue"/> instance.
-        /// </summary>
-        /// <param name="other">An <see cref="TypedValue"/> instance to compare with this instance.</param>
-        /// <returns>true if the current instance is equal to the <paramref name="other"/> parameter; otherwise, false.</returns>
-        public bool Equals(TypedValue other) { return Value.Equals(other.Value); }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to the current <see cref="TypedValue"/>.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="TypedValue"/>.</param>
-        /// <returns>true if the specified <see cref="System.Object"/> is equal to the current <see cref="TypedValue"/>; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is TypedValue value && Equals(value);
-        }
-
-        /// <summary>
-        /// Returns the hash code for this instance.
-        /// </summary>
-        /// <returns>A 32-bit signed integer that is the hash code for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
-        }
-
-        #endregion
-
+        
         #region IConvertible Members
 
         /// <summary>
         /// Returns the <see cref="TypeCode"/> for this instance.
         /// </summary>
         /// <returns>The enumerated constant that is the <see cref="TypeCode"/> of the <see cref="TypedValue"/> class.</returns>
-        public TypeCode GetTypeCode()
-        {
-            return TypeCode.String;
-        }
+        public TypeCode GetTypeCode() => TypeCode.String;
 
         /// <summary>
         /// Converts the value of this instance to an equivalent <see cref="Boolean"/> value
