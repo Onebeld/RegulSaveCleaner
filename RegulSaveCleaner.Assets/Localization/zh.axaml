@@ -1,0 +1,233 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">zh</s:String>
+    
+    <!--Chinese-->
+    <s:String x:Key="Collapse">最小化</s:String>
+    <s:String x:Key="Expand">最大化</s:String>
+    <s:String x:Key="Reestablish">还原</s:String>
+    <s:String x:Key="Close">关闭</s:String>
+    
+    <s:String x:Key="Menu">菜单</s:String>
+    <s:String x:Key="Cleaner">存档清理</s:String>
+    <s:String x:Key="QuestionsAndAnswers">常见问题</s:String>
+    <s:String x:Key="Settings">设置</s:String>
+    <s:String x:Key="About">关于</s:String>
+    
+    <s:String x:Key="On">开</s:String>
+    <s:String x:Key="Off">关</s:String>
+    
+    <s:String x:Key="Cut">剪切</s:String>
+    <s:String x:Key="Copy">拷贝</s:String>
+    <s:String x:Key="Paste">粘贴</s:String>
+    
+    <s:String x:Key="Ok">确认</s:String>
+    <s:String x:Key="Cancel">取消</s:String>
+    
+    <s:String x:Key="AddYourNewColor">添加你的新颜色!</s:String>
+    <s:String x:Key="AddColor">添加颜色</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">开始清理</s:String>
+    <s:String x:Key="SaveFiles">保存文件</s:String>
+    
+    <s:String x:Key="ProhibitedList">禁止列表</s:String>
+    <s:String x:Key="MoveOldList">移动旧列表</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">未能找到存档文件夹。</s:String>
+    <s:String x:Key="NoSaveFound">未发现存档</s:String>
+    
+    <s:String x:Key="SelectAll">全选</s:String>
+    <s:String x:Key="CancelAll">全不选</s:String>
+    <s:String x:Key="UpdateList">刷新列表</s:String>
+    <s:String x:Key="SortByDate">按日期排序</s:String>
+    <s:String x:Key="SortByAlphabetical">按字母顺序排列</s:String>
+    <s:String x:Key="Selected">精选</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">保存文件的数量</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">未能找到《模拟人生3》安装文件夹。</s:String>
+    <s:String x:Key="AnErrorHasOccurred">出现错误！</s:String>
+    <s:String x:Key="NotFindFolderDescription">要手动选择这个文件夹吗？</s:String>
+    
+    <s:String x:Key="CleaningOptions">清理选项</s:String>
+    <s:String x:Key="CleaningOptionsDescription">设置你想清除的文件类别</s:String>
+    <s:String x:Key="CreateBackup">创建备份</s:String>
+    <s:String x:Key="ClearCache">清除缓存</s:String>
+    <s:String x:Key="ClearCacheDescription">设置缓存清理范围</s:String>
+    <s:String x:Key="BackupPath">备份路径</s:String>
+    <s:String x:Key="CreateNow">现在创建</s:String>
+    <s:String x:Key="ClearNow">现在清除</s:String>
+    
+    <s:String x:Key="Recommended">推荐</s:String>
+    <s:String x:Key="Experimentally">实验性</s:String>
+    <s:String x:Key="ReadMore">阅读更多</s:String>
+    
+    <s:String x:Key="SaveCleared">已成功清理存档！</s:String>
+    <s:String x:Key="SavesCleared">已成功清理多个存档！</s:String>
+    <s:String x:Key="ResultsBelow">清理结果如下：</s:String>
+    <s:String x:Key="CacheCleared">已成功清除缓存！</s:String>
+    <s:String x:Key="BackupCreated">已成功创建备份！</s:String>
+    <s:String x:Key="Successful">成功</s:String>
+    <s:String x:Key="Information">信息</s:String>
+    <s:String x:Key="Yes">是</s:String>
+    <s:String x:Key="No">否</s:String>
+    
+    <s:String x:Key="SaveName">存档名称</s:String>
+    <s:String x:Key="TimePassed">耗时</s:String>
+    <s:String x:Key="OldSize">旧大小</s:String>
+    <s:String x:Key="NewSize">新大小</s:String>
+    <s:String x:Key="Percent">百分比</s:String>
+    <s:String x:Key="Sec">秒</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">删除家庭画像</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">删除模拟市民的画像</s:String>
+    <s:String x:Key="RemoveLotThumbnails">删除地块缩略图</s:String>
+    <s:String x:Key="RemovePhotos">删除照片</s:String>
+    <s:String x:Key="RemoveGeneratedImages">删除生成的图像</s:String>
+    <s:String x:Key="RemoveTextures">删除纹理</s:String>
+    <s:String x:Key="RemoveOtherTypes">删除其他类型</s:String>
+    
+    <s:String x:Key="All">全部</s:String>
+    <s:String x:Key="Files">文件</s:String>
+    <s:String x:Key="FromTheFolder">来自文件夹</s:String>
+    <s:String x:Key="Except">不包括</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">删除游戏自己创建的图像。</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">这包括：自拍、贺卡、照相馆的照片、毕业舞会的照片。</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">使用禁止列表来保存其中一些。</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">删除在你选择存档时出现的全家福、程序中出现的家庭画像，以及在你选择家庭时出现的肖像。保存出现在程序中的肖像。</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">删除模拟市民的肖像。肖像被用在关系面板、思想泡泡等位置。</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">副作用：</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">城市编辑器加载时间会非常长，因为游戏需要花时间创建肖像，且这些肖像将只有一个姿势。</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">删除当你选择存档或一个地块时出现的地块缩略图。</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">删除你的模拟市民拍摄的照片。</s:String>
+    <s:String x:Key="RemovePhotosDescription2">使用禁止列表，可以保留你的一些照片。</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">移除在你在城市中放置一个新地块后创建的地块纹理。这不适用于已经在城里的地段（不包括一些如果你有某个扩展包就会自动放置的地段）。</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">请记住，清除保存后，你放置的地段将看起来像地面（见前后截图）。</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">建议创建一个备份，清理后游戏可能会无法正常存档。</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">这个选项的作用类似于Kuree的程序中的“清除回忆”。根据评论，它并不清除记忆，所以该选项已被重新命名。</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">建议先备份存档，因为不知道它能清除什么。</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">出现在Create-A-Sim中的CAS部件</s:String>
+    <s:String x:Key="CompositorCacheDescription">在购买/建造模式下会出现的新对象</s:String>
+    <s:String x:Key="ScriptCacheDescription">修改或黑客</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">新模拟人，默认皮肤</s:String>
+    <s:String x:Key="SocialCacheDescription">社会方面的信息（从1.31补丁中引入）。</s:String>
+    <s:String x:Key="WorldCachesDescription">你所安装的世界的缓存文件。对于那些自带的、没有通过Launcher安装的世界，如日落谷、Twinbrooks或Bridgeport，没有WorldCache文件。</s:String>
+    <s:String x:Key="ThumbnailsDescription">缓存的缩略图图片。保存在这里是为了在你下次启动游戏时能更快地加载。如果你在游戏中遇到任何奇怪的缩略图问题，请删除这些。下次你启动游戏时，它们将被重新创建，尽管在这个文件夹的内容被删除后，游戏第一次加载时速度稍慢。</s:String>
+    <s:String x:Key="ScriptErrorsDescription">由游戏产生的错误，被NRaas的ErrorTrap mod捕获。它们不在游戏中使用。如果被要求，请删除或张贴在NRaas工业。它们包含了由他的ErrorTrap mod引起的信息，并将协助他排除引发错误的bug（由EA代码或他的mod引起）。如果你没有这个mod，也不打算与EA联系，寻求帮助排除这些错误，那么你可以直接删除它们。</s:String>
+    <s:String x:Key="FeaturedItemsDescription">在1.29补丁中引入。本应包含在CAH/Buy/Build目录中显示的特色商店物品的图片，但却造成了崩溃问题。</s:String>
+    <s:String x:Key="DCCacheDescription">包含所有你通过Launcher安装的自定义内容/交换/存储项目。显示在Launcher的Installed Content标签中。</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">在macOS中严禁删除这个文件夹，因为它可能会破坏你的保存。因此，这个选项被禁用，因此不能启用。</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">你有太多的储蓄</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">建议将不必要的保存转移到另一个文件夹。使用内置的Regul Save Cleaner功能。</s:String>
+    <s:String x:Key="ShowNoMore">不再显示</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">将保存的资料移到一个备用文件夹</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">您的保存已被移动!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">您的保存已被移动!</s:String>
+    <s:String x:Key="MovingIsNotPossible">移动是不可能的。检查对你试图移动保存的文件夹的访问。</s:String>
+    <s:String x:Key="RestoreOldSaves">恢复旧的保存</s:String>
+    <s:String x:Key="SelectSavesToTransfer">选择要转移的保存资料</s:String>
+    <s:String x:Key="MoveToSpareFolder">移动到一个备用文件夹</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">游戏运行缓慢</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">很不幸，《模拟人生3》的优化做的很烂。它最多消耗4GB的内存，并且只使用一个处理器核心。强烈建议安装 LazyDuchess 的 SmoothPatch，它在优化方面效果十分明显。</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">建议使用以下 NRaas 模组：</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">随着你的游戏，存档会变得臃肿，这可能导致各种错误。使用这个程序可以避免问题。如果你想获得终极体验，请使用Anime_Boom的非常好的教程。</s:String>
+    <s:String x:Key="GoToManual">前往指南（英文）</s:String>
+    <s:String x:Key="GoToInstallation">前去安装</s:String>
+    
+    <s:String x:Key="Error12">错误 12</s:String>
+    <s:String x:Key="Error12Description1">不用担心，这是因为游戏没有足够的内存来保存你的世界。试着清除物品栏中不必要的物品、删除世界中不必要的物体，然后再次保存。如果没有改善，不妨阅读 AncientGatekeeper 的指南。</s:String>
+
+    <s:String x:Key="Error16">错误 16</s:String>
+    <s:String x:Key="Error16Description1">这是一个相当罕见的错误，会在存档大小达到 4GB 时发生。有相当多的原因：家庭多、房屋多，或是存档里面垃圾多。首先要做的是使用这个程序。如果这没有什么帮助，你需要在游戏本身做一个清理。这个错误可能会让你的存档丢失，所以尽量不要让你的存档膨胀。</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">打开存档后出现错误 0</s:String>
+    <s:String x:Key="Error0Description1">很不幸，坏档了。这可能因用这个程序之前的一个版本清理存档导致，亦可能在硬盘或固态硬盘扇区损坏时发生。</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">一般</s:String>
+    
+    <s:String x:Key="Language">语言</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">清除不必要的禁止列表</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">如果你已经删除了一个存档，不想再使用这些列表，可以进行删除。</s:String>
+    <s:String x:Key="PathSettings">路径设置</s:String>
+    <s:String x:Key="PathSettingsDescription">如果游戏文件夹的路径发生了变化，则进行更改</s:String>
+    <s:String x:Key="ResetToDefaultSettings">重置为默认设置</s:String>
+    <s:String x:Key="Clear">清除</s:String>
+    <s:String x:Key="Reset">重置</s:String>
+    <s:String x:Key="Appearance">外观</s:String>
+    <s:String x:Key="Font">字体</s:String>
+    <s:String x:Key="EnableShadow">启用阴影</s:String>
+    <s:String x:Key="EnableShadowDescription">如果出现性能问题，可禁用此设置</s:String>
+    <s:String x:Key="EnableCustomTitleBar">启用自定义标题栏</s:String>
+    <s:String x:Key="EnableBlur">启用模糊效果</s:String>
+    <s:String x:Key="OpacityLevel">不透明度</s:String>
+    <s:String x:Key="AccentColor">重点颜色</s:String>
+    <s:String x:Key="UseSystemAccentColor">使用系统强调色</s:String>
+    <s:String x:Key="Change">更改</s:String>
+    <s:String x:Key="Theme">主题</s:String>
+    <s:String x:Key="FolderForOldSaves">存放旧保存的文件夹</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">显示关于大量保存的警告</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">显示警告的保存次数</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">设置保存的缩略图的大小</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">保存的缩略图的大小</s:String>
+    <s:String x:Key="Preview">预览</s:String>
+    
+    <s:String x:Key="UnusedProhibitedListsCleared">未使用的禁止列表已被成功清除！</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">目前没有未使用的禁止列表。</s:String>
+    <s:String x:Key="ColorCopied">已复制颜色！</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">设置已被重置</s:String>
+    <s:String x:Key="ResetSettingsWarning">确认重置设置吗？</s:String>
+    
+    <s:String x:Key="System">系统</s:String>
+    <s:String x:Key="Light">明亮</s:String>
+    <s:String x:Key="Dark">黑暗</s:String>
+    
+    <s:String x:Key="PathToTheSims">游戏路径</s:String>
+    <s:String x:Key="PathToSaves">选择游戏路径</s:String>
+    <s:String x:Key="ChoosePath">选择路径</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">照片</s:String>
+    <s:String x:Key="PortraitsOfSims">模拟市民画像</s:String>
+    <s:String x:Key="PortraitsOfFamilies">家庭画像</s:String>
+    <s:String x:Key="GeneratedImages">生成的图像</s:String>
+    <s:String x:Key="LotThumbnails">地块缩略图</s:String>
+    <s:String x:Key="SelectOldList">选择旧列表</s:String>
+    <s:String x:Key="MergedOldList">合并成功！</s:String>
+    <s:String x:Key="NoItems">没有项目</s:String>
+    <s:String x:Key="Unselect">取消选中</s:String>
+    <s:String x:Key="SaveSelectedImages">保存选定的图像</s:String>
+    <s:String x:Key="ImagesSaved">已保存多个图片！</s:String>
+    <s:String x:Key="NumberOfImagesInList">列表中的图像数量</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">许可证</s:String>
+    <s:String x:Key="Version">版本</s:String>
+    <s:String x:Key="Author">作者</s:String>
+    <s:String x:Key="Copyright">版权声明</s:String>
+    <s:String x:Key="Description">描述</s:String>
+    <s:String x:Key="Links">链接</s:String>
+    <s:String x:Key="UsedLibraries">使用的库</s:String>
+    <s:String x:Key="ContactAuthor">联系开发者</s:String>
+    <s:String x:Key="WorksOn">运行在</s:String>
+    <s:String x:Key="WriteLetter">写一封信</s:String>
+    <s:String x:Key="SocialNetwork">社会网络</s:String>
+    <s:String x:Key="ModTheSims">清理缓存的每个选项的描述取自ModTheSims网站。</s:String>
+    <s:String x:Key="RegulDescription1">一个用于清理《模拟人生3》存档并保持其稳定性的工具。</s:String>
+    <s:String x:Key="RegulDescription2">本节目没有得到Electronic Arts或其许可人的认可，也没有与之相关联。这些商标属于其各自的所有者。保留所有权利。</s:String>
+    <s:String x:Key="LicenseDescription">本软件“按原样”提供，不提供任何明示或暗示的保证，包括但不限于对适销性、特定用途的适用性和非侵权性的保证。在任何情况下，作者或版权持有人都不对任何索赔、损害或其他责任负责，无论是在合同、侵权行为或其他诉讼中，由本软件或本软件的使用或其他交易引起，或与之相关。</s:String>
+</ResourceDictionary>

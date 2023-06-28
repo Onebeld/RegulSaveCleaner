@@ -6,7 +6,6 @@
         xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RegulSaveCleaner.Views.Windows.OldProhibitedListsWindow"
-        Title="OldProhibitedListsWindow"
         MaxWidth="400"
         MaxHeight="550"
         x:DataType="windows:OldProhibitedListsViewModel">

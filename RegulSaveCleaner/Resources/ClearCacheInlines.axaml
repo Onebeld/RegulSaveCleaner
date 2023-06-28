@@ -1,0 +1,112 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--All-->
+    <InlineCollection x:Key="WorldCacheInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;WorldCaches
+    </InlineCollection>
+    <InlineCollection x:Key="IGACacheInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;IGACache
+    </InlineCollection>
+    <InlineCollection x:Key="ThumbnailsInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;Thumbnails
+    </InlineCollection>
+    <InlineCollection x:Key="FeaturedItemsInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;FeaturedItems
+    </InlineCollection>
+    <InlineCollection x:Key="DCBackupInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;Package
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;DCBackup
+        &#8203;(<Run Text="{StaticResource Except}" />
+        &#8203;ccmerged.package)
+    </InlineCollection>
+    <InlineCollection x:Key="AllXmlInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;XML ScriptError
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="LogInline">
+        <Run Text="{StaticResource All}" />
+        &#8203;LOG
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="DccInline">
+        dcc.ent
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;DCCache
+    </InlineCollection>
+    <InlineCollection x:Key="MissingDepsInline">
+        missingdeps.idx
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;DCCache
+    </InlineCollection>
+    <InlineCollection x:Key="DownloadedSimsInline">
+        Downloadedsims.index
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;SavedSims
+    </InlineCollection>
+    
+    <!--Chinese-->
+    <InlineCollection x:Key="WorldCacheChineseInline">
+        WorldCaches
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;<Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="IGACacheChineseInline">
+        IGACache
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;<Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="ThumbnailsChineseInline">
+        Thumbnails
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;<Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="FeaturedItemsChineseInline">
+        FeaturedItems
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;<Run Text="{StaticResource All}" />
+        &#8203;<Run Text="{StaticResource Files}" />
+    </InlineCollection>
+    <InlineCollection x:Key="DCBackupChineseInline">
+        DCBackup
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;<Run Text="{StaticResource All}" />
+        &#8203;Package
+        &#8203;<Run Text="{StaticResource Files}" />
+        &#8203;(<Run Text="{StaticResource Except}" />
+        &#8203;ccmerged.package)
+    </InlineCollection>
+    <InlineCollection x:Key="DccChineseInline">
+        DCCache
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;dcc.ent
+    </InlineCollection>
+    <InlineCollection x:Key="MissingDepsChineseInline">
+        DCCache
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;missingdeps.idx
+    </InlineCollection>
+    <InlineCollection x:Key="DownloadedSimsChineseInline">
+        SavedSims
+        &#8203;<Run Text="{StaticResource FromTheFolder}" />
+        &#8203;Downloadedsims.index
+    </InlineCollection>
+</ResourceDictionary>

@@ -93,8 +93,20 @@ public class RegulSettings : ViewModelBase
 
     private static void Setup()
     {
+#if Windows
+        if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "zh")
+            Instance.FontName = "Microsoft YaHei UI";
+        else
+            Instance.FontName = FontManager.Current.DefaultFontFamily.Name;
+#elif OSX
+        if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "zh")
+            Instance.FontName = "PingFang SC";
+        else
+            Instance.FontName = FontManager.Current.DefaultFontFamily.Name;
+#else
         Instance.FontName = FontManager.Current.DefaultFontFamily.Name;
-        
+#endif
+
 #if OSX
         Instance.PathToTheSims3Document =
  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Documents", "Electronic Arts", LocalizedNames.TheSims3);

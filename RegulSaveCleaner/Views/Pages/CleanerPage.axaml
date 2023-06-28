@@ -14,6 +14,14 @@
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
     
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="../../Resources/ClearCacheInlines.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid RowDefinitions="*,Auto">
         <SmoothScrollViewer Grid.Row="0">
             <StackPanel Spacing="5" Margin="25">
@@ -627,8 +635,7 @@
                                     </Viewbox>
                                 </Button>
                                 
-                                <CheckBox Content="CASPartCache.package"
-                                          IsChecked="{CompiledBinding CasPartCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                                <CheckBox Content="CASPartCache.package" IsChecked="{CompiledBinding CasPartCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
                             </StackPanel>
                             
                             <Separator />
@@ -642,8 +649,7 @@
                                     </Viewbox>
                                 </Button>
                                 
-                                <CheckBox Content="compositorCache.package"
-                                          IsChecked="{CompiledBinding CompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                                <CheckBox Content="compositorCache.package" IsChecked="{CompiledBinding CompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
                             </StackPanel>
                             
                             <Separator />
@@ -657,8 +663,7 @@
                                     </Viewbox>
                                 </Button>
                                 
-                                <CheckBox Content="scriptCache.package"
-                                          IsChecked="{CompiledBinding ScriptCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                                <CheckBox Content="scriptCache.package" IsChecked="{CompiledBinding ScriptCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
                             </StackPanel>
                             
                             <Separator />
@@ -672,8 +677,7 @@
                                     </Viewbox>
                                 </Button>
                                 
-                                <CheckBox Content="simCompositorCache.package"
-                                          IsChecked="{CompiledBinding SimCompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                                <CheckBox Content="simCompositorCache.package" IsChecked="{CompiledBinding SimCompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
                             </StackPanel>
                             
                             <Separator />
@@ -704,24 +708,14 @@
                                 
                                 <CheckBox IsChecked="{CompiledBinding WorldCachesClear, Source={x:Static core:RegulSettings.Instance}}"
                                           IsEnabled="{CompiledBinding !IsMacOs}">
-                                    <TextBlock>
-                                        <Run Text="{StaticResource All}" />
-                                        &#8203;<Run Text="{StaticResource Files}" />
-                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                        &#8203;WorldCaches
-                                    </TextBlock>
+                                    <TextBlock x:Name="WorldCachesTextBlock" />
                                 </CheckBox>
                             </StackPanel>
                             
                             <Separator />
                             
                             <CheckBox IsChecked="{CompiledBinding IgaCacheClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;IGACache
-                                </TextBlock>
+                                <TextBlock x:Name="IgaCacheTextBlock" />
                             </CheckBox>
                             
                             <Separator />
@@ -736,12 +730,7 @@
                                 </Button>
                                 
                                 <CheckBox IsChecked="{CompiledBinding ThumbnailsClear, Source={x:Static core:RegulSettings.Instance}}">
-                                    <TextBlock>
-                                        <Run Text="{StaticResource All}" />
-                                        &#8203;<Run Text="{StaticResource Files}" />
-                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                        &#8203;Thumbnails
-                                    </TextBlock>
+                                    <TextBlock x:Name="ThumbnailsTextBlock" />
                                 </CheckBox>
                             </StackPanel>
                             
@@ -757,27 +746,16 @@
                                 </Button>
                                 
                                 <CheckBox IsChecked="{CompiledBinding FeaturedItemsClear, Source={x:Static core:RegulSettings.Instance}}">
-                                    <TextBlock>
-                                        <Run Text="{StaticResource All}" />
-                                        &#8203;<Run Text="{StaticResource Files}" />
-                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                        &#8203;FeaturedItems
-                                    </TextBlock>
+                                    <TextBlock x:Name="FeaturedItemsTextBlock" />
                                 </CheckBox>
                             </StackPanel>
                             
                             <Separator />
+                            
                             <CheckBox IsChecked="{CompiledBinding DcBackupPackagesClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;Package
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;DCBackup
-                                    &#8203;(<Run Text="{StaticResource Except}" />
-                                    &#8203;ccmerged.package)
-                                </TextBlock>
+                                <TextBlock x:Name="DcBackupTextBlock" />
                             </CheckBox>
+                            
                             <Separator />
                             
                             <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
@@ -790,21 +768,13 @@
                                 </Button>
                                 
                                 <CheckBox IsChecked="{CompiledBinding AllXmlClear, Source={x:Static core:RegulSettings.Instance}}">
-                                    <TextBlock>
-                                        <Run Text="{StaticResource All}" />
-                                        &#8203;XML ScriptError
-                                        &#8203;<Run Text="{StaticResource Files}" />
-                                    </TextBlock>
+                                    <TextBlock Inlines="{StaticResource AllXmlInline}" />
                                 </CheckBox>
                             </StackPanel>
                             
                             <Separator />
                             <CheckBox IsChecked="{CompiledBinding LogClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
-                                <TextBlock>
-                                    <Run Text="{StaticResource All}" />
-                                    &#8203;LOG
-                                    &#8203;<Run Text="{StaticResource Files}" />
-                                </TextBlock>
+                                <TextBlock Inlines="{StaticResource LogInline}" />
                             </CheckBox>
                             <Separator />
                             
@@ -818,29 +788,17 @@
                                 </Button>
                                 
                                 <CheckBox IsChecked="{CompiledBinding DccClear, Source={x:Static core:RegulSettings.Instance}}">
-                                    <TextBlock>
-                                        dcc.ent
-                                        &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                        &#8203;DCCache
-                                    </TextBlock>
+                                    <TextBlock x:Name="DccTextBlock" />
                                 </CheckBox>
                             </StackPanel>
                             
                             <Separator />
                             <CheckBox IsChecked="{CompiledBinding MissingDepsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
-                                <TextBlock>
-                                    missingdeps.idx
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;DCCache
-                                </TextBlock>
+                                <TextBlock x:Name="MissingDepsTextBlock" />
                             </CheckBox>
                             <Separator />
                             <CheckBox IsChecked="{CompiledBinding DownloadedSimsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
-                                <TextBlock>
-                                    Downloadedsims.index
-                                    &#8203;<Run Text="{StaticResource FromTheFolder}" />
-                                    &#8203;SavedSims
-                                </TextBlock>
+                                <TextBlock x:Name="DownloadedSimsTextBlock" />
                             </CheckBox>
                         </StackPanel>
                     </OptionsDisplayItem.Content>

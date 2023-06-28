@@ -46,8 +46,5 @@ public class FastBinaryReader : IDisposable
         return arr;
     }
 
-    public void Dispose()
-    {
-        BaseStream?.Dispose();
-    }
+    public void Dispose() => BaseStream?.Dispose();
 }

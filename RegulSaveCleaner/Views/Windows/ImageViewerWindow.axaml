@@ -6,7 +6,6 @@
         x:Class="RegulSaveCleaner.Views.Windows.ImageViewerWindow"
         VerticalAlignment="Center"
         HorizontalAlignment="Center"
-        Title="ImageViewerWindow"
         Margin="60">
     <Grid Margin="15">
         <Border CornerRadius="5"

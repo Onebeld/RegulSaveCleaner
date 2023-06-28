@@ -112,7 +112,8 @@ public class App : Application
     {
         new("English (English)", "en"),
         new("Русский (Russian)", "ru"),
-        new("Français (French)", "fr")
+        new("Français (French)", "fr"),
+        new("中文 (Chinese)", "zh"),
     };
 
     private void LoadAllLanguages()
