@@ -6,7 +6,6 @@ using Avalonia.Controls.Notifications;
 using Avalonia.Media;
 using PleasantUI;
 using PleasantUI.Windows;
-using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
@@ -598,13 +597,13 @@ public class MainWindowViewModel : ViewModelBase
         }, "");
     }
 
-    private void CompressResource(IResourceIndexEntry entry)
+    private void CompressResource(ResourceIndexEntry entry)
     {
         if (entry.Compressed == 0 && entry.Filesize != entry.Memsize)
             entry.Compressed = ushort.MaxValue;
     }
 
-    private bool DeleteResourceByType(IResourceIndexEntry entry, GameDataType gameDataType, bool enableDelete)
+    private bool DeleteResourceByType(ResourceIndexEntry entry, GameDataType gameDataType, bool enableDelete)
     {
         if (!enableDelete) return false;
         
@@ -618,7 +617,7 @@ public class MainWindowViewModel : ViewModelBase
         return isDeleted;
     }
 
-    private bool DeleteOtherResources(IResourceIndexEntry entry)
+    private bool DeleteOtherResources(ResourceIndexEntry entry)
     {
         if (RegulSettings.Instance.RemoveOtherTypes && entry.Memsize == 0x2AB38)
         {
@@ -629,7 +628,7 @@ public class MainWindowViewModel : ViewModelBase
         return false;
     }
 
-    private bool CheckResourceInProhibitedList(IResourceIndexEntry entry, GameSaveResource? resource) => 
+    private bool CheckResourceInProhibitedList(ResourceIndexEntry entry, GameSaveResource? resource) => 
         resource is not null && resource.ProhibitedResources.Any(prohibitedResource => prohibitedResource.Type == entry.ResourceType && prohibitedResource.Instance == entry.Instance && prohibitedResource.Group == entry.ResourceGroup);
 
     private void Clean(LoadingWindow loadingWindow, List<CleaningResult> cleaningResults)
@@ -657,7 +656,7 @@ public class MainWindowViewModel : ViewModelBase
             {
                 if (path == Path.Combine(gameSave.Directory, "TravelDB.package")) continue;
                 
-                IPackage package = Package.OpenPackage(path, true);
+                Package package = Package.OpenPackage(path, true);
                 
                 UpdateLoadingWindow(loadingWindow, 0, false, package.GetResourceList.Count, $"{gameSave.Name}\n{App.GetString("ProcessingFile")}: {Path.GetFileName(path)}");
 
@@ -678,7 +677,7 @@ public class MainWindowViewModel : ViewModelBase
             string travelDB = Path.Combine(gameSave.Directory, "TravelDB.package");
             if (File.Exists(travelDB) && RegulSettings.Instance.RemoveGeneratedImages || RegulSettings.Instance.RemovePhotos)
             {
-                IPackage travelDBPackage = Package.OpenPackage(travelDB, true);
+                Package travelDBPackage = Package.OpenPackage(travelDB, true);
                 
                 UpdateLoadingWindow(loadingWindow, 0, false, travelDBPackage.GetResourceList.Count, $"{gameSave.Name}\n{App.GetString("ProcessingFile")}: {Path.GetFileName(travelDB)}");
 
@@ -708,7 +707,7 @@ public class MainWindowViewModel : ViewModelBase
             // Processing saves
             foreach (string path in Directory.EnumerateFiles(gameSave.Directory, "*.nhd", SearchOption.AllDirectories))
             {
-                IPackage nhd = Package.OpenPackage(path, true);
+                Package nhd = Package.OpenPackage(path, true);
                 
                 UpdateLoadingWindow(loadingWindow, 0, false, nhd.GetResourceList.Count, $"{gameSave.Name}\n{App.GetString("ProcessingFile")}: {Path.GetFileName(path)}");
 

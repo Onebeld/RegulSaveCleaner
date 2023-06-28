@@ -46,5 +46,13 @@ public class FastBinaryReader : IDisposable
         return arr;
     }
 
+    public byte ReadByte()
+    {
+        byte[] arr = new byte[1];
+        BaseStream.Read(arr, 0, 1);
+
+        return arr[0];
+    }
+
     public void Dispose() => BaseStream?.Dispose();
 }

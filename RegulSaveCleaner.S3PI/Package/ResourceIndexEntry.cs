@@ -19,41 +19,40 @@
  ***************************************************************************/
 using System;
 using System.IO;
-using RegulSaveCleaner.S3PI.Interfaces;
 
 namespace RegulSaveCleaner.S3PI.Package;
 
 /// <summary>
 /// Implementation of an index entry
 /// </summary>
-public class ResourceIndexEntry : AResourceIndexEntry
+public class ResourceIndexEntry
 {
     #region AResourceIndexEntry
     /// <summary>
     /// The "type" of the resource
     /// </summary>
-    public override uint ResourceType
+    public uint ResourceType
     {
         get => BitConverter.ToUInt32(_indexEntry, 4);
     }
     /// <summary>
     /// The "group" the resource is part of
     /// </summary>
-    public override uint ResourceGroup
+    public uint ResourceGroup
     {
         get => BitConverter.ToUInt32(_indexEntry, 8);
     }
     /// <summary>
     /// The "instance" number of the resource
     /// </summary>
-    public override ulong Instance
+    public ulong Instance
     {
         get => ((ulong)BitConverter.ToUInt32(_indexEntry, 12) << 32) | BitConverter.ToUInt32(_indexEntry, 16);
     }
     /// <summary>
     /// If the resource was read from a package, the location in the package the resource was read from
     /// </summary>
-    public override uint Chunkoffset
+    public uint Chunkoffset
     {
         get => BitConverter.ToUInt32(_indexEntry, 20);
         set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 20, src.Length);
@@ -63,21 +62,21 @@ public class ResourceIndexEntry : AResourceIndexEntry
     /// <summary>
     /// The number of bytes the resource uses within the package
     /// </summary>
-    public override uint Filesize
+    public uint Filesize
     {
         get => BitConverter.ToUInt32(_indexEntry, 24) & 0x7fffffff;
     }
     /// <summary>
     /// The number of bytes the resource uses in memory
     /// </summary>
-    public override uint Memsize
+    public uint Memsize
     {
         get => BitConverter.ToUInt32(_indexEntry, 28);
     }
     /// <summary>
     /// 0xFFFF if Filesize != Memsize, else 0x0000
     /// </summary>
-    public override ushort Compressed
+    public ushort Compressed
     {
         get => BitConverter.ToUInt16(_indexEntry, 32);
         set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 32, src.Length); IsDirty = true; }
@@ -86,12 +85,12 @@ public class ResourceIndexEntry : AResourceIndexEntry
     /// <summary>
     /// A MemoryStream covering the index entry bytes
     /// </summary>
-    public override Stream Stream => new MemoryStream(_indexEntry);
+    public Stream Stream => new MemoryStream(_indexEntry);
 
     /// <summary>
     /// True if the index entry has been deleted from the package index
     /// </summary>
-    public override bool IsDeleted { get => _isDeleted;
+    public bool IsDeleted { get => _isDeleted;
         set { if (_isDeleted != value) { _isDeleted = value; IsDirty = true; } } }
 
     /// <summary>

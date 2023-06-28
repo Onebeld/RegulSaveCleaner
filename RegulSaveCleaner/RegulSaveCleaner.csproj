@@ -33,7 +33,7 @@
         <DefineConstants Condition="'$(IsLinux)'=='true'">Linux</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration.toUpper())' != 'DEBUG'">
         <TrimMode>link</TrimMode>
         <TrimmerDefaultAction>link</TrimmerDefaultAction>
         <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>

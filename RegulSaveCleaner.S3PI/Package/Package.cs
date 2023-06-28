@@ -21,21 +21,20 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using RegulSaveCleaner.S3PI.Interfaces;
 
 namespace RegulSaveCleaner.S3PI.Package;
 
 /// <summary>
 /// Implementation of a package
 /// </summary>
-public sealed class Package : APackage
+public sealed class Package
 {
     #region APackage
     #region Whole package
     /// <summary>
     /// Tell the package to save itself to wherever it believes it came from
     /// </summary>
-    public override void SavePackage()
+    public void SavePackage()
     {
         if (!_packageStream.CanWrite)
             throw new InvalidOperationException("Package is read-only");
@@ -81,20 +80,18 @@ public sealed class Package : APackage
         List<uint> lIh = new();
         
         PackageIndex newIndex = new();
-        for (int index = 0; index < Index.Count; index++)
+        foreach (ResourceIndexEntry ie in Index)
         {
-            IResourceIndexEntry ie = Index[index];
-            
             if (!lT.Contains(ie.ResourceType)) lT.Add(ie.ResourceType);
             if (!lG.Contains(ie.ResourceGroup)) lG.Add(ie.ResourceGroup);
             if (!lIh.Contains((uint)(ie.Instance >> 32))) lIh.Add((uint)(ie.Instance >> 32));
             
             if (ie.IsDeleted) continue;
 
-            ResourceIndexEntry newIe = (ie as ResourceIndexEntry)?.Clone();
+            ResourceIndexEntry newIe = ie.Clone();
             newIndex.Add(newIe);
 
-            byte[] value = PackedChunk(ie as ResourceIndexEntry);
+            byte[] value = PackedChunk(ie);
 
             if (newIe != null)
                 newIe.Chunkoffset = (uint)s.Position;
@@ -149,7 +146,7 @@ public sealed class Package : APackage
     /// </exception>
     /// <exception cref="System.Security.SecurityException">The caller does not have the required permission.</exception>
     /// <exception cref="InvalidDataException">Thrown if the package header is malformed.</exception>
-    public static IPackage OpenPackage(string packagePath) { return OpenPackage(packagePath, false); }
+    public static Package OpenPackage(string packagePath) { return OpenPackage(packagePath, false); }
     /// <summary>
     /// Open an existing package by filename, optionally readwrite
     /// </summary>
@@ -177,15 +174,15 @@ public sealed class Package : APackage
     /// such as when access is ReadWrite and the file or directory is set for read-only access.
     /// </exception>
     /// <exception cref="InvalidDataException">Thrown if the package header is malformed.</exception>
-    public static IPackage OpenPackage(string packagePath, bool readwrite) => new Package(new FileStream(packagePath, FileMode.Open, readwrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.ReadWrite));
+    public static Package OpenPackage(string packagePath, bool readwrite) => new(new FileStream(packagePath, FileMode.Open, readwrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.ReadWrite));
 
     /// <summary>
     /// Releases any internal references associated with the given package
     /// </summary>
     /// <param name="pkg">IPackage reference to close</param>
-    public static void ClosePackage(IPackage pkg)
+    public static void ClosePackage(Package pkg)
     {
-        if (pkg is Package p)
+        if (pkg is { } p)
         {
             if (p._packageStream != null) { try { p._packageStream.Close(); }
                 catch
@@ -219,7 +216,7 @@ public sealed class Package : APackage
     /// <summary>
     /// Package index: the index
     /// </summary>
-    public override List<IResourceIndexEntry> GetResourceList => Index;
+    public List<ResourceIndexEntry> GetResourceList => Index;
 
     /// <summary>
     /// Searches the entire <see cref="IPackage"/>
@@ -229,7 +226,7 @@ public sealed class Package : APackage
     /// <param name="match"><c>Predicate&lt;IResourceIndexEntry&gt;</c> defining matching conditions.</param>
     /// <returns>The first matching <see cref="IResourceIndexEntry"/>, if any; otherwise null.</returns>
     /// <remarks>Note that entries marked as deleted will not be returned.</remarks>
-    public IResourceIndexEntry Find(Predicate<IResourceIndexEntry> match) { return Index.Find(x => !x.IsDeleted && match(x)); }
+    public ResourceIndexEntry Find(Predicate<ResourceIndexEntry> match) { return Index.Find(x => !x.IsDeleted && match(x)); }
 
     #endregion
     
@@ -306,25 +303,23 @@ public sealed class Package : APackage
     /// <param name="rc">IResourceIndexEntry of resource</param>
     /// <returns>The resource data (uncompressed, if necessary)</returns>
     /// <remarks>Used by WrapperDealer to get the data for a resource.</remarks>
-    public override Stream GetResource(IResourceIndexEntry rc)
+    public Stream GetResource(ResourceIndexEntry rc)
     {
-        if (rc is ResourceIndexEntry rie)
-        {
-            if (rie.ResourceStream != null) return rie.ResourceStream;
+        if (rc == null)
+            return null;
 
-            if (rc.Chunkoffset == 0xffffffff) return null;
-            _packageStream.Position = rc.Chunkoffset;
+        if (rc.ResourceStream != null) return rc.ResourceStream;
 
-            byte[] data;
-            if (rc.Filesize == 1 && rc.Memsize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
-            data = rc.Filesize == rc.Memsize ? new BinaryReader(_packageStream).ReadBytes((int)rc.Filesize) : Compression.UncompressStream(_packageStream, (int)rc.Filesize, (int)rc.Memsize);
+        if (rc.Chunkoffset == 0xffffffff) return null;
+        _packageStream.Position = rc.Chunkoffset;
 
-            MemoryStream ms = new();
-            ms.Write(data, 0, data.Length);
-            ms.Position = 0;
-            return ms;
-        }
+        byte[] data;
+        if (rc.Filesize == 1 && rc.Memsize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
+        data = rc.Filesize == rc.Memsize ? new BinaryReader(_packageStream).ReadBytes((int)rc.Filesize) : Compression.UncompressStream(_packageStream, (int)rc.Filesize, (int)rc.Memsize);
 
-        return null;
+        MemoryStream ms = new();
+        ms.Write(data, 0, data.Length);
+        ms.Position = 0;
+        return ms;
     }
 }

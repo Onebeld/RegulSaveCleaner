@@ -18,7 +18,7 @@
  *  along with s3pi.  If not, see <http://www.gnu.org/licenses/>.          *
  ***************************************************************************/
 
-using RegulSaveCleaner.S3PI.Interfaces;
+using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.S3PI.Resources;
 
 namespace RegulSaveCleaner.S3PI;
@@ -35,5 +35,5 @@ public static class WrapperDealer
     /// <param name="pkg">Package containing <paramref name="rie"/></param>
     /// <param name="rie">Identifies resource to be returned</param>
     /// <returns>A resource from the package</returns>
-    public static IResource GetResource(IPackage pkg, IResourceIndexEntry rie) => new DefaultResource((pkg as APackage)?.GetResource(rie));
+    public static DefaultResource GetResource(Package.Package pkg, ResourceIndexEntry rie) => new(pkg.GetResource(rie));
 }

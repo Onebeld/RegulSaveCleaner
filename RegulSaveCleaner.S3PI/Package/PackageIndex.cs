@@ -19,14 +19,13 @@
  ***************************************************************************/
 using System.Collections.Generic;
 using System.IO;
-using RegulSaveCleaner.S3PI.Interfaces;
 
 namespace RegulSaveCleaner.S3PI.Package;
 
 /// <summary>
 /// Internal -- used by Package to manage the package index
 /// </summary>
-internal class PackageIndex : List<IResourceIndexEntry>
+internal class PackageIndex : List<ResourceIndexEntry>
 {
     const int NumFields = 9;
 
@@ -87,7 +86,7 @@ internal class PackageIndex : List<IResourceIndexEntry>
 
         for (int index = 0; index < Count; index++)
         {
-            IResourceIndexEntry ie = this[index];
+            ResourceIndexEntry ie = this[index];
                 
             r = new BinaryReader(ie.Stream);
             r.BaseStream.Position = 4;

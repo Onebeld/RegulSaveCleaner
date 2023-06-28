@@ -17,49 +17,34 @@
  *  You should have received a copy of the GNU General Public License      *
  *  along with s3pi.  If not, see <http://www.gnu.org/licenses/>.          *
  ***************************************************************************/
-using System;
-using System.Collections.Generic;
+
 using System.IO;
-using RegulSaveCleaner.S3PI.Interfaces;
+namespace RegulSaveCleaner.S3PI.Resources;
 
-namespace RegulSaveCleaner.S3PI.Resources
+/// <summary>
+/// A resource wrapper that "does nothing", providing the minimal support required for any resource in a Package.
+/// </summary>
+public sealed class DefaultResource
 {
+    #region Attributes
     /// <summary>
-    /// A resource wrapper that "does nothing", providing the minimal support required for any resource in a Package.
+    /// Resource data <see cref="System.IO.Stream"/>
     /// </summary>
-    public sealed class DefaultResource : AResource
+    private readonly Stream _stream;
+
+    #endregion
+
+    /// <summary>
+    /// Create a new instance of the resource.
+    /// </summary>
+    /// <param name="s">Data _stream to use, or null to create from scratch</param>
+    public DefaultResource(Stream s)
     {
-        /// <summary>
-        /// Create a new instance of the resource.
-        /// </summary>
-        /// <param name="s">Data stream to use, or null to create from scratch</param>
-        public DefaultResource(Stream s) : base(s) { if (stream == null) { stream = new MemoryStream(); dirty = true; } }
-
-        /// <summary>
-        /// <see cref="DefaultResource"/> does not know how to parse anything, so this method is unimplemented.
-        /// </summary>
-        /// <returns>Throws <see cref="NotImplementedException"/>.</returns>
-        /// <exception cref="NotImplementedException">Thrown if called.</exception>
-        protected override Stream UnParse() { throw new NotImplementedException(); }
-
-        /// <summary>
-        /// The resource content as a Stream, with the stream position set to the begining.
-        /// </summary>
-        public override Stream Stream { get { stream.Position = 0; return stream; } }
+        _stream = s ?? new MemoryStream();
     }
 
     /// <summary>
-    /// ResourceHandler for DefaultResource wrapper
+    /// The resource content as a Stream, with the _stream position set to the begining.
     /// </summary>
-    public class DefaultResourceHandler : AResourceHandler
-    {
-        /// <summary>
-        /// Populate the <see cref="AResourceHandler"/> Dictionary.
-        /// <para>&quot;*&quot; is used to inform WrapperDealer this will happily wrap any resource.</para>
-        /// </summary>
-        public DefaultResourceHandler()
-        {
-            Add(typeof(DefaultResource), new List<string>(new[] { "*" }));
-        }
-    }
+    public Stream Stream { get { _stream.Position = 0; return _stream; } }
 }

@@ -8,8 +8,8 @@ using PleasantUI.Extensions;
 using PleasantUI.Reactive;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Core.Extensions;
-using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
+using RegulSaveCleaner.S3PI.Resources;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.Windows;
 using SixLabors.ImageSharp.Formats;
@@ -178,7 +178,7 @@ public class ProhibitedListViewModel : ViewModelBase
             
             foreach (string file in Directory.EnumerateFiles(_gameSave.Directory, "*.nhd"))
             {
-                IPackage package = Package.OpenPackage(file);
+                Package package = Package.OpenPackage(file);
 
                 Parallel.ForEach(package.GetResourceList, resource =>
                 {
@@ -194,8 +194,11 @@ public class ProhibitedListViewModel : ViewModelBase
                         case 0x0580A2CE:
                         case 0x0580A2CF:
                         case 0x6B6D837F:
+                            DefaultResource resource2;
                             lock (Obj)
-                                bitmap = new Bitmap(S3PI.WrapperDealer.GetResource(package, resource).Stream);
+                                resource2 = S3PI.WrapperDealer.GetResource(package, resource);
+
+                            bitmap = new Bitmap(resource2.Stream);
 
                             break;
 
@@ -203,13 +206,12 @@ public class ProhibitedListViewModel : ViewModelBase
                         case 0x00B2D882
                             when resource.ResourceGroup is 0x0E9928A8 or 0x24B9FCA or 0x2722299 or 0x2BD69A0:
                         case 0x00B2D882 when resource.ResourceGroup == 0x269D005:
-                            IResource resource1;
+                            DefaultResource resource1;
                             lock (Obj)
                                 resource1 = S3PI.WrapperDealer.GetResource(package, resource);
 
                             IImage image =
-                                Dds.Create(resource1.Stream,
-                                new PfimConfig());
+                                Dds.Create(resource1.Stream, new PfimConfig());
 
                             byte[] data = GetData<Bgra32>(new PngEncoder
                             {

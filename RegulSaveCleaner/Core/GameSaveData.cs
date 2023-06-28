@@ -2,7 +2,6 @@
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using RegulSaveCleaner.S3PI;
-using RegulSaveCleaner.S3PI.Interfaces;
 using RegulSaveCleaner.S3PI.Package;
 
 namespace RegulSaveCleaner.Core;
@@ -22,8 +21,8 @@ public class GameSaveData
         
         LastSaveTime = new FileInfo(metaData).LastWriteTime;
         
-        Package package = (Package)Package.OpenPackage(metaData);
-        IResourceIndexEntry rie = package.Find(r => r.ResourceType == 0x628A788F);
+        Package package = Package.OpenPackage(metaData);
+        ResourceIndexEntry rie = package.Find(r => r.ResourceType == 0x628A788F);
         Extract(WrapperDealer.GetResource(package, rie).Stream, strPath);
         
         Package.ClosePackage(package);
@@ -61,10 +60,10 @@ public class GameSaveData
         // Get image instance
         ImgInstance = fastBinaryReader.ReadUInt64();
 
-        IPackage pkg = Package.OpenPackage(nhdPath);
-        IResourceIndexEntry? rie = null;
+        Package pkg = Package.OpenPackage(nhdPath);
+        ResourceIndexEntry? rie = null;
         if (ImgInstance != 0)
-            foreach (IResourceIndexEntry resource in pkg.GetResourceList)
+            foreach (ResourceIndexEntry resource in pkg.GetResourceList)
             {
                 if (resource.Instance == ImgInstance && resource.ResourceType == 1802339198U)
                 {
