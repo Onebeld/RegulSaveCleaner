@@ -1,0 +1,516 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RegulSaveCleaner.Controls.CleanerSettings"
+             x:DataType="viewModels:MainWindowViewModel">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="../../Resources/ClearCacheInlines.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <StackPanel Spacing="5">
+        <OptionsDisplayItem Header="{StaticResource CleaningOptions}"
+                                    Description="{StaticResource CleaningOptionsDescription}"
+                                    Icon="{StaticResource BroomRegular}"
+                                    Expands="True">
+                    <OptionsDisplayItem.Content>
+                        <StackPanel Margin="-12">
+                            <StackPanel.Styles>
+                                <Style Selector="Separator">
+                                    <Setter Property="Background" Value="{StaticResource CardStrokeColorDefaultBrush}" />
+                                    <Setter Property="Margin" Value="-5 0" />
+                                </Style>
+                                <Style Selector="StackPanel.ClearTypeStackPanel">
+                                    <Setter Property="Margin" Value="60 7" />
+                                </Style>
+                                <Style Selector="CheckBox">
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                </Style>
+                            </StackPanel.Styles>
+                            
+                            <Panel Margin="60 7 45 7">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Button ToolTip.Tip="{StaticResource SelectAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding SelectAllClearOptions}"
+                                            CornerRadius="4 0 0 4">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource SelectallOnRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                                    <Button ToolTip.Tip="{StaticResource CancelAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding CancelAllClearOptions}"
+                                            CornerRadius="0 4 4 0">
+                                        <Viewbox Width="16" Height="16">
+                                            <Path Data="{StaticResource SelectallOffRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                                </StackPanel>
+                            </Panel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveFamilyPortraitsDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding RemoveFamilyPortraits, Source={x:Static core:RegulSettings.Instance}}">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="15">
+                                            <TextBlock>
+                                                <Run Text="{StaticResource RemoveFamilyPortraits}" />
+                                                &#8203;
+                                                &#8203;
+                                                &#8203;
+                                                <Run Text="{StaticResource Recommended}" Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemovePortraitsSimsDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox IsChecked="{CompiledBinding RemovePortraitsSims, Source={x:Static core:RegulSettings.Instance}}">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="15">
+                                            <TextBlock>
+                                                <Run Text="{StaticResource RemovePortraitsOfSims}" />
+                                                &#8203;
+                                                &#8203;
+                                                &#8203;
+                                                <Run Text="{StaticResource Recommended}"
+                                                     Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
+
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveLotThumbnailsDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox Content="{StaticResource RemoveLotThumbnails}"
+                                          IsChecked="{CompiledBinding RemoveLotThumbnails, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemovePhotosDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox Content="{StaticResource RemovePhotos}"
+                                          IsChecked="{CompiledBinding RemovePhotos, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveGeneratedImagesDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox Content="{StaticResource RemoveGeneratedImages}"
+                                          IsChecked="{CompiledBinding RemoveGeneratedImages, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveTexturesDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox IsChecked="{CompiledBinding RemoveTextures, Source={x:Static core:RegulSettings.Instance}}">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="15">
+                                            <TextBlock>
+                                                <Run Text="{StaticResource RemoveTextures}" />
+                                                &#8203;
+                                                &#8203;
+                                                &#8203;
+                                                <Run Text="{StaticResource Experimentally}" Foreground="{StaticResource SystemFillColorCautionBrush}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Classes="ClearTypeStackPanel" Spacing="15" Orientation="Horizontal">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenRemoveOtherTypesDescriptionWindow}"
+                                        VerticalAlignment="Center"
+                                        Width="30"
+                                        Height="30">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                <CheckBox
+                                    IsChecked="{CompiledBinding RemoveOtherTypes, Source={x:Static core:RegulSettings.Instance}}">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="15">
+                                            <TextBlock>
+                                                <Run Text="{StaticResource RemoveOtherTypes}" />
+                                                &#8203;
+                                                &#8203;
+                                                &#8203;
+                                                <Run Text="{StaticResource Experimentally}" Foreground="{StaticResource SystemFillColorCautionBrush}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </OptionsDisplayItem.Content>
+                </OptionsDisplayItem>
+                
+                <OptionsDisplayItem Header="{StaticResource CreateBackup}"
+                                    Icon="{StaticResource HistoryRegular}"
+                                    Expands="True">
+                    <OptionsDisplayItem.ActionButton>
+                        <ToggleSwitch Classes="RightToggle"
+                                      IsChecked="{CompiledBinding CreateBackup, Source={x:Static core:RegulSettings.Instance}}" />
+                    </OptionsDisplayItem.ActionButton>
+                    <OptionsDisplayItem.Content>
+                        <Panel Margin="48 -3 33 -3" IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBox Width="250"
+                                         Watermark="{StaticResource BackupPath}"
+                                         Text="{CompiledBinding PathToBackup, Source={x:Static core:RegulSettings.Instance}}" />
+                                <Button ToolTip.Tip="{StaticResource ChoosePath}"
+                                        Command="{CompiledBinding SelectBackupPath}"
+                                        Padding="8">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource AttachRegular}" />
+                                    </Viewbox>
+                                </Button>
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right">
+                                <ProgressRing IsIndeterminate="{CompiledBinding InCreatingBackupProcess}" 
+                                              IsVisible="{CompiledBinding InCreatingBackupProcess}"
+                                              MinHeight="20"
+                                              MinWidth="20" />
+                                
+                                <Button Theme="{StaticResource AccentButton}"
+                                        Content="{StaticResource CreateNow}"
+                                        HorizontalAlignment="Right"
+                                        Padding="20 5" VerticalAlignment="Center"
+                                        Command="{CompiledBinding CreateBackups}">
+                                    <Button.IsEnabled>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <CompiledBinding Path="!IsMovingSaves" />
+                                            <CompiledBinding Path="!!SelectedGameSaves.Count" />
+                                        </MultiBinding>
+                                    </Button.IsEnabled>
+                                </Button>
+                            </StackPanel>
+                        </Panel>
+                    </OptionsDisplayItem.Content>
+                </OptionsDisplayItem>
+                
+                <OptionsDisplayItem Header="{StaticResource ClearCache}"
+                                    Description="{StaticResource ClearCacheDescription}"
+                                    Icon="{StaticResource DeleteRegular}"
+                                    Expands="True">
+                    <OptionsDisplayItem.ActionButton>
+                        <ToggleSwitch Classes="RightToggle"
+                                      IsChecked="{CompiledBinding ClearCache, Source={x:Static core:RegulSettings.Instance}}" />
+                    </OptionsDisplayItem.ActionButton>
+                    
+                    <OptionsDisplayItem.Content>
+                        <StackPanel Margin="-12" IsEnabled="{CompiledBinding !InCleaningCacheProcess}">
+                            <StackPanel.Styles>
+                                <Style Selector="Separator">
+                                    <Setter Property="Background" Value="{StaticResource CardStrokeColorDefaultBrush}" />
+                                    <Setter Property="Margin" Value="-5 0" />
+                                </Style>
+                                <Style Selector="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                                <Style Selector="Button.ReadMore">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="30" />
+                                    <Setter Property="Height" Value="30" />
+                                </Style>
+                            </StackPanel.Styles>
+                            <Panel Margin="60 7 45 7">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Button ToolTip.Tip="{StaticResource SelectAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding SelectAllCacheOptions}"
+                                            CornerRadius="4 0 0 4">
+                                        <Path Data="{StaticResource SelectallOnRegular}"
+                                              Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                              Stretch="Uniform"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Width="16" />
+                                    </Button>
+                                    <Button ToolTip.Tip="{StaticResource CancelAll}"
+                                            Padding="15 8"
+                                            Command="{CompiledBinding CancelAllCacheOptions}"
+                                            CornerRadius="0 4 4 0">
+                                        <Path Data="{StaticResource SelectallOffRegular}"
+                                              Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                              Stretch="Uniform"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Width="16" />
+                                    </Button>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right">
+                                    <ProgressRing IsIndeterminate="{CompiledBinding InCleaningCacheProcess}" 
+                                                  IsVisible="{CompiledBinding InCleaningCacheProcess}"
+                                                  MinHeight="20"
+                                                  MinWidth="20" />
+                                    
+                                    <Button Content="{StaticResource ClearNow}"
+                                            Theme="{StaticResource AccentButton}"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Padding="20 5"
+                                            Command="{CompiledBinding StartCleaningCache}"
+                                            IsEnabled="{CompiledBinding CanBeCleaningCache}"/>
+                                </StackPanel>
+                            </Panel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenCASPartCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="CASPartCache.package" IsChecked="{CompiledBinding CasPartCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenCompositorCacheClearDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="compositorCache.package" IsChecked="{CompiledBinding CompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenScriptCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="scriptCache.package" IsChecked="{CompiledBinding ScriptCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenSimCompositorCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="simCompositorCache.package" IsChecked="{CompiledBinding SimCompositorCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenSocialCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox Content="socialCache.package"
+                                          IsChecked="{CompiledBinding SocialCacheClear, Source={x:Static core:RegulSettings.Instance}}" />
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenWorldCachesDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding WorldCachesClear, Source={x:Static core:RegulSettings.Instance}}"
+                                          IsEnabled="{CompiledBinding !IsMacOs}">
+                                    <TextBlock x:Name="WorldCachesTextBlock" />
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <CheckBox IsChecked="{CompiledBinding IgaCacheClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
+                                <TextBlock x:Name="IgaCacheTextBlock" />
+                            </CheckBox>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenThumbnailsDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding ThumbnailsClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock x:Name="ThumbnailsTextBlock" />
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenFeaturedItemsDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding FeaturedItemsClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock x:Name="FeaturedItemsTextBlock" />
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            
+                            <CheckBox IsChecked="{CompiledBinding DcBackupPackagesClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
+                                <TextBlock x:Name="DcBackupTextBlock" />
+                            </CheckBox>
+                            
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenAllXmlDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding AllXmlClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock Inlines="{StaticResource AllXmlInline}" />
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding LogClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
+                                <TextBlock Inlines="{StaticResource LogInline}" />
+                            </CheckBox>
+                            <Separator />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="60 7 0 7" Spacing="15">
+                                <Button ToolTip.Tip="{StaticResource ReadMore}"
+                                        Command="{CompiledBinding OpenDCCacheDescriptionWindow}"
+                                        Classes="ReadMore">
+                                    <Viewbox Width="16" Height="16">
+                                        <Path Data="{StaticResource InfoRegular}" />
+                                    </Viewbox>
+                                </Button>
+                                
+                                <CheckBox IsChecked="{CompiledBinding DccClear, Source={x:Static core:RegulSettings.Instance}}">
+                                    <TextBlock x:Name="DccTextBlock" />
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding MissingDepsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
+                                <TextBlock x:Name="MissingDepsTextBlock" />
+                            </CheckBox>
+                            <Separator />
+                            <CheckBox IsChecked="{CompiledBinding DownloadedSimsClear, Source={x:Static core:RegulSettings.Instance}}" Margin="105 7 0 7">
+                                <TextBlock x:Name="DownloadedSimsTextBlock" />
+                            </CheckBox>
+                        </StackPanel>
+                    </OptionsDisplayItem.Content>
+                </OptionsDisplayItem>
+    </StackPanel>
+</UserControl>

@@ -185,8 +185,10 @@
     <s:String x:Key="SettingsSizeOfSaveThumbnails">Настройка размера миниатюр сохранения</s:String>
     <s:String x:Key="SizeOfSaveThumbnail">Размер миниатюры сохранения</s:String>
     <s:String x:Key="Preview">Предварительный просмотр</s:String>
-    <s:String x:Key="EnableHardwareAcceleration">Включить аппаратное ускорение</s:String>
-    <s:String x:Key="EnableHardwareAccelerationDescription">Позволяет включить прозрачность, делает анимацию более плавной. Требуется перезапустить программу, чтобы изменения вступили в силу.</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Отображение списка в очистителе</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">Если вы выбрали Вертикально, вам необходимо увеличить размер окна</s:String>
+    <s:String x:Key="Horizontal">Горизонтально</s:String>
+    <s:String x:Key="Vertical">Вертикально</s:String>
 
     <s:String x:Key="UnusedProhibitedListsCleared">Неиспользуемые запрещенные списки успешно очищены!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">В настоящее время нет неиспользуемых запрещенных списков.</s:String>

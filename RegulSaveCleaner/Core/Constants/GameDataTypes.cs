@@ -1,6 +1,6 @@
 ﻿using RegulSaveCleaner.Structures;
 
-namespace RegulSaveCleaner.Core;
+namespace RegulSaveCleaner.Core.Constants;
 
 public static class GameDataTypes
 {

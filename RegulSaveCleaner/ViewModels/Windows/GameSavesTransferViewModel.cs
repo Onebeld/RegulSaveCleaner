@@ -4,6 +4,7 @@ using PleasantUI;
 using PleasantUI.Controls;
 using PleasantUI.Windows;
 using RegulSaveCleaner.Core;
+using RegulSaveCleaner.Core.Extensions;
 using RegulSaveCleaner.Structures;
 
 namespace RegulSaveCleaner.ViewModels.Windows;

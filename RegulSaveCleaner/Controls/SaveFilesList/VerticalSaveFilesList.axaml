@@ -1,0 +1,177 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             xmlns:controls="clr-namespace:RegulSaveCleaner.Controls"
+             xmlns:views="clr-namespace:RegulSaveCleaner.Views"
+             xmlns:core="clr-namespace:RegulSaveCleaner.Core"
+             xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
+             xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RegulSaveCleaner.Controls.SaveFilesList.VerticalSaveFilesList"
+             x:DataType="viewModels:MainWindowViewModel">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*">
+        <Panel Grid.Row="0" Margin="0 0 0 5"
+               IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Spacing="10"
+                        Margin="5 0 0 0">
+                <TextBlock Text="{StaticResource SaveFiles}"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold" />
+
+                <TextBlock FontSize="12"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource TextFillColorTertiaryBrush}"
+                           IsVisible="{CompiledBinding !!SelectedGameSaves.Count}">
+                    <Run Text="{StaticResource Selected}" /><Run Text=":" />
+                    <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
+                </TextBlock>
+
+                <ProgressRing MinHeight="14"
+                              MinWidth="14">
+                    <ProgressRing.IsIndeterminate>
+                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                            <CompiledBinding Path="IsLoadingSaves" />
+                            <CompiledBinding Path="IsMovingSaves" />
+                        </MultiBinding>
+                    </ProgressRing.IsIndeterminate>
+                    <ProgressRing.IsVisible>
+                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                            <CompiledBinding Path="IsLoadingSaves" />
+                            <CompiledBinding Path="IsMovingSaves" />
+                        </MultiBinding>
+                    </ProgressRing.IsVisible>
+                </ProgressRing>
+            </StackPanel>
+                
+            <controls:SaveFilesListToolBox HorizontalAlignment="Right" />
+        </Panel>
+        
+        <Border Grid.Row="1"
+                CornerRadius="4"
+                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                BorderThickness="1"
+                BorderBrush="{StaticResource ControlStrokeColorSecondaryBrush}"
+                IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
+            <Panel>
+                <ListBox ItemsSource="{CompiledBinding GameSaves}"
+                         SelectedItems="{CompiledBinding SelectedGameSaves}"
+                         SelectionMode="Toggle, Multiple"
+                         AutoScrollToSelectedItem="False"
+                         Margin="0 10 0 0"
+                         Padding="10 0"
+                         IsEnabled="{CompiledBinding !IsMovingSaves}">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="ToolTip.Tip">
+                            <Template>
+                                <StackPanel x:DataType="structures:GameSave">
+                                    <TextBlock Text="{CompiledBinding Name}"
+                                               Theme="{StaticResource BodyStrongTextBlockTheme}" />
+                                    <TextBlock Text="{CompiledBinding LastSaveTime}" />
+
+                                    <TextBlock Text="{CompiledBinding Description}"
+                                               Margin="0 10 0 0"
+                                               IsVisible="{CompiledBinding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                                </StackPanel>
+                            </Template>
+                        </Setter>
+                    </Style>
+                </ListBox.Styles>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.DataTemplates>
+                    <DataTemplate DataType="structures:GameSave">
+                        <Grid ColumnDefinitions="Auto,*" Margin="5">
+                            <Border Grid.Column="0"
+                                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                    CornerRadius="5"
+                                    Margin="0 0 10 0"
+                                    Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}"
+                                    Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
+                                <Image Source="{CompiledBinding ImageOfFamily}"
+                                       Margin="{CompiledBinding ImageOfFamily, Converter={x:Static converters:UnknownIconToMarginConverter.Instance}}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{CompiledBinding Name}"
+                                           Theme="{StaticResource SubtitleTextBlockTheme}"/>
+                                <TextBlock Text="{CompiledBinding WorldName}" Margin="0 5 0 0" />
+                                <TextBlock Text="{CompiledBinding LastSaveTime}" />
+                            </StackPanel>
+                            <Button Grid.Column="1"
+                                    Theme="{StaticResource AppBarButtonTheme}"
+                                    Height="20"
+                                    Width="20"
+                                    Margin="2"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right">
+                                        <Button.Flyout>
+                                            <MenuFlyout>
+                                                <MenuItem Header="{StaticResource ProhibitedList}"
+                                                          Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenProhibitedList}"
+                                                          CommandParameter="{CompiledBinding}">
+                                                    <MenuItem.Icon>
+                                                        <Viewbox Width="16" Height="16">
+                                                            <Path
+                                                                Data="{StaticResource PresenceBlockedRegular}"
+                                                                Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                                Stretch="Uniform" />
+                                                        </Viewbox>
+                                                    </MenuItem.Icon>
+                                                </MenuItem>
+
+                                                <MenuItem Header="{StaticResource MoveOldList}"
+                                                          Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenOldProhibitedLists}"
+                                                          CommandParameter="{CompiledBinding}" />
+
+                                                <Separator />
+
+                                                <MenuItem Header="{StaticResource MoveToSpareFolder}"
+                                                          Command="{CompiledBinding $parent[views:MainWindow].ViewModel.StartMovingSave}"
+                                                          CommandParameter="{CompiledBinding}" />
+                                            </MenuFlyout>
+                                        </Button.Flyout>
+
+                                        <Viewbox Width="14">
+                                            <Path Data="{StaticResource MoreRegular}" />
+                                        </Viewbox>
+                                    </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.DataTemplates>
+            </ListBox>
+
+            <TextBlock Text="{StaticResource SaveFilesNotFound}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       IsVisible="{CompiledBinding !FoundSaveFolder}"
+                       Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+            <TextBlock Text="{StaticResource NoSaveFound}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                <TextBlock.IsVisible>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="FoundSaveFolder" />
+                        <CompiledBinding Path="!GameSaves.Count" />
+                    </MultiBinding>
+                </TextBlock.IsVisible>
+            </TextBlock>
+            </Panel>
+        </Border>
+    </Grid>
+</UserControl>

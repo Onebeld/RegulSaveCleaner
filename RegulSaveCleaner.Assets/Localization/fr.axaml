@@ -185,8 +185,10 @@
     <s:String x:Key="SettingsSizeOfSaveThumbnails">Définition de la taille des vignettes d'enregistrement</s:String>
     <s:String x:Key="SizeOfSaveThumbnail">Taille de la vignette de l'enregistrement</s:String>
     <s:String x:Key="Preview">Avant-première</s:String>
-    <s:String x:Key="EnableHardwareAcceleration">Activer l'accélération matérielle</s:String>
-    <s:String x:Key="EnableHardwareAccelerationDescription">Permet d'activer la transparence, rend les animations plus fluides. Il est nécessaire de redémarrer le programme pour que les modifications soient prises en compte.</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Affichage d'une liste dans le nettoyeur</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">Si vous choisissez Vertical, vous devez augmenter la taille de la fenêtre.</s:String>
+    <s:String x:Key="Horizontal">Horizontal</s:String>
+    <s:String x:Key="Vertical">Vertical</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">Les listes d'interdictions inutilisées ont été supprimées avec succès !</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">Il n'y a actuellement aucune liste d'interdictions inutilisée.</s:String>

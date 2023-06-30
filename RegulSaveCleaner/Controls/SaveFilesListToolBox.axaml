@@ -1,0 +1,123 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RegulSaveCleaner.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RegulSaveCleaner.Controls.SaveFilesListToolBox"
+             x:DataType="viewModels:MainWindowViewModel">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <StackPanel Orientation="Horizontal" Spacing="5">
+        <Button Theme="{StaticResource AppBarButtonTheme}"
+                Padding="8 6"
+                ToolTip.Tip="{StaticResource Menu}">
+            <Button.Flyout>
+                <MenuFlyout>
+                    <MenuItem Header="{StaticResource MoveSavesToSpareFolder}"
+                              IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"
+                              Command="{CompiledBinding MoveSavesToSpareFolder}" />
+                    <MenuItem Header="{StaticResource RestoreOldSaves}"
+                              Command="{CompiledBinding OpenGameSavesTransferWindow}"
+                              IsEnabled="{CompiledBinding FoundSaveFolder}" />
+                </MenuFlyout>
+            </Button.Flyout>
+
+            <Viewbox Width="14" Height="14">
+                <Path Data="{StaticResource MoreRegular}" />
+            </Viewbox>
+        </Button>
+
+        <InformationBlock Content="{CompiledBinding GameSaves.Count}"
+                          Icon="{StaticResource PeopleRegular}"
+                          ToolTip.Tip="{StaticResource NumberOfSaveFiles}" />
+
+        <Border Width="1"
+                VerticalAlignment="Stretch"
+                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel.IsEnabled>
+                <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                    <CompiledBinding Path="!InCreatingBackupProcess" />
+                    <CompiledBinding Path="!IsLoadingSaves" />
+                    <CompiledBinding Path="!IsMovingSaves" />
+                </MultiBinding>
+            </StackPanel.IsEnabled>
+
+            <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                         CornerRadius="4 0 0 4"
+                         Padding="8 6"
+                         IsChecked="{CompiledBinding SortByAlphabet}"
+                         GroupName="SortingSaves"
+                         ToolTip.Tip="{StaticResource SortByAlphabetical}">
+                <Viewbox Width="16" Height="16">
+                    <Path Data="{StaticResource AlphabetRegular}" />
+                </Viewbox>
+            </RadioButton>
+            <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
+                         CornerRadius="0 4 4 0"
+                         Padding="8 6"
+                         IsChecked="{CompiledBinding SortByDate}"
+                         GroupName="SortingSaves"
+                         ToolTip.Tip="{StaticResource SortByDate}">
+                <Viewbox Width="16" Height="16">
+                    <Path Data="{StaticResource CalendarRegular}" />
+                </Viewbox>
+            </RadioButton>
+        </StackPanel>
+
+        <Border Width="1"
+                VerticalAlignment="Stretch"
+                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel.IsEnabled>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                    <CompiledBinding Path="!InCreatingBackupProcess" />
+                    <CompiledBinding Path="!IsLoadingSaves" />
+                    <CompiledBinding Path="!IsMovingSaves" />
+                    <CompiledBinding Path="!!GameSaves.Count" />
+                </MultiBinding>
+            </StackPanel.IsEnabled>
+            <Button Padding="8 6"
+                    CornerRadius="4 0 0 4"
+                    Command="{CompiledBinding SelectAllSaves}"
+                    ToolTip.Tip="{StaticResource SelectAll}">
+                <Viewbox Width="16" Height="16">
+                    <Path Data="{StaticResource SelectallOnRegular}" />
+                </Viewbox>
+            </Button>
+            <Button Padding="8 6"
+                    CornerRadius="0 4 4 0"
+                    Command="{CompiledBinding CancelAllSaves}"
+                    ToolTip.Tip="{StaticResource CancelAll}">
+                <Viewbox Width="16" Height="16">
+                    <Path Data="{StaticResource SelectallOffRegular}" />
+                </Viewbox>
+            </Button>
+        </StackPanel>
+
+        <Border Width="1"
+                VerticalAlignment="Stretch"
+                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+
+        <Button Padding=" 8 6"
+                Command="{CompiledBinding LoadingSaves}"
+                ToolTip.Tip="{StaticResource UpdateList}">
+            <Button.IsEnabled>
+                <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                    <CompiledBinding Path="!InCreatingBackupProcess" />
+                    <CompiledBinding Path="!IsLoadingSaves" />
+                    <CompiledBinding Path="!IsMovingSaves" />
+                </MultiBinding>
+            </Button.IsEnabled>
+
+            <Viewbox Width="16" Height="16">
+                <Path Data="{StaticResource ArrowCounterclockwiseRegular}" />
+            </Viewbox>
+        </Button>
+    </StackPanel>
+</UserControl>

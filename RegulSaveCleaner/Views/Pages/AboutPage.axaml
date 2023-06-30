@@ -25,7 +25,7 @@
                             <TextBlock Margin="0 -2 0 0" Foreground="{StaticResource TextFillColorTertiaryBrush}"
                                        FontSize="12">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
-                                &#8203;<Run Text="3.1.0" />
+                                &#8203;<Run Text="4.0.0" />
                             </TextBlock>
                         </StackPanel>
                     </Grid>
@@ -145,7 +145,7 @@
                                            HorizontalAlignment="Right"
                                            Foreground="{StaticResource TextFillColorTertiaryBrush}">
                                     <Run Text="{StaticResource Version}" /><Run Text=":" />
-                                    &#8203;<Run Text="3.0.4" />
+                                    &#8203;<Run Text="3.0.5" />
                                 </TextBlock>
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Right"

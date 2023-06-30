@@ -7,6 +7,8 @@ using PleasantUI.Core;
 using PleasantUI.Core.Enums;
 using PleasantUI.Windows;
 using RegulSaveCleaner.Core;
+using RegulSaveCleaner.Core.Constants;
+using RegulSaveCleaner.Core.Extensions;
 using RegulSaveCleaner.Structures;
 using Color = Avalonia.Media.Color;
 
@@ -60,6 +62,28 @@ public class SettingsViewModel : ViewModelBase
             };
             
             App.PleasantTheme.UpdateTheme();
+        }
+    }
+
+    public int SelectedIndexListDisplay
+    {
+        get
+        {
+            return RegulSettings.Instance.ListDisplay switch
+            {
+                ListDisplay.Vertical => 1,
+
+                _ => 0
+            };
+        }
+        set
+        {
+            RegulSettings.Instance.ListDisplay = value switch
+            {
+                1 => ListDisplay.Vertical,
+
+                _ => ListDisplay.Horizontal
+            };
         }
     }
 

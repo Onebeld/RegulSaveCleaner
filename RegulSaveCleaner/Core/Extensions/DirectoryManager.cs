@@ -1,4 +1,4 @@
-﻿namespace RegulSaveCleaner.Core;
+﻿namespace RegulSaveCleaner.Core.Extensions;
 
 public static class DirectoryManager
 {

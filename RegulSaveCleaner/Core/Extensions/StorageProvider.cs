@@ -1,7 +1,7 @@
 ﻿using Avalonia.Platform.Storage;
 using PleasantUI.Controls;
 
-namespace RegulSaveCleaner.Core;
+namespace RegulSaveCleaner.Core.Extensions;
 
 public static class StorageProvider
 {

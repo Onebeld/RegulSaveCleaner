@@ -185,8 +185,10 @@
     <s:String x:Key="SettingsSizeOfSaveThumbnails">Einstellen der Größe der gespeicherten Miniaturbilder</s:String>
     <s:String x:Key="SizeOfSaveThumbnail">Größe der Miniaturansicht des Speichers</s:String>
     <s:String x:Key="Preview">Vorschau</s:String>
-    <s:String x:Key="EnableHardwareAcceleration">Aktivieren der Hardwarebeschleunigung</s:String>
-    <s:String x:Key="EnableHardwareAccelerationDescription">Ermöglicht das Aktivieren der Transparenz, wodurch die Animationen flüssiger werden. Erfordert einen Neustart des Programms, damit die Änderungen wirksam werden.</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Anzeige einer Liste im Cleaner</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">Wenn Sie Vertikal wählen, müssen Sie das Fenster vergrößern</s:String>
+    <s:String x:Key="Horizontal">Horizontal</s:String>
+    <s:String x:Key="Vertical">Vertikal</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">Die nicht verwendeten Verbotslisten wurden erfolgreich gelöscht!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">Derzeit gibt es keine ungenutzten Verbotslisten.</s:String>

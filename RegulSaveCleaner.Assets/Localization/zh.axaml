@@ -185,6 +185,10 @@
     <s:String x:Key="SettingsSizeOfSaveThumbnails">设置保存的缩略图的大小</s:String>
     <s:String x:Key="SizeOfSaveThumbnail">保存的缩略图的大小</s:String>
     <s:String x:Key="Preview">预览</s:String>
+    <s:String x:Key="DisplayingListInCleaner">在清洁器中显示一个列表</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">如果你选择垂直，你需要增加窗口的大小</s:String>
+    <s:String x:Key="Horizontal">横向</s:String>
+    <s:String x:Key="Vertical">纵向</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">未使用的禁止列表已被成功清除！</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">目前没有未使用的禁止列表。</s:String>

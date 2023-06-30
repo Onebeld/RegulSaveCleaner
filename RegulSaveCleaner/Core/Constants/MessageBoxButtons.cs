@@ -1,6 +1,6 @@
 ﻿using PleasantUI.Core.Structures;
 
-namespace RegulSaveCleaner.Core;
+namespace RegulSaveCleaner.Core.Constants;
 
 public static class MessageBoxButtons
 {

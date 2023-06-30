@@ -160,10 +160,20 @@
                               SelectedItem="{CompiledBinding SelectedFontFamily}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="FontFamily">
-                                <TextBlock Text="{CompiledBinding Name}"
-                                           FontFamily="{CompiledBinding}" />
+                                <TextBlock Text="{CompiledBinding Name}" FontFamily="{CompiledBinding}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </OptionsDisplayItem.ActionButton>
+            </OptionsDisplayItem>
+            
+            <OptionsDisplayItem Header="{StaticResource DisplayingListInCleaner}"
+                                Description="{StaticResource DisplayingListInCleanerDescription}"
+                                Icon="{StaticResource PeopleRegular}">
+                <OptionsDisplayItem.ActionButton>
+                    <ComboBox MinWidth="150" SelectedIndex="{CompiledBinding SelectedIndexListDisplay}">
+                        <ComboBoxItem Content="{StaticResource Horizontal}" />
+                        <ComboBoxItem Content="{StaticResource Vertical}" />
                     </ComboBox>
                 </OptionsDisplayItem.ActionButton>
             </OptionsDisplayItem>

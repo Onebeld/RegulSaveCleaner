@@ -185,8 +185,10 @@
     <s:String x:Key="SettingsSizeOfSaveThumbnails">Setting the size of save's thumbnails</s:String>
     <s:String x:Key="SizeOfSaveThumbnail">Size of save's thumbnail</s:String>
     <s:String x:Key="Preview">Preview</s:String>
-    <s:String x:Key="EnableHardwareAcceleration">Enable hardware acceleration</s:String>
-    <s:String x:Key="EnableHardwareAccelerationDescription">Allows you to enable transparency, makes animations smoother. Requires you to restart the program for the changes to take effect.</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Displaying a list in the cleaner</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">If you choose Vertical, you need to increase the size of the window</s:String>
+    <s:String x:Key="Horizontal">Horizontal</s:String>
+    <s:String x:Key="Vertical">Vertical</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>

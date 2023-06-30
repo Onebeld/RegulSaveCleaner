@@ -8,6 +8,8 @@ using PleasantUI;
 using PleasantUI.Windows;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
+using RegulSaveCleaner.Core.Constants;
+using RegulSaveCleaner.Core.Extensions;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.InformationPages.ClearCache;
 using RegulSaveCleaner.Views.InformationPages.ClearSaves;

@@ -1,0 +1,16 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:saveFilesList="clr-namespace:RegulSaveCleaner.Controls.SaveFilesList"
+             xmlns:controls="clr-namespace:RegulSaveCleaner.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RegulSaveCleaner.Views.Pages.CleanerPages.VerticalListCleanerPage">
+    <Grid ColumnDefinitions="*,10,1.5*">
+        <saveFilesList:VerticalSaveFilesList Grid.Column="0" Margin="25 25 0 25" />
+        
+        <SmoothScrollViewer Grid.Column="2">
+            <controls:CleanerSettings Margin="0 25 25 25" />
+        </SmoothScrollViewer>
+    </Grid>
+</UserControl>
