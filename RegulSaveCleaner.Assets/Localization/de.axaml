@@ -1,0 +1,235 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">de</s:String>
+    
+    <!--German-->
+    <s:String x:Key="Collapse">Kollabieren</s:String>
+    <s:String x:Key="Expand">Erweitern</s:String>
+    <s:String x:Key="Reestablish">Wiederherstellen</s:String>
+    <s:String x:Key="Close">Schließen</s:String>
+    
+    <s:String x:Key="Menu">Menü</s:String>
+    <s:String x:Key="Cleaner">Sauberer</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Fragen und Antworten</s:String>
+    <s:String x:Key="Settings">Einstellungen</s:String>
+    <s:String x:Key="About">Über</s:String>
+    
+    <s:String x:Key="On">Auf</s:String>
+    <s:String x:Key="Off">Aus</s:String>
+    
+    <s:String x:Key="Cut">Schnitt</s:String>
+    <s:String x:Key="Copy">Kopieren</s:String>
+    <s:String x:Key="Paste">Kleister</s:String>
+    
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Abbrechen</s:String>
+    
+    <s:String x:Key="AddYourNewColor">Fügen Sie Ihre neue Farbe hinzu!</s:String>
+    <s:String x:Key="AddColor">Farbe hinzufügen</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Start Reinigung</s:String>
+    <s:String x:Key="SaveFiles">Dateien speichern</s:String>
+    
+    <s:String x:Key="ProhibitedList">Verbotsliste</s:String>
+    <s:String x:Key="MoveOldList">Verschieben Sie die alte Liste</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">Es wurde kein Speicherordner gefunden</s:String>
+    <s:String x:Key="NoSaveFound">Keine Spielstände gefunden</s:String>
+    
+    <s:String x:Key="SelectAll">Alle auswählen</s:String>
+    <s:String x:Key="CancelAll">Alle abbrechen</s:String>
+    <s:String x:Key="UpdateList">Liste aktualisieren</s:String>
+    <s:String x:Key="SortByDate">Sortieren nach Datum</s:String>
+    <s:String x:Key="SortByAlphabetical">Sortieren nach alphabetisch</s:String>
+    <s:String x:Key="Selected">Ausgewählte</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">Anzahl der gespeicherten Dateien</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">Der Ordner "Die Sims 3" konnte in den Dokumenten nicht gefunden werden.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Es ist ein Fehler aufgetreten!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Möchten Sie diesen Ordner selbst auswählen?</s:String>
+    
+    <s:String x:Key="CleaningOptions">Optionen für die Reinigung</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Festlegen, was Sie löschen möchten</s:String>
+    <s:String x:Key="CreateBackup">Sicherung erstellen</s:String>
+    <s:String x:Key="ClearCache">Cache löschen</s:String>
+    <s:String x:Key="ClearCacheDescription">Einrichten der Reinigung</s:String>
+    <s:String x:Key="BackupPath">Sicherungspfad</s:String>
+    <s:String x:Key="CreateNow">Jetzt erstellen</s:String>
+    <s:String x:Key="ClearNow">Jetzt löschen</s:String>
+    
+    <s:String x:Key="Recommended">Empfohlen</s:String>
+    <s:String x:Key="Experimentally">Experimentell</s:String>
+    <s:String x:Key="ReadMore">Mehr lesen</s:String>
+    
+    <s:String x:Key="SaveCleared">Der Speicher wurde erfolgreich gelöscht!</s:String>
+    <s:String x:Key="SavesCleared">Saves erfolgreich gelöscht!</s:String>
+    <s:String x:Key="ResultsBelow">Das Ergebnis können Sie unten sehen.</s:String>
+    <s:String x:Key="CacheCleared">Der Cache wurde erfolgreich geleert!</s:String>
+    <s:String x:Key="BackupCreated">Das Backup wurde erfolgreich erstellt!</s:String>
+    <s:String x:Key="Successful">Erfolgreich!</s:String>
+    <s:String x:Key="Information">Informationen</s:String>
+    <s:String x:Key="Yes">Ja</s:String>
+    <s:String x:Key="No">Nein</s:String>
+    
+    <s:String x:Key="SaveName">Name speichern</s:String>
+    <s:String x:Key="TimePassed">Die Zeit verging</s:String>
+    <s:String x:Key="OldSize">Alte Größe</s:String>
+    <s:String x:Key="NewSize">Neue Größe</s:String>
+    <s:String x:Key="Percent">Prozentsatz</s:String>
+    <s:String x:Key="Sec">sek</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">Familienporträts entfernen</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Porträts von Sims entfernen</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Los-Miniaturansichten entfernen</s:String>
+    <s:String x:Key="RemovePhotos">Fotos entfernen</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Erstellte Bilder entfernen</s:String>
+    <s:String x:Key="RemoveTextures">Texturen entfernen</s:String>
+    <s:String x:Key="RemoveOtherTypes">Andere Typen entfernen</s:String>
+    
+    <s:String x:Key="All">Alle</s:String>
+    <s:String x:Key="Files">Dateien</s:String>
+    <s:String x:Key="FromTheFolder">aus dem Ordner</s:String>
+    <s:String x:Key="Except">außer</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Löscht Bilder, die das Spiel selbst erstellt.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Dazu gehören: Selfies, Grußkarten, Fotos aus der Fotokabine, Fotos vom Abschlussball.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Verwenden Sie die Verbotsliste, um einige von ihnen zu speichern.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Entfernt Porträts, die bei der Auswahl von Speichern, in diesem Programm und bei der Auswahl von Familie erscheinen. Speichert das Porträt, das im Programm angezeigt wird.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Entfernt Porträts von Sims. Sie erscheinen fast überall: in der Beziehungsleiste, in der Gedankenwolke und so weiter.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Nebenwirkung:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">Wenn du den Stadteditor aufrufst, dauert es lange, bis er geladen ist, weil das Spiel damit beschäftigt ist, Porträts zu erstellen, und Porträts haben nur eine Pose.</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">Entfernt die Los-Miniaturansichten, die angezeigt werden, wenn Sie Speichern oder ein Los auswählen.</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">Löscht die von deinen Sims aufgenommenen Fotos.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Verwenden Sie die Verbotsliste, um nur einige Ihrer Fotos zu speichern.</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">Entfernt Grundstückstexturen, die nach dem Anlegen eines neuen Grundstücks in einer Stadt erstellt werden. Dies gilt nicht für Grundstücke, die bereits in der Stadt waren (abgesehen von denen, die automatisch platziert werden, wenn Sie ein bestimmtes Erweiterungspaket haben).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Denken Sie daran, dass nach dem Löschen des Spielstands die von Ihnen platzierte Parzelle wie der Boden aussehen wird (siehe Screenshot vorher und nachher).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Es wird empfohlen, eine Sicherungskopie anzufertigen, da einige Spieler behaupten, dass das Spiel auf unbestimmte Zeit gespeichert wird.</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">Diese Option funktioniert wie "Erinnerungen löschen" im Programm von Kuree. Laut Rezensionen löscht sie keine Erinnerungen, daher wurde die Option umbenannt. Es wird empfohlen, eine Sicherungskopie zu erstellen, da nicht bekannt ist, was damit gelöscht wird.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Es wird empfohlen, eine Sicherungskopie zu erstellen, da nicht bekannt ist, was damit gelöscht wird.</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">CAS-Teile, die in Create-A-Sim erscheinen</s:String>
+    <s:String x:Key="CompositorCacheDescription">Neue Objekte, die im Kauf-/Baumodus erscheinen würden</s:String>
+    <s:String x:Key="ScriptCacheDescription">Mods oder Hacks</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Neue Sims, Standard-Skins</s:String>
+    <s:String x:Key="SocialCacheDescription">Informationen über die sozialen Aspekte (eingeführt mit Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cache files for your installed worlds. There are no WorldCache files for worlds that came with the game and were not installed through the Launcher like Sunset Valley, Twinbrooks or Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Zwischengespeicherte Vorschaubilder. Hier werden sie gespeichert, damit sie beim nächsten Start des Spiels schneller geladen werden. Wenn Sie Probleme mit seltsamen Thumbnails im Spiel haben, löschen Sie diese. Sie werden beim nächsten Spielstart wiederhergestellt, auch wenn das Spiel beim ersten Laden etwas langsamer ist, nachdem der Inhalt dieses Ordners gelöscht wurde.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Vom Spiel erzeugte Fehler, die von NRaas' ErrorTrap-Mod abgefangen wurden. Sie werden im Spiel nicht verwendet. Löschen oder posten Sie sie bei NRaas Industries, falls gewünscht. Sie enthalten Informationen, die durch seine ErrorTrap-Mod verursacht wurden und würden ihm bei der Fehlersuche (verursacht durch EA-Code oder seine Mods) helfen, die den Fehler auslösen. Wenn Sie diesen Mod nicht haben und nicht vorhaben, EA jemals um Hilfe bei der Fehlersuche zu bitten, können Sie sie einfach löschen.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Eingeführt mit Patch 1.29. Soll Bilder für besondere Ladengegenstände enthalten, die im CAH/Kauf/Bau-Katalog angezeigt werden sollen, verursacht aber Absturzprobleme.</s:String>
+    <s:String x:Key="DCCacheDescription">Enthält alle installierten benutzerdefinierten Inhalte/Exchange/Store-Elemente, die Sie über den Launcher installiert haben. Wird auf der Registerkarte "Installierte Inhalte" des Launchers angezeigt.</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Es ist strengstens untersagt, diesen Ordner in macOS zu löschen, da dies Ihre Speicherungen zerstören könnte. Daher ist diese Option deaktiviert und kann daher nicht aktiviert werden.</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">Sie haben zu viele Speicherplätze</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Es wird empfohlen, nicht benötigte Speicherstände in einen anderen Ordner zu verschieben. Verwenden Sie die integrierte Funktion "Regul Save Cleaner".</s:String>
+    <s:String x:Key="ShowNoMore">Nicht mehr anzeigen</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Speichern in einen Ersatzordner verschieben</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Ihre Spielstände wurden verschoben!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Ihr Spielstand wurde verschoben!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Verschieben ist nicht möglich. Überprüfen Sie den Zugriff auf den Ordner, in den Sie Ihren Speicherplatz verschieben wollten.</s:String>
+    <s:String x:Key="RestoreOldSaves">Alte Speicherstände wiederherstellen</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Zu übertragende Saves auswählen</s:String>
+    <s:String x:Key="MoveToSpareFolder">In einen Ersatzordner verschieben</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Das Spiel ist sehr langsam</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Leider ist Die Sims 3 sehr schlecht optimiert. Es verbraucht maximal 4 GB RAM und nutzt nur einen Prozessorkern. Das erste, was Sie installieren müssen, ist SmoothPatch von LazyDuchess. Es macht erstaunliche Dinge bei der Optimierung.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Die Verwendung von NRaas-Mods wird empfohlen:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Während des Spielens wird der Speicher aufgebläht, was zu verschiedenen Fehlern führen kann. Verwenden Sie dieses Programm, um Probleme zu vermeiden. Wenn Sie die ultimative Erfahrung wollen, verwenden Sie das sehr gute Tutorial von Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Zum Handbuch (in Englisch)</s:String>
+    <s:String x:Key="GoToInstallation">Zur Installation gehen</s:String>
+    
+    <s:String x:Key="Error12">Fehler 12</s:String>
+    <s:String x:Key="Error12Description1">Mach dir keine Sorgen! Das liegt daran, dass das Spiel nicht genug Speicherplatz hat, um Ihre Welt zu speichern. Versuchen Sie, Ihr Inventar von unnötigem Müll zu säubern, unnötige Objekte in der Welt zu entfernen und erneut zu speichern. Wenn das nicht hilft, versuche die Anleitung von AncientGatekeeper.</s:String>
+    
+    <s:String x:Key="Error16">Fehler 16</s:String>
+    <s:String x:Key="Error16Description1">Dies ist ein eher seltener Fehler. Er tritt auf, wenn die Größe deines Spielstands 4 GB erreicht. Dafür gibt es mehrere Gründe: viele Familien, viele Partien, viel Müll im Spielstand. Als Erstes sollten Sie dieses Programm verwenden. Wenn das nicht viel hilft, müssen Sie das Spiel selbst bereinigen. Aufgrund dieses Fehlers besteht eine hohe Wahrscheinlichkeit, dass dein Spielstand verloren geht, also versuche, deinen Spielstand nicht zu überladen.</s:String>
+    
+    <s:String x:Key="Error0AfterOpeningSave">Fehler 0 nach dem Öffnen eines Speichers</s:String>
+    <s:String x:Key="Error0Description1">Leider ist Ihr Speicherstand beschädigt worden. Dies war aufgrund einer der Versionen dieses Programms nach der Reinigung. Kann auftreten, wenn ein Festplatten- oder SSD-Sektor beschädigt ist.</s:String>
+    
+    <!--Settings Page-->
+    <s:String x:Key="General">Allgemein</s:String>
+    
+    <s:String x:Key="Language">Sprache</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Unnötige Verbotslisten löschen</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Wenn Sie einen Speicher gelöscht haben und die Listen nicht weiter verwenden möchten, klicken Sie auf die Schaltfläche zum Löschen</s:String>
+    <s:String x:Key="PathSettings">Pfadeinstellungen</s:String>
+    <s:String x:Key="PathSettingsDescription">Ändern, wenn sich der Pfad zum Spielordner geändert hat</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Zurücksetzen auf Standardeinstellungen</s:String>
+    <s:String x:Key="Clear">Klar</s:String>
+    <s:String x:Key="Reset">Zurücksetzen</s:String>
+    <s:String x:Key="Appearance">Erscheinungsbild</s:String>
+    <s:String x:Key="Font">Schriftart</s:String>
+    <s:String x:Key="EnableShadow">Schatten aktivieren</s:String>
+    <s:String x:Key="EnableShadowDescription">Wenn Sie ein Leistungsproblem haben, deaktivieren Sie diese Einstellung</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Benutzerdefinierte Titelleiste aktivieren</s:String>
+    <s:String x:Key="EnableBlur">Unschärfe aktivieren</s:String>
+    <s:String x:Key="OpacityLevel">Opazitätsgrad</s:String>
+    <s:String x:Key="AccentColor">Akzentfarbe</s:String>
+    <s:String x:Key="UseSystemAccentColor">Systemakzentfarbe verwenden</s:String>
+    <s:String x:Key="Change">Ändern Sie</s:String>
+    <s:String x:Key="Theme">Thema</s:String>
+    <s:String x:Key="FolderForOldSaves">Ordner für alte Speicherstände</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Eine Warnung bei einer großen Anzahl von Speicherungen anzeigen</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Anzahl der Speicherungen, bei denen die Warnung angezeigt wird</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Einstellen der Größe der gespeicherten Miniaturbilder</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Größe der Miniaturansicht des Speichers</s:String>
+    <s:String x:Key="Preview">Vorschau</s:String>
+    <s:String x:Key="EnableHardwareAcceleration">Aktivieren der Hardwarebeschleunigung</s:String>
+    <s:String x:Key="EnableHardwareAccelerationDescription">Ermöglicht das Aktivieren der Transparenz, wodurch die Animationen flüssiger werden. Erfordert einen Neustart des Programms, damit die Änderungen wirksam werden.</s:String>
+    
+    <s:String x:Key="UnusedProhibitedListsCleared">Die nicht verwendeten Verbotslisten wurden erfolgreich gelöscht!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Derzeit gibt es keine ungenutzten Verbotslisten.</s:String>
+    <s:String x:Key="ColorCopied">Farbe kopiert!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Die Einstellungen wurden zurückgesetzt</s:String>
+    <s:String x:Key="ResetSettingsWarning">Möchten Sie die Einstellungen wirklich zurücksetzen?</s:String>
+    
+    <s:String x:Key="System">System</s:String>
+    <s:String x:Key="Light">Licht</s:String>
+    <s:String x:Key="Dark">Dunkelheit</s:String>
+    
+    <s:String x:Key="PathToTheSims">Der Weg zu Die Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Pfad zu den Rettungen</s:String>
+    <s:String x:Key="ChoosePath">Pfad wählen</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Fotos</s:String>
+    <s:String x:Key="PortraitsOfSims">Porträts von Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Porträts von Familien</s:String>
+    <s:String x:Key="GeneratedImages">Erstellte Bilder</s:String>
+    <s:String x:Key="LotThumbnails">Los-Miniaturansichten</s:String>
+    <s:String x:Key="SelectOldList">Wählen Sie die alte Liste</s:String>
+    <s:String x:Key="MergedOldList">Die Fusion war ein Erfolg!</s:String>
+    <s:String x:Key="NoItems">Keine Artikel</s:String>
+    <s:String x:Key="Unselect">Abwählen</s:String>
+    <s:String x:Key="SaveSelectedImages">Ausgewählte Bilder speichern</s:String>
+    <s:String x:Key="ImagesSaved">Die Bilder wurden gespeichert!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Anzahl der Bilder in der Liste</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">Lizenz</s:String>
+    <s:String x:Key="Version">Version</s:String>
+    <s:String x:Key="Author">Autor</s:String>
+    <s:String x:Key="Copyright">Urheberrecht</s:String>
+    <s:String x:Key="Description">Beschreibung</s:String>
+    <s:String x:Key="Links">Links</s:String>
+    <s:String x:Key="UsedLibraries">Benutzte Bibliotheken</s:String>
+    <s:String x:Key="ContactAuthor">Kontakt mit dem Autor</s:String>
+    <s:String x:Key="WorksOn">Arbeitet an</s:String>
+    <s:String x:Key="WriteLetter">Schreiben Sie einen Brief</s:String>
+    <s:String x:Key="SocialNetwork">Soziales Netzwerk</s:String>
+    <s:String x:Key="ModTheSims">Die Beschreibung der einzelnen Optionen zum Löschen des Cache wurde von der ModTheSims-Website übernommen.</s:String>
+    <s:String x:Key="RegulDescription1">Ein Tool zum Bereinigen und Stabilisieren von The Sims™ 3-Spielständen.</s:String>
+    <s:String x:Key="RegulDescription2">Dieses Programm wird nicht von Electronic Arts oder seinen Lizenzgebern unterstützt oder ist mit ihnen verbunden. Die Marken gehören ihren jeweiligen Eigentümern. Alle Rechte vorbehalten.</s:String>
+    <s:String x:Key="LicenseDescription">DIE SOFTWARE WIRD OHNE MÄNGELGEWÄHR UND OHNE JEGLICHE AUSDRÜCKLICHE ODER STILLSCHWEIGENDE GARANTIE ZUR VERFÜGUNG GESTELLT, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GARANTIE DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND DER NICHTVERLETZUNG VON RECHTEN. IN KEINEM FALL SIND DIE AUTOREN ODER URHEBERRECHTSINHABER HAFTBAR FÜR JEGLICHE ANSPRÜCHE, SCHÄDEN ODER SONSTIGE HAFTUNG, SEI ES AUS VERTRAG, UNERLAUBTER HANDLUNG ODER ANDERWEITIG, DIE SICH AUS DER SOFTWARE ODER DER NUTZUNG ODER DEM SONSTIGEN UMGANG MIT DER SOFTWARE ERGEBEN.</s:String>
+</ResourceDictionary>

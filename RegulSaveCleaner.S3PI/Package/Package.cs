@@ -42,12 +42,12 @@ public sealed class Package
         // Lock the header while we save to prevent other processes saving concurrently
         // if it's not a file, it's probably safe not to lock it...
         using FileStream fs = _packageStream as FileStream;
-        string tmpfile = Path.GetTempFileName();
+        string tmpFile = Path.GetTempFileName();
         try
         {
-            SaveAs(tmpfile);
+            SaveAs(tmpFile);
 
-            BinaryReader r = new(new FileStream(tmpfile, FileMode.Open));
+            BinaryReader r = new(new FileStream(tmpFile, FileMode.Open));
             BinaryWriter w = new(_packageStream);
             _packageStream.Position = 0;
             w.Write(r.ReadBytes((int)r.BaseStream.Length));
@@ -57,7 +57,7 @@ public sealed class Package
         }
         finally
         {
-            File.Delete(tmpfile);
+            File.Delete(tmpFile);
         }
 
         _packageStream.Position = 0;
@@ -70,7 +70,7 @@ public sealed class Package
     /// Save the package to a given stream
     /// </summary>
     /// <param name="s">Stream to save to</param>
-    public void SaveAs(Stream s)
+    private void SaveAs(Stream s)
     {
         BinaryWriter w = new(s);
         w.Write(_header);
@@ -103,11 +103,11 @@ public sealed class Package
         uint indexType = (uint)(lIh.Count <= 1 ? 0x04 : 0x00) | (uint)(lG.Count <= 1 ? 0x02 : 0x00) | (uint)(lT.Count <= 1 ? 0x01 : 0x00);
         newIndex.Indextype = indexType;
 
-        long indexpos = s.Position;
+        long index = s.Position;
         newIndex.Save(w);
-        SetIndexcount(w, newIndex.Count);
-        SetIndexsize(w, newIndex.Size);
-        SetIndexposition(w, (int)indexpos);
+        SetIndexCount(w, newIndex.Count);
+        SetIndexSize(w, newIndex.Size);
+        SetIndexPosition(w, (int)index);
         s.Flush();
     }
 
@@ -115,7 +115,7 @@ public sealed class Package
     /// Save the package to a given file
     /// </summary>
     /// <param name="path">File to save to - will be overwritten or created</param>
-    public void SaveAs(string path)
+    private void SaveAs(string path)
     {
         using FileStream fs = new(path, FileMode.Create);
         SaveAs(fs);
@@ -124,29 +124,6 @@ public sealed class Package
 
     // Static so cannot be defined on the interface
 
-    /// <summary>
-    /// Open an existing package by filename, read only
-    /// </summary>
-    /// <param name="packagePath">Fully qualified filename of the package</param>
-    /// <returns>IPackage reference to an existing package on disk</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="packagePath"/> is null.</exception>
-    /// <exception cref="FileNotFoundException">The file cannot be found.</exception>
-    /// <exception cref="DirectoryNotFoundException"><paramref name="packagePath"/> is invalid, such as being on an unmapped drive.</exception>
-    /// <exception cref="PathTooLongException">
-    /// <paramref name="packagePath"/>, or a component of the file name, exceeds the system-defined maximum length.
-    /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
-    /// </exception>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="packagePath"/> is an empty string (""), contains only white space, or contains one or more invalid characters.
-    /// <br/>-or-<br/>
-    /// <paramref name="packagePath"/> refers to a non-file device, such as "con:", "com1:", "lpt1:", etc. in an NTFS environment.
-    /// </exception>
-    /// <exception cref="NotSupportedException">
-    /// <paramref name="packagePath"/> refers to a non-file device, such as "con:", "com1:", "lpt1:", etc. in a non-NTFS environment.
-    /// </exception>
-    /// <exception cref="System.Security.SecurityException">The caller does not have the required permission.</exception>
-    /// <exception cref="InvalidDataException">Thrown if the package header is malformed.</exception>
-    public static Package OpenPackage(string packagePath) { return OpenPackage(packagePath, false); }
     /// <summary>
     /// Open an existing package by filename, optionally readwrite
     /// </summary>
@@ -174,7 +151,7 @@ public sealed class Package
     /// such as when access is ReadWrite and the file or directory is set for read-only access.
     /// </exception>
     /// <exception cref="InvalidDataException">Thrown if the package header is malformed.</exception>
-    public static Package OpenPackage(string packagePath, bool readwrite) => new(new FileStream(packagePath, FileMode.Open, readwrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.ReadWrite));
+    public static Package OpenPackage(string packagePath, bool readwrite = false) => new(new FileStream(packagePath, FileMode.Open, readwrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.ReadWrite));
 
     /// <summary>
     /// Releases any internal references associated with the given package
@@ -182,18 +159,15 @@ public sealed class Package
     /// <param name="pkg">IPackage reference to close</param>
     public static void ClosePackage(Package pkg)
     {
-        if (pkg is { } p)
-        {
-            if (p._packageStream != null) { try { p._packageStream.Close(); }
-                catch
-                {
-                    // ignored
-                }
+        if (pkg == null) return;
 
-                p._packageStream = null; }
-            p._header = null;
-            p._index = null;
+        if (pkg._packageStream != null) 
+        { 
+            try { pkg._packageStream.Close(); } catch { }
+            pkg._packageStream = null;
         }
+        pkg._header = null;
+        pkg._index = null;
     }
     #endregion
 
@@ -202,12 +176,12 @@ public sealed class Package
     /// <summary>
     /// Package header: number of entries in the package index
     /// </summary>
-    public int Indexcount => BitConverter.ToInt32(_header, 36);
+    private int IndexCount => BitConverter.ToInt32(_header, 36);
 
     /// <summary>
     /// Package header: index position in file
     /// </summary>
-    public int Indexposition { get { int i = BitConverter.ToInt32(_header, 64); return i != 0 ? i : BitConverter.ToInt32(_header, 40); } }
+    private int IndexPosition { get { int i = BitConverter.ToInt32(_header, 64); return i != 0 ? i : BitConverter.ToInt32(_header, 40); } }
 
     #endregion
 
@@ -217,15 +191,7 @@ public sealed class Package
     /// Package index: the index
     /// </summary>
     public List<ResourceIndexEntry> GetResourceList => Index;
-
-    /// <summary>
-    /// Searches the entire <see cref="IPackage"/>
-    /// for the first <see cref="IResourceIndexEntry"/> that matches the conditions defined by
-    /// the <c>Predicate&lt;IResourceIndexEntry&gt;</c> <paramref name="match"/>.
-    /// </summary>
-    /// <param name="match"><c>Predicate&lt;IResourceIndexEntry&gt;</c> defining matching conditions.</param>
-    /// <returns>The first matching <see cref="IResourceIndexEntry"/>, if any; otherwise null.</returns>
-    /// <remarks>Note that entries marked as deleted will not be returned.</remarks>
+    
     public ResourceIndexEntry Find(Predicate<ResourceIndexEntry> match) { return Index.Find(x => !x.IsDeleted && match(x)); }
 
     #endregion
@@ -270,11 +236,11 @@ public sealed class Package
 
     #region Header implementation
 
-    byte[] _header = new byte[96];
+    private byte[] _header = new byte[96];
 
-    void SetIndexcount(BinaryWriter w, int c) { w.BaseStream.Position = 36; w.Write(c); }
-    void SetIndexsize(BinaryWriter w, int c) { w.BaseStream.Position = 44; w.Write(c); }
-    void SetIndexposition(BinaryWriter w, int c) { w.BaseStream.Position = 40; w.Write(0); w.BaseStream.Position = 64; w.Write(c); }
+    private static void SetIndexCount(BinaryWriter w, int c) { w.BaseStream.Position = 36; w.Write(c); }
+    private static void SetIndexSize(BinaryWriter w, int c) { w.BaseStream.Position = 44; w.Write(c); }
+    private static void SetIndexPosition(BinaryWriter w, int c) { w.BaseStream.Position = 40; w.Write(0); w.BaseStream.Position = 64; w.Write(c); }
     #endregion
 
     #region Index implementation
@@ -286,7 +252,7 @@ public sealed class Package
         {
             if (_index != null) return _index;
                 
-            _index = new PackageIndex(_packageStream, Indexposition, Indexcount);
+            _index = new PackageIndex(_packageStream, IndexPosition, IndexCount);
             return _index;
         }
     }
@@ -313,9 +279,8 @@ public sealed class Package
         if (rc.Chunkoffset == 0xffffffff) return null;
         _packageStream.Position = rc.Chunkoffset;
 
-        byte[] data;
         if (rc.Filesize == 1 && rc.Memsize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
-        data = rc.Filesize == rc.Memsize ? new BinaryReader(_packageStream).ReadBytes((int)rc.Filesize) : Compression.UncompressStream(_packageStream, (int)rc.Filesize, (int)rc.Memsize);
+        byte[] data = rc.Filesize == rc.Memsize ? new BinaryReader(_packageStream).ReadBytes((int)rc.Filesize) : Compression.UncompressStream(_packageStream, (int)rc.Filesize, (int)rc.Memsize);
 
         MemoryStream ms = new();
         ms.Write(data, 0, data.Length);
