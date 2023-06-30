@@ -13,13 +13,14 @@
     <UserControl.DataContext>
         <viewModels:SettingsViewModel />
     </UserControl.DataContext>
+    
     <SmoothScrollViewer>
         <StackPanel Margin="25" Spacing="5">
             <TextBlock Text="{StaticResource Settings}"
                        Margin="0 0 0 10"
                        Theme="{StaticResource TitleTextBlockTheme}" />
             
-            <TextBlock Theme="{StaticResource BaseTextBlockTheme}" Text="{DynamicResource General}" />
+            <TextBlock Theme="{StaticResource BaseTextBlockTheme}" Text="{StaticResource General}" />
             
             <OptionsDisplayItem Header="{StaticResource Language}"
                                 Icon="{StaticResource LocalLanguageRegular}">
@@ -266,8 +267,13 @@
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource EnableCustomTitleBar}"
-                                Icon="{StaticResource WindowRegular}"
-                                IsVisible="{CompiledBinding !IsLinux}">
+                                Icon="{StaticResource WindowRegular}">
+                <OptionsDisplayItem.IsVisible>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="!IsLinux" />
+                        <CompiledBinding Path="!IsWindows7" />
+                    </MultiBinding>
+                </OptionsDisplayItem.IsVisible>
                 <OptionsDisplayItem.ActionButton>
                     <ToggleSwitch Classes="RightToggle"
                                   IsChecked="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"/>
@@ -276,8 +282,13 @@
             
             <OptionsDisplayItem Header="{StaticResource EnableBlur}"
                                 Icon="{StaticResource WindowInprivateRegular}"
-                                Expands="True"
-                                IsVisible="{CompiledBinding !IsLinux}">
+                                Expands="True">
+                <OptionsDisplayItem.IsVisible>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="!IsLinux" />
+                        <CompiledBinding Path="!IsWindows7" />
+                    </MultiBinding>
+                </OptionsDisplayItem.IsVisible>
                 <OptionsDisplayItem.ActionButton>
                     <ToggleSwitch Classes="RightToggle"
                                   IsChecked="{CompiledBinding WindowSettings.EnableBlur, Source={x:Static PleasantSettings.Instance}}"/>
@@ -331,7 +342,7 @@
                             <Button.Flyout>
                                 <MenuFlyout>
 
-                                    <MenuItem Header="{DynamicResource Copy}"
+                                    <MenuItem Header="{StaticResource Copy}"
                                               Command="{CompiledBinding CopyAccentColor}"
                                               CommandParameter="{CompiledBinding}">
                                     <MenuItem.Icon>
@@ -342,7 +353,7 @@
                                         </Viewbox>
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem Header="{DynamicResource Paste}"
+                                <MenuItem Header="{StaticResource Paste}"
                                           IsEnabled="{CompiledBinding !UseAccentColor}"
                                           Command="{CompiledBinding PasteAccentColor}"
                                           CommandParameter="{CompiledBinding}">
@@ -357,7 +368,7 @@
 
                                 <Separator />
 
-                                <MenuItem Header="{DynamicResource Change}"
+                                <MenuItem Header="{StaticResource Change}"
                                           IsEnabled="{CompiledBinding !UseAccentColor}"
                                           Command="{CompiledBinding ChangeAccentColor}">
                                     <MenuItem.Icon>

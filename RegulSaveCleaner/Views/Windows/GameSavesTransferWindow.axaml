@@ -5,6 +5,7 @@
                xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
                xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
                xmlns:converters="clr-namespace:RegulSaveCleaner.Core.Converters"
+               xmlns:core="clr-namespace:RegulSaveCleaner.Core"
                mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
                x:Class="RegulSaveCleaner.Views.Windows.GameSavesTransferWindow"
                x:DataType="windows:GameSavesTransferViewModel"
@@ -132,13 +133,15 @@
                     </ListBox.Styles>
                     <ListBox.DataTemplates>
                         <DataTemplate DataType="structures:GameSave">
-                            <Grid ColumnDefinitions="Auto,*" Height="100" Margin="5">
+                            <Grid ColumnDefinitions="Auto,*" Margin="5">
                                 <Border Grid.Column="0"
                                         Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
                                         BorderThickness="1"
                                         BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
                                         CornerRadius="5"
-                                        Margin="0 0 10 0">
+                                        Margin="0 0 10 0"
+                                        Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}"
+                                        Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
                                     <Image Source="{CompiledBinding ImageOfFamily}"
                                            Margin="{CompiledBinding ImageOfFamily, Converter={x:Static converters:UnknownIconToMarginConverter.Instance}}"
                                            HorizontalAlignment="Center"

@@ -121,6 +121,24 @@ public class SettingsViewModel : ViewModelBase
 #endif
         }
     }
+    
+    public bool IsWindows7
+    {
+        get
+        {
+#if Windows
+            
+#if !NET6_0_OR_GREATER
+            return !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393);
+#else
+            return false;
+#endif
+
+#else
+            return false;
+#endif
+        }
+    }
 
     public SettingsViewModel()
     {

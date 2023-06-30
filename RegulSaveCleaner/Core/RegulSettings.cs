@@ -3,6 +3,7 @@ using System.Text.Json;
 using Avalonia.Collections;
 using Avalonia.Media;
 using PleasantUI;
+using PleasantUI.Core;
 using PleasantUI.Core.Constants;
 using RegulSaveCleaner.Core.Constants;
 using RegulSaveCleaner.Structures;
@@ -130,6 +131,14 @@ public class RegulSettings : ViewModelBase
         Instance.PathToSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts",
             LocalizedNames.TheSims3, "Saves");
         Instance.WorldCachesClear = true;
+
+#if !NET6_0_OR_GREATER
+        if (!OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
+        {
+            PleasantSettings.Instance.WindowSettings.EnableBlur = false;
+            PleasantSettings.Instance.WindowSettings.EnableCustomTitleBar = false;
+        }
+#endif
 #endif
     }
 
