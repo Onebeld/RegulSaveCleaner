@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:RegulSaveCleaner.Views"
+                    xmlns:structures="clr-namespace:RegulSaveCleaner.Structures">
+    <MenuFlyout x:Key="SaveFilesSettingsMenuFlyout" x:DataType="structures:GameSave">
+        <MenuItem Header="{StaticResource ProhibitedList}"
+                  Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenProhibitedList}"
+                  CommandParameter="{CompiledBinding}">
+            <MenuItem.Icon>
+                <Viewbox Width="16" Height="16">
+                    <Path
+                        Data="{StaticResource PresenceBlockedRegular}"
+                        Fill="{StaticResource TextFillColorPrimaryBrush}"
+                        Stretch="Uniform" />
+                </Viewbox>
+            </MenuItem.Icon>
+        </MenuItem>
+
+        <MenuItem Header="{StaticResource MoveOldList}"
+                  Command="{CompiledBinding $parent[views:MainWindow].ViewModel.OpenOldProhibitedLists}"
+                  CommandParameter="{CompiledBinding}" />
+
+        <Separator />
+
+        <MenuItem Header="{StaticResource MoveToSpareFolder}"
+                  Command="{CompiledBinding $parent[views:MainWindow].ViewModel.StartMovingSave}"
+                  CommandParameter="{CompiledBinding}" />
+    </MenuFlyout>
+</ResourceDictionary>

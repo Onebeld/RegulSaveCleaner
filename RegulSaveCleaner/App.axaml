@@ -10,10 +10,12 @@
         
         <ResourceDictionary x:Key="LanguageDictionary">
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/cs.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/da.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/de.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fr.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/zh.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -6,11 +6,59 @@
              xmlns:controls="clr-namespace:RegulSaveCleaner.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegulSaveCleaner.Views.Pages.CleanerPages.VerticalListCleanerPage">
-    <Grid ColumnDefinitions="*,10,1.5*">
-        <saveFilesList:VerticalSaveFilesList Grid.Column="0" Margin="25 25 0 25" />
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Controls/Carousel.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Carousel x:Name="Carousel">
+        <Carousel.PageTransition>
+            <PageSlide Duration="0.35" SlideInEasing="SineEaseInOut" SlideOutEasing="SineEaseInOut" Orientation="Vertical" />
+        </Carousel.PageTransition>
         
-        <SmoothScrollViewer Grid.Column="2">
-            <controls:CleanerSettings Margin="0 25 25 25" />
+        <Grid x:Name="Grid" RowDefinitions="*,10,Auto" Margin="25">
+            <saveFilesList:VerticalSaveFilesList Grid.Row="0" />
+
+            <Button x:Name="DownButton" Grid.Row="2" HorizontalContentAlignment="Stretch">
+                <Panel>
+                    <Viewbox Width="12" Height="12" HorizontalAlignment="Left">
+                        <Path Data="{StaticResource ChevronDownRegular}"
+                              Fill="{CompiledBinding $parent[Button].Foreground}" />
+                    </Viewbox>
+
+                    <TextBlock Text="{StaticResource Settings}" HorizontalAlignment="Center" />
+
+                    <Viewbox Width="12" Height="12" HorizontalAlignment="Right">
+                        <Path Data="{StaticResource ChevronDownRegular}"
+                              Fill="{CompiledBinding $parent[Button].Foreground}" />
+                    </Viewbox>
+                </Panel>
+            </Button>
+        </Grid>
+
+        <SmoothScrollViewer x:Name="SmoothScrollViewer">
+            <StackPanel Margin="25" Spacing="10">
+                <Button x:Name="UpButton" HorizontalContentAlignment="Stretch">
+                    <Panel>
+                        <Viewbox Width="12" Height="12" HorizontalAlignment="Left">
+                            <Path Data="{StaticResource ChevronUpRegular}"
+                                  Fill="{CompiledBinding $parent[Button].Foreground}" />
+                        </Viewbox>
+
+                        <TextBlock Text="{StaticResource Settings}" HorizontalAlignment="Center" />
+
+                        <Viewbox Width="12" Height="12" HorizontalAlignment="Right">
+                            <Path Data="{StaticResource ChevronUpRegular}"
+                                  Fill="{CompiledBinding $parent[Button].Foreground}" />
+                        </Viewbox>
+                    </Panel>
+                </Button>
+                
+                <controls:CleanerSettings />
+            </StackPanel>
         </SmoothScrollViewer>
-    </Grid>
+    </Carousel>
 </UserControl>

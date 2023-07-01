@@ -110,10 +110,12 @@ public class App : Application
 
     public static readonly Language[] Languages =
     {
-        new("English (English)", "en"),
-        new("Русский (Russian)", "ru"),
+        new("Česky (Czech)", "cs"),
+        new("Dansk (Danish)", "da"),
         new("Deutsch (German)", "de"),
+        new("English (English)", "en"),
         new("Français (French)", "fr"),
+        new("Русский (Russian)", "ru"),
         new("中文 (Chinese)", "zh"),
     };
 

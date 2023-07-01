@@ -84,10 +84,7 @@ public class Program
 #if Windows
             .With(new Win32PlatformOptions
             {
-                AllowEglInitialization = true,
                 OverlayPopups = true,
-                UseWgl = false,
-                UseWindowsUIComposition = true,
             });
 #endif
 #if OSX
@@ -96,16 +93,11 @@ public class Program
                 DisableDefaultApplicationMenuItems = true,
                 ShowInDock = false,
                 DisableNativeMenus = true
-            })
-            .With(new AvaloniaNativePlatformOptions
-            {
-                UseGpu = true
             });
 #endif
 #if Linux
             .With(new X11PlatformOptions()
             {
-                UseGpu = true,
                 OverlayPopups = true
             });
 #endif

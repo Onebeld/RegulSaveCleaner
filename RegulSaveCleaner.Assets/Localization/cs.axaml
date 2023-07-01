@@ -1,0 +1,237 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">cs</s:String>
+    
+    <!--Czech-->
+    <s:String x:Key="Collapse">Sbalit</s:String>
+    <s:String x:Key="Expand">Rozbalit</s:String>
+    <s:String x:Key="Reestablish">Obnovit</s:String>
+    <s:String x:Key="Close">Zavřít</s:String>
+    
+    <s:String x:Key="Menu">Nabídka</s:String>
+    <s:String x:Key="Cleaner">Čistší</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Otázky a odpovědi</s:String>
+    <s:String x:Key="Settings">Nastavení</s:String>
+    <s:String x:Key="About">O stránkách</s:String>
+    
+    <s:String x:Key="On">Na</s:String>
+    <s:String x:Key="Off">Vypnuto</s:String>
+    
+    <s:String x:Key="Cut">Střih</s:String>
+    <s:String x:Key="Copy">Kopírovat</s:String>
+    <s:String x:Key="Paste">Vložit</s:String>
+    
+    <s:String x:Key="Ok">Dobře</s:String>
+    <s:String x:Key="Cancel">Zrušit</s:String>
+    
+    <s:String x:Key="AddYourNewColor">Přidejte svou novou barvu!</s:String>
+    <s:String x:Key="AddColor">Přidat barvu</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Zahájení čištění</s:String>
+    <s:String x:Key="SaveFiles">Uložení souborů</s:String>
+    
+    <s:String x:Key="ProhibitedList">Seznam zakázaných položek</s:String>
+    <s:String x:Key="MoveOldList">Přesunutí starého seznamu</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">Nebyla nalezena žádná složka pro ukládání</s:String>
+    <s:String x:Key="NoSaveFound">Nebyly nalezeny žádné úspory</s:String>
+    
+    <s:String x:Key="SelectAll">Vyberte vše</s:String>
+    <s:String x:Key="CancelAll">Zrušit vše</s:String>
+    <s:String x:Key="UpdateList">Aktualizace seznamu</s:String>
+    <s:String x:Key="SortByDate">Řazení podle data</s:String>
+    <s:String x:Key="SortByAlphabetical">Řazení podle abecedy</s:String>
+    <s:String x:Key="Selected">Vybrané</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">Počet uložených souborů</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">V dokumentech se nepodařilo najít složku "The Sims 3".</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Došlo k chybě!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Chcete si tuto složku vybrat sami?</s:String>
+    
+    <s:String x:Key="CleaningOptions">Možnosti čištění</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Nastavení toho, co chcete vymazat</s:String>
+    <s:String x:Key="CreateBackup">Vytvoření zálohy</s:String>
+    <s:String x:Key="ClearCache">Vymazat mezipaměť</s:String>
+    <s:String x:Key="ClearCacheDescription">Nastavení čištění</s:String>
+    <s:String x:Key="BackupPath">Záložní cesta</s:String>
+    <s:String x:Key="CreateNow">Vytvořit nyní</s:String>
+    <s:String x:Key="ClearNow">Vymazat nyní</s:String>
+    
+    <s:String x:Key="Recommended">Doporučené</s:String>
+    <s:String x:Key="Experimentally">Experimentálně</s:String>
+    <s:String x:Key="ReadMore">Přečtěte si více</s:String>
+    
+    <s:String x:Key="SaveCleared">Uložení bylo úspěšně vymazáno!</s:String>
+    <s:String x:Key="SavesCleared">Úspory byly úspěšně vymazány!</s:String>
+    <s:String x:Key="ResultsBelow">Výsledek si můžete prohlédnout níže.</s:String>
+    <s:String x:Key="CacheCleared">Vyrovnávací paměť byla úspěšně vymazána!</s:String>
+    <s:String x:Key="BackupCreated">Záloha byla úspěšně vytvořena!</s:String>
+    <s:String x:Key="Successful">Úspěšně!</s:String>
+    <s:String x:Key="Information">Informace</s:String>
+    <s:String x:Key="Yes">Ano</s:String>
+    <s:String x:Key="No">Ne</s:String>
+    
+    <s:String x:Key="SaveName">Uložit název</s:String>
+    <s:String x:Key="TimePassed">Uplynulý čas</s:String>
+    <s:String x:Key="OldSize">Stará velikost</s:String>
+    <s:String x:Key="NewSize">Nová velikost</s:String>
+    <s:String x:Key="Percent">Procenta</s:String>
+    <s:String x:Key="Sec">sek</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">Odstranění rodinných portrétů</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Odstranění portrétů Simsů</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Odstranění miniatur šarží</s:String>
+    <s:String x:Key="RemovePhotos">Odstranění fotografií</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Odstranění vygenerovaných obrázků</s:String>
+    <s:String x:Key="RemoveTextures">Odstranění textur</s:String>
+    <s:String x:Key="RemoveOtherTypes">Odstranění ostatních typů</s:String>
+    
+    <s:String x:Key="All">Všechny</s:String>
+    <s:String x:Key="Files">soubory</s:String>
+    <s:String x:Key="FromTheFolder">ze složky</s:String>
+    <s:String x:Key="Except">kromě</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Odstraní obrázky, které hra sama vytvoří.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Patří sem: selfie, blahopřání, fotografie z fotobudky, fotografie z maturitního plesu.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Některé z nich můžete uložit pomocí seznamu zakázaných položek.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Odstraní portréty, které se zobrazí při výběru uložení, v tomto programu a při výběru rodiny. Uloží portrét, který se zobrazí v tomto programu.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Odstraní portréty Simíků. Objevují se téměř všude: na panelu Vztahy, v Oblaku myšlenek atd.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Vedlejší účinek:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">když vstoupíte do editoru města, bude trvat dlouho, než se načte, protože hra je zaneprázdněna vytvářením portrétů a portréty mají pouze jednu pózu.</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">Odstraní miniatury šarží, které se zobrazí při výběru uložení nebo šarže.</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">Odstraní fotografie pořízené simíky.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Pomocí seznamu Zakázané můžete uložit pouze některé fotografie.</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">Odstraní textury pozemků vytvořené po umístění nového pozemku ve městě. Toto se nevztahuje na pozemky, které již ve městě byly (nepočítáme-li některé, které jsou umístěny automaticky, pokud máte určitý rozšiřující balíček).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Mějte na paměti, že po vymazání uložení bude umístěný pozemek vypadat jako zem (viz snímek obrazovky před a po).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Doporučujeme zálohovat, protože podle některých hráčů se hra ukládá na neurčito.</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">Tato možnost funguje stejně jako "Vymazat vzpomínky" v programu Kuree. Podle recenzí nevymazává vzpomínky, proto byla tato možnost přejmenována. Doporučujeme ji zálohovat, protože není známo, co vymaže.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Doporučujeme ji zálohovat, protože není známo, co vymaže.</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">Části CAS, které se objevují v Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Nové objekty, které by se objevily v režimu Koupit/Sestavit</s:String>
+    <s:String x:Key="ScriptCacheDescription">Modifikace nebo hacky</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Noví Simíci, výchozí skiny</s:String>
+    <s:String x:Key="SocialCacheDescription">Informace o sociálních aspektech (zavedeno s opravou 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Soubory mezipaměti nainstalovaných světů. Neexistují žádné soubory WorldCache pro světy, které byly dodány se hrou a nebyly nainstalovány prostřednictvím Launcheru, jako například Sunset Valley, Twinbrooks nebo Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Náhledy obrázků v mezipaměti. Zde jsou uloženy pro rychlejší načítání při příštím spuštění hry. Pokud máte ve hře potíže s podivnými miniaturami, odstraňte je. Při příštím spuštění hry se znovu vytvoří, i když při prvním načtení hry budou o něco pomalejší poté, co byl obsah této složky smazán.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Chyby vytvořené hrou, které byly zachyceny modem NRaas ErrorTrap. Ve hře se nepoužívají. Smažte je nebo je na požádání zveřejněte na adrese NRaas Industries. Obsahují informace, které byly způsobeny jeho modem ErrorTrap, a pomohly by mu při řešení chyb (způsobených kódem EA nebo jeho mody), které chybu vyvolaly. Pokud tento mod nemáte a nemáte v plánu někdy kontaktovat EA s žádostí o pomoc při řešení těchto chyb, můžete je jednoduše smazat.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Zavedeno v patchi 1.29. Má obsahovat obrázky pro doporučené položky obchodu, které se mají zobrazovat v katalogu CAH/Koupit/Sestavit, ale způsobuje problémy s padáním.</s:String>
+    <s:String x:Key="DCCacheDescription">Obsahuje všechny nainstalované položky Vlastní obsah/výměna/úložiště, které jste nainstalovali prostřednictvím spouštěče. Zobrazuje se na kartě Nainstalovaný obsah v Launcheru.</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Odstranění této složky v systému macOS je přísně zakázáno, protože by mohlo vést k poškození uložených souborů. Proto je tato možnost zakázána, a nelze ji tedy povolit.</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">Máte příliš mnoho uložení</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Doporučujeme přesunout nepotřebné uložení do jiné složky. Použijte integrovanou funkci Regul Save Cleaner.</s:String>
+    <s:String x:Key="ShowNoMore">Nezobrazovat více</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Přesun uložených souborů do náhradní složky</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Vaše uložení byla přesunuta!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Vaše uložení bylo přesunuto!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Stěhování není možné. Zkontrolujte přístup ke složce, do které jste se pokusili přesunout uložený soubor.</s:String>
+    <s:String x:Key="RestoreOldSaves">Obnovení starých uložení</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Vyberte uložení pro přenos</s:String>
+    <s:String x:Key="MoveToSpareFolder">Přesun do náhradní složky</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Hra je velmi pomalá</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Hra The Sims 3 je bohužel velmi špatně optimalizovaná. Spotřebuje maximálně 4 GB paměti RAM a využívá pouze jedno jádro procesoru. První, co je třeba nainstalovat, je SmoothPatch od LazyDuchess. Ten dokáže v optimalizaci úžasné věci.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Doporučuje se používat modifikace NRaas:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Během hraní se ukládání zvětšuje, což může vést k různým chybám. Abyste se problémům vyhnuli, použijte tento program. Pokud chcete získat maximální zážitek, použijte velmi dobrý návod od Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Přejít na manuál</s:String>
+    <s:String x:Key="GoToInstallation">Přejít na instalaci</s:String>
+    
+    <s:String x:Key="Error12">Chyba 12</s:String>
+    <s:String x:Key="Error12Description1">Nebojte se! Je to proto, že hra nemá dostatek paměti pro uložení vašeho světa. Zkuste vyčistit inventář od nepotřebných zbytků, odstranit nepotřebné objekty ve světě a znovu uložit. Pokud to nepomůže, zkuste návod od AncientGatekeeper.</s:String>
+    
+    <s:String x:Key="Error16">Chyba 16</s:String>
+    <s:String x:Key="Error16Description1">Jedná se o poměrně vzácnou chybu. Vyskytuje se, když velikost uloženého souboru dosáhne 4 GB. Důvodů může být poměrně dost: hodně rodin, hodně particií, hodně odpadu uvnitř uloženého souboru. První věc, kterou je třeba udělat, je použít tento program. Pokud to příliš nepomůže, je třeba provést vyčištění v samotné hře. Kvůli této chybě je vysoká pravděpodobnost, že o uložení přijdete, proto se snažte uložení nezaplevelovat.</s:String>
+    
+    <s:String x:Key="Error0AfterOpeningSave">Chyba 0 po otevření uložení</s:String>
+    <s:String x:Key="Error0Description1">Vaše uložení bylo bohužel poškozeno. Bylo to způsobeno jednou z verzí tohoto programu po vyčištění. Může se vyskytnout při poškození sektoru pevného disku nebo SSD.</s:String>
+    
+    <!--Settings Page-->
+    <s:String x:Key="General">Obecné</s:String>
+    
+    <s:String x:Key="Language">Jazyk</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Vymazání nepotřebných zakázaných seznamů</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Pokud jste smazali uložení a nechcete seznamy dále používat, klikněte na tlačítko pro smazání.</s:String>
+    <s:String x:Key="PathSettings">Nastavení cesty</s:String>
+    <s:String x:Key="PathSettingsDescription">Změnit, pokud se změnila cesta ke složce hry</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Obnovení výchozího nastavení</s:String>
+    <s:String x:Key="Clear">Přehledně</s:String>
+    <s:String x:Key="Reset">Obnovení</s:String>
+    <s:String x:Key="Appearance">Vzhled</s:String>
+    <s:String x:Key="Font">Písmo</s:String>
+    <s:String x:Key="EnableShadow">Povolení stínu</s:String>
+    <s:String x:Key="EnableShadowDescription">Pokud máte problém s výkonem, zakažte toto nastavení.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Povolení vlastního titulkového pruhu</s:String>
+    <s:String x:Key="EnableBlur">Povolit rozmazání</s:String>
+    <s:String x:Key="OpacityLevel">Úroveň krytí</s:String>
+    <s:String x:Key="AccentColor">Barva akcentu</s:String>
+    <s:String x:Key="UseSystemAccentColor">Použití systémové barvy akcentu</s:String>
+    <s:String x:Key="Change">Změna</s:String>
+    <s:String x:Key="Theme">Thema</s:String>
+    <s:String x:Key="FolderForOldSaves">Složka pro staré uložení</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Zobrazení upozornění na velký počet uložení</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Počet uložení, při kterých se zobrazí varování</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Nastavení velikosti miniatur uložených souborů</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Velikost miniatury uložení</s:String>
+    <s:String x:Key="Preview">Náhled</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Zobrazení seznamu v čističi</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">Pokud zvolíte možnost Vertikální, je třeba zvětšit velikost okna.</s:String>
+    <s:String x:Key="Horizontal">Horizontální</s:String>
+    <s:String x:Key="Vertical">Vertikální</s:String>
+    
+    <s:String x:Key="UnusedProhibitedListsCleared">Nepoužívané seznamy zakázaných položek byly úspěšně vymazány!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">V současné době nejsou k dispozici žádné nepoužívané seznamy zakázaných položek.</s:String>
+    <s:String x:Key="ColorCopied">Barva zkopírována!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Nastavení bylo resetováno</s:String>
+    <s:String x:Key="ResetSettingsWarning">Opravdu chcete obnovit nastavení?</s:String>
+    
+    <s:String x:Key="System">Systém</s:String>
+    <s:String x:Key="Light">Světlo</s:String>
+    <s:String x:Key="Dark">Temné</s:String>
+    
+    <s:String x:Key="PathToTheSims">Cesta k The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Cesta k úsporám</s:String>
+    <s:String x:Key="ChoosePath">Zvolte si cestu</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Fotografie</s:String>
+    <s:String x:Key="PortraitsOfSims">Portréty Simsů</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portréty rodin</s:String>
+    <s:String x:Key="GeneratedImages">Generované obrázky</s:String>
+    <s:String x:Key="LotThumbnails">Miniatury pozemků</s:String>
+    <s:String x:Key="SelectOldList">Vyberte starý seznam</s:String>
+    <s:String x:Key="MergedOldList">Fúze byla úspěšná!</s:String>
+    <s:String x:Key="NoItems">Žádné položky</s:String>
+    <s:String x:Key="Unselect">Zrušení výběru</s:String>
+    <s:String x:Key="SaveSelectedImages">Uložení vybraných obrázků</s:String>
+    <s:String x:Key="ImagesSaved">Obrázky byly uloženy!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Počet obrázků v seznamu</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">Licence</s:String>
+    <s:String x:Key="Version">Verze</s:String>
+    <s:String x:Key="Author">Autor</s:String>
+    <s:String x:Key="Copyright">Autorská práva</s:String>
+    <s:String x:Key="Description">Popis</s:String>
+    <s:String x:Key="Links">Odkazy</s:String>
+    <s:String x:Key="UsedLibraries">Použité knihovny</s:String>
+    <s:String x:Key="ContactAuthor">Kontakt na autora</s:String>
+    <s:String x:Key="WorksOn">Funguje na</s:String>
+    <s:String x:Key="WriteLetter">Napište dopis</s:String>
+    <s:String x:Key="SocialNetwork">Sociální síť</s:String>
+    <s:String x:Key="ModTheSims">Popis jednotlivých možností vymazání mezipaměti byl převzat z webových stránek ModTheSims.</s:String>
+    <s:String x:Key="RegulDescription1">Nástroj pro čištění uložených her The Sims™ 3 a udržování jejich stability.</s:String>
+    <s:String x:Key="RegulDescription2">Tento program není podporován společností Electronic Arts ani jejími poskytovateli licencí ani s nimi není spojen. Ochranné známky patří příslušným vlastníkům. Všechna práva jsou vyhrazena.</s:String>
+    <s:String x:Key="LicenseDescription">SOFTWARE JE POSKYTOVÁN "TAK, JAK JE", BEZ JAKÝCHKOLI ZÁRUK, VÝSLOVNÝCH NEBO PŘEDPOKLÁDANÝCH, MIMO JINÉ VČETNĚ ZÁRUK PRODEJNOSTI, VHODNOSTI PRO URČITÝ ÚČEL A NEPORUŠOVÁNÍ PRÁV. AUTOŘI ANI DRŽITELÉ AUTORSKÝCH PRÁV V ŽÁDNÉM PŘÍPADĚ NENESOU ODPOVĚDNOST ZA JAKÉKOLI NÁROKY, ŠKODY NEBO JINOU ODPOVĚDNOST, AŤ UŽ SMLUVNÍ, DELIKTNÍ NEBO JINOU, VYPLÝVAJÍCÍ ZE SOFTWARU, Z NĚJ NEBO V SOUVISLOSTI S NÍM NEBO S JEHO POUŽÍVÁNÍM ČI JINÝM NAKLÁDÁNÍM S NÍM.</s:String>
+</ResourceDictionary>

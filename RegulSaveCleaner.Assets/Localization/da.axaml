@@ -1,0 +1,238 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">da</s:String>
+    
+    <!--Danish-->
+    <s:String x:Key="Collapse">Bryder sammen</s:String>
+    <s:String x:Key="Expand">Udvide</s:String>
+    <s:String x:Key="Reestablish">Genoprette</s:String>
+    <s:String x:Key="Close">Tæt</s:String>
+    
+    <s:String x:Key="Menu">Menu</s:String>
+    <s:String x:Key="Cleaner">Renere</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Spørgsmål og svar</s:String>
+    <s:String x:Key="Settings">Indstillinger</s:String>
+    <s:String x:Key="About">Om</s:String>
+    
+    <s:String x:Key="On">På</s:String>
+    <s:String x:Key="Off">Af</s:String>
+    
+    <s:String x:Key="Cut">Skære</s:String>
+    <s:String x:Key="Copy">Kopi</s:String>
+    <s:String x:Key="Paste">Sæt ind</s:String>
+    
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Afbestille</s:String>
+    
+    <s:String x:Key="AddYourNewColor">Tilføj din nye farve!</s:String>
+    <s:String x:Key="AddColor">Tilføj farve</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Start rengøring</s:String>
+    <s:String x:Key="SaveFiles">Gem filer</s:String>
+    
+    <s:String x:Key="ProhibitedList">Forbudt liste</s:String>
+    <s:String x:Key="MoveOldList">Flyt den gamle liste</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">Der blev ikke fundet nogen gemte mappe</s:String>
+    <s:String x:Key="NoSaveFound">Ingen gemmer fundet</s:String>
+    
+    <s:String x:Key="SelectAll">Vælg alle</s:String>
+    <s:String x:Key="CancelAll">Annuller alle</s:String>
+    <s:String x:Key="UpdateList">Opdater liste</s:String>
+    <s:String x:Key="SortByDate">Sorter efter dato</s:String>
+    <s:String x:Key="SortByAlphabetical">Sorter efter alfabetisk</s:String>
+    <s:String x:Key="Selected">Valgte</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">Antal gemte filer</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">Kunne ikke finde mappen "The Sims 3" i dokumenterne.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Der har været en fejl!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Vil du selv vælge denne mappe?</s:String>
+    
+    <s:String x:Key="CleaningOptions">Rengøringsmuligheder</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Opsætning af det, du vil rydde</s:String>
+    <s:String x:Key="CreateBackup">Opret backup</s:String>
+    <s:String x:Key="ClearCache">Ryd cache</s:String>
+    <s:String x:Key="ClearCacheDescription">Opsætning af rengøringen</s:String>
+    <s:String x:Key="BackupPath">Backup sti</s:String>
+    <s:String x:Key="CreateNow">Opret nu</s:String>
+    <s:String x:Key="ClearNow">Ryd nu</s:String>
+    
+    <s:String x:Key="Recommended">Anbefalede</s:String>
+    <s:String x:Key="Experimentally">Eksperimentelt</s:String>
+    <s:String x:Key="ReadMore">Læs mere</s:String>
+    
+    <s:String x:Key="SaveCleared">Gemningen er blevet ryddet!</s:String>
+    <s:String x:Key="SavesCleared">Gemmer blev ryddet!</s:String>
+    <s:String x:Key="ResultsBelow">Du kan se resultatet herunder.</s:String>
+    <s:String x:Key="CacheCleared">Cachen er blevet ryddet!</s:String>
+    <s:String x:Key="BackupCreated">Sikkerhedskopien er blevet oprettet!</s:String>
+    <s:String x:Key="Successful">Vellykket!</s:String>
+    <s:String x:Key="Information">Information</s:String>
+    <s:String x:Key="Error">Fejl</s:String>
+    <s:String x:Key="Yes">Ja</s:String>
+    <s:String x:Key="No">Ingen</s:String>
+    
+    <s:String x:Key="SaveName">Gem navn</s:String>
+    <s:String x:Key="TimePassed">Tiden gik</s:String>
+    <s:String x:Key="OldSize">Gammel størrelse</s:String>
+    <s:String x:Key="NewSize">Ny størrelse</s:String>
+    <s:String x:Key="Percent">Procent</s:String>
+    <s:String x:Key="Sec">sek</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">Fjern familieportrætter</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Fjern portrætter af Sims</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Fjern partiminiaturer</s:String>
+    <s:String x:Key="RemovePhotos">Fjern billeder</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Fjern genererede billeder</s:String>
+    <s:String x:Key="RemoveTextures">Fjern teksturer</s:String>
+    <s:String x:Key="RemoveOtherTypes">Fjern andre typer</s:String>
+    
+    <s:String x:Key="All">Alle</s:String>
+    <s:String x:Key="Files">filer</s:String>
+    <s:String x:Key="FromTheFolder">fra mappen</s:String>
+    <s:String x:Key="Except">undtagen</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Sletter billeder, som spillet selv skaber.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Dette inkluderer: selfies, lykønskningskort, billeder fra fotostanden, billeder fra afgangsbal.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Brug listen over forbudte til at gemme nogle af dem.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Fjerner portrætter, der vises, når du vælger gemmer, i dette program, og når du vælger familie. Gemmer det portræt, der vises i programmet.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Fjerner portrætter af simmere. De vises næsten overalt: i panelet Relationer, i tankeskyen og så videre.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Side effekt:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">når du går ind i byeditoren, vil det tage lang tid at indlæse det, fordi spillet er travlt optaget af at skabe portrætter, og portrætter vil kun have én positur.</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">Fjerner partiminiaturer, der vises, når du vælger Gem eller meget.</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">Sletter billeder taget af dine simmere.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Brug listen over forbudte til kun at gemme nogle af dine billeder.</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">Fjerner partiteksturer, der er oprettet, efter du har placeret et nyt parti i en by. Dette gælder ikke for partier, der allerede var i byen (bortset fra nogle, der automatisk placeres, hvis du har en bestemt udvidelsespakke).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Husk på, at efter at have ryddet gemningen, vil det parti, du placerede, ligne jorden (se skærmbillede før og efter).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Det anbefales, at du sikkerhedskopierer, da nogle spillere siger, at spillet gemmes på ubestemt tid.</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">Denne mulighed fungerer som "Ryd minder" i Kurees program. Ifølge anmeldelser rydder den ikke minder, så muligheden er blevet omdøbt. Det anbefales, at du sikkerhedskopierer det, da det er uvist, hvad det rydder.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Det anbefales, at du sikkerhedskopierer det, da det er uvist, hvad det rydder.</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">CAS-dele, der vises i Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Nye objekter, der vises i Køb/Byg-tilstand</s:String>
+    <s:String x:Key="ScriptCacheDescription">Mods eller hacks</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Nye simmere, standardskin</s:String>
+    <s:String x:Key="SocialCacheDescription">Information om de sociale aspekter (Introduceret med Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cache-filer til dine installerede verdener. Der er ingen WorldCache-filer for verdener, der fulgte med spillet og ikke blev installeret gennem Launcher som Sunset Valley, Twinbrooks eller Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Cachelagrede miniaturebilleder. Gemt her for hurtigere indlæsning næste gang du starter dit spil. Hvis du har problemer med mærkelige thumbnails i spillet, skal du slette disse. De vil blive genskabt næste gang du starter spillet, omend et lidt langsommere spil, når det først indlæses, efter at indholdet af denne mappe er blevet slettet.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Fejl produceret af spillet, som blev fanget af NRaas' ErrorTrap mod. De bruges ikke i spillet. Slet eller post hos NRaas Industries, hvis det ønskes. De indeholder information, der var forårsaget af hans ErrorTrap-mod og ville hjælpe ham med at fejlfinde de fejl (forårsaget af EA-kode eller hans mods), der udløser fejlen. Hvis du ikke har denne mod, og du ikke planlægger nogensinde at kontakte EA for at få hjælp til fejlfinding af disse fejl, så kan du simpelthen slette dem.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Introduceret i patch 1.29. Formodes at indeholde billeder til udvalgte butiksgenstande, der skal vises i CAH/Køb/Byg-kataloget, men forårsager problemer med at gå ned.</s:String>
+    <s:String x:Key="DCCacheDescription">Indeholder alt installeret brugerdefineret indhold/udveksling/butikselementer, som du har installeret via startprogrammet. Vises i Launchers fane Installeret indhold.</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Det er strengt forbudt at slette denne mappe i macOS, da det kan ødelægge dine lagringer. Derfor er denne mulighed deaktiveret og kan derfor ikke aktiveres.</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">Du har for mange gemmer</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Det anbefales at flytte unødvendige lagringer til en anden mappe. Brug den indbyggede Regul Save Cleaner-funktionalitet.</s:String>
+    <s:String x:Key="ShowNoMore">Vis ikke mere</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Flyt gemmer til en ekstra mappe</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Dine gemmer er blevet flyttet!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Din gemme er blevet flyttet!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Det er ikke muligt at flytte. Tjek adgangen til den mappe, du forsøgte at flytte din gem.</s:String>
+    <s:String x:Key="RestoreOldSaves">Gendan gamle gemmer</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Vælg gemmer for at overføre</s:String>
+    <s:String x:Key="MoveToSpareFolder">Flyt til en ekstra mappe</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Unfortunately, The Sims 3 is very poorly optimized. It consumes a maximum of 4 GB of RAM and uses only one processor core. The first thing you need to install is SmoothPatch by LazyDuchess. It does amazing things in optimization.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">The use of NRaas mods is recommended:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">As you play, the save gets bloated, which can lead to various errors. Use this program to avoid problems. If you want the ultimate experience, use the very good tutorial from Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Go to manual</s:String>
+    <s:String x:Key="GoToInstallation">Go to installation</s:String>
+    
+    <s:String x:Key="Error12">Error 12</s:String>
+    <s:String x:Key="Error12Description1">Don't worry! This is because the game does not have enough memory to save your world. Try clearing your inventory of unnecessary debris, removing unnecessary objects in the world, and saving again. If that doesn't help, try the guide from AncientGatekeeper.</s:String>
+    
+    <s:String x:Key="Error16">Error 16</s:String>
+    <s:String x:Key="Error16Description1">This is a rather rare error. It occurs when the size of your save reaches 4 GB. There are quite a few reasons: a lot of families, a lot of lots, a lot of garbage inside the save. The first thing to do is to use this program. If that doesn't help much, you need to do a cleanup in the game itself. Because of this error, there is a high probability of losing your save, so try not to bloat your save.</s:String>
+    
+    <s:String x:Key="Error0AfterOpeningSave">Error 0 after opening a save</s:String>
+    <s:String x:Key="Error0Description1">Unfortunately, your save has been corrupted. This was due to one of the versions of this program after cleaning. Can occur when a hard disk or SSD sector is corrupted.</s:String>
+    
+    <!--Settings Page-->
+    <s:String x:Key="General">General</s:String>
+    
+    <s:String x:Key="Language">Language</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Clear unnecessary prohibited lists</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">If you have deleted a save and do not want to use the lists further, click on the button to delete</s:String>
+    <s:String x:Key="PathSettings">Path Settings</s:String>
+    <s:String x:Key="PathSettingsDescription">Change if the path to the game folder has changed</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Reset to default settings</s:String>
+    <s:String x:Key="Clear">Clear</s:String>
+    <s:String x:Key="Reset">Reset</s:String>
+    <s:String x:Key="Appearance">Appearance</s:String>
+    <s:String x:Key="Font">Font</s:String>
+    <s:String x:Key="EnableShadow">Enable shadow</s:String>
+    <s:String x:Key="EnableShadowDescription">If you have a performance problem, disable this setting</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Enable custom title bar</s:String>
+    <s:String x:Key="EnableBlur">Enable blur</s:String>
+    <s:String x:Key="OpacityLevel">Opacity level</s:String>
+    <s:String x:Key="AccentColor">Accent color</s:String>
+    <s:String x:Key="UseSystemAccentColor">Use system accent color</s:String>
+    <s:String x:Key="Change">Change</s:String>
+    <s:String x:Key="Theme">Theme</s:String>
+    <s:String x:Key="FolderForOldSaves">Folder for old saves</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Show a warning about a large number of saves</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Number of saves, at which the warning is displayed</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Setting the size of save's thumbnails</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Size of save's thumbnail</s:String>
+    <s:String x:Key="Preview">Preview</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Displaying a list in the cleaner</s:String>
+    <s:String x:Key="DisplayingListInCleanerDescription">If you choose Vertical, you need to increase the size of the window</s:String>
+    <s:String x:Key="Horizontal">Horizontal</s:String>
+    <s:String x:Key="Vertical">Vertical</s:String>
+    
+    <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
+    <s:String x:Key="ColorCopied">Color copied!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">The settings have been reset</s:String>
+    <s:String x:Key="ResetSettingsWarning">Do you really want to reset settings?</s:String>
+    
+    <s:String x:Key="System">System</s:String>
+    <s:String x:Key="Light">Light</s:String>
+    <s:String x:Key="Dark">Dark</s:String>
+    
+    <s:String x:Key="PathToTheSims">Path to The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Path to the saves</s:String>
+    <s:String x:Key="ChoosePath">Choose path</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Photos</s:String>
+    <s:String x:Key="PortraitsOfSims">Portraits of Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portraits of Families</s:String>
+    <s:String x:Key="GeneratedImages">Generated images</s:String>
+    <s:String x:Key="LotThumbnails">Lot thumbnails</s:String>
+    <s:String x:Key="SelectOldList">Select the old list</s:String>
+    <s:String x:Key="MergedOldList">The merger was a success!</s:String>
+    <s:String x:Key="NoItems">No items</s:String>
+    <s:String x:Key="Unselect">Unselect</s:String>
+    <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
+    <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Number of images in list</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">License</s:String>
+    <s:String x:Key="Version">Version</s:String>
+    <s:String x:Key="Author">Author</s:String>
+    <s:String x:Key="Copyright">Copyright</s:String>
+    <s:String x:Key="Description">Description</s:String>
+    <s:String x:Key="Links">Links</s:String>
+    <s:String x:Key="UsedLibraries">Used libraries</s:String>
+    <s:String x:Key="ContactAuthor">Contact the author</s:String>
+    <s:String x:Key="WorksOn">Works on</s:String>
+    <s:String x:Key="WriteLetter">Write a letter</s:String>
+    <s:String x:Key="SocialNetwork">Social network</s:String>
+    <s:String x:Key="ModTheSims">The description of each option for clearing the cache was taken from the ModTheSims website.</s:String>
+    <s:String x:Key="RegulDescription1">A tool for cleaning up The Sims™ 3 save games and keeping them stable.</s:String>
+    <s:String x:Key="RegulDescription2">This program is not endorsed by or affiliated with Electronic Arts or its licensors. The trademarks belong to their respective owners. All rights reserved.</s:String>
+    <s:String x:Key="LicenseDescription">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</s:String>
+</ResourceDictionary>
