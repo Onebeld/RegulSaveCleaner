@@ -6,8 +6,8 @@
         xmlns:windows="clr-namespace:RegulSaveCleaner.ViewModels.Windows"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RegulSaveCleaner.Views.Windows.OldProhibitedListsWindow"
-        MaxWidth="400"
-        MaxHeight="550"
+        MaxWidth="500"
+        MaxHeight="600"
         x:DataType="windows:OldProhibitedListsViewModel">
     <Grid RowDefinitions="Auto,*" Margin="15">
         <TextBlock Grid.Row="0"
@@ -15,6 +15,13 @@
                    Theme="{StaticResource SubtitleTextBlockTheme}"
                    Margin="5 0 0 10"
                    VerticalAlignment="Center"/>
+        
+        <InformationBlock Grid.Row="0"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          Content="{CompiledBinding GameSaveResourcesList.Count}"
+                          Icon="{StaticResource LineHorizontal3Regular}"
+                          ToolTip.Tip="{StaticResource NumberOfUnusedProhibitedLists}"/>
         
         <Border Grid.Row="1"
                 CornerRadius="5"

@@ -221,6 +221,7 @@
     <s:String x:Key="SaveSelectedImages">Enregistrer les images sélectionnées</s:String>
     <s:String x:Key="ImagesSaved">Les images ont été sauvegardées!</s:String>
     <s:String x:Key="NumberOfImagesInList">Nombre d'images dans la liste</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Nombre de listes interdites non utilisées</s:String>
     
     <!--About-->
     <s:String x:Key="License">Licence</s:String>

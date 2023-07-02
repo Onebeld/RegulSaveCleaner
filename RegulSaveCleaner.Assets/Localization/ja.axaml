@@ -1,0 +1,242 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">ja</s:String>
+    
+    <!--Japan-->
+    <s:String x:Key="Collapse">崩壊</s:String>
+    <s:String x:Key="Expand">拡大する</s:String>
+    <s:String x:Key="Reestablish">再確立</s:String>
+    <s:String x:Key="Close">閉じる</s:String>
+    
+    <s:String x:Key="Menu">メニュー</s:String>
+    <s:String x:Key="Cleaner">クリーナー</s:String>
+    <s:String x:Key="QuestionsAndAnswers">質問と回答</s:String>
+    <s:String x:Key="Settings">設定</s:String>
+    <s:String x:Key="About">について</s:String>
+    
+    <s:String x:Key="On">オン</s:String>
+    <s:String x:Key="Off">オフ</s:String>
+    
+    <s:String x:Key="Cut">カット</s:String>
+    <s:String x:Key="Copy">コピー</s:String>
+    <s:String x:Key="Paste">ペースト</s:String>
+    
+    <s:String x:Key="Ok">よし</s:String>
+    <s:String x:Key="Cancel">キャンセル</s:String>
+    
+    <s:String x:Key="AddYourNewColor">新しい色を追加する！</s:String>
+    <s:String x:Key="AddColor">色を加える</s:String>
+    
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">クリーニング開始</s:String>
+    <s:String x:Key="SaveFiles">ファイルの保存</s:String>
+    
+    <s:String x:Key="ProhibitedList">禁止リスト</s:String>
+    <s:String x:Key="MoveOldList">古いリストを移動する</s:String>
+    
+    <s:String x:Key="SaveFilesNotFound">保存フォルダが見つかりません</s:String>
+    <s:String x:Key="NoSaveFound">セーブが見つかりません</s:String>
+    
+    <s:String x:Key="SelectAll">すべて選択</s:String>
+    <s:String x:Key="CancelAll">すべてキャンセル</s:String>
+    <s:String x:Key="UpdateList">更新リスト</s:String>
+    <s:String x:Key="SortByDate">日付順</s:String>
+    <s:String x:Key="SortByAlphabetical">アルファベット順</s:String>
+    <s:String x:Key="Selected">厳選された</s:String>
+    
+    <s:String x:Key="NumberOfSaveFiles">保存ファイル数</s:String>
+    
+    <s:String x:Key="NotFindFolderTheSims3">ドキュメントに「The Sims 3」フォルダが見つかりません。</s:String>
+    <s:String x:Key="AnErrorHasOccurred">エラーが発生しました！</s:String>
+    <s:String x:Key="NotFindFolderDescription">このフォルダを自分で選びますか？</s:String>
+    
+    <s:String x:Key="CleaningOptions">クリーニング・オプション</s:String>
+    <s:String x:Key="CleaningOptionsDescription">クリアにしたいものを設定する</s:String>
+    <s:String x:Key="CreateBackup">バックアップの作成</s:String>
+    <s:String x:Key="ClearCache">キャッシュのクリア</s:String>
+    <s:String x:Key="ClearCacheDescription">クリーニングの設定</s:String>
+    <s:String x:Key="BackupPath">バックアップパス</s:String>
+    <s:String x:Key="CreateNow">今すぐ作成</s:String>
+    <s:String x:Key="ClearNow">クリア・ナウ</s:String>
+    
+    <s:String x:Key="Recommended">おすすめ</s:String>
+    <s:String x:Key="Experimentally">実験的に</s:String>
+    <s:String x:Key="ReadMore">もっと読む</s:String>
+    
+    <s:String x:Key="SaveCleared">セーブは正常にクリアされました！</s:String>
+    <s:String x:Key="SavesCleared">セーブは正常にクリアされた！</s:String>
+    <s:String x:Key="ResultsBelow">結果は以下の通り。</s:String>
+    <s:String x:Key="CacheCleared">キャッシュは正常にクリアされました！</s:String>
+    <s:String x:Key="BackupCreated">バックアップが正常に作成されました！</s:String>
+    <s:String x:Key="Successful">成功した！</s:String>
+    <s:String x:Key="Information">インフォメーション</s:String>
+    <s:String x:Key="Error">エラー</s:String>
+    <s:String x:Key="Yes">はい</s:String>
+    <s:String x:Key="No">いいえ</s:String>
+    
+    <s:String x:Key="SaveName">名前を保存</s:String>
+    <s:String x:Key="TimePassed">時間経過</s:String>
+    <s:String x:Key="OldSize">旧サイズ</s:String>
+    <s:String x:Key="NewSize">新サイズ</s:String>
+    <s:String x:Key="Percent">パーセント</s:String>
+    <s:String x:Key="Sec">秒</s:String>
+    
+    <s:String x:Key="RemoveFamilyPortraits">家族写真を削除する</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">シムの肖像画を削除する</s:String>
+    <s:String x:Key="RemoveLotThumbnails">ロットサムネイルの削除</s:String>
+    <s:String x:Key="RemovePhotos">写真を削除する</s:String>
+    <s:String x:Key="RemoveGeneratedImages">生成された画像を削除する</s:String>
+    <s:String x:Key="RemoveTextures">テクスチャーを取り除く</s:String>
+    <s:String x:Key="RemoveOtherTypes">その他のタイプを取り除く</s:String>
+    
+    <s:String x:Key="All">すべて</s:String>
+    <s:String x:Key="Files">ファイル</s:String>
+    <s:String x:Key="FromTheFolder">フォルダから</s:String>
+    <s:String x:Key="Except">ただし</s:String>
+    
+    <s:String x:Key="RemoveGeneratedImagesDescription1">ゲーム自身が作成した画像を削除する。</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">自撮り写真、グリーティングカード、フォトブースでの写真、卒業式での写真など。</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">禁止リストを使って、その一部を保存する。</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">保存を選択したとき、このプログラムで、家族を選択したときに表示される肖像画を削除します。番組内に表示される肖像画を保存します。</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">シムの肖像画を削除します。リレーションシップパネルや思考クラウドなど、ほとんどあらゆる場所に表示されます。</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">副作用がある：</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">シティエディタに入ると、ロードに時間がかかります。ゲームが肖像画の作成に忙しく、肖像画のポーズが1つしかないからです。</s:String>
+    
+    <s:String x:Key="RemoveLotThumbnailsDescription">保存またはロットを選択したときに表示されるロットのサムネイルを削除します。</s:String>
+    
+    <s:String x:Key="RemovePhotosDescription1">シムが撮影した写真を削除します。</s:String>
+    <s:String x:Key="RemovePhotosDescription2">禁止リストを使用して、一部の写真のみを保存します。</s:String>
+    
+    <s:String x:Key="RemoveTexturesDescription1">都市に新しいロットを配置した後に作成されるロットのテクスチャを削除します。これはすでに街にあったロットには適用されません（特定の拡張パックを持っている場合に自動的に配置されるものは除きます）。</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">セーブをクリアした後は、配置した土地が地面と同じように見えることに留意してほしい（前後のスクリーンショットを参照）。</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">ゲームが無期限にセーブされるという選手もいるので、バックアップを取ることをお勧めする。</s:String>
+    
+    <s:String x:Key="RemoveOtherTypesDescription1">このオプションは、呉越同舟の「記憶を消す」と同じ働きをする。レビューによると、記憶を消去しないとのことなので、このオプションは名前が変更された。何をクリアするのか不明なので、バックアップしておくことをお勧めする。</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">何をクリアするのか不明なので、バックアップしておくことをお勧めする。</s:String>
+    
+    <s:String x:Key="CasPartCacheDescription">Create-A-Simに登場するCASパーツ</s:String>
+    <s:String x:Key="CompositorCacheDescription">購入／ビルド・モードで表示される新しいオブジェクト</s:String>
+    <s:String x:Key="ScriptCacheDescription">改造またはハック</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">新しいシムズ、デフォルトのスキン</s:String>
+    <s:String x:Key="SocialCacheDescription">社会的側面に関する情報（パッチ1.31で導入）</s:String>
+    <s:String x:Key="WorldCachesDescription">インストールしたワールドのキャッシュファイルです。ゲームに同梱され、ランチャーからインストールされなかったワールド（サンセットバレー、ツインブルックス、ブリッジポートなど）の WorldCache ファイルはありません。</s:String>
+    <s:String x:Key="ThumbnailsDescription">キャッシュされたサムネイル写真。ここに保存しておくと、次回ゲームを起動したときに読み込みが速くなります。ゲーム中にサムネイルが変になる場合は、これらを削除してください。このフォルダの内容が削除された後、最初にロードされたときに少し遅くなるものの、次回ゲームを起動したときに再作成されます。</s:String>
+    <s:String x:Key="ScriptErrorsDescription">NRaasのErrorTrap MODによってキャッチされたゲームによって生成されたエラー。これらはゲームでは使用されません。削除するか、NRaas Industriesに投稿してください。それらは彼のErrorTrap MODによって引き起こされた情報を含んでおり、エラーを引き起こすバグ（EAのコードまたは彼のMODによって引き起こされた）のトラブルシューティングにおいて彼を助けるでしょう。もしあなたがこのMODを持っておらず、これらのエラーのトラブルシューティングの助けを求めてEAに連絡する予定もないのであれば、単純に削除してかまいません。</s:String>
+    <s:String x:Key="FeaturedItemsDescription">パッチ1.29で導入。CAH/ 購入/ ビルドカタログに表示される注目のストアアイテムの画像が含まれているはずですが、クラッシュの問題を引き起こしています。</s:String>
+    <s:String x:Key="DCCacheDescription">ランチャーからインストールしたすべてのカスタムコンテンツ/エクスチェンジ/ストアアイテムが含まれています。ランチャーのインストール済みコンテンツタブに表示されます。</s:String>
+    
+    <s:String x:Key="MacOSWorldCachesWarningDelete">macOSではこのフォルダを削除することは厳禁です。そのため、このオプションは無効になっており、有効にすることはできません。</s:String>
+    
+    <s:String x:Key="YouHaveTooManySaves">セーブが多すぎる</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">不要な保存は別のフォルダに移動することをお勧めします。内蔵のRegul Save Cleaner機能をご利用ください。</s:String>
+    <s:String x:Key="ShowNoMore">これ以上表示しない</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">保存を予備フォルダに移動する</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">セーブが移動しました！</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">あなたのセーブは移動されました！</s:String>
+    <s:String x:Key="MovingIsNotPossible">移動ができません。保存を移動しようとしたフォルダへのアクセスを確認してください。</s:String>
+    <s:String x:Key="RestoreOldSaves">古いセーブの復元</s:String>
+    <s:String x:Key="SelectSavesToTransfer">転送する保存を選択</s:String>
+    <s:String x:Key="MoveToSpareFolder">予備フォルダに移動</s:String>
+    
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">ゲームが非常に遅い</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">残念ながら、『ザ・シムズ3』は最適化が非常に不十分だ。最大4GBのRAMを消費し、プロセッサコアは1つしか使わない。最初にインストールする必要があるのは、LazyDuchessのSmoothPatchです。これは最適化において驚くべきことをしてくれます。</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">NRaasの改造を推奨する：</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">プレイしているうちにセーブが肥大化し、様々なエラーにつながる可能性があります。問題を避けるためにこのプログラムを使いましょう。究極の体験をお望みなら、Anime_Boomの非常に優れたチュートリアルをご利用ください。</s:String>
+    <s:String x:Key="GoToManual">マニュアル（英語）へ</s:String>
+    <s:String x:Key="GoToInstallation">インストレーションへ</s:String>
+    
+    <s:String x:Key="Error12">エラー 12</s:String>
+    <s:String x:Key="Error12Description1">ご心配なく！これは、あなたの世界を保存するのに十分なメモリがゲームにないためです。インベントリから不要なゴミを取り除き、ワールド内の不要なオブジェクトを削除し、再度セーブしてみてください。それでも解決しない場合は、AncientGatekeeperのガイドを試してみてください。</s:String>
+    
+    <s:String x:Key="Error16">エラー 16</s:String>
+    <s:String x:Key="Error16Description1">これはかなりまれなエラーです。セーブのサイズが4GBに達すると発生します。家族が多い、ロットが多い、セーブ内にゴミが多いなど、原因はかなりあります。まずはこのプログラムを使うことです。それでもあまり効果がない場合は、ゲーム自体のクリーンアップを行う必要があります。このエラーのせいで、高確率でセーブが消えてしまうので、セーブを肥大化させないようにしてください。</s:String>
+    
+    <s:String x:Key="Error0AfterOpeningSave">保存を開いた後のエラー0</s:String>
+    <s:String x:Key="Error0Description1">残念ながら、保存が壊れてしまいました。これは、クリーニング後のこのプログラムのいずれかのバージョンによるものです。ハードディスクやSSDのセクターが破損した場合に発生する可能性があります。</s:String>
+    
+    <!--Settings Page-->
+    <s:String x:Key="General">一般</s:String>
+    
+    <s:String x:Key="Language">言語</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">不要な禁止リストの削除</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">保存を削除し、今後リストを使用したくない場合は、削除ボタンをクリックしてください。</s:String>
+    <s:String x:Key="PathSettings">パス設定</s:String>
+    <s:String x:Key="PathSettingsDescription">ゲームフォルダへのパスが変更された場合に変更する。</s:String>
+    <s:String x:Key="ResetToDefaultSettings">デフォルト設定にリセット</s:String>
+    <s:String x:Key="Clear">クリア</s:String>
+    <s:String x:Key="Reset">リセット</s:String>
+    <s:String x:Key="Appearance">外観</s:String>
+    <s:String x:Key="Font">フォント</s:String>
+    <s:String x:Key="EnableShadow">シャドウを有効にする</s:String>
+    <s:String x:Key="EnableShadowDescription">パフォーマンスに問題がある場合は、この設定を無効にしてください。</s:String>
+    <s:String x:Key="EnableCustomTitleBar">カスタムタイトルバーを有効にする</s:String>
+    <s:String x:Key="EnableBlur">ぼかしを有効にする</s:String>
+    <s:String x:Key="OpacityLevel">不透明度</s:String>
+    <s:String x:Key="AccentColor">アクセントカラー</s:String>
+    <s:String x:Key="UseSystemAccentColor">システム・アクセント・カラーの使用</s:String>
+    <s:String x:Key="Change">変更</s:String>
+    <s:String x:Key="Theme">テーマ</s:String>
+    <s:String x:Key="FolderForOldSaves">古いセーブを保存するフォルダ</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">大量のセーブに関する警告を表示する</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">警告が表示されるセーブ回数</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">保存のサムネイルサイズの設定</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">サムネイルのサイズ</s:String>
+    <s:String x:Key="Preview">プレビュー</s:String>
+    <s:String x:Key="DisplayingListInCleaner">クリーナーにリストを表示する</s:String>
+    <s:String x:Key="Horizontal">ホリゾンタル</s:String>
+    <s:String x:Key="Vertical">縦型</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">保存ファイルを縦書きリストで見る</s:String>
+    <s:String x:Key="Line">ライン</s:String>
+    <s:String x:Key="Block">ブロック</s:String>
+    <s:String x:Key="Delete">削除</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">未使用の禁止リストが正常にクリアされました！</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">現在、未使用の禁止リストはない。</s:String>
+    <s:String x:Key="ColorCopied">コピーされた色！</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">設定がリセットされました</s:String>
+    <s:String x:Key="ResetSettingsWarning">本当に設定をリセットしたいのですか？</s:String>
+    
+    <s:String x:Key="System">システム</s:String>
+    <s:String x:Key="Light">ライト</s:String>
+    <s:String x:Key="Dark">暗い</s:String>
+    
+    <s:String x:Key="PathToTheSims">ザ・シムズ3への道</s:String>
+    <s:String x:Key="PathToSaves">セーブへの道</s:String>
+    <s:String x:Key="ChoosePath">パスを選択</s:String>
+    
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">写真</s:String>
+    <s:String x:Key="PortraitsOfSims">シムズの肖像</s:String>
+    <s:String x:Key="PortraitsOfFamilies">家族の肖像</s:String>
+    <s:String x:Key="GeneratedImages">生成画像</s:String>
+    <s:String x:Key="LotThumbnails">ロットサムネイル</s:String>
+    <s:String x:Key="SelectOldList">古いリストを選択する</s:String>
+    <s:String x:Key="MergedOldList">合併は成功した！</s:String>
+    <s:String x:Key="NoItems">商品なし</s:String>
+    <s:String x:Key="Unselect">選択解除</s:String>
+    <s:String x:Key="SaveSelectedImages">選択した画像を保存</s:String>
+    <s:String x:Key="ImagesSaved">画像が保存されました！</s:String>
+    <s:String x:Key="NumberOfImagesInList">リスト内の画像数</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">未使用禁止リストの数</s:String>
+    
+    <!--About-->
+    <s:String x:Key="License">ライセンス</s:String>
+    <s:String x:Key="Version">バージョン</s:String>
+    <s:String x:Key="Author">著者</s:String>
+    <s:String x:Key="Copyright">著作権</s:String>
+    <s:String x:Key="Description">説明</s:String>
+    <s:String x:Key="Links">リンク</s:String>
+    <s:String x:Key="UsedLibraries">中古図書館</s:String>
+    <s:String x:Key="ContactAuthor">著者に連絡する</s:String>
+    <s:String x:Key="WorksOn">作品</s:String>
+    <s:String x:Key="WriteLetter">手紙を書く</s:String>
+    <s:String x:Key="SocialNetwork">ソーシャルネットワーク</s:String>
+    <s:String x:Key="ModTheSims">キャッシュクリアの各オプションの説明は、ModTheSimsのウェブサイトから引用しました。</s:String>
+    <s:String x:Key="RegulDescription1">The Sims™ 3 のセーブゲームをクリーンアップし、安定した状態に保つためのツールです。</s:String>
+    <s:String x:Key="RegulDescription2">このプログラムは、エレクトロニック・アーツまたはそのライセンサーによって承認されたものでも、提携を結んでいるものでもありません。商標はそれぞれの所有者に帰属します。無断複写・転載を禁じます。</s:String>
+    <s:String x:Key="LicenseDescription">本ソフトウェアは「現状のまま」提供され、明示または黙示を問わず、商品性、特定目的への適合性、および非侵害の保証を含むがこれに限定されない、いかなる種類の保証もありません。いかなる場合においても、著作者または著作権所有者は、契約、不法行為、その他を問わず、本ソフトウェア、または本ソフトウェアの使用またはその他の取引に起因または関連して生じたいかなる請求、損害、またはその他の責任についても責任を負いません。</s:String>
+</ResourceDictionary>

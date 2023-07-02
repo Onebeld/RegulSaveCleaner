@@ -121,7 +121,7 @@ public class SettingsViewModel : ViewModelBase
             App.PleasantTheme.UpdateAccentColors(accent);
         }
     }
-    
+
     public bool IsClearingOldProhibitedLists
     {
         get => _isClearingOldProhibitedLists;

@@ -221,6 +221,7 @@
     <s:String x:Key="SaveSelectedImages">Uložení vybraných obrázků</s:String>
     <s:String x:Key="ImagesSaved">Obrázky byly uloženy!</s:String>
     <s:String x:Key="NumberOfImagesInList">Počet obrázků v seznamu</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Počet nepoužitých zakázaných seznamů</s:String>
     
     <!--About-->
     <s:String x:Key="License">Licence</s:String>

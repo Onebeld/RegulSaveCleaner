@@ -116,6 +116,7 @@ public class App : Application
         new("English (English)", "en"),
         new("Français (French)", "fr"),
         new("Русский (Russian)", "ru"),
+        new("日本語 (Japanese)", "ja"),
         new("中文 (Chinese)", "zh"),
     };
 

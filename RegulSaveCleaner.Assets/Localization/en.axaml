@@ -221,6 +221,7 @@
     <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
     <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
     <s:String x:Key="NumberOfImagesInList">Number of images in list</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Number of unused prohibited lists</s:String>
     
     <!--About-->
     <s:String x:Key="License">License</s:String>

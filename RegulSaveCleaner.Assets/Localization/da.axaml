@@ -221,6 +221,7 @@
     <s:String x:Key="SaveSelectedImages">Gem udvalgte billeder</s:String>
     <s:String x:Key="ImagesSaved">Billederne er blevet gemt!</s:String>
     <s:String x:Key="NumberOfImagesInList">Antal billeder i listen</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Antal ubrugte forbudte lister</s:String>
     
     <!--About-->
     <s:String x:Key="License">Licens</s:String>

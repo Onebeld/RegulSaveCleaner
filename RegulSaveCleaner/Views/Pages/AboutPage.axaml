@@ -175,7 +175,7 @@
                                        HorizontalAlignment="Right"
                                        Foreground="{StaticResource TextFillColorTertiaryBrush}">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
-                                &#8203;<Run Text="2.1.3" />
+                                &#8203;<Run Text="3.0.1" />
                             </TextBlock>
                         </Panel>
                         <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />

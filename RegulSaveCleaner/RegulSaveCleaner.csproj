@@ -37,9 +37,9 @@
         <TrimMode>link</TrimMode>
         <TrimmerDefaultAction>link</TrimmerDefaultAction>
         <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
-        <IlcGenerateStackTraceData Condition="'$(Configuration.toUpper())' != 'DEBUG'">false</IlcGenerateStackTraceData>
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
         <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
-        <StripSymbols Condition="'$(Configuration.toUpper())' != 'DEBUG'">true</StripSymbols>
+        <StripSymbols>true</StripSymbols>
         <OptimizationPreference>Size</OptimizationPreference>
         <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
         <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
@@ -77,7 +77,7 @@
         <CFBundleIconFile>Assets/app.icns</CFBundleIconFile>
         <NSPrincipalClass>NSApplication</NSPrincipalClass>
         <NSHighResolutionCapable>true</NSHighResolutionCapable>
-        <CFBundleShortVersionString>1.0</CFBundleShortVersionString>
+        <CFBundleShortVersionString>4.0</CFBundleShortVersionString>
         <!-- Optional -->
         <NSRequiresAquaSystemAppearance>true</NSRequiresAquaSystemAppearance>
     </PropertyGroup>

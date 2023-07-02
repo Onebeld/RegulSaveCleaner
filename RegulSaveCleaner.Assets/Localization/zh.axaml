@@ -221,6 +221,7 @@
     <s:String x:Key="SaveSelectedImages">保存选定的图像</s:String>
     <s:String x:Key="ImagesSaved">已保存多个图片！</s:String>
     <s:String x:Key="NumberOfImagesInList">列表中的图像数量</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">未使用的违禁名单的数量</s:String>
     
     <!--About-->
     <s:String x:Key="License">许可证</s:String>

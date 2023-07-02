@@ -16,6 +16,7 @@
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fr.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ja.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/zh.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
