@@ -71,6 +71,7 @@
     <s:String x:Key="BackupCreated">Backup has been successfully created!</s:String>
     <s:String x:Key="Successful">Successful!</s:String>
     <s:String x:Key="Information">Information</s:String>
+    <s:String x:Key="Error">Error</s:String>
     <s:String x:Key="Yes">Yes</s:String>
     <s:String x:Key="No">No</s:String>
     
@@ -186,10 +187,13 @@
     <s:String x:Key="SizeOfSaveThumbnail">Size of save's thumbnail</s:String>
     <s:String x:Key="Preview">Preview</s:String>
     <s:String x:Key="DisplayingListInCleaner">Displaying a list in the cleaner</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">If you choose Vertical, you need to increase the size of the window</s:String>
     <s:String x:Key="Horizontal">Horizontal</s:String>
     <s:String x:Key="Vertical">Vertical</s:String>
-    
+    <s:String x:Key="ViewSaveFileInVerticalList">View save file in the vertical list</s:String>
+    <s:String x:Key="Line">Line</s:String>
+    <s:String x:Key="Block">Block</s:String>
+    <s:String x:Key="Delete">Delete</s:String>
+
     <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
     <s:String x:Key="ColorCopied">Color copied!</s:String>

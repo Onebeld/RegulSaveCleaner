@@ -65,7 +65,8 @@
                 BorderBrush="{StaticResource ControlStrokeColorSecondaryBrush}"
                 IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
             <Panel>
-                <ListBox ItemsSource="{CompiledBinding GameSaves}"
+                <ListBox x:Name="ListBox"
+                         ItemsSource="{CompiledBinding GameSaves}"
                          SelectedItems="{CompiledBinding SelectedGameSaves}"
                          SelectionMode="Toggle, Multiple"
                          AutoScrollToSelectedItem="False"

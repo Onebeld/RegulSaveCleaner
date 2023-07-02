@@ -71,6 +71,7 @@
     <s:String x:Key="BackupCreated">Резервная копия успешно создана!</s:String>
     <s:String x:Key="Successful">Успешно!</s:String>
     <s:String x:Key="Information">Информация</s:String>
+    <s:String x:Key="Error">Ошибка</s:String>
     <s:String x:Key="Yes">Да</s:String>
     <s:String x:Key="No">Нет</s:String>
     
@@ -186,9 +187,12 @@
     <s:String x:Key="SizeOfSaveThumbnail">Размер миниатюры сохранения</s:String>
     <s:String x:Key="Preview">Предварительный просмотр</s:String>
     <s:String x:Key="DisplayingListInCleaner">Отображение списка в очистителе</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">Если вы выбрали Вертикально, вам необходимо увеличить размер окна</s:String>
     <s:String x:Key="Horizontal">Горизонтально</s:String>
     <s:String x:Key="Vertical">Вертикально</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Вид файла сохранения в вертикальном списке</s:String>
+    <s:String x:Key="Line">Строчный</s:String>
+    <s:String x:Key="Block">Блочный</s:String>
+    <s:String x:Key="Delete">Удалить</s:String>
 
     <s:String x:Key="UnusedProhibitedListsCleared">Неиспользуемые запрещенные списки успешно очищены!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">В настоящее время нет неиспользуемых запрещенных списков.</s:String>

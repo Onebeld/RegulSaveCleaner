@@ -71,6 +71,7 @@
     <s:String x:Key="BackupCreated">Záloha byla úspěšně vytvořena!</s:String>
     <s:String x:Key="Successful">Úspěšně!</s:String>
     <s:String x:Key="Information">Informace</s:String>
+    <s:String x:Key="Error">Chyba</s:String>
     <s:String x:Key="Yes">Ano</s:String>
     <s:String x:Key="No">Ne</s:String>
     
@@ -186,9 +187,12 @@
     <s:String x:Key="SizeOfSaveThumbnail">Velikost miniatury uložení</s:String>
     <s:String x:Key="Preview">Náhled</s:String>
     <s:String x:Key="DisplayingListInCleaner">Zobrazení seznamu v čističi</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">Pokud zvolíte možnost Vertikální, je třeba zvětšit velikost okna.</s:String>
     <s:String x:Key="Horizontal">Horizontální</s:String>
     <s:String x:Key="Vertical">Vertikální</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Zobrazení uloženého souboru ve vertikálním seznamu</s:String>
+    <s:String x:Key="Line">Řádek</s:String>
+    <s:String x:Key="Block">Blok</s:String>
+    <s:String x:Key="Delete">Odstranit</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">Nepoužívané seznamy zakázaných položek byly úspěšně vymazány!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">V současné době nejsou k dispozici žádné nepoužívané seznamy zakázaných položek.</s:String>

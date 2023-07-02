@@ -169,14 +169,24 @@
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource DisplayingListInCleaner}"
-                                Description="{StaticResource DisplayingListInCleanerDescription}"
-                                Icon="{StaticResource PeopleRegular}">
+                                Icon="{StaticResource PeopleRegular}"
+                                Expands="True">
                 <OptionsDisplayItem.ActionButton>
                     <ComboBox MinWidth="150" SelectedIndex="{CompiledBinding SelectedIndexListDisplay}">
                         <ComboBoxItem Content="{StaticResource Horizontal}" />
                         <ComboBoxItem Content="{StaticResource Vertical}" />
                     </ComboBox>
                 </OptionsDisplayItem.ActionButton>
+                <OptionsDisplayItem.Content>
+                    <DockPanel Margin="48 0 33 0">
+                        <ComboBox Width="150" DockPanel.Dock="Right" SelectedIndex="{CompiledBinding SelectedIndexSaveFilesVerticalListDisplay}">
+                            <ComboBoxItem Content="{StaticResource Line}" />
+                            <ComboBoxItem Content="{StaticResource Block}" />
+                        </ComboBox>
+                        
+                        <TextBlock VerticalAlignment="Center" Text="{StaticResource ViewSaveFileInVerticalList}" TextWrapping="Wrap" />
+                    </DockPanel>
+                </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
             <OptionsDisplayItem Header="{StaticResource SettingsSizeOfSaveThumbnails}"

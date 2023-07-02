@@ -71,6 +71,7 @@
     <s:String x:Key="BackupCreated">已成功创建备份！</s:String>
     <s:String x:Key="Successful">成功</s:String>
     <s:String x:Key="Information">信息</s:String>
+    <s:String x:Key="Error">错误</s:String>
     <s:String x:Key="Yes">是</s:String>
     <s:String x:Key="No">否</s:String>
     
@@ -186,9 +187,12 @@
     <s:String x:Key="SizeOfSaveThumbnail">保存的缩略图的大小</s:String>
     <s:String x:Key="Preview">预览</s:String>
     <s:String x:Key="DisplayingListInCleaner">在清洁器中显示一个列表</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">如果你选择垂直，你需要增加窗口的大小</s:String>
     <s:String x:Key="Horizontal">横向</s:String>
     <s:String x:Key="Vertical">纵向</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">在垂直列表中查看保存文件</s:String>
+    <s:String x:Key="Line">线路</s:String>
+    <s:String x:Key="Block">区块</s:String>
+    <s:String x:Key="Delete">删除</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">未使用的禁止列表已被成功清除！</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">目前没有未使用的禁止列表。</s:String>

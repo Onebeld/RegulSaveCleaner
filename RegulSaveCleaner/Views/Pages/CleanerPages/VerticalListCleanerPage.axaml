@@ -26,14 +26,18 @@
                 <Panel>
                     <Viewbox Width="12" Height="12" HorizontalAlignment="Left">
                         <Path Data="{StaticResource ChevronDownRegular}"
-                              Fill="{CompiledBinding $parent[Button].Foreground}" />
+                              Fill="{CompiledBinding $parent[Button].Foreground}"
+                              StrokeThickness="1"
+                              Stroke="{CompiledBinding $parent[Button].Foreground}" />
                     </Viewbox>
 
                     <TextBlock Text="{StaticResource Settings}" HorizontalAlignment="Center" />
 
                     <Viewbox Width="12" Height="12" HorizontalAlignment="Right">
                         <Path Data="{StaticResource ChevronDownRegular}"
-                              Fill="{CompiledBinding $parent[Button].Foreground}" />
+                              Fill="{CompiledBinding $parent[Button].Foreground}"
+                              StrokeThickness="1"
+                              Stroke="{CompiledBinding $parent[Button].Foreground}" />
                     </Viewbox>
                 </Panel>
             </Button>
@@ -45,14 +49,18 @@
                     <Panel>
                         <Viewbox Width="12" Height="12" HorizontalAlignment="Left">
                             <Path Data="{StaticResource ChevronUpRegular}"
-                                  Fill="{CompiledBinding $parent[Button].Foreground}" />
+                                  Fill="{CompiledBinding $parent[Button].Foreground}"
+                                  StrokeThickness="1"
+                                  Stroke="{CompiledBinding $parent[Button].Foreground}" />
                         </Viewbox>
 
-                        <TextBlock Text="{StaticResource Settings}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{StaticResource SaveFiles}" HorizontalAlignment="Center" />
 
                         <Viewbox Width="12" Height="12" HorizontalAlignment="Right">
                             <Path Data="{StaticResource ChevronUpRegular}"
-                                  Fill="{CompiledBinding $parent[Button].Foreground}" />
+                                  Fill="{CompiledBinding $parent[Button].Foreground}"
+                                  StrokeThickness="1"
+                                  Stroke="{CompiledBinding $parent[Button].Foreground}" />
                         </Viewbox>
                     </Panel>
                 </Button>

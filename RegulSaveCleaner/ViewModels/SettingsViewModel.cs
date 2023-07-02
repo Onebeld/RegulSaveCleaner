@@ -72,7 +72,6 @@ public class SettingsViewModel : ViewModelBase
             return RegulSettings.Instance.ListDisplay switch
             {
                 ListDisplay.Vertical => 1,
-
                 _ => 0
             };
         }
@@ -81,8 +80,27 @@ public class SettingsViewModel : ViewModelBase
             RegulSettings.Instance.ListDisplay = value switch
             {
                 1 => ListDisplay.Vertical,
-
                 _ => ListDisplay.Horizontal
+            };
+        }
+    }
+
+    public int SelectedIndexSaveFilesVerticalListDisplay
+    {
+        get
+        {
+            return RegulSettings.Instance.SaveFilesVerticalListDisplay switch
+            {
+                SaveFilesVerticalListDisplay.Block => 1,
+                _ => 0
+            };
+        }
+        set
+        {
+            RegulSettings.Instance.SaveFilesVerticalListDisplay = value switch
+            {
+                1 => SaveFilesVerticalListDisplay.Block,
+                _ => SaveFilesVerticalListDisplay.Line
             };
         }
     }

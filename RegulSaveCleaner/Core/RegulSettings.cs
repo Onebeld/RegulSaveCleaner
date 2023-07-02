@@ -3,7 +3,6 @@ using System.Text.Json;
 using Avalonia.Collections;
 using Avalonia.Media;
 using PleasantUI;
-using PleasantUI.Core;
 using PleasantUI.Core.Constants;
 using RegulSaveCleaner.Core.Constants;
 using RegulSaveCleaner.Structures;
@@ -25,6 +24,7 @@ public class RegulSettings : ViewModelBase
     private int _numberOfSavesWhenWarningIsDisplayed = 10;
     private double _sizeOfSaveThumbnails = 115;
     private ListDisplay _listDisplay = ListDisplay.Horizontal;
+    private SaveFilesVerticalListDisplay _saveFilesVerticalListDisplay = SaveFilesVerticalListDisplay.Line;
 
     private bool _removePortraitsSims = true;
     private bool _removeLotThumbnails;
@@ -188,6 +188,12 @@ public class RegulSettings : ViewModelBase
     {
         get => _listDisplay;
         set => RaiseAndSet(ref _listDisplay, value);
+    }
+
+    public SaveFilesVerticalListDisplay SaveFilesVerticalListDisplay
+    {
+        get => _saveFilesVerticalListDisplay;
+        set => RaiseAndSet(ref _saveFilesVerticalListDisplay, value);
     }
 
     public bool RemovePortraitsSims

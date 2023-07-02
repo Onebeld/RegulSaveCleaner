@@ -185,49 +185,39 @@ public class ProhibitedListViewModel : ViewModelBase
                 {
                     Bitmap bitmap;
 
-                    switch (resource.ResourceType)
+                    if (GameDataTypes.SimPortraits.ResourceTypes.Any(x => x == resource.ResourceType)
+                        || GameDataTypes.FamilyPortraits.ResourceTypes.Any(x => x == resource.ResourceType)
+                        || GameDataTypes.LotThumbnails.ResourceTypes.Any(x => x == resource.ResourceType)
+                        || GameDataTypes.SimPortraits.ResourceTypes.Any(x => x == resource.ResourceType))
                     {
-                        // SNAPs
-                        case 0x6B6D837E:
-                        case 0x6B6D837D:
-                        case 0x0580A2CD:
-                        case 0xD84E7FC6:
-                        case 0x0580A2CE:
-                        case 0x0580A2CF:
-                        case 0x6B6D837F:
-                            DefaultResource resource2;
-                            lock (Obj)
-                                resource2 = S3PI.WrapperDealer.GetResource(package, resource);
-
-                            bitmap = new Bitmap(resource2.Stream);
-
-                            break;
-
-                        //Generated images
-                        case 0x00B2D882
-                            when resource.ResourceGroup is 0x0E9928A8 or 0x24B9FCA or 0x2722299 or 0x2BD69A0:
-                        case 0x00B2D882 when resource.ResourceGroup == 0x269D005:
-                            DefaultResource resource1;
-                            lock (Obj)
-                                resource1 = S3PI.WrapperDealer.GetResource(package, resource);
-
-                            IImage image =
-                                Dds.Create(resource1.Stream, new PfimConfig());
-
-                            byte[] data = GetData<Bgra32>(new PngEncoder
-                            {
-                                ColorType = PngColorType.RgbWithAlpha
-                            }, image);
-
-                            using (MemoryStream stream = new(data))
-                                bitmap = new Bitmap(stream);
-
-                            break;
-
-                        // Other
-                        default:
-                            return;
+                        DefaultResource resource2;
+                        lock (Obj)
+                            resource2 = S3PI.WrapperDealer.GetResource(package, resource);
+                    
+                        bitmap = new Bitmap(resource2.Stream);
                     }
+                    else if (GameDataTypes.GeneratedImages.ResourceTypes.Any(x => x == resource.ResourceType)
+                             && GameDataTypes.GeneratedImages.ResourceGroups.Any(x => x == resource.ResourceGroup)
+                             || GameDataTypes.Photos.ResourceTypes.Any(x => x == resource.ResourceType)
+                             && GameDataTypes.Photos.ResourceGroups.Any(x => x == resource.ResourceGroup))
+                    {
+                        DefaultResource resource1;
+                        lock (Obj)
+                            resource1 = S3PI.WrapperDealer.GetResource(package, resource);
+                    
+                        IImage image =
+                            Dds.Create(resource1.Stream, new PfimConfig());
+                    
+                        byte[] data = GetData<Bgra32>(new PngEncoder
+                        {
+                            ColorType = PngColorType.RgbWithAlpha
+                        }, image);
+
+                        using MemoryStream stream = new(data);
+                        bitmap = new Bitmap(stream);
+                        
+                    }
+                    else return;
 
                     ImageResource imageResource = new()
                     {

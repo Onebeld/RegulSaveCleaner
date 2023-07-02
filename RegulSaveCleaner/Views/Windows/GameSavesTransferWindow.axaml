@@ -6,8 +6,7 @@
                xmlns:structures="clr-namespace:RegulSaveCleaner.Structures"
                mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
                x:Class="RegulSaveCleaner.Views.Windows.GameSavesTransferWindow"
-               x:DataType="windows:GameSavesTransferViewModel"
-               MaxWidth="800">
+               x:DataType="windows:GameSavesTransferViewModel">
     <Design.DataContext>
         <windows:GameSavesTransferViewModel />
     </Design.DataContext>
@@ -19,8 +18,8 @@
         </ResourceDictionary>
     </ContentDialog.Resources>
     
-    <Grid RowDefinitions="Auto,*" Margin="15">
-        <StackPanel Grid.Row="0" Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left" Spacing="10">
+    <Grid RowDefinitions="Auto,Auto,*" Margin="15">
+        <StackPanel Grid.Row="0" Margin="5 0 0 10" Orientation="Horizontal" HorizontalAlignment="Left" Spacing="10">
             <TextBlock Text="{StaticResource SelectSavesToTransfer}"
                        Theme="{StaticResource SubtitleTextBlockTheme}" />
             
@@ -38,7 +37,12 @@
                           MinWidth="22" />
         </StackPanel>
         
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Spacing="5" Orientation="Horizontal">
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Spacing="5"
+                    Orientation="Horizontal"
+                    IsEnabled="{CompiledBinding !IsLoadingSaves}">
             <InformationBlock VerticalAlignment="Center"
                               Content="{CompiledBinding GameSaves.Count}"
                               Icon="{StaticResource PeopleRegular}"
@@ -107,8 +111,13 @@
             </StackPanel>
         </StackPanel>
         
+        <TextBlock Grid.Row="1"
+                   Text="{StaticResource SaveFiles}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold" />
         
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 CornerRadius="5"
                 Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
                 BorderThickness="1"
@@ -119,7 +128,8 @@
                 <ListBox x:Name="ListBox"
                          ItemsSource="{CompiledBinding GameSaves}"
                          SelectedItems="{CompiledBinding SelectedGameSaves}"
-                         SelectionMode="Toggle, Multiple">
+                         SelectionMode="Toggle, Multiple"
+                         IsEnabled="{CompiledBinding !IsLoadingSaves}">
                     <ListBox.Styles>
                         <Style Selector="ListBoxItem">
                             <Setter Property="ToolTip.Tip">
@@ -154,13 +164,20 @@
     <ContentDialog.BottomPanelContent>
         <UniformGrid Margin="15 0" Rows="1">
             <Button Theme="{StaticResource AccentButton}" 
-                    Content="{StaticResource Ok}" 
-                    IsEnabled="{CompiledBinding !!SelectedGameSaves.Count}"
+                    Content="{StaticResource Ok}"
                     VerticalAlignment="Center" 
                     Margin="5"
                     Command="{CompiledBinding CloseWithResult}"
-                    CommandParameter="{CompiledBinding $parent[ContentDialog]}"/>
-            <Button Content="{StaticResource Cancel}" 
+                    CommandParameter="{CompiledBinding $parent[ContentDialog]}">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <CompiledBinding Path="!!SelectedGameSaves.Count" />
+                        <CompiledBinding Path="!IsLoadingSaves" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+            <Button Content="{StaticResource Cancel}"
+                    IsEnabled="{CompiledBinding !IsLoadingSaves}"
                     VerticalAlignment="Center" 
                     Margin="5"
                     Command="{CompiledBinding Close}"

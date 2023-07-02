@@ -71,6 +71,7 @@
     <s:String x:Key="BackupCreated">Das Backup wurde erfolgreich erstellt!</s:String>
     <s:String x:Key="Successful">Erfolgreich!</s:String>
     <s:String x:Key="Information">Informationen</s:String>
+    <s:String x:Key="Error">Fehler</s:String>
     <s:String x:Key="Yes">Ja</s:String>
     <s:String x:Key="No">Nein</s:String>
     
@@ -186,9 +187,12 @@
     <s:String x:Key="SizeOfSaveThumbnail">Größe der Miniaturansicht des Speichers</s:String>
     <s:String x:Key="Preview">Vorschau</s:String>
     <s:String x:Key="DisplayingListInCleaner">Anzeige einer Liste im Cleaner</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">Wenn Sie Vertikal wählen, müssen Sie das Fenster vergrößern</s:String>
     <s:String x:Key="Horizontal">Horizontal</s:String>
     <s:String x:Key="Vertical">Vertikal</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Ansicht der gespeicherten Datei in der vertikalen Liste</s:String>
+    <s:String x:Key="Line">Leitung</s:String>
+    <s:String x:Key="Block">Block</s:String>
+    <s:String x:Key="Delete">Löschen</s:String>
     
     <s:String x:Key="UnusedProhibitedListsCleared">Die nicht verwendeten Verbotslisten wurden erfolgreich gelöscht!</s:String>
     <s:String x:Key="UnusedProhibitedListsNotCleared">Derzeit gibt es keine ungenutzten Verbotslisten.</s:String>

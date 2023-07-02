@@ -142,97 +142,100 @@
     <s:String x:Key="MoveToSpareFolder">Flyt til en ekstra mappe</s:String>
     
     <!--QuestionsAndAnswers Page-->
-    <s:String x:Key="TheGameIsVerySlow">The game is very slow</s:String>
-    <s:String x:Key="GameIsVerySlowDescription1">Unfortunately, The Sims 3 is very poorly optimized. It consumes a maximum of 4 GB of RAM and uses only one processor core. The first thing you need to install is SmoothPatch by LazyDuchess. It does amazing things in optimization.</s:String>
-    <s:String x:Key="GameIsVerySlowDescription2">The use of NRaas mods is recommended:</s:String>
-    <s:String x:Key="GameIsVerySlowDescription3">As you play, the save gets bloated, which can lead to various errors. Use this program to avoid problems. If you want the ultimate experience, use the very good tutorial from Anime_Boom.</s:String>
-    <s:String x:Key="GoToManual">Go to manual</s:String>
-    <s:String x:Key="GoToInstallation">Go to installation</s:String>
+    <s:String x:Key="TheGameIsVerySlow">Spillet er meget langsomt</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Desværre er The Sims 3 meget dårligt optimeret. Det bruger maksimalt 4 GB RAM og bruger kun én processorkerne. Det første, du skal installere, er SmoothPatch af LazyDuchess. Det gør fantastiske ting inden for optimering.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Det anbefales at bruge NRaas-mods:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Efterhånden som du spiller, bliver lageret fyldt op, hvilket kan føre til forskellige fejl. Brug dette program til at undgå problemer. Hvis du vil have den ultimative oplevelse, skal du bruge den meget gode tutorial fra Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Gå til manualen (på engelsk)</s:String>
+    <s:String x:Key="GoToInstallation">Gå til installation</s:String>
     
-    <s:String x:Key="Error12">Error 12</s:String>
-    <s:String x:Key="Error12Description1">Don't worry! This is because the game does not have enough memory to save your world. Try clearing your inventory of unnecessary debris, removing unnecessary objects in the world, and saving again. If that doesn't help, try the guide from AncientGatekeeper.</s:String>
+    <s:String x:Key="Error12">Fejl 12</s:String>
+    <s:String x:Key="Error12Description1">Du skal ikke bekymre dig! Det er fordi, spillet ikke har nok hukommelse til at gemme din verden. Prøv at rydde dit inventar for unødvendigt affald, fjern unødvendige objekter i verden, og gem igen. Hvis det ikke hjælper, kan du prøve guiden fra AncientGatekeeper.</s:String>
     
-    <s:String x:Key="Error16">Error 16</s:String>
-    <s:String x:Key="Error16Description1">This is a rather rare error. It occurs when the size of your save reaches 4 GB. There are quite a few reasons: a lot of families, a lot of lots, a lot of garbage inside the save. The first thing to do is to use this program. If that doesn't help much, you need to do a cleanup in the game itself. Because of this error, there is a high probability of losing your save, so try not to bloat your save.</s:String>
+    <s:String x:Key="Error16">Fejl 16</s:String>
+    <s:String x:Key="Error16Description1">Dette er en ret sjælden fejl. Den opstår, når størrelsen på dit save når op på 4 GB. Det kan der være mange grunde til: mange familier, mange partier, meget skrald i dit save. Det første, du skal gøre, er at bruge dette program. Hvis det ikke hjælper meget, er du nødt til at rydde op i selve spillet. På grund af denne fejl er der stor sandsynlighed for, at du mister dit save, så prøv ikke at fylde dit save.</s:String>
     
-    <s:String x:Key="Error0AfterOpeningSave">Error 0 after opening a save</s:String>
-    <s:String x:Key="Error0Description1">Unfortunately, your save has been corrupted. This was due to one of the versions of this program after cleaning. Can occur when a hard disk or SSD sector is corrupted.</s:String>
+    <s:String x:Key="Error0AfterOpeningSave">Fejl 0 efter åbning af et save</s:String>
+    <s:String x:Key="Error0Description1">Desværre er dit save blevet beskadiget. Dette skyldtes en af versionerne af dette program efter rengøring. Kan forekomme, når en harddisk- eller SSD-sektor er beskadiget.</s:String>
     
     <!--Settings Page-->
-    <s:String x:Key="General">General</s:String>
+    <s:String x:Key="General">Generelt</s:String>
     
-    <s:String x:Key="Language">Language</s:String>
-    <s:String x:Key="ClearUnnecessaryProhibitedLists">Clear unnecessary prohibited lists</s:String>
-    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">If you have deleted a save and do not want to use the lists further, click on the button to delete</s:String>
-    <s:String x:Key="PathSettings">Path Settings</s:String>
-    <s:String x:Key="PathSettingsDescription">Change if the path to the game folder has changed</s:String>
-    <s:String x:Key="ResetToDefaultSettings">Reset to default settings</s:String>
-    <s:String x:Key="Clear">Clear</s:String>
-    <s:String x:Key="Reset">Reset</s:String>
-    <s:String x:Key="Appearance">Appearance</s:String>
-    <s:String x:Key="Font">Font</s:String>
-    <s:String x:Key="EnableShadow">Enable shadow</s:String>
-    <s:String x:Key="EnableShadowDescription">If you have a performance problem, disable this setting</s:String>
-    <s:String x:Key="EnableCustomTitleBar">Enable custom title bar</s:String>
-    <s:String x:Key="EnableBlur">Enable blur</s:String>
-    <s:String x:Key="OpacityLevel">Opacity level</s:String>
-    <s:String x:Key="AccentColor">Accent color</s:String>
-    <s:String x:Key="UseSystemAccentColor">Use system accent color</s:String>
-    <s:String x:Key="Change">Change</s:String>
-    <s:String x:Key="Theme">Theme</s:String>
-    <s:String x:Key="FolderForOldSaves">Folder for old saves</s:String>
-    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Show a warning about a large number of saves</s:String>
-    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Number of saves, at which the warning is displayed</s:String>
-    <s:String x:Key="SettingsSizeOfSaveThumbnails">Setting the size of save's thumbnails</s:String>
-    <s:String x:Key="SizeOfSaveThumbnail">Size of save's thumbnail</s:String>
-    <s:String x:Key="Preview">Preview</s:String>
-    <s:String x:Key="DisplayingListInCleaner">Displaying a list in the cleaner</s:String>
-    <s:String x:Key="DisplayingListInCleanerDescription">If you choose Vertical, you need to increase the size of the window</s:String>
-    <s:String x:Key="Horizontal">Horizontal</s:String>
-    <s:String x:Key="Vertical">Vertical</s:String>
+    <s:String x:Key="Language">Sprog</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Fjern unødvendige forbudslister</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Hvis du har slettet et save og ikke vil bruge listerne mere, skal du klikke på knappen for at slette.</s:String>
+    <s:String x:Key="PathSettings">Indstillinger for sti</s:String>
+    <s:String x:Key="PathSettingsDescription">Skift, hvis stien til spilmappen er ændret</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Nulstil til standardindstillinger</s:String>
+    <s:String x:Key="Clear">Klar</s:String>
+    <s:String x:Key="Reset">Nulstil</s:String>
+    <s:String x:Key="Appearance">Udseende</s:String>
+    <s:String x:Key="Font">Skrifttype</s:String>
+    <s:String x:Key="EnableShadow">Aktivér skygge</s:String>
+    <s:String x:Key="EnableShadowDescription">Hvis du har problemer med ydeevnen, skal du deaktivere denne indstilling.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Aktivér brugerdefineret titellinje</s:String>
+    <s:String x:Key="EnableBlur">Aktiver sløring</s:String>
+    <s:String x:Key="OpacityLevel">Niveau af uigennemsigtighed</s:String>
+    <s:String x:Key="AccentColor">Accentfarve</s:String>
+    <s:String x:Key="UseSystemAccentColor">Brug systemets accentfarve</s:String>
+    <s:String x:Key="Change">Forandring</s:String>
+    <s:String x:Key="Theme">Tema</s:String>
+    <s:String x:Key="FolderForOldSaves">Mappe til gamle gemninger</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Vis en advarsel om et stort antal gemninger</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Antal gemninger, hvor advarslen vises</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Indstilling af størrelsen på gemmets miniaturebilleder</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Størrelse på gemmets miniaturebillede</s:String>
+    <s:String x:Key="Preview">Forhåndsvisning</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Visning af en liste i rengøringsmidlet</s:String>
+    <s:String x:Key="Horizontal">Vandret</s:String>
+    <s:String x:Key="Vertical">Lodret</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Se gemt fil i den lodrette liste</s:String>
+    <s:String x:Key="Line">Linje</s:String>
+    <s:String x:Key="Block">Blok</s:String>
+    <s:String x:Key="Delete">Slet</s:String>
     
-    <s:String x:Key="UnusedProhibitedListsCleared">The unused Prohibited lists have been successfully cleared!</s:String>
-    <s:String x:Key="UnusedProhibitedListsNotCleared">There are currently no unused Prohibited lists.</s:String>
-    <s:String x:Key="ColorCopied">Color copied!</s:String>
-    <s:String x:Key="SettingsHaveBeenReset">The settings have been reset</s:String>
-    <s:String x:Key="ResetSettingsWarning">Do you really want to reset settings?</s:String>
+    <s:String x:Key="UnusedProhibitedListsCleared">De ubrugte Prohibited-lister er blevet slettet!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Der er i øjeblikket ingen ubrugte forbudslister.</s:String>
+    <s:String x:Key="ColorCopied">Farve kopieret!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Indstillingerne er blevet nulstillet</s:String>
+    <s:String x:Key="ResetSettingsWarning">Vil du virkelig nulstille indstillingerne?</s:String>
     
     <s:String x:Key="System">System</s:String>
-    <s:String x:Key="Light">Light</s:String>
-    <s:String x:Key="Dark">Dark</s:String>
+    <s:String x:Key="Light">Lys</s:String>
+    <s:String x:Key="Dark">Mørk</s:String>
     
-    <s:String x:Key="PathToTheSims">Path to The Sims 3</s:String>
-    <s:String x:Key="PathToSaves">Path to the saves</s:String>
-    <s:String x:Key="ChoosePath">Choose path</s:String>
+    <s:String x:Key="PathToTheSims">Vejen til The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Vejen til frelserne</s:String>
+    <s:String x:Key="ChoosePath">Vælg sti</s:String>
     
     <!--Prohibited List-->
-    <s:String x:Key="Photos">Photos</s:String>
-    <s:String x:Key="PortraitsOfSims">Portraits of Sims</s:String>
-    <s:String x:Key="PortraitsOfFamilies">Portraits of Families</s:String>
-    <s:String x:Key="GeneratedImages">Generated images</s:String>
-    <s:String x:Key="LotThumbnails">Lot thumbnails</s:String>
-    <s:String x:Key="SelectOldList">Select the old list</s:String>
-    <s:String x:Key="MergedOldList">The merger was a success!</s:String>
-    <s:String x:Key="NoItems">No items</s:String>
-    <s:String x:Key="Unselect">Unselect</s:String>
-    <s:String x:Key="SaveSelectedImages">Save selected images</s:String>
-    <s:String x:Key="ImagesSaved">Images have been saved!</s:String>
-    <s:String x:Key="NumberOfImagesInList">Number of images in list</s:String>
+    <s:String x:Key="Photos">Billeder</s:String>
+    <s:String x:Key="PortraitsOfSims">Portrætter af Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portrætter af familier</s:String>
+    <s:String x:Key="GeneratedImages">Genererede billeder</s:String>
+    <s:String x:Key="LotThumbnails">Miniaturebilleder af partier</s:String>
+    <s:String x:Key="SelectOldList">Vælg den gamle liste</s:String>
+    <s:String x:Key="MergedOldList">Fusionen var en succes!</s:String>
+    <s:String x:Key="NoItems">Ingen varer</s:String>
+    <s:String x:Key="Unselect">Fravælg</s:String>
+    <s:String x:Key="SaveSelectedImages">Gem udvalgte billeder</s:String>
+    <s:String x:Key="ImagesSaved">Billederne er blevet gemt!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Antal billeder i listen</s:String>
     
     <!--About-->
-    <s:String x:Key="License">License</s:String>
+    <s:String x:Key="License">Licens</s:String>
     <s:String x:Key="Version">Version</s:String>
-    <s:String x:Key="Author">Author</s:String>
-    <s:String x:Key="Copyright">Copyright</s:String>
-    <s:String x:Key="Description">Description</s:String>
+    <s:String x:Key="Author">Forfatter</s:String>
+    <s:String x:Key="Copyright">Ophavsret</s:String>
+    <s:String x:Key="Description">Beskrivelse</s:String>
     <s:String x:Key="Links">Links</s:String>
-    <s:String x:Key="UsedLibraries">Used libraries</s:String>
-    <s:String x:Key="ContactAuthor">Contact the author</s:String>
-    <s:String x:Key="WorksOn">Works on</s:String>
-    <s:String x:Key="WriteLetter">Write a letter</s:String>
-    <s:String x:Key="SocialNetwork">Social network</s:String>
-    <s:String x:Key="ModTheSims">The description of each option for clearing the cache was taken from the ModTheSims website.</s:String>
-    <s:String x:Key="RegulDescription1">A tool for cleaning up The Sims™ 3 save games and keeping them stable.</s:String>
-    <s:String x:Key="RegulDescription2">This program is not endorsed by or affiliated with Electronic Arts or its licensors. The trademarks belong to their respective owners. All rights reserved.</s:String>
-    <s:String x:Key="LicenseDescription">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</s:String>
+    <s:String x:Key="UsedLibraries">Brugte biblioteker</s:String>
+    <s:String x:Key="ContactAuthor">Kontakt forfatteren</s:String>
+    <s:String x:Key="WorksOn">Arbejder på</s:String>
+    <s:String x:Key="WriteLetter">Skriv et brev</s:String>
+    <s:String x:Key="SocialNetwork">Socialt netværk</s:String>
+    <s:String x:Key="ModTheSims">Beskrivelsen af hver mulighed for at rydde cachen er taget fra ModTheSims' hjemmeside.</s:String>
+    <s:String x:Key="RegulDescription1">Et værktøj til at rydde op i The Sims™ 3 gemte spil og holde dem stabile.</s:String>
+    <s:String x:Key="RegulDescription2">Dette program er ikke godkendt af eller forbundet med Electronic Arts eller dets licensgivere. Varemærkerne tilhører deres respektive ejere. Alle rettigheder forbeholdes.</s:String>
+    <s:String x:Key="LicenseDescription">SOFTWAREN LEVERES "SOM DEN ER", UDEN GARANTI AF NOGEN ART, HVERKEN UDTRYKKELIG ELLER UNDERFORSTÅET, HERUNDER, MEN IKKE BEGRÆNSET TIL, GARANTIERNE FOR SALGBARHED, EGNETHED TIL ET BESTEMT FORMÅL OG IKKE-KRÆNKELSE. UNDER INGEN OMSTÆNDIGHEDER SKAL FORFATTERNE ELLER COPYRIGHT-INDEHAVERNE VÆRE ANSVARLIGE FOR KRAV, SKADER ELLER ANDET ANSVAR, UANSET OM DET ER I EN SAG OM KONTRAKT, ERSTATNING ELLER ANDET, DER OPSTÅR FRA, UD AF ELLER I FORBINDELSE MED SOFTWAREN ELLER BRUGEN AF ELLER ANDEN OMGANG MED SOFTWAREN.</s:String>
 </ResourceDictionary>
