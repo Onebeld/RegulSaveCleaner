@@ -1,0 +1,243 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">nb</s:String>
+
+    <!--Norwegian-->
+    <s:String x:Key="Collapse">Kollaps</s:String>
+    <s:String x:Key="Expand">Utvid</s:String>
+    <s:String x:Key="Reestablish">Gjenopprette</s:String>
+    <s:String x:Key="Close">Lukk</s:String>
+
+    <s:String x:Key="Menu">Meny</s:String>
+    <s:String x:Key="Cleaner">Renere</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Spørsmål og svar</s:String>
+    <s:String x:Key="Settings">Innstillinger</s:String>
+    <s:String x:Key="About">Om</s:String>
+
+    <s:String x:Key="On">På</s:String>
+    <s:String x:Key="Off">Av</s:String>
+
+    <s:String x:Key="Cut">Kutt</s:String>
+    <s:String x:Key="Copy">Kopi</s:String>
+    <s:String x:Key="Paste">Lim inn</s:String>
+
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Avbryt</s:String>
+
+    <s:String x:Key="AddYourNewColor">Legg til den nye fargen din!</s:String>
+    <s:String x:Key="AddColor">Legg til farge</s:String>
+
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Start rengjøring</s:String>
+    <s:String x:Key="SaveFiles">Lagre filer</s:String>
+
+    <s:String x:Key="ProhibitedList">Liste over forbudte produkter</s:String>
+    <s:String x:Key="MoveOldList">Flytt den gamle listen</s:String>
+
+    <s:String x:Key="SaveFilesNotFound">Ingen lagringsmappe ble funnet</s:String>
+    <s:String x:Key="NoSaveFound">Ingen lagringer funnet</s:String>
+
+    <s:String x:Key="SelectAll">Velg alle</s:String>
+    <s:String x:Key="CancelAll">Avbryt alle</s:String>
+    <s:String x:Key="UpdateList">Oppdater liste</s:String>
+    <s:String x:Key="SortByDate">Sorter etter dato</s:String>
+    <s:String x:Key="SortByAlphabetical">Sorter etter alfabetisk</s:String>
+    <s:String x:Key="Selected">Utvalgt</s:String>
+
+    <s:String x:Key="NumberOfSaveFiles">Antall lagringsfiler</s:String>
+
+    <s:String x:Key="NotFindFolderTheSims3">Fant ikke mappen "The Sims 3" i dokumentene.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Det har oppstått en feil!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Vil du velge denne mappen selv?</s:String>
+
+    <s:String x:Key="CleaningOptions">Rengjøringsalternativer</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Angi hva du ønsker å fjerne</s:String>
+    <s:String x:Key="CreateBackup">Opprett sikkerhetskopi</s:String>
+    <s:String x:Key="ClearCache">Tøm hurtigbufferen</s:String>
+    <s:String x:Key="ClearCacheDescription">Konfigurere rengjøringen</s:String>
+    <s:String x:Key="BackupPath">Sti for sikkerhetskopiering</s:String>
+    <s:String x:Key="CreateNow">Opprett nå</s:String>
+    <s:String x:Key="ClearNow">Klar nå</s:String>
+
+    <s:String x:Key="Recommended">Anbefalt</s:String>
+    <s:String x:Key="Experimentally">Eksperimentelt</s:String>
+    <s:String x:Key="ReadMore">Les mer</s:String>
+
+    <s:String x:Key="SaveCleared">Lagringen har blitt slettet!</s:String>
+    <s:String x:Key="SavesCleared">Lagringene er slettet!</s:String>
+    <s:String x:Key="ResultsBelow">Du kan se resultatet nedenfor.</s:String>
+    <s:String x:Key="CacheCleared">Hurtigbufferen har blitt tømt!</s:String>
+    <s:String x:Key="BackupCreated">Sikkerhetskopien er opprettet!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Cachen er allerede tømt</s:String>
+    <s:String x:Key="Successful">Vellykket!</s:String>
+    <s:String x:Key="Information">Informasjon</s:String>
+    <s:String x:Key="Error">Feil</s:String>
+    <s:String x:Key="Yes">Ja</s:String>
+    <s:String x:Key="No">Nei</s:String>
+
+    <s:String x:Key="SaveName">Lagre navn</s:String>
+    <s:String x:Key="TimePassed">Tiden gikk</s:String>
+    <s:String x:Key="OldSize">Gammel størrelse</s:String>
+    <s:String x:Key="NewSize">Ny størrelse</s:String>
+    <s:String x:Key="Percent">Prosent</s:String>
+    <s:String x:Key="Sec">sek</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraits">Fjern familieportretter</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Fjern portretter av simmer</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Fjern miniatyrbilder av partier</s:String>
+    <s:String x:Key="RemovePhotos">Fjern bilder</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Fjern genererte bilder</s:String>
+    <s:String x:Key="RemoveTextures">Fjern teksturer</s:String>
+    <s:String x:Key="RemoveOtherTypes">Fjern andre typer</s:String>
+
+    <s:String x:Key="All">Alle</s:String>
+    <s:String x:Key="Files">Filer</s:String>
+    <s:String x:Key="FromTheFolder">fra mappen</s:String>
+    <s:String x:Key="Except">bortsett fra</s:String>
+
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Sletter bilder som spillet lager selv.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Dette inkluderer: selfies, gratulasjonskort, bilder fra fotoboksen, bilder fra avslutningsballet.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Bruk Forbudt-listen for å lagre noen av dem.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Fjerner portretter som vises når du velger lagrer, i dette programmet og når du velger familie. Lagrer portrettet som vises i programmet.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Fjerner portretter av simmer. De vises nesten overalt: i relasjonspanelet, i tankeskyen og så videre.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Bivirkning:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">Når du går inn i byeditoren, vil det ta lang tid å laste den inn, fordi spillet er opptatt med å lage portretter, og portretter har bare én positur.</s:String>
+
+    <s:String x:Key="RemoveLotThumbnailsDescription">Fjerner partiminiatyrbilder som vises når du velger lagre eller et parti.</s:String>
+
+    <s:String x:Key="RemovePhotosDescription1">Sletter bilder tatt av simmene dine.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Bruk listen Forbudt for å lagre bare noen av bildene dine.</s:String>
+
+    <s:String x:Key="RemoveTexturesDescription1">Fjerner tomteteksturer som opprettes etter at du har plassert en ny tomt i en by. Dette gjelder ikke for tomter som allerede var i byen (med unntak av tomter som plasseres automatisk hvis du har en bestemt utvidelsespakke).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Husk at etter at du har slettet lagringen, vil tomten du plasserte se ut som bakken (se skjermbilde før og etter).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Det anbefales at du tar sikkerhetskopi, ettersom noen spillere sier at spillet lagres på ubestemt tid.</s:String>
+
+    <s:String x:Key="RemoveOtherTypesDescription1">Dette alternativet fungerer som "Slett minner" i Kurees program. Ifølge anmeldelser sletter det ikke minner, så alternativet har fått nytt navn. Det anbefales at du tar en sikkerhetskopi, da det er ukjent hva som slettes.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Det anbefales at du tar sikkerhetskopi av den, da det er ukjent hva den fjerner.</s:String>
+
+    <s:String x:Key="CasPartCacheDescription">CAS-deler som vises i Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Nye objekter som vises i kjøps-/byggemodus</s:String>
+    <s:String x:Key="ScriptCacheDescription">Modifikasjoner eller hacks</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Nye simmer, standardskinn</s:String>
+    <s:String x:Key="SocialCacheDescription">Informasjon om de sosiale aspektene (introdusert med Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cache-filer for installerte verdener. Det finnes ingen WorldCache-filer for verdener som fulgte med spillet og ikke ble installert via Launcher, som Sunset Valley, Twinbrooks eller Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Bufrede miniatyrbilder. Lagres her for raskere lasting neste gang du starter spillet. Hvis du har problemer med rare miniatyrbilder i spillet, kan du slette disse. De vil bli gjenskapt neste gang du starter spillet, selv om spillet blir litt tregere når det lastes inn første gang etter at innholdet i denne mappen er slettet.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Feil produsert av spillet som ble fanget opp av NRaas' ErrorTrap-mod. De brukes ikke i spillet. Slett eller legg dem ut på NRaas Industries, hvis ønskelig. De inneholder informasjon som ble forårsaket av hans ErrorTrap-mod, og vil hjelpe ham med å feilsøke feilene (forårsaket av EA-koden eller hans mods) som utløser feilen. Hvis du ikke har denne modusen og ikke har tenkt å kontakte EA for å få hjelp til å feilsøke disse feilene, kan du bare slette dem.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Introdusert i oppdatering 1.29. Skulle inneholde bilder for utvalgte butikkvarer som skal vises i CAH/Kjøp/Bygg-katalogen, men forårsaker krasjproblemer.</s:String>
+    <s:String x:Key="DCCacheDescription">Inneholder alle installerte Egendefinert innhold/Exchange/Store-elementer som du har installert via Launcher. Vises i kategorien Installert innhold i Launcher.</s:String>
+
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Det er strengt forbudt å slette denne mappen i macOS, da det kan ødelegge lagringene dine. Derfor er dette alternativet deaktivert og kan derfor ikke aktiveres.</s:String>
+
+    <s:String x:Key="YouHaveTooManySaves">Du har for mange lagringer</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Det anbefales å flytte unødvendige lagringer til en annen mappe. Bruk den innebygde Regul Save Cleaner-funksjonen.</s:String>
+    <s:String x:Key="ShowNoMore">Vis ikke mer</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Flytt lagringene til en ekstra mappe</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Lagringene dine har blitt flyttet!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Lagringen din er flyttet!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Flytting er ikke mulig. Sjekk tilgangen til mappen du prøvde å flytte lagringen til.</s:String>
+    <s:String x:Key="RestoreOldSaves">Gjenopprett gamle lagringer</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Velg lagringer som skal overføres</s:String>
+    <s:String x:Key="MoveToSpareFolder">Flytt til en ekstra mappe</s:String>
+
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Spillet er veldig tregt</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Dessverre er The Sims 3 svært dårlig optimalisert. Det bruker maksimalt 4 GB RAM og bruker bare én prosessorkjerne. Det første du må installere er SmoothPatch av LazyDuchess. Det gjør fantastiske ting innen optimalisering.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Bruk av NRaas-mods anbefales:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Etter hvert som du spiller, blir lagringen oppblåst, noe som kan føre til ulike feil. Bruk dette programmet for å unngå problemer. Hvis du vil ha den ultimate opplevelsen, kan du bruke den svært gode opplæringen fra Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Gå til håndboken</s:String>
+    <s:String x:Key="GoToInstallation">Gå til installasjon</s:String>
+
+    <s:String x:Key="Error12">Feil 12</s:String>
+    <s:String x:Key="Error12Description1">Ikke vær redd! Det er fordi spillet ikke har nok minne til å lagre verdenen din. Prøv å tømme lageret for unødvendige ting, fjerne unødvendige gjenstander i verden og lagre på nytt. Hvis det ikke hjelper, kan du prøve guiden fra AncientGatekeeper.</s:String>
+
+    <s:String x:Key="Error16">Feil 16</s:String>
+    <s:String x:Key="Error16Description1">Dette er en ganske sjelden feil. Den oppstår når lagringsstørrelsen når 4 GB. Det kan ha flere årsaker: mange familier, mange partier, mye søppel i lagringen. Det første du bør gjøre er å bruke dette programmet. Hvis det ikke hjelper, må du gjøre en opprydding i selve spillet. På grunn av denne feilen er det stor sannsynlighet for at du mister lagringen, så prøv å ikke fylle opp lagringen.</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">Feil 0 etter åpning av en lagring</s:String>
+    <s:String x:Key="Error0Description1">Dessverre har lagringen din blitt ødelagt. Dette skyldtes en av versjonene av dette programmet etter rengjøring. Kan oppstå når en harddisk- eller SSD-sektor er ødelagt.</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">Generelt</s:String>
+
+    <s:String x:Key="Language">Språk</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Fjern unødvendige forbudslister</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Hvis du har slettet en lagring og ikke ønsker å bruke listene videre, klikker du på knappen for å slette.</s:String>
+    <s:String x:Key="PathSettings">Sti-innstillinger</s:String>
+    <s:String x:Key="PathSettingsDescription">Endre hvis banen til spillmappen er endret.</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Tilbakestill til standardinnstillinger</s:String>
+    <s:String x:Key="Clear">Klar</s:String>
+    <s:String x:Key="Reset">Tilbakestill</s:String>
+    <s:String x:Key="Appearance">Utseende</s:String>
+    <s:String x:Key="Font">Skrifttype</s:String>
+    <s:String x:Key="EnableShadow">Aktiver skygge</s:String>
+    <s:String x:Key="EnableShadowDescription">Hvis du har problemer med ytelsen, kan du deaktivere denne innstillingen.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Aktiver tilpasset tittellinje</s:String>
+    <s:String x:Key="EnableBlur">Aktiver uskarphet</s:String>
+    <s:String x:Key="OpacityLevel">Opasitetsnivå</s:String>
+    <s:String x:Key="AccentColor">Aksentfarge</s:String>
+    <s:String x:Key="UseSystemAccentColor">Bruk systemets aksentfarge</s:String>
+    <s:String x:Key="Change">Endring</s:String>
+    <s:String x:Key="Theme">Tema</s:String>
+    <s:String x:Key="FolderForOldSaves">Mappe for gamle lagringer</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Vise en advarsel om et stort antall lagringer</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Antall lagringer, hvor advarselen vises</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Innstilling av størrelsen på miniatyrbildene i lagringene</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Størrelse på miniatyrbildet av lagringen</s:String>
+    <s:String x:Key="Preview">Forhåndsvisning</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Vise en liste i rengjøringsmidlet</s:String>
+    <s:String x:Key="Horizontal">Horisontal</s:String>
+    <s:String x:Key="Vertical">Vertikal</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Vis lagringsfilen i den vertikale listen</s:String>
+    <s:String x:Key="Line">Linje</s:String>
+    <s:String x:Key="Block">Blokk</s:String>
+    <s:String x:Key="Delete">Slett</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">De ubrukte forbudslistene har blitt slettet!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Det finnes for øyeblikket ingen ubrukte forbudslister.</s:String>
+    <s:String x:Key="ColorCopied">Farge kopiert!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Innstillingene er tilbakestilt</s:String>
+    <s:String x:Key="ResetSettingsWarning">Vil du virkelig tilbakestille innstillingene?</s:String>
+
+    <s:String x:Key="System">System</s:String>
+    <s:String x:Key="Light">Lys</s:String>
+    <s:String x:Key="Dark">Mørk</s:String>
+
+    <s:String x:Key="PathToTheSims">Veien til The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Veien til lagringene</s:String>
+    <s:String x:Key="ChoosePath">Velg vei</s:String>
+
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Bilder</s:String>
+    <s:String x:Key="PortraitsOfSims">Portretter av Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portretter av familier</s:String>
+    <s:String x:Key="GeneratedImages">Genererte bilder</s:String>
+    <s:String x:Key="LotThumbnails">Miniatyrbilder av partier</s:String>
+    <s:String x:Key="SelectOldList">Velg den gamle listen</s:String>
+    <s:String x:Key="MergedOldList">Sammenslåingen var en suksess!</s:String>
+    <s:String x:Key="NoItems">Ingen varer</s:String>
+    <s:String x:Key="Unselect">Opphev valg</s:String>
+    <s:String x:Key="SaveSelectedImages">Lagre valgte bilder</s:String>
+    <s:String x:Key="ImagesSaved">Bildene er lagret!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Antall bilder i listen</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Antall ubrukte forbudte lister</s:String>
+
+    <!--About-->
+    <s:String x:Key="License">Lisens</s:String>
+    <s:String x:Key="Version">Versjon</s:String>
+    <s:String x:Key="Author">Forfatter</s:String>
+    <s:String x:Key="Copyright">Opphavsrett</s:String>
+    <s:String x:Key="Description">Beskrivelse</s:String>
+    <s:String x:Key="Links">Lenker</s:String>
+    <s:String x:Key="UsedLibraries">Brukte biblioteker</s:String>
+    <s:String x:Key="ContactAuthor">Kontakt forfatteren</s:String>
+    <s:String x:Key="WorksOn">Fungerer på</s:String>
+    <s:String x:Key="WriteLetter">Skriv et brev</s:String>
+    <s:String x:Key="SocialNetwork">Sosiale nettverk</s:String>
+    <s:String x:Key="ModTheSims">Beskrivelsen av hvert alternativ for å tømme hurtigbufferen er hentet fra nettstedet ModTheSims.</s:String>
+    <s:String x:Key="RegulDescription1">Et verktøy for å rydde opp i The Simsв"ў 3-spill og holde dem stabile.</s:String>
+    <s:String x:Key="RegulDescription2">Dette programmet er ikke godkjent av eller tilknyttet Electronic Arts eller dets lisensgivere. Varemerkene tilhører sine respektive eiere. Alle rettigheter forbeholdes.</s:String>
+    <s:String x:Key="LicenseDescription">PROGRAMVAREN LEVERES "SOM DEN ER", UTEN NOEN FORM FOR GARANTI, VERKEN UTTRYKT ELLER UNDERFORSTÅTT, INKLUDERT, MEN IKKE BEGRENSET TIL, GARANTIER FOR SALGBARHET, EGNETHET FOR ET BESTEMT FORMÅL OG IKKE-KRENKELSE. OPPHAVSMENNENE ELLER RETTIGHETSHAVERNE SKAL IKKE UNDER NOEN OMSTENDIGHET HOLDES ANSVARLIGE FOR KRAV, SKADER ELLER ANNET ANSVAR, VERKEN I FORBINDELSE MED KONTRAKT, ERSTATNINGSANSVAR ELLER ANNET, SOM OPPSTÅR SOM FØLGE AV ELLER I FORBINDELSE MED PROGRAMVAREN ELLER BRUK ELLER ANNEN OMGANG MED PROGRAMVAREN.</s:String>
+</ResourceDictionary>

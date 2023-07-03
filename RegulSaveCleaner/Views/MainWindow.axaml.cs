@@ -28,6 +28,7 @@ public partial class MainWindow : PleasantWindow
         base.OnApplyTemplate(e);
         
         Closed += OnClosed;
+        Closing += OnClosing;
         
         ViewModel.NotificationManager = new WindowNotificationManager(this)
         {
@@ -47,6 +48,12 @@ public partial class MainWindow : PleasantWindow
 #endif
         
         ViewModel.LoadingSaves();
+    }
+
+    private void OnClosing(object? sender, WindowClosingEventArgs e)
+    {
+        if (ViewModel.InCleaningProcess || ViewModel.InCleaningCacheProcess || ViewModel.InCreatingBackupProcess)
+            e.Cancel = true;
     }
 
     private void OnClosed(object? sender, EventArgs e)

@@ -1,0 +1,243 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">sv</s:String>
+
+    <!--Swedish-->
+    <s:String x:Key="Collapse">Kollaps</s:String>
+    <s:String x:Key="Expand">Expandera</s:String>
+    <s:String x:Key="Reestablish">Återupprätta</s:String>
+    <s:String x:Key="Close">Nära</s:String>
+
+    <s:String x:Key="Menu">Meny</s:String>
+    <s:String x:Key="Cleaner">Rengöringsmedel</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Frågor och svar</s:String>
+    <s:String x:Key="Settings">Inställningar</s:String>
+    <s:String x:Key="About">Om</s:String>
+
+    <s:String x:Key="On">På</s:String>
+    <s:String x:Key="Off">Av</s:String>
+
+    <s:String x:Key="Cut">Skär</s:String>
+    <s:String x:Key="Copy">Kopia</s:String>
+    <s:String x:Key="Paste">Klistra in</s:String>
+
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Avbryt</s:String>
+
+    <s:String x:Key="AddYourNewColor">Lägg till din nya färg!</s:String>
+    <s:String x:Key="AddColor">Lägg till färg</s:String>
+
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Börja med rengöring</s:String>
+    <s:String x:Key="SaveFiles">Spara filer</s:String>
+
+    <s:String x:Key="ProhibitedList">Förbudslista</s:String>
+    <s:String x:Key="MoveOldList">Flytta den gamla listan</s:String>
+
+    <s:String x:Key="SaveFilesNotFound">Ingen sparad mapp hittades</s:String>
+    <s:String x:Key="NoSaveFound">Inga sparningar hittades</s:String>
+
+    <s:String x:Key="SelectAll">Välj alla</s:String>
+    <s:String x:Key="CancelAll">Avbryt alla</s:String>
+    <s:String x:Key="UpdateList">Lista över uppdateringar</s:String>
+    <s:String x:Key="SortByDate">Sortera efter datum</s:String>
+    <s:String x:Key="SortByAlphabetical">Sortera alfabetiskt</s:String>
+    <s:String x:Key="Selected">Utvalda</s:String>
+
+    <s:String x:Key="NumberOfSaveFiles">Antal sparade filer</s:String>
+
+    <s:String x:Key="NotFindFolderTheSims3">Kunde inte hitta mappen "The Sims 3" i dokumenten.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Det har uppstått ett fel!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Vill du välja den här mappen själv?</s:String>
+
+    <s:String x:Key="CleaningOptions">Alternativ för rengöring</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Ställ in vad du vill rensa</s:String>
+    <s:String x:Key="CreateBackup">Skapa säkerhetskopia</s:String>
+    <s:String x:Key="ClearCache">Rensa cache</s:String>
+    <s:String x:Key="ClearCacheDescription">Inställning av rengöringen</s:String>
+    <s:String x:Key="BackupPath">Sökväg för säkerhetskopiering</s:String>
+    <s:String x:Key="CreateNow">Skapa nu</s:String>
+    <s:String x:Key="ClearNow">Klara nu</s:String>
+
+    <s:String x:Key="Recommended">Rekommenderade</s:String>
+    <s:String x:Key="Experimentally">Experimentellt</s:String>
+    <s:String x:Key="ReadMore">Läs mer på</s:String>
+
+    <s:String x:Key="SaveCleared">Sparandet har rensats framgångsrikt!</s:String>
+    <s:String x:Key="SavesCleared">Sparar framgångsrikt rensat!</s:String>
+    <s:String x:Key="ResultsBelow">Du kan se resultatet nedan.</s:String>
+    <s:String x:Key="CacheCleared">Cacheminnet har rensats framgångsrikt!</s:String>
+    <s:String x:Key="BackupCreated">Backup har skapats framgångsrikt!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Cachen har redan rensats</s:String>
+    <s:String x:Key="Successful">Framgångsrikt!</s:String>
+    <s:String x:Key="Information">Information</s:String>
+    <s:String x:Key="Error">Fel</s:String>
+    <s:String x:Key="Yes">Ja</s:String>
+    <s:String x:Key="No">Nej</s:String>
+
+    <s:String x:Key="SaveName">Spara namn</s:String>
+    <s:String x:Key="TimePassed">Tiden har gått</s:String>
+    <s:String x:Key="OldSize">Gammal storlek</s:String>
+    <s:String x:Key="NewSize">Ny storlek</s:String>
+    <s:String x:Key="Percent">Procent</s:String>
+    <s:String x:Key="Sec">sek</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraits">Ta bort familjeporträtt</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Ta bort porträtt av Sims</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Ta bort miniatyrbilder av partier</s:String>
+    <s:String x:Key="RemovePhotos">Ta bort foton</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Ta bort genererade bilder</s:String>
+    <s:String x:Key="RemoveTextures">Ta bort texturer</s:String>
+    <s:String x:Key="RemoveOtherTypes">Ta bort andra typer</s:String>
+
+    <s:String x:Key="All">Alla</s:String>
+    <s:String x:Key="Files">filer</s:String>
+    <s:String x:Key="FromTheFolder">från mappen</s:String>
+    <s:String x:Key="Except">förutom</s:String>
+
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Raderar bilder som spelet själv skapar.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Detta inkluderar: selfies, gratulationskort, foton från fotobåset, foton från examensbalen.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Använd Förbudslistan för att spara några av dem.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Tar bort porträtt som visas när du väljer spara, i detta program och när du väljer familj. Sparar det porträtt som visas i programmet.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Tar bort porträtt av simmar. De visas nästan överallt: i panelen Relationer, i tankemolnet och så vidare.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Biverkning:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">när du går in i stadsredigeraren tar det lång tid att ladda den, eftersom spelet är upptaget med att skapa porträtt, och porträtt har bara en pose.</s:String>
+
+    <s:String x:Key="RemoveLotThumbnailsDescription">Tar bort miniatyrbilder för partier som visas när du väljer spara eller ett parti.</s:String>
+
+    <s:String x:Key="RemovePhotosDescription1">Raderar foton som tagits av dina simmar.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Använd listan Förbjudet för att spara endast vissa av dina foton.</s:String>
+
+    <s:String x:Key="RemoveTexturesDescription1">Tar bort texturer för tomter som skapas när du placerar en ny tomt i en stad. Detta gäller inte för tomter som redan fanns i staden (räknar inte vissa som automatiskt placeras om du har ett visst expansionspaket).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Tänk på att efter att du har rensat sparandet kommer lotten du placerade ut att se ut som marken (se skärmdump före och efter).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Det rekommenderas att du säkerhetskopierar, eftersom vissa spelare säger att spelet sparas på obestämd tid.</s:String>
+
+    <s:String x:Key="RemoveOtherTypesDescription1">Det här alternativet fungerar som "Rensa minnen" i Kurees program. Enligt recensioner rensar det inte minnen, så alternativet har bytt namn. Det rekommenderas att du säkerhetskopierar det, eftersom det är okänt vad det rensar.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Vi rekommenderar att du säkerhetskopierar den, eftersom det är okänt vad den rensar.</s:String>
+
+    <s:String x:Key="CasPartCacheDescription">CAS-delar som förekommer i Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Nya objekt som skulle visas i Buy/Build-läget</s:String>
+    <s:String x:Key="ScriptCacheDescription">Modifieringar eller hackningar</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Nya Sims, standardskinn</s:String>
+    <s:String x:Key="SocialCacheDescription">Information om de sociala aspekterna (introducerades med Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cache-filer för dina installerade världar. Det finns inga WorldCache-filer för världar som medföljde spelet och som inte installerades via startprogrammet, t.ex. Sunset Valley, Twinbrooks eller Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Cachelagrade miniatyrbilder. Sparas här för snabbare laddning nästa gång du startar ditt spel. Om du har problem med konstiga miniatyrbilder i spelet, radera dessa. De kommer att återskapas nästa gång du startar spelet, om än något långsammare när det laddas första gången, efter att innehållet i den här mappen har raderats.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Fel som producerats av spelet och som fångats upp av NRaas ErrorTrap-mod. De används inte i spelet. Radera eller posta hos NRaas Industries, om så begärs. De innehåller information som orsakades av hans ErrorTrap mod och skulle hjälpa honom att felsöka de buggar (orsakade av EA-kod eller hans mods) som utlöser felet. Om du inte har denna mod och du inte planerar att någonsin kontakta EA för att få hjälp med att felsöka dessa fel, kan du helt enkelt radera dem.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Introducerades i patch 1.29. Avsedd att innehålla bilder för utvalda butiksobjekt som ska visas i CAH/Buy/Build-katalogen, men orsakar kraschproblem.</s:String>
+    <s:String x:Key="DCCacheDescription">Innehåller alla installerade Custom Content/Exchange/Store-objekt som du installerade via Launcher. Visas på fliken Installerat innehåll i Launcher.</s:String>
+
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Det är strängt förbjudet att ta bort den här mappen i macOS, eftersom det kan förstöra dina sparningar. Därför är det här alternativet inaktiverat och kan därför inte aktiveras.</s:String>
+
+    <s:String x:Key="YouHaveTooManySaves">Du har för många sparningar</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Vi rekommenderar att du flyttar onödiga sparningar till en annan mapp. Använd den inbyggda Regul Save Cleaner-funktionen.</s:String>
+    <s:String x:Key="ShowNoMore">Visa inte mer</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Flytta sparningar till en extra mapp</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Dina sparningar har flyttats!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Din lagring har flyttats!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Flyttning är inte möjlig. Kontrollera åtkomst till den mapp du försökte flytta ditt sparande till.</s:String>
+    <s:String x:Key="RestoreOldSaves">Återställ gamla sparningar</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Välj sparningar att överföra</s:String>
+    <s:String x:Key="MoveToSpareFolder">Flytta till en extra mapp</s:String>
+
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Spelet är mycket långsamt</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Tyvärr är The Sims 3 mycket dåligt optimerat. Det förbrukar maximalt 4 GB RAM-minne och använder bara en processorkärna. Det första du behöver installera är SmoothPatch av LazyDuchess. Den gör fantastiska saker när det gäller optimering.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Användning av NRaas mods rekommenderas:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">När du spelar blir sparandet överbelastat, vilket kan leda till olika fel. Använd detta program för att undvika problem. Om du vill ha den ultimata upplevelsen, använd den mycket bra handledningen från Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Gå till manualen</s:String>
+    <s:String x:Key="GoToInstallation">Gå till installation</s:String>
+
+    <s:String x:Key="Error12">Fel 12</s:String>
+    <s:String x:Key="Error12Description1">Oroa dig inte för det! Det beror på att spelet inte har tillräckligt med minne för att rädda din värld. Försök att rensa ditt lager från onödigt skräp, ta bort onödiga föremål i världen och spara igen. Om det inte hjälper kan du prova guiden från AncientGatekeeper.</s:String>
+
+    <s:String x:Key="Error16">Fel 16</s:String>
+    <s:String x:Key="Error16Description1">Detta är ett ganska sällsynt fel. Det inträffar när storleken på ditt sparande når 4 GB. Det finns en hel del orsaker: många familjer, många partier, mycket skräp i sparandet. Det första du bör göra är att använda det här programmet. Om det inte hjälper mycket måste du göra en upprensning i själva spelet. På grund av detta fel är det mycket troligt att du förlorar ditt sparande, så försök att inte fylla på ditt sparande.</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">Fel 0 efter att ha öppnat ett sparande</s:String>
+    <s:String x:Key="Error0Description1">Tyvärr har din sparning blivit skadad. Detta berodde på att en av versionerna av detta program efter rengöring. Kan inträffa när en hårddisk eller SSD-sektor är skadad.</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">Allmänt</s:String>
+
+    <s:String x:Key="Language">Språk</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Ta bort onödiga förbudslistor</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Om du har raderat ett sparande och inte vill använda listorna längre, klicka på knappen för att radera</s:String>
+    <s:String x:Key="PathSettings">Inställningar för sökväg</s:String>
+    <s:String x:Key="PathSettingsDescription">Ändra om sökvägen till spelmappen har ändrats</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Återställ till standardinställningar</s:String>
+    <s:String x:Key="Clear">Klart</s:String>
+    <s:String x:Key="Reset">Återställ</s:String>
+    <s:String x:Key="Appearance">Utseende</s:String>
+    <s:String x:Key="Font">Font</s:String>
+    <s:String x:Key="EnableShadow">Aktivera skugga</s:String>
+    <s:String x:Key="EnableShadowDescription">Om du har problem med prestanda, inaktivera denna inställning</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Aktivera anpassad titelrad</s:String>
+    <s:String x:Key="EnableBlur">Aktivera suddighet</s:String>
+    <s:String x:Key="OpacityLevel">Opacitetsnivå</s:String>
+    <s:String x:Key="AccentColor">Accentfärg</s:String>
+    <s:String x:Key="UseSystemAccentColor">Använd systemets accentfärg</s:String>
+    <s:String x:Key="Change">Förändring</s:String>
+    <s:String x:Key="Theme">Tema</s:String>
+    <s:String x:Key="FolderForOldSaves">Mapp för gamla besparingar</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Visa en varning om ett stort antal besparingar</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Antal sparningar vid vilka varningen visas</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Ange storleken på miniatyrbilderna i Save</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Storlek på miniatyrbild</s:String>
+    <s:String x:Key="Preview">Förhandsvisning</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Visa en lista i städaren</s:String>
+    <s:String x:Key="Horizontal">Horisontell</s:String>
+    <s:String x:Key="Vertical">Vertikal</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Visa sparad fil i den vertikala listan</s:String>
+    <s:String x:Key="Line">Linje</s:String>
+    <s:String x:Key="Block">Block</s:String>
+    <s:String x:Key="Delete">Radera</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">De oanvända Förbudslistorna har rensats framgångsrikt!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Det finns för närvarande inga oanvända förbudslistor.</s:String>
+    <s:String x:Key="ColorCopied">Färg kopierad!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Inställningarna har återställts</s:String>
+    <s:String x:Key="ResetSettingsWarning">Vill du verkligen återställa inställningarna?</s:String>
+
+    <s:String x:Key="System">System</s:String>
+    <s:String x:Key="Light">Ljus</s:String>
+    <s:String x:Key="Dark">Mörk</s:String>
+
+    <s:String x:Key="PathToTheSims">Vägen till The Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Väg till sparandet</s:String>
+    <s:String x:Key="ChoosePath">Välj väg</s:String>
+
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Foton</s:String>
+    <s:String x:Key="PortraitsOfSims">Porträtt av Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Porträtt av familjer</s:String>
+    <s:String x:Key="GeneratedImages">Skapade bilder</s:String>
+    <s:String x:Key="LotThumbnails">Miniatyrbilder av partier</s:String>
+    <s:String x:Key="SelectOldList">Välj den gamla listan</s:String>
+    <s:String x:Key="MergedOldList">Sammanslagningen var en framgång!</s:String>
+    <s:String x:Key="NoItems">Inga artiklar</s:String>
+    <s:String x:Key="Unselect">Avmarkera</s:String>
+    <s:String x:Key="SaveSelectedImages">Spara valda bilder</s:String>
+    <s:String x:Key="ImagesSaved">Bilderna har sparats!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Antal bilder i listan</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Antal oanvända förbjudna listor</s:String>
+
+    <!--About-->
+    <s:String x:Key="License">Licens</s:String>
+    <s:String x:Key="Version">Version</s:String>
+    <s:String x:Key="Author">Författare</s:String>
+    <s:String x:Key="Copyright">Upphovsrätt</s:String>
+    <s:String x:Key="Description">Beskrivning</s:String>
+    <s:String x:Key="Links">Länkar</s:String>
+    <s:String x:Key="UsedLibraries">Använda bibliotek</s:String>
+    <s:String x:Key="ContactAuthor">Kontakta författaren</s:String>
+    <s:String x:Key="WorksOn">Arbetar på</s:String>
+    <s:String x:Key="WriteLetter">Skriv ett brev</s:String>
+    <s:String x:Key="SocialNetwork">Socialt nätverk</s:String>
+    <s:String x:Key="ModTheSims">Beskrivningen av varje alternativ för att rensa cacheminnet hämtades från ModTheSims webbplats.</s:String>
+    <s:String x:Key="RegulDescription1">Ett verktyg för att rensa upp The Simsв"ў 3-spelsparningar och hålla dem stabila.</s:String>
+    <s:String x:Key="RegulDescription2">Detta program är inte godkänt av eller anslutet till Electronic Arts eller dess licensgivare. Varumärkena tillhör sina respektive ägare. Alla rättigheter förbehållna.</s:String>
+    <s:String x:Key="LicenseDescription">PROGRAMVARAN TILLHANDAHÅLLS "I BEFINTLIGT SKICK", UTAN GARANTI AV NÅGOT SLAG, UTTRYCKLIG ELLER UNDERFÖRSTÅDD, INKLUSIVE MEN INTE BEGRÄNSAT TILL GARANTIER OM SÄLJBARHET, LÄMPLIGHET FÖR ETT VISST ÄNDAMÅL OCH ICKE-INTRÅNG. FÖRFATTARNA ELLER UPPHOVSRÄTTSINNEHAVARNA SKA UNDER INGA OMSTÄNDIGHETER HÅLLAS ANSVARIGA FÖR ANSPRÅK, SKADOR ELLER ANNAT ANSVAR, VARE SIG I EN KONTRAKTSRÄTTSLIG HANDLING, SKADESTÅNDSRÄTTSLIG HANDLING ELLER PÅ ANNAT SÄTT, SOM UPPSTÅR FRÅN, UR ELLER I SAMBAND MED PROGRAMVARAN ELLER ANVÄNDNINGEN AV ELLER ANNAN HANDEL MED PROGRAMVARAN.</s:String>
+</ResourceDictionary>

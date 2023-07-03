@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">Du kan se resultatet herunder.</s:String>
     <s:String x:Key="CacheCleared">Cachen er blevet ryddet!</s:String>
     <s:String x:Key="BackupCreated">Sikkerhedskopien er blevet oprettet!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Cachen er allerede blevet tømt</s:String>
     <s:String x:Key="Successful">Vellykket!</s:String>
     <s:String x:Key="Information">Information</s:String>
     <s:String x:Key="Error">Fejl</s:String>

@@ -1,0 +1,243 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">fi</s:String>
+
+    <!--Finnish-->
+    <s:String x:Key="Collapse">Romahdus</s:String>
+    <s:String x:Key="Expand">Laajenna</s:String>
+    <s:String x:Key="Reestablish">Palauta</s:String>
+    <s:String x:Key="Close">Sulje</s:String>
+
+    <s:String x:Key="Menu">Valikko</s:String>
+    <s:String x:Key="Cleaner">Puhdistaja</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Kysymyksiä ja vastauksia</s:String>
+    <s:String x:Key="Settings">Asetukset</s:String>
+    <s:String x:Key="About">Tietoja</s:String>
+
+    <s:String x:Key="On">Osoitteessa</s:String>
+    <s:String x:Key="Off">Off</s:String>
+
+    <s:String x:Key="Cut">Leikkaa</s:String>
+    <s:String x:Key="Copy">Kopioi</s:String>
+    <s:String x:Key="Paste">Liitä</s:String>
+
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Peruuta</s:String>
+
+    <s:String x:Key="AddYourNewColor">Lisää uusi väri!</s:String>
+    <s:String x:Key="AddColor">Lisää väriä</s:String>
+
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Aloita siivous</s:String>
+    <s:String x:Key="SaveFiles">Tallenna tiedostot</s:String>
+
+    <s:String x:Key="ProhibitedList">Kielletty luettelo</s:String>
+    <s:String x:Key="MoveOldList">Siirrä vanha luettelo</s:String>
+
+    <s:String x:Key="SaveFilesNotFound">Tallennuskansiota ei löytynyt</s:String>
+    <s:String x:Key="NoSaveFound">Ei tallennuksia löydetty</s:String>
+
+    <s:String x:Key="SelectAll">Valitse kaikki</s:String>
+    <s:String x:Key="CancelAll">Peruuta kaikki</s:String>
+    <s:String x:Key="UpdateList">Päivitysluettelo</s:String>
+    <s:String x:Key="SortByDate">Lajittelu päivämäärän mukaan</s:String>
+    <s:String x:Key="SortByAlphabetical">Lajittelu aakkosjärjestyksen mukaan</s:String>
+    <s:String x:Key="Selected">Valitut</s:String>
+
+    <s:String x:Key="NumberOfSaveFiles">Tallennustiedostojen määrä</s:String>
+
+    <s:String x:Key="NotFindFolderTheSims3">Kansiota "The Sims 3" ei löydy asiakirjoista.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">On tapahtunut virhe!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Haluatko valita tämän kansion itse?</s:String>
+
+    <s:String x:Key="CleaningOptions">Puhdistusvaihtoehdot</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Määritä, mitä haluat tyhjentää</s:String>
+    <s:String x:Key="CreateBackup">Luo varmuuskopio</s:String>
+    <s:String x:Key="ClearCache">Tyhjennä välimuisti</s:String>
+    <s:String x:Key="ClearCacheDescription">Puhdistuksen määrittäminen</s:String>
+    <s:String x:Key="BackupPath">Varmuuskopiointipolku</s:String>
+    <s:String x:Key="CreateNow">Luo nyt</s:String>
+    <s:String x:Key="ClearNow">Tyhjennä nyt</s:String>
+
+    <s:String x:Key="Recommended">Suositeltu</s:String>
+    <s:String x:Key="Experimentally">Kokeellisesti</s:String>
+    <s:String x:Key="ReadMore">Lue lisää</s:String>
+
+    <s:String x:Key="SaveCleared">Tallennus on onnistuneesti tyhjennetty!</s:String>
+    <s:String x:Key="SavesCleared">Tallennukset onnistuneesti selvitetty!</s:String>
+    <s:String x:Key="ResultsBelow">Tuloksen näet alla.</s:String>
+    <s:String x:Key="CacheCleared">Välimuisti on tyhjennetty onnistuneesti!</s:String>
+    <s:String x:Key="BackupCreated">Varmuuskopio on luotu onnistuneesti!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Välimuisti on jo tyhjennetty</s:String>
+    <s:String x:Key="Successful">Onnistunut!</s:String>
+    <s:String x:Key="Information">Tiedot</s:String>
+    <s:String x:Key="Error">Virhe</s:String>
+    <s:String x:Key="Yes">Kyllä</s:String>
+    <s:String x:Key="No">Ei</s:String>
+
+    <s:String x:Key="SaveName">Tallenna nimi</s:String>
+    <s:String x:Key="TimePassed">Aika kului</s:String>
+    <s:String x:Key="OldSize">Vanha koko</s:String>
+    <s:String x:Key="NewSize">Uusi koko</s:String>
+    <s:String x:Key="Percent">Prosenttia</s:String>
+    <s:String x:Key="Sec">sec</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraits">Poista perhemuotokuvat</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Poista simien muotokuvat</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Poista erän pikkukuvat</s:String>
+    <s:String x:Key="RemovePhotos">Poista valokuvat</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Poista luodut kuvat</s:String>
+    <s:String x:Key="RemoveTextures">Poista tekstuurit</s:String>
+    <s:String x:Key="RemoveOtherTypes">Poista muut tyypit</s:String>
+
+    <s:String x:Key="All">Kaikki</s:String>
+    <s:String x:Key="Files">tiedostot</s:String>
+    <s:String x:Key="FromTheFolder">kansiosta</s:String>
+    <s:String x:Key="Except">paitsi</s:String>
+
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Poistaa pelin itse luomat kuvat.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Tähän kuuluvat: omakuvat, onnittelukortit, valokuvat valokuvakopista, valokuvat valmistujaisjuhlista.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Käytä Kielletyt-luetteloa joidenkin niistä pelastamiseen.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Poistaa muotokuvat, jotka näkyvät, kun valitset tallennuksia, tässä ohjelmassa ja kun valitset perheen. Tallentaa muotokuvan, joka näkyy tässä ohjelmassa.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Poistaa simien muotokuvat. Ne näkyvät lähes kaikkialla: Suhteet-paneelissa, Ajatuspilvessä ja niin edelleen.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Sivuvaikutus:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">Kun siirryt kaupunkieditoriin, sen lataaminen kestää kauan, koska peli on kiireinen muotokuvien luomisessa, ja muotokuvilla on vain yksi poseeraus.</s:String>
+
+    <s:String x:Key="RemoveLotThumbnailsDescription">Poistaa erän pikkukuvat, jotka näkyvät, kun valitset tallenna tai erän.</s:String>
+
+    <s:String x:Key="RemovePhotosDescription1">Poistaa simien ottamat valokuvat.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Käytä Kielletyt-luetteloa tallentaaksesi vain joitakin valokuvia.</s:String>
+
+    <s:String x:Key="RemoveTexturesDescription1">Poistaa tontin tekstuurit, jotka luodaan, kun asetat uuden tontin kaupunkiin. Tämä ei koske tontteja, jotka olivat jo kaupungissa (lukuun ottamatta tontteja, jotka sijoitetaan automaattisesti, jos sinulla on tietty laajennuspaketti).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Muista, että kun olet tyhjentänyt tallennuksen, sijoitettu tontti näyttää maastolta (katso kuvakaappaus ennen ja jälkeen).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">On suositeltavaa, että teet varmuuskopion, sillä joidenkin pelaajien mukaan peli on tallennettu loputtomiin.</s:String>
+
+    <s:String x:Key="RemoveOtherTypesDescription1">Tämä vaihtoehto toimii kuten "Tyhjennä muistot" Kureen ohjelmassa. Arvostelujen mukaan se ei tyhjennä muistoja, joten vaihtoehto on nimetty uudelleen. On suositeltavaa, että teet varmuuskopion, koska ei tiedetä, mitä se tyhjentää.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">On suositeltavaa, että varmuuskopioit sen, koska ei tiedetä, mitä se tyhjentää.</s:String>
+
+    <s:String x:Key="CasPartCacheDescription">CAS-osat, jotka näkyvät Create-A-Simissä</s:String>
+    <s:String x:Key="CompositorCacheDescription">Uudet kohteet, jotka näkyvät osto-/rakennustilassa</s:String>
+    <s:String x:Key="ScriptCacheDescription">Modit tai hakkerit</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Uudet simit, oletusihot</s:String>
+    <s:String x:Key="SocialCacheDescription">Tietoa sosiaalisista näkökohdista (otettu käyttöön patch 1.31:ssä)</s:String>
+    <s:String x:Key="WorldCachesDescription">Asennettujen maailmojen välimuistitiedostot. Pelin mukana tulleille maailmoille, joita ei ole asennettu Launcherin kautta, kuten Sunset Valley, Twinbrooks tai Bridgeport, ei ole WorldCache-tiedostoja.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Välimuistiin tallennetut pikkukuvat. Tallennetaan tänne, jotta ne latautuvat nopeammin, kun käynnistät pelin seuraavan kerran. Jos sinulla on ongelmia outojen pikkukuvien kanssa pelissä, poista nämä. Ne luodaan uudelleen, kun käynnistät pelin seuraavan kerran, vaikkakin hieman hitaammin, kun peli ladataan ensimmäisen kerran, kun tämän kansion sisältö on poistettu.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Pelin tuottamat virheet, jotka NRaasin ErrorTrap-mod nappasi. Niitä ei käytetä pelissä. Poista tai lähetä NRaas Industriesille, jos pyydetään. Ne sisältävät tietoa, jonka hänen ErrorTrap-modinsa aiheutti, ja ne auttavat häntä vianmäärityksessä (EA-koodin tai hänen modinsa aiheuttamien) virheiden aiheuttajissa. Jos sinulla ei ole tätä modia etkä aio koskaan ottaa yhteyttä EA:han saadaksesi apua näiden virheiden korjaamisessa, voit yksinkertaisesti poistaa ne.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Otettiin käyttöön patchissa 1.29. Sen piti sisältää kuvia CAH/Buy/Build Catalogissa näytettäviä Featured Store Items -esineitä varten, mutta se aiheuttaa kaatumisongelmia.</s:String>
+    <s:String x:Key="DCCacheDescription">Sisältää kaikki asennetut mukautetun sisällön/vaihdon/varaston kohteet, jotka olet asentanut Launcherin kautta. Näkyy Launcherin Asennettu sisältö -välilehdellä.</s:String>
+
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Tämän kansion poistaminen macOS:ssä on ehdottomasti kielletty, koska se voi rikkoa tallennuksesi. Siksi tämä vaihtoehto on poistettu käytöstä, eikä sitä voi ottaa käyttöön.</s:String>
+
+    <s:String x:Key="YouHaveTooManySaves">Sinulla on liikaa tallennuksia</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">On suositeltavaa siirtää tarpeettomat tallennukset toiseen kansioon. Käytä sisäänrakennettua Regul Save Cleaner -toimintoa.</s:String>
+    <s:String x:Key="ShowNoMore">Näytä ei enempää</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Siirrä tallennukset ylimääräiseen kansioon</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Tallennuksesi on siirretty!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Tallennuksesi on siirretty!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Siirtyminen ei ole mahdollista. Tarkista pääsy kansioon, johon yritit siirtää tallennuksesi.</s:String>
+    <s:String x:Key="RestoreOldSaves">Palauta vanhat tallennukset</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Valitse siirrettävät tallennukset</s:String>
+    <s:String x:Key="MoveToSpareFolder">Siirrä ylimääräiseen kansioon</s:String>
+
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Peli on hyvin hidas</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Valitettavasti The Sims 3 on erittäin huonosti optimoitu. Se kuluttaa enintään 4 Gt RAM-muistia ja käyttää vain yhtä prosessoriydintä. Ensimmäiseksi sinun on asennettava LazyDuchessin SmoothPatch. Se tekee hämmästyttäviä asioita optimoinnissa.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">NRaas-modien käyttöä suositellaan:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Pelatessasi tallennus paisuu, mikä voi johtaa erilaisiin virheisiin. Käytä tätä ohjelmaa ongelmien välttämiseksi. Jos haluat parhaan mahdollisen kokemuksen, käytä Anime_Boomin erittäin hyvää opetusohjelmaa.</s:String>
+    <s:String x:Key="GoToManual">Siirry käsikirjaan</s:String>
+    <s:String x:Key="GoToInstallation">Siirry asennukseen</s:String>
+
+    <s:String x:Key="Error12">Virhe 12</s:String>
+    <s:String x:Key="Error12Description1">Ei hätää! Tämä johtuu siitä, että pelissä ei ole tarpeeksi muistia maailmasi pelastamiseen. Yritä tyhjentää inventaariosi tarpeettomista roskista, poista tarpeettomat esineet maailmasta ja tallenna uudelleen. Jos tämä ei auta, kokeile AncientGatekeeperin opasta.</s:String>
+
+    <s:String x:Key="Error16">Virhe 16</s:String>
+    <s:String x:Key="Error16Description1">Tämä on melko harvinainen virhe. Se ilmenee, kun tallennuksesi koko saavuttaa 4 GB:n rajan. Syitä on melko monta: paljon perheitä, paljon arpoja, paljon roskaa tallennuksen sisällä. Ensimmäiseksi kannattaa käyttää tätä ohjelmaa. Jos se ei auta paljon, sinun täytyy tehdä siivous itse pelissä. Tämän virheen takia on suuri todennäköisyys, että menetät tallennuksesi, joten yritä olla paisuttamatta tallennustasi.</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">Virhe 0 tallennuksen avaamisen jälkeen</s:String>
+    <s:String x:Key="Error0Description1">Valitettavasti tallennuksesi on vioittunut. Tämä johtui yhdestä tämän ohjelman versiosta puhdistuksen jälkeen. Voi tapahtua, kun kiintolevy- tai SSD-sektori on vioittunut.</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">Yleistä</s:String>
+
+    <s:String x:Key="Language">Kieli</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Tyhjennä tarpeettomat kielletyt luettelot</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Jos olet poistanut tallennuksen etkä halua käyttää luetteloita jatkossa, napsauta painiketta poistaaksesi.</s:String>
+    <s:String x:Key="PathSettings">Polkuasetukset</s:String>
+    <s:String x:Key="PathSettingsDescription">Muuta, jos pelikansioon johtava polku on muuttunut.</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Nollaa oletusasetukset</s:String>
+    <s:String x:Key="Clear">Kirkas</s:String>
+    <s:String x:Key="Reset">Nollaa</s:String>
+    <s:String x:Key="Appearance">Ulkonäkö</s:String>
+    <s:String x:Key="Font">Fontti</s:String>
+    <s:String x:Key="EnableShadow">Ota varjo käyttöön</s:String>
+    <s:String x:Key="EnableShadowDescription">Jos sinulla on suorituskykyongelmia, poista tämä asetus käytöstä.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Ota mukautettu otsikkorivi käyttöön</s:String>
+    <s:String x:Key="EnableBlur">Ota sumeus käyttöön</s:String>
+    <s:String x:Key="OpacityLevel">Läpinäkyvyystaso</s:String>
+    <s:String x:Key="AccentColor">Korostusväri</s:String>
+    <s:String x:Key="UseSystemAccentColor">Käytä järjestelmän aksenttiväriä</s:String>
+    <s:String x:Key="Change">Muuta</s:String>
+    <s:String x:Key="Theme">Teema</s:String>
+    <s:String x:Key="FolderForOldSaves">Kansio vanhoille tallennuksille</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Näytä varoitus suuresta tallennusten määrästä</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Tallennusten määrä, jonka jälkeen varoitus näytetään.</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">Tallennuksen pikkukuvien koon asettaminen</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Tallennuksen pikkukuvan koko</s:String>
+    <s:String x:Key="Preview">Esikatselu</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Luettelon näyttäminen siivousohjelmassa</s:String>
+    <s:String x:Key="Horizontal">Vaakasuora</s:String>
+    <s:String x:Key="Vertical">Pystysuora</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Näytä tallennettu tiedosto pystysuorassa luettelossa</s:String>
+    <s:String x:Key="Line">Linja</s:String>
+    <s:String x:Key="Block">Lohko</s:String>
+    <s:String x:Key="Delete">Poista</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">Käyttämättömät Kielletyt-luettelot on onnistuneesti tyhjennetty!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Tällä hetkellä ei ole käyttämättömiä Kiellettyjen luetteloita.</s:String>
+    <s:String x:Key="ColorCopied">Väri kopioitu!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">Asetukset on nollattu</s:String>
+    <s:String x:Key="ResetSettingsWarning">Haluatko todella nollata asetukset?</s:String>
+
+    <s:String x:Key="System">Järjestelmä</s:String>
+    <s:String x:Key="Light">Valo</s:String>
+    <s:String x:Key="Dark">Tumma</s:String>
+
+    <s:String x:Key="PathToTheSims">Polku The Sims 3:een</s:String>
+    <s:String x:Key="PathToSaves">Polku säästöihin</s:String>
+    <s:String x:Key="ChoosePath">Valitse polku</s:String>
+
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Kuvat</s:String>
+    <s:String x:Key="PortraitsOfSims">Simsin muotokuvat</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Perheiden muotokuvia</s:String>
+    <s:String x:Key="GeneratedImages">Generoidut kuvat</s:String>
+    <s:String x:Key="LotThumbnails">Erän pikkukuvat</s:String>
+    <s:String x:Key="SelectOldList">Valitse vanha luettelo</s:String>
+    <s:String x:Key="MergedOldList">Yhdistyminen oli menestys!</s:String>
+    <s:String x:Key="NoItems">Ei kohteita</s:String>
+    <s:String x:Key="Unselect">Poista valinta</s:String>
+    <s:String x:Key="SaveSelectedImages">Tallenna valitut kuvat</s:String>
+    <s:String x:Key="ImagesSaved">Kuvat on tallennettu!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Kuvien määrä luettelossa</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Käyttämättömien kiellettyjen luetteloiden määrä</s:String>
+
+    <!--About-->
+    <s:String x:Key="License">Lisenssi</s:String>
+    <s:String x:Key="Version">Versio</s:String>
+    <s:String x:Key="Author">Kirjoittaja</s:String>
+    <s:String x:Key="Copyright">Tekijänoikeus</s:String>
+    <s:String x:Key="Description">Kuvaus</s:String>
+    <s:String x:Key="Links">Linkit</s:String>
+    <s:String x:Key="UsedLibraries">Käytetyt kirjastot</s:String>
+    <s:String x:Key="ContactAuthor">Ota yhteyttä kirjoittajaan</s:String>
+    <s:String x:Key="WorksOn">Toimii</s:String>
+    <s:String x:Key="WriteLetter">Kirjoita kirje</s:String>
+    <s:String x:Key="SocialNetwork">Sosiaalinen verkosto</s:String>
+    <s:String x:Key="ModTheSims">Kunkin välimuistin tyhjentämisvaihtoehdon kuvaus on otettu ModTheSims-sivustolta.</s:String>
+    <s:String x:Key="RegulDescription1">Työkalu The Simsв "ў 3 -tallennuspelien puhdistamiseen ja niiden pitämiseen vakaana.</s:String>
+    <s:String x:Key="RegulDescription2">Tämä ohjelma ei ole Electronic Artsin tai sen lisenssinantajien tukema tai niihin sidoksissa. Tavaramerkit kuuluvat niiden omistajille. Kaikki oikeudet pidätetään.</s:String>
+    <s:String x:Key="LicenseDescription">OHJELMISTO TOIMITETAAN SELLAISENAAN ILMAN MINKÄÄNLAISTA TAKUUTA, NIMENOMAISTA TAI EPÄSUORAA, MUKAAN LUKIEN MUTTA EI RAJOITTUEN TAKUISIIN KAUPALLISESTA KELPOISUUDESTA, SOVELTUVUUDESTA TIETTYYN TARKOITUKSEEN JA LOUKKAAMATTOMUUDESTA. TEKIJÄT TAI TEKIJÄNOIKEUKSIEN HALTIJAT EIVÄT MISSÄÄN TAPAUKSESSA OLE VASTUUSSA MISTÄÄN VAATIMUKSESTA, VAHINGOSTA TAI MUUSTA VASTUUSTA, OLIPA KYSE SITTEN SOPIMUKSESTA, VAHINGONKORVAUSVELVOLLISUUDESTA TAI MUUSTA VAHINGONKORVAUSVELVOLLISUUDESTA, JOKA AIHEUTUU OHJELMISTOSTA, SEN KÄYTÖSTÄ TAI MUUSTA OHJELMISTOON LIITTYVÄSTÄ TOIMINNASTA.</s:String>
+</ResourceDictionary>

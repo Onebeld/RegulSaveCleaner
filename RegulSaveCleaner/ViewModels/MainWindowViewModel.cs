@@ -6,6 +6,7 @@ using Avalonia.Controls.Notifications;
 using Avalonia.Media;
 using PleasantUI;
 using PleasantUI.Windows;
+using RegulSaveCleaner.Controls;
 using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Core.Constants;
@@ -23,6 +24,7 @@ public class MainWindowViewModel : ViewModelBase
     
     private bool _inCreatingBackupProcess;
     private bool _inCleaningCacheProcess;
+    private bool _inCleaningProcess;
     private bool _isLoadingSaves;
     private bool _canBeCleaningCache;
     private bool _foundSaveFolder;
@@ -70,6 +72,12 @@ public class MainWindowViewModel : ViewModelBase
     {
         get => _inCleaningCacheProcess;
         set => RaiseAndSet(ref _inCleaningCacheProcess, value);
+    }
+
+    public bool InCleaningProcess
+    {
+        get => _inCleaningProcess;
+        set => RaiseAndSet(ref _inCleaningProcess, value);
     }
     
     public bool IsLoadingSaves
@@ -493,15 +501,31 @@ public class MainWindowViewModel : ViewModelBase
 
     public async void StartCleaningCache()
     {
+        List<string> deletedFiles = new();
+
         InCleaningCacheProcess = true;
-        await Task.Run(() => ClearCache());
+        await Task.Run(() => ClearCache(deletedFiles));
         InCleaningCacheProcess = false;
+
+        if (deletedFiles.Count == 0)
+        {
+            ShowNotification(App.GetString("Information"), App.GetString("CacheHasAlreadyBeenCleared"), NotificationType.Information);
+            return;
+        }
         
-        ShowNotification("Successful", "CacheCleared", NotificationType.Success);
+        ClearedCacheNotification notification = new()
+        {
+            DeletedFiles = deletedFiles,
+            Type = NotificationType.Success
+        };
+
+        NotificationManager.Show(notification);
     }
 
     public void StartCleaning()
     {
+        InCleaningProcess = true;
+        
         List<CleaningResult> cleaningResults = new();
         List<string> deletedFiles = new();
 
@@ -535,6 +559,8 @@ public class MainWindowViewModel : ViewModelBase
                 string title = cleaningResults.Count > 1 ? App.GetString("SavesCleared") : App.GetString("SaveCleared");
 
                 MessageBox.Show(App.MainWindow, title, App.GetString("ResultsBelow"), additionalText: results);
+
+                InCleaningProcess = false;
             }, "");
         })
         {

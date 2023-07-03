@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">You can see the result below.</s:String>
     <s:String x:Key="CacheCleared">The cache has been successfully cleared!</s:String>
     <s:String x:Key="BackupCreated">Backup has been successfully created!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">The cache has already been cleared</s:String>
     <s:String x:Key="Successful">Successful!</s:String>
     <s:String x:Key="Information">Information</s:String>
     <s:String x:Key="Error">Error</s:String>

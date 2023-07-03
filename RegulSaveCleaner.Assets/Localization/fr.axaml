@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">Vous pouvez voir le résultat ci-dessous.</s:String>
     <s:String x:Key="CacheCleared">La mémoire cache a été vidée avec succès!</s:String>
     <s:String x:Key="BackupCreated">La sauvegarde a été créée avec succès!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Le cache a déjà été vidé</s:String>
     <s:String x:Key="Successful">Une réussite!</s:String>
     <s:String x:Key="Information">Informations</s:String>
     <s:String x:Key="Error">Erreur</s:String>

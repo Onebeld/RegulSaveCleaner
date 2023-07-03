@@ -110,14 +110,23 @@ public class App : Application
 
     public static readonly Language[] Languages =
     {
-        new("Česky (Czech)", "cs"),
+        new("Čeština (Czech)", "cs"),
         new("Dansk (Danish)", "da"),
-        new("Deutsch (German)", "de"),
+        new("Deutsche (German)", "de"),
         new("English (English)", "en"),
+        new("Español (Spanish)", "es"),
         new("Français (French)", "fr"),
+        new("Italiano (Italian)", "it"),
+        new("Nederlands (Dutch)", "nl"),
+        new("Norsk (Norwegian)", "nb", "no", "nn"),
+        new("Polskie (Polish)", "pl"),
+        new("Português (Portuguese)", "pt"),
+        new("Svenska (Swedish)", "sv"),
+        new("Suomalainen (Finnish)", "fi"),
         new("Русский (Russian)", "ru"),
         new("日本語 (Japanese)", "ja"),
         new("中文 (Chinese)", "zh"),
+        new("한국어 (Korean)", "ko"),
     };
 
     private void LoadAllLanguages()

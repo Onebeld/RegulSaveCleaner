@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">Вы можете увидеть результат ниже.</s:String>
     <s:String x:Key="CacheCleared">Кэш успешно очищен!</s:String>
     <s:String x:Key="BackupCreated">Резервная копия успешно создана!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Кэш уже был очищен</s:String>
     <s:String x:Key="Successful">Успешно!</s:String>
     <s:String x:Key="Information">Информация</s:String>
     <s:String x:Key="Error">Ошибка</s:String>

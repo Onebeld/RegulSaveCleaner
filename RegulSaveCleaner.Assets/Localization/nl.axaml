@@ -1,0 +1,243 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">nl</s:String>
+
+    <!--Dutch-->
+    <s:String x:Key="Collapse">Instorten</s:String>
+    <s:String x:Key="Expand">Uitbreiden</s:String>
+    <s:String x:Key="Reestablish">herstellen</s:String>
+    <s:String x:Key="Close">Sluit</s:String>
+
+    <s:String x:Key="Menu">Menu</s:String>
+    <s:String x:Key="Cleaner">Schoner</s:String>
+    <s:String x:Key="QuestionsAndAnswers">Vragen en antwoorden</s:String>
+    <s:String x:Key="Settings">Instellingen</s:String>
+    <s:String x:Key="About">Over</s:String>
+
+    <s:String x:Key="On">Op</s:String>
+    <s:String x:Key="Off">Uit</s:String>
+
+    <s:String x:Key="Cut">Snijden</s:String>
+    <s:String x:Key="Copy">Kopie</s:String>
+    <s:String x:Key="Paste">Plakken</s:String>
+
+    <s:String x:Key="Ok">OK</s:String>
+    <s:String x:Key="Cancel">Annuleren</s:String>
+
+    <s:String x:Key="AddYourNewColor">Voeg je nieuwe kleur toe!</s:String>
+    <s:String x:Key="AddColor">Kleur toevoegen</s:String>
+
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">Begin met schoonmaken</s:String>
+    <s:String x:Key="SaveFiles">Bestanden opslaan</s:String>
+
+    <s:String x:Key="ProhibitedList">Verboden lijst</s:String>
+    <s:String x:Key="MoveOldList">Verplaats de oude lijst</s:String>
+
+    <s:String x:Key="SaveFilesNotFound">Er is geen map gevonden om op te slaan</s:String>
+    <s:String x:Key="NoSaveFound">Geen saves gevonden</s:String>
+
+    <s:String x:Key="SelectAll">Alles selecteren</s:String>
+    <s:String x:Key="CancelAll">Alles annuleren</s:String>
+    <s:String x:Key="UpdateList">Lijst bijwerken</s:String>
+    <s:String x:Key="SortByDate">Sorteren op datum</s:String>
+    <s:String x:Key="SortByAlphabetical">Sorteer op alfabetisch</s:String>
+    <s:String x:Key="Selected">Geselecteerd</s:String>
+
+    <s:String x:Key="NumberOfSaveFiles">Aantal opgeslagen bestanden</s:String>
+
+    <s:String x:Key="NotFindFolderTheSims3">Kon de map "De Sims 3" niet vinden in de documenten.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">Er is een fout opgetreden!</s:String>
+    <s:String x:Key="NotFindFolderDescription">Wil je deze map zelf kiezen?</s:String>
+
+    <s:String x:Key="CleaningOptions">Reinigingsopties</s:String>
+    <s:String x:Key="CleaningOptionsDescription">Instellen wat je wilt wissen</s:String>
+    <s:String x:Key="CreateBackup">Back-up maken</s:String>
+    <s:String x:Key="ClearCache">Cache wissen</s:String>
+    <s:String x:Key="ClearCacheDescription">De reiniging instellen</s:String>
+    <s:String x:Key="BackupPath">Back-up pad</s:String>
+    <s:String x:Key="CreateNow">Nu creëren</s:String>
+    <s:String x:Key="ClearNow">Nu vrij</s:String>
+
+    <s:String x:Key="Recommended">Aanbevolen</s:String>
+    <s:String x:Key="Experimentally">Experimenteel</s:String>
+    <s:String x:Key="ReadMore">Meer lezen</s:String>
+
+    <s:String x:Key="SaveCleared">De opslag is succesvol gewist!</s:String>
+    <s:String x:Key="SavesCleared">Opgeslagen!</s:String>
+    <s:String x:Key="ResultsBelow">Je kunt het resultaat hieronder zien.</s:String>
+    <s:String x:Key="CacheCleared">De cache is succesvol gewist!</s:String>
+    <s:String x:Key="BackupCreated">Back-up is succesvol gemaakt!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">De cache is al gewist</s:String>
+    <s:String x:Key="Successful">Succesvol!</s:String>
+    <s:String x:Key="Information">Informatie</s:String>
+    <s:String x:Key="Error">Fout</s:String>
+    <s:String x:Key="Yes">Ja</s:String>
+    <s:String x:Key="No">Geen</s:String>
+
+    <s:String x:Key="SaveName">Naam opslaan</s:String>
+    <s:String x:Key="TimePassed">Tijd verstreken</s:String>
+    <s:String x:Key="OldSize">Oude maat</s:String>
+    <s:String x:Key="NewSize">Nieuw formaat</s:String>
+    <s:String x:Key="Percent">Percentage</s:String>
+    <s:String x:Key="Sec">sec</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraits">Familieportretten verwijderen</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">Portretten van Sims verwijderen</s:String>
+    <s:String x:Key="RemoveLotThumbnails">Partij miniaturen verwijderen</s:String>
+    <s:String x:Key="RemovePhotos">Foto's verwijderen</s:String>
+    <s:String x:Key="RemoveGeneratedImages">Gegenereerde afbeeldingen verwijderen</s:String>
+    <s:String x:Key="RemoveTextures">Texturen verwijderen</s:String>
+    <s:String x:Key="RemoveOtherTypes">Andere typen verwijderen</s:String>
+
+    <s:String x:Key="All">Alle</s:String>
+    <s:String x:Key="Files">bestanden</s:String>
+    <s:String x:Key="FromTheFolder">uit de map</s:String>
+    <s:String x:Key="Except">behalve</s:String>
+
+    <s:String x:Key="RemoveGeneratedImagesDescription1">Verwijdert afbeeldingen die het spel zelf maakt.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">Hieronder vallen: selfies, wenskaarten, foto's van het fotohokje, foto's van het eindexamenbal.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">Gebruik de Verboden lijst om er een aantal op te slaan.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">Verwijdert portretten die verschijnen wanneer je Opslaan selecteert, in dit programma en wanneer je Familie selecteert. Slaat het portret op dat in het programma verschijnt.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">Verwijdert portretten van Sims. Ze verschijnen bijna overal: in het paneel Relaties, in de Gedachtenwolk, enzovoort.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">Bijwerking:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">Als je de stadseditor opent, duurt het laden lang omdat het spel bezig is met het maken van portretten, en portretten hebben maar één houding.</s:String>
+
+    <s:String x:Key="RemoveLotThumbnailsDescription">Verwijdert de miniaturen van partijen die worden weergegeven wanneer je opslaan of een partij selecteert.</s:String>
+
+    <s:String x:Key="RemovePhotosDescription1">Verwijdert foto's die door je sims zijn gemaakt.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">Gebruik de lijst Verboden om slechts enkele foto's op te slaan.</s:String>
+
+    <s:String x:Key="RemoveTexturesDescription1">Verwijdert kaveltexturen die worden gemaakt nadat je een nieuwe kavel in een stad hebt geplaatst. Dit geldt niet voor kavels die al in de stad lagen (sommige die automatisch worden geplaatst als je een bepaald uitbreidingspakket hebt niet meegerekend).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">Houd er rekening mee dat na het wissen van de save, de kavel die je hebt geplaatst eruit zal zien als de grond (zie screenshot voor en na).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">Het wordt aanbevolen om een back-up te maken, omdat sommige spelers zeggen dat het spel voor onbepaalde tijd wordt opgeslagen.</s:String>
+
+    <s:String x:Key="RemoveOtherTypesDescription1">Deze optie werkt hetzelfde als "Herinneringen wissen" in het programma van Kuree. Volgens beoordelingen wist het geen herinneringen, dus de optie heeft een andere naam gekregen. Het is aan te raden om een back-up te maken, want het is onbekend wat er wordt gewist.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">Het wordt aanbevolen om een back-up te maken, omdat het onbekend is wat het wist.</s:String>
+
+    <s:String x:Key="CasPartCacheDescription">CAS onderdelen die verschijnen in Create-A-Sim</s:String>
+    <s:String x:Key="CompositorCacheDescription">Nieuwe objecten die verschijnen in de modus Kopen/Bouwen</s:String>
+    <s:String x:Key="ScriptCacheDescription">Mods of hacks</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">Nieuwe Sims, standaard skins</s:String>
+    <s:String x:Key="SocialCacheDescription">Informatie over de sociale aspecten (Geïntroduceerd met Patch 1.31)</s:String>
+    <s:String x:Key="WorldCachesDescription">Cachebestanden voor je geïnstalleerde werelden. Er zijn geen WorldCache-bestanden voor werelden die bij het spel zijn geleverd en niet via de Launcher zijn geïnstalleerd, zoals Sunset Valley, Twinbrooks of Bridgeport.</s:String>
+    <s:String x:Key="ThumbnailsDescription">Cached miniatuurafbeeldingen. Hier opgeslagen om de volgende keer dat je het spel start sneller te laden. Als je problemen hebt met vreemde thumbnails in het spel, verwijder deze dan. Ze worden opnieuw aangemaakt wanneer je het spel de volgende keer start, hoewel het spel iets trager is wanneer het voor het eerst wordt geladen, nadat de inhoud van deze map is verwijderd.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">Fouten in het spel die zijn opgevangen door de ErrorTrap-mod van NRaas. Ze worden niet gebruikt in het spel. Verwijder of post ze op verzoek bij NRaas Industries. Ze bevatten informatie die werd veroorzaakt door zijn ErrorTrap-mod en kunnen hem helpen bij het oplossen van de bugs (veroorzaakt door EA-code of zijn mods) die de fout veroorzaken. Als je deze mod niet hebt en niet van plan bent om ooit contact op te nemen met EA voor hulp bij het oplossen van deze fouten, kun je ze gewoon verwijderen.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">Geïntroduceerd in patch 1.29. Zou afbeeldingen moeten bevatten voor Aanbevolen winkelitems die worden getoond in de CAH/Buy/Build Catalog, maar veroorzaakt crashproblemen.</s:String>
+    <s:String x:Key="DCCacheDescription">Bevat alle geïnstalleerde aangepaste inhoud/Exchange/Store-items die u via de Launcher hebt geïnstalleerd. Wordt weergegeven op het tabblad Geïnstalleerde inhoud van de Launcher.</s:String>
+
+    <s:String x:Key="MacOSWorldCachesWarningDelete">Het is ten strengste verboden om deze map in macOS te verwijderen, omdat dit je saves kan beschadigen. Daarom is deze optie uitgeschakeld en kan dus niet worden ingeschakeld.</s:String>
+
+    <s:String x:Key="YouHaveTooManySaves">Je hebt te veel saves</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">Het is aan te raden om onnodige saves naar een andere map te verplaatsen. Gebruik de ingebouwde Regul Save Cleaner functionaliteit.</s:String>
+    <s:String x:Key="ShowNoMore">Niet meer tonen</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">Opgeslagen bestanden verplaatsen naar een extra map</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">Je opslag is verplaatst!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">Je opslag is verplaatst!</s:String>
+    <s:String x:Key="MovingIsNotPossible">Verplaatsen is niet mogelijk. Controleer de toegang tot de map waarin je je opslag probeert te verplaatsen.</s:String>
+    <s:String x:Key="RestoreOldSaves">Oude saves herstellen</s:String>
+    <s:String x:Key="SelectSavesToTransfer">Selecteer opslaan om over te dragen</s:String>
+    <s:String x:Key="MoveToSpareFolder">Verplaatsen naar een reserve map</s:String>
+
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">Het spel is erg traag</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">Helaas is De Sims 3 erg slecht geoptimaliseerd. Het verbruikt maximaal 4 GB RAM en gebruikt slechts één processorkern. Het eerste wat je moet installeren is SmoothPatch van LazyDuchess. Het doet verbazingwekkende dingen in optimalisatie.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">Het gebruik van NRaas mods wordt aanbevolen:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">Tijdens het spelen wordt de opslag opgeblazen, wat kan leiden tot verschillende fouten. Gebruik dit programma om problemen te voorkomen. Als je de ultieme ervaring wilt, gebruik dan de zeer goede tutorial van Anime_Boom.</s:String>
+    <s:String x:Key="GoToManual">Ga naar handleiding</s:String>
+    <s:String x:Key="GoToInstallation">Ga naar installatie</s:String>
+
+    <s:String x:Key="Error12">Fout 12</s:String>
+    <s:String x:Key="Error12Description1">Maak je geen zorgen! Dit komt omdat het spel niet genoeg geheugen heeft om je wereld op te slaan. Probeer je inventaris te ontdoen van onnodige rommel, verwijder onnodige objecten in de wereld en sla opnieuw op. Als dat niet helpt, probeer dan de gids van AncientGatekeeper.</s:String>
+
+    <s:String x:Key="Error16">Fout 16</s:String>
+    <s:String x:Key="Error16Description1">Dit is een vrij zeldzame fout. Het treedt op wanneer de grootte van je save 4 GB bereikt. Er zijn verschillende redenen: veel families, veel lots, veel rommel in de save. Het eerste wat je moet doen is dit programma gebruiken. Als dat niet veel helpt, moet je het spel zelf opruimen. Door deze fout is er een grote kans dat je je save kwijtraakt, dus probeer je save niet op te blazen.</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">Fout 0 na openen van een opslag</s:String>
+    <s:String x:Key="Error0Description1">Helaas is je opslag beschadigd. Dit kwam door een van de versies van dit programma na het opschonen. Dit kan gebeuren wanneer een sector van de harde schijf of SSD beschadigd is.</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">Algemeen</s:String>
+
+    <s:String x:Key="Language">Taal</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">Verwijder onnodige verboden lijsten</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">Als je een opslag hebt verwijderd en de lijsten niet meer wilt gebruiken, klik je op de knop Verwijderen.</s:String>
+    <s:String x:Key="PathSettings">Pad Instellingen</s:String>
+    <s:String x:Key="PathSettingsDescription">Wijzigen als het pad naar de spelmap is gewijzigd</s:String>
+    <s:String x:Key="ResetToDefaultSettings">Standaardinstellingen herstellen</s:String>
+    <s:String x:Key="Clear">Duidelijk</s:String>
+    <s:String x:Key="Reset">Reset</s:String>
+    <s:String x:Key="Appearance">Uiterlijk</s:String>
+    <s:String x:Key="Font">Lettertype</s:String>
+    <s:String x:Key="EnableShadow">Schaduw inschakelen</s:String>
+    <s:String x:Key="EnableShadowDescription">Schakel deze instelling uit als u een prestatieprobleem hebt</s:String>
+    <s:String x:Key="EnableCustomTitleBar">Aangepaste titelbalk inschakelen</s:String>
+    <s:String x:Key="EnableBlur">Vervaging inschakelen</s:String>
+    <s:String x:Key="OpacityLevel">Dekkingsgraad</s:String>
+    <s:String x:Key="AccentColor">Accentkleur</s:String>
+    <s:String x:Key="UseSystemAccentColor">Gebruik systeemaccentkleur</s:String>
+    <s:String x:Key="Change">Verander</s:String>
+    <s:String x:Key="Theme">Thema</s:String>
+    <s:String x:Key="FolderForOldSaves">Map voor oude opslagen</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Een waarschuwing weergeven bij een groot aantal saves</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">Aantal opslaan waarbij de waarschuwing wordt weergegeven</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">De grootte van de miniaturen van opslaan instellen</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">Grootte van de miniatuur van de opslag</s:String>
+    <s:String x:Key="Preview">Voorbeeld</s:String>
+    <s:String x:Key="DisplayingListInCleaner">Een lijst weergeven in de cleaner</s:String>
+    <s:String x:Key="Horizontal">Horizontaal</s:String>
+    <s:String x:Key="Vertical">Verticaal</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">Bestand opslaan in de verticale lijst weergeven</s:String>
+    <s:String x:Key="Line">Lijn</s:String>
+    <s:String x:Key="Block">Blok</s:String>
+    <s:String x:Key="Delete">Verwijder</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">De ongebruikte Verboden lijsten zijn succesvol gewist!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">Er zijn momenteel geen ongebruikte Verboden lijsten.</s:String>
+    <s:String x:Key="ColorCopied">Kleur gekopieerd!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">De instellingen zijn gereset</s:String>
+    <s:String x:Key="ResetSettingsWarning">Wil je echt de instellingen opnieuw instellen?</s:String>
+
+    <s:String x:Key="System">Systeem</s:String>
+    <s:String x:Key="Light">Licht</s:String>
+    <s:String x:Key="Dark">Donker</s:String>
+
+    <s:String x:Key="PathToTheSims">De weg naar De Sims 3</s:String>
+    <s:String x:Key="PathToSaves">Pad naar de saves</s:String>
+    <s:String x:Key="ChoosePath">Pad kiezen</s:String>
+
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">Foto's</s:String>
+    <s:String x:Key="PortraitsOfSims">Portretten van Sims</s:String>
+    <s:String x:Key="PortraitsOfFamilies">Portretten van gezinnen</s:String>
+    <s:String x:Key="GeneratedImages">Gegenereerde afbeeldingen</s:String>
+    <s:String x:Key="LotThumbnails">Partij miniaturen</s:String>
+    <s:String x:Key="SelectOldList">Selecteer de oude lijst</s:String>
+    <s:String x:Key="MergedOldList">De fusie was een succes!</s:String>
+    <s:String x:Key="NoItems">Geen items</s:String>
+    <s:String x:Key="Unselect">Verwijder</s:String>
+    <s:String x:Key="SaveSelectedImages">Geselecteerde afbeeldingen opslaan</s:String>
+    <s:String x:Key="ImagesSaved">Afbeeldingen zijn opgeslagen!</s:String>
+    <s:String x:Key="NumberOfImagesInList">Aantal afbeeldingen in lijst</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">Aantal ongebruikte verboden lijsten</s:String>
+
+    <!--About-->
+    <s:String x:Key="License">Licentie</s:String>
+    <s:String x:Key="Version">Versie</s:String>
+    <s:String x:Key="Author">Auteur</s:String>
+    <s:String x:Key="Copyright">Copyright</s:String>
+    <s:String x:Key="Description">Beschrijving</s:String>
+    <s:String x:Key="Links">Links</s:String>
+    <s:String x:Key="UsedLibraries">Gebruikte bibliotheken</s:String>
+    <s:String x:Key="ContactAuthor">Contact opnemen met de auteur</s:String>
+    <s:String x:Key="WorksOn">Werkt aan</s:String>
+    <s:String x:Key="WriteLetter">Schrijf een brief</s:String>
+    <s:String x:Key="SocialNetwork">Sociaal netwerk</s:String>
+    <s:String x:Key="ModTheSims">De beschrijving van elke optie voor het wissen van de cache is overgenomen van de ModTheSims website.</s:String>
+    <s:String x:Key="RegulDescription1">Een tool om De Simsв"ў 3 savegames op te schonen en stabiel te houden.</s:String>
+    <s:String x:Key="RegulDescription2">Dit programma wordt niet onderschreven door of is niet gelieerd aan Electronic Arts of haar licentiegevers. De handelsmerken behoren toe aan hun respectieve eigenaars. Alle rechten voorbehouden.</s:String>
+    <s:String x:Key="LicenseDescription">DE SOFTWARE WORDT GELEVERD "ZOALS DEZE IS", ZONDER ENIGE GARANTIE, EXPLICIET OF IMPLICIET, INCLUSIEF MAAR NIET BEPERKT TOT DE GARANTIES VAN VERKOOPBAARHEID, GESCHIKTHEID VOOR EEN BEPAALD DOEL EN NIET-INBREUK. IN GEEN GEVAL ZULLEN DE AUTEURS OF AUTEURSRECHTHEBBENDEN AANSPRAKELIJK ZIJN VOOR ENIGE CLAIM, SCHADE OF ANDERE AANSPRAKELIJKHEID, HETZIJ IN EEN CONTRACTUELE ACTIE, ONRECHTMATIGE DAAD OF ANDERSZINS, VOORTVLOEIEND UIT, UIT OF IN VERBAND MET DE SOFTWARE OF HET GEBRUIK VAN OF ANDERE OMGANG MET DE SOFTWARE.</s:String>
+</ResourceDictionary>

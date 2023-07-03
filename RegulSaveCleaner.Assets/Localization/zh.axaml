@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">清理结果如下：</s:String>
     <s:String x:Key="CacheCleared">已成功清除缓存！</s:String>
     <s:String x:Key="BackupCreated">已成功创建备份！</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">缓存已经被清除了</s:String>
     <s:String x:Key="Successful">成功</s:String>
     <s:String x:Key="Information">信息</s:String>
     <s:String x:Key="Error">错误</s:String>

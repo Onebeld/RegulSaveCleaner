@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">Výsledek si můžete prohlédnout níže.</s:String>
     <s:String x:Key="CacheCleared">Vyrovnávací paměť byla úspěšně vymazána!</s:String>
     <s:String x:Key="BackupCreated">Záloha byla úspěšně vytvořena!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Mezipaměť již byla vymazána</s:String>
     <s:String x:Key="Successful">Úspěšně!</s:String>
     <s:String x:Key="Information">Informace</s:String>
     <s:String x:Key="Error">Chyba</s:String>

@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">Das Ergebnis können Sie unten sehen.</s:String>
     <s:String x:Key="CacheCleared">Der Cache wurde erfolgreich geleert!</s:String>
     <s:String x:Key="BackupCreated">Das Backup wurde erfolgreich erstellt!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">Der Cache wurde bereits geleert</s:String>
     <s:String x:Key="Successful">Erfolgreich!</s:String>
     <s:String x:Key="Information">Informationen</s:String>
     <s:String x:Key="Error">Fehler</s:String>

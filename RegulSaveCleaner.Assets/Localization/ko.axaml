@@ -1,0 +1,243 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=netstandard">
+    <s:String x:Key="LanguageKey">ko</s:String>
+
+    <!--Korean-->
+    <s:String x:Key="Collapse">접기</s:String>
+    <s:String x:Key="Expand">확장</s:String>
+    <s:String x:Key="Reestablish">재설정</s:String>
+    <s:String x:Key="Close">닫기</s:String>
+
+    <s:String x:Key="Menu">메뉴</s:String>
+    <s:String x:Key="Cleaner">클리너</s:String>
+    <s:String x:Key="QuestionsAndAnswers">질문 및 답변</s:String>
+    <s:String x:Key="Settings">설정</s:String>
+    <s:String x:Key="About">정보</s:String>
+
+    <s:String x:Key="On">켜기</s:String>
+    <s:String x:Key="Off">꺼짐</s:String>
+
+    <s:String x:Key="Cut">컷</s:String>
+    <s:String x:Key="Copy">복사</s:String>
+    <s:String x:Key="Paste">붙여넣기</s:String>
+
+    <s:String x:Key="Ok">확인</s:String>
+    <s:String x:Key="Cancel">취소</s:String>
+
+    <s:String x:Key="AddYourNewColor">새로운 색상을 추가하세요!</s:String>
+    <s:String x:Key="AddColor">색상 추가</s:String>
+
+    <!--Cleaner Page-->
+    <s:String x:Key="StartCleaning">청소 시작</s:String>
+    <s:String x:Key="SaveFiles">파일 저장</s:String>
+
+    <s:String x:Key="ProhibitedList">금지 목록</s:String>
+    <s:String x:Key="MoveOldList">이전 목록 이동</s:String>
+
+    <s:String x:Key="SaveFilesNotFound">저장 폴더를 찾을 수 없습니다.</s:String>
+    <s:String x:Key="NoSaveFound">저장된 항목이 없습니다.</s:String>
+
+    <s:String x:Key="SelectAll">모두 선택</s:String>
+    <s:String x:Key="CancelAll">모두 취소</s:String>
+    <s:String x:Key="UpdateList">업데이트 목록</s:String>
+    <s:String x:Key="SortByDate">날짜별로 정렬</s:String>
+    <s:String x:Key="SortByAlphabetical">알파벳순으로 정렬</s:String>
+    <s:String x:Key="Selected">선택됨</s:String>
+
+    <s:String x:Key="NumberOfSaveFiles">저장 파일 수</s:String>
+
+    <s:String x:Key="NotFindFolderTheSims3">문서에서 "심즈 3" 폴더를 찾을 수 없습니다.</s:String>
+    <s:String x:Key="AnErrorHasOccurred">오류가 발생했습니다!</s:String>
+    <s:String x:Key="NotFindFolderDescription">이 폴더를 직접 선택하시겠습니까?</s:String>
+
+    <s:String x:Key="CleaningOptions">청소 옵션</s:String>
+    <s:String x:Key="CleaningOptionsDescription">지우려는 항목 설정</s:String>
+    <s:String x:Key="CreateBackup">백업 만들기</s:String>
+    <s:String x:Key="ClearCache">캐시 지우기</s:String>
+    <s:String x:Key="ClearCacheDescription">청소 설정</s:String>
+    <s:String x:Key="BackupPath">백업 경로</s:String>
+    <s:String x:Key="CreateNow">지금 만들기</s:String>
+    <s:String x:Key="ClearNow">지금 지우기</s:String>
+
+    <s:String x:Key="Recommended">추천</s:String>
+    <s:String x:Key="Experimentally">실험적으로</s:String>
+    <s:String x:Key="ReadMore">자세히 보기</s:String>
+
+    <s:String x:Key="SaveCleared">저장이 성공적으로 지워졌습니다!</s:String>
+    <s:String x:Key="SavesCleared">저장이 성공적으로 완료되었습니다!</s:String>
+    <s:String x:Key="ResultsBelow">아래에서 결과를 확인할 수 있습니다.</s:String>
+    <s:String x:Key="CacheCleared">캐시가 성공적으로 지워졌습니다!</s:String>
+    <s:String x:Key="BackupCreated">백업이 성공적으로 생성되었습니다!</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">캐시가 이미 지워졌습니다.</s:String>
+    <s:String x:Key="Successful">성공!</s:String>
+    <s:String x:Key="Information">정보</s:String>
+    <s:String x:Key="Error">오류</s:String>
+    <s:String x:Key="Yes">예</s:String>
+    <s:String x:Key="No">아니요</s:String>
+
+    <s:String x:Key="SaveName">이름 저장</s:String>
+    <s:String x:Key="TimePassed">시간 경과</s:String>
+    <s:String x:Key="OldSize">이전 크기</s:String>
+    <s:String x:Key="NewSize">새로운 사이즈</s:String>
+    <s:String x:Key="Percent">퍼센트</s:String>
+    <s:String x:Key="Sec">초</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraits">가족 사진 제거</s:String>
+    <s:String x:Key="RemovePortraitsOfSims">심즈의 초상화 제거</s:String>
+    <s:String x:Key="RemoveLotThumbnails">로트 썸네일 제거</s:String>
+    <s:String x:Key="RemovePhotos">사진 제거</s:String>
+    <s:String x:Key="RemoveGeneratedImages">생성된 이미지 제거</s:String>
+    <s:String x:Key="RemoveTextures">텍스처 제거</s:String>
+    <s:String x:Key="RemoveOtherTypes">다른 유형 제거</s:String>
+
+    <s:String x:Key="All">모두</s:String>
+    <s:String x:Key="Files">파일</s:String>
+    <s:String x:Key="FromTheFolder">폴더에서</s:String>
+    <s:String x:Key="Except">제외</s:String>
+
+    <s:String x:Key="RemoveGeneratedImagesDescription1">게임에서 자체적으로 생성한 이미지를 삭제합니다.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription2">여기에는 셀카, 인사말 카드, 포토 부스에서 찍은 사진, 졸업 무도회에서 찍은 사진 등이 포함됩니다.</s:String>
+    <s:String x:Key="RemoveGeneratedImagesDescription3">금지 목록을 사용하여 일부를 저장하세요.</s:String>
+
+    <s:String x:Key="RemoveFamilyPortraitsDescription">이 프로그램에서 저장을 선택할 때와 가족을 선택할 때 나타나는 인물 사진을 제거합니다. 프로그램에 표시되는 초상화를 저장합니다.</s:String>
+
+    <s:String x:Key="RemovePortraitsSimsDescription1">심들의 초상화를 제거합니다. 관계 패널, 생각 클라우드 등 거의 모든 곳에 나타납니다.</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription2">부작용:</s:String>
+    <s:String x:Key="RemovePortraitsSimsDescription3">도시 편집기에 들어가면 게임이 인물 사진을 만드는 데 바쁘고 인물 사진에는 한 가지 포즈만 있기 때문에 로드하는 데 시간이 오래 걸립니다.</s:String>
+
+    <s:String x:Key="RemoveLotThumbnailsDescription">저장 또는 로트를 선택할 때 표시되는 로트 썸네일을 제거합니다.</s:String>
+
+    <s:String x:Key="RemovePhotosDescription1">심이 찍은 사진을 삭제합니다.</s:String>
+    <s:String x:Key="RemovePhotosDescription2">금지 목록을 사용하여 일부 사진만 저장할 수 있습니다.</s:String>
+
+    <s:String x:Key="RemoveTexturesDescription1">도시에 새 부지를 배치한 후 생성된 부지 텍스처를 제거합니다. 이미 도시에 있던 부지에는 적용되지 않습니다(특정 확장팩을 보유한 경우 자동으로 배치되는 일부 부지는 제외).</s:String>
+    <s:String x:Key="RemoveTexturesDescription2">저장을 지우고 나면 배치한 부지가 땅처럼 보일 것입니다(스크린샷 전후 참조).</s:String>
+    <s:String x:Key="RemoveTexturesDescription3">일부 플레이어는 게임이 무기한 저장된다고 말하므로 백업하는 것이 좋습니다.</s:String>
+
+    <s:String x:Key="RemoveOtherTypesDescription1">이 옵션은 Kuree의 프로그램에서 "기억 지우기"처럼 작동합니다. 리뷰에 따르면 메모리를 지우지 않기 때문에 옵션의 이름이 변경되었습니다. 무엇을 지우는지 알 수 없으므로 백업하는 것이 좋습니다.</s:String>
+    <s:String x:Key="RemoveOtherTypesDescription2">어떤 내용이 지워지는지 알 수 없으므로 백업하는 것이 좋습니다.</s:String>
+
+    <s:String x:Key="CasPartCacheDescription">Create-A-Sim에 표시되는 CAS 부품</s:String>
+    <s:String x:Key="CompositorCacheDescription">구매/빌드 모드에 표시되는 새로운 오브젝트</s:String>
+    <s:String x:Key="ScriptCacheDescription">모드 또는 해킹</s:String>
+    <s:String x:Key="SimCompositorCacheDescription">새로운 심, 기본 스킨</s:String>
+    <s:String x:Key="SocialCacheDescription">소셜 측면에 대한 정보(1.31 패치 도입)</s:String>
+    <s:String x:Key="WorldCachesDescription">설치된 월드의 캐시 파일입니다. 선셋 밸리, 트윈브룩스, 브리지포트와 같이 게임과 함께 제공되고 런처를 통해 설치되지 않은 월드에 대한 월드 캐시 파일은 없습니다.</s:String>
+    <s:String x:Key="ThumbnailsDescription">캐시된 썸네일 사진. 다음에 게임을 시작할 때 더 빠르게 로딩할 수 있도록 여기에 저장됩니다. 게임에서 이상한 썸네일이 표시되는 문제가 있다면 삭제하세요. 이 폴더의 내용을 삭제한 후 게임을 처음 시작할 때 약간 느리게 로딩되기는 하지만 다음에 게임을 시작할 때 다시 생성됩니다.</s:String>
+    <s:String x:Key="ScriptErrorsDescription">게임에서 생성된 오류 중 NRaas의 ErrorTrap 모드에 의해 포착된 오류입니다. 게임에서 사용되지 않습니다. 요청이 있을 경우 삭제하거나 NRaas 산업에 게시합니다. 여기에는 오류를 유발하는 버그(EA 코드 또는 그의 모드로 인해 발생)를 해결하는 데 도움이 될 수 있는 그의 ErrorTrap 모드로 인해 발생한 정보가 포함되어 있습니다. 이 모드를 가지고 있지 않고 이러한 오류를 해결하기 위해 EA에 도움을 요청할 계획이 없다면 해당 모드를 삭제하면 됩니다.</s:String>
+    <s:String x:Key="FeaturedItemsDescription">1.29 패치에서 도입되었습니다. CAH/구매/제작 카탈로그에 표시할 추천 상점 아이템의 이미지를 포함해야 하지만 충돌 문제를 일으키고 있습니다.</s:String>
+    <s:String x:Key="DCCacheDescription">런처를 통해 설치한 모든 사용자 지정 콘텐츠/교환/상점 항목이 포함되어 있습니다. 런처의 설치된 콘텐츠 탭에 표시됩니다.</s:String>
+
+    <s:String x:Key="MacOSWorldCachesWarningDelete">macOS에서 이 폴더를 삭제하면 저장 내용이 손상될 수 있으므로 이 폴더를 삭제하는 것은 엄격히 금지되어 있습니다. 따라서 이 옵션은 비활성화되어 있으므로 활성화할 수 없습니다.</s:String>
+
+    <s:String x:Key="YouHaveTooManySaves">저장한 항목이 너무 많습니다.</s:String>
+    <s:String x:Key="YouHaveTooManySavesDescription">불필요한 저장은 다른 폴더로 옮기는 것이 좋습니다. 내장된 Regul Save Cleaner 기능을 사용하세요.</s:String>
+    <s:String x:Key="ShowNoMore">더 이상 표시되지 않음</s:String>
+    <s:String x:Key="MoveSavesToSpareFolder">저장 내용을 여분의 폴더로 이동</s:String>
+    <s:String x:Key="YourSavesHaveBeenMoved">저장한 내용이 이동되었습니다!</s:String>
+    <s:String x:Key="YourSaveHasBeenMoved">저장이 이동되었습니다!</s:String>
+    <s:String x:Key="MovingIsNotPossible">이동이 불가능합니다. 저장을 옮기려고 시도한 폴더에 대한 액세스 권한을 확인하세요.</s:String>
+    <s:String x:Key="RestoreOldSaves">이전 저장 복원</s:String>
+    <s:String x:Key="SelectSavesToTransfer">전송할 저장을 선택합니다.</s:String>
+    <s:String x:Key="MoveToSpareFolder">예비 폴더로 이동</s:String>
+
+    <!--QuestionsAndAnswers Page-->
+    <s:String x:Key="TheGameIsVerySlow">게임이 매우 느립니다.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription1">안타깝게도 심즈 3는 최적화가 매우 미흡합니다. 최대 4GB의 RAM을 소비하고 하나의 프로세서 코어 만 사용합니다. 가장 먼저 설치해야 할 것은 LazyDuchess의 SmoothPatch입니다. 그것은 최적화에서 놀라운 일을합니다.</s:String>
+    <s:String x:Key="GameIsVerySlowDescription2">NRaas 모드를 사용하는 것이 좋습니다:</s:String>
+    <s:String x:Key="GameIsVerySlowDescription3">플레이할수록 세이브가 부풀어 오르기 때문에 다양한 오류가 발생할 수 있습니다. 이 프로그램을 사용하면 문제를 피할 수 있습니다. 최고의 경험을 원하신다면 Anime_Boom의 훌륭한 튜토리얼을 사용하세요.</s:String>
+    <s:String x:Key="GoToManual">매뉴얼로 이동</s:String>
+    <s:String x:Key="GoToInstallation">설치로 이동</s:String>
+
+    <s:String x:Key="Error12">오류 12</s:String>
+    <s:String x:Key="Error12Description1">걱정하지 마세요! 게임 메모리가 부족하여 세계를 저장할 수 없기 때문입니다. 인벤토리에서 불필요한 잔해물을 지우고, 월드에서 불필요한 물체를 제거한 다음 다시 저장해 보세요. 그래도 문제가 해결되지 않으면 고대문지기 가이드를 참고하세요.</s:String>
+
+    <s:String x:Key="Error16">오류 16</s:String>
+    <s:String x:Key="Error16Description1">이것은 다소 드문 오류입니다. 저장 용량이 4GB에 도달할 때 발생합니다. 많은 가족, 많은 로트, 저장소 내부의 많은 쓰레기 등 몇 가지 이유가 있습니다. 가장 먼저 할 일은 이 프로그램을 사용하는 것입니다. 그래도 큰 도움이되지 않으면 게임 자체에서 정리를해야합니다. 이 오류로 인해 세이브를 잃을 확률이 높으므로 세이브가 부풀어 오르지 않도록하십시오.</s:String>
+
+    <s:String x:Key="Error0AfterOpeningSave">저장을 연 후 오류 0</s:String>
+    <s:String x:Key="Error0Description1">안타깝게도 저장 내용이 손상되었습니다. 이는 정리 후 이 프로그램의 버전 중 하나 때문이었습니다. 하드 디스크 또는 SSD 섹터가 손상되었을 때 발생할 수 있습니다.</s:String>
+
+    <!--Settings Page-->
+    <s:String x:Key="General">일반</s:String>
+
+    <s:String x:Key="Language">언어</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedLists">불필요한 금지 목록 지우기</s:String>
+    <s:String x:Key="ClearUnnecessaryProhibitedListsDescription">저장을 삭제하고 더 이상 목록을 사용하지 않으려면 삭제 버튼을 클릭합니다.</s:String>
+    <s:String x:Key="PathSettings">경로 설정</s:String>
+    <s:String x:Key="PathSettingsDescription">게임 폴더 경로가 변경된 경우 변경하기</s:String>
+    <s:String x:Key="ResetToDefaultSettings">기본 설정으로 재설정</s:String>
+    <s:String x:Key="Clear">지우기</s:String>
+    <s:String x:Key="Reset">초기화</s:String>
+    <s:String x:Key="Appearance">모양</s:String>
+    <s:String x:Key="Font">글꼴</s:String>
+    <s:String x:Key="EnableShadow">그림자 사용</s:String>
+    <s:String x:Key="EnableShadowDescription">성능 문제가 있는 경우 이 설정을 비활성화하세요.</s:String>
+    <s:String x:Key="EnableCustomTitleBar">사용자 지정 제목 표시줄 사용</s:String>
+    <s:String x:Key="EnableBlur">흐림 활성화</s:String>
+    <s:String x:Key="OpacityLevel">불투명도 수준</s:String>
+    <s:String x:Key="AccentColor">강조 색상</s:String>
+    <s:String x:Key="UseSystemAccentColor">시스템 강조 색상 사용</s:String>
+    <s:String x:Key="Change">변경</s:String>
+    <s:String x:Key="Theme">테마</s:String>
+    <s:String x:Key="FolderForOldSaves">이전 저장을 위한 폴더</s:String>
+    <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">많은 수의 저장에 대한 경고 표시</s:String>
+    <s:String x:Key="NumberOfSavesWitchWarningIsDisplayed">경고가 표시되는 저장 횟수</s:String>
+    <s:String x:Key="SettingsSizeOfSaveThumbnails">저장 썸네일 크기 설정하기</s:String>
+    <s:String x:Key="SizeOfSaveThumbnail">저장 썸네일 크기</s:String>
+    <s:String x:Key="Preview">미리보기</s:String>
+    <s:String x:Key="DisplayingListInCleaner">클리너에 목록 표시</s:String>
+    <s:String x:Key="Horizontal">수평</s:String>
+    <s:String x:Key="Vertical">세로</s:String>
+    <s:String x:Key="ViewSaveFileInVerticalList">세로 목록에서 저장 파일 보기</s:String>
+    <s:String x:Key="Line">라인</s:String>
+    <s:String x:Key="Block">블록</s:String>
+    <s:String x:Key="Delete">삭제</s:String>
+
+    <s:String x:Key="UnusedProhibitedListsCleared">사용하지 않은 금지 목록이 성공적으로 삭제되었습니다!</s:String>
+    <s:String x:Key="UnusedProhibitedListsNotCleared">현재 사용되지 않는 금지 목록은 없습니다.</s:String>
+    <s:String x:Key="ColorCopied">색상이 복사되었습니다!</s:String>
+    <s:String x:Key="SettingsHaveBeenReset">설정이 재설정되었습니다.</s:String>
+    <s:String x:Key="ResetSettingsWarning">정말 설정을 초기화하시겠습니까?</s:String>
+
+    <s:String x:Key="System">시스템</s:String>
+    <s:String x:Key="Light">빛</s:String>
+    <s:String x:Key="Dark">어두운</s:String>
+
+    <s:String x:Key="PathToTheSims">심즈 3로 가는 길</s:String>
+    <s:String x:Key="PathToSaves">저장 경로</s:String>
+    <s:String x:Key="ChoosePath">경로 선택</s:String>
+
+    <!--Prohibited List-->
+    <s:String x:Key="Photos">사진</s:String>
+    <s:String x:Key="PortraitsOfSims">심즈의 초상화</s:String>
+    <s:String x:Key="PortraitsOfFamilies">가족 초상화</s:String>
+    <s:String x:Key="GeneratedImages">생성된 이미지</s:String>
+    <s:String x:Key="LotThumbnails">로트 썸네일</s:String>
+    <s:String x:Key="SelectOldList">이전 목록 선택</s:String>
+    <s:String x:Key="MergedOldList">합병은 성공적이었습니다!</s:String>
+    <s:String x:Key="NoItems">항목 없음</s:String>
+    <s:String x:Key="Unselect">선택 취소</s:String>
+    <s:String x:Key="SaveSelectedImages">선택한 이미지 저장</s:String>
+    <s:String x:Key="ImagesSaved">이미지가 저장되었습니다!</s:String>
+    <s:String x:Key="NumberOfImagesInList">목록에 있는 이미지 수</s:String>
+    <s:String x:Key="NumberOfUnusedProhibitedLists">사용하지 않은 금지 목록의 수</s:String>
+
+    <!--About-->
+    <s:String x:Key="License">라이선스</s:String>
+    <s:String x:Key="Version">버전</s:String>
+    <s:String x:Key="Author">작성자</s:String>
+    <s:String x:Key="Copyright">저작권</s:String>
+    <s:String x:Key="Description">설명</s:String>
+    <s:String x:Key="Links">링크</s:String>
+    <s:String x:Key="UsedLibraries">중고 라이브러리</s:String>
+    <s:String x:Key="ContactAuthor">작성자에게 문의하기</s:String>
+    <s:String x:Key="WorksOn">작동 대상</s:String>
+    <s:String x:Key="WriteLetter">편지 쓰기</s:String>
+    <s:String x:Key="SocialNetwork">소셜 네트워크</s:String>
+    <s:String x:Key="ModTheSims">캐시 지우기에 대한 각 옵션에 대한 설명은 ModTheSims 웹 사이트에서 가져온 것입니다.</s:String>
+    <s:String x:Key="RegulDescription1">심즈 3 저장 게임을 정리하고 안정적으로 유지하기 위한 도구입니다.</s:String>
+    <s:String x:Key="RegulDescription2">이 프로그램은 Electronic Arts 또는 그 라이선스 제공자가 보증하거나 제휴하지 않습니다. 상표는 해당 소유자의 자산입니다. 모든 권리 보유.</s:String>
+    <s:String x:Key="LicenseDescription">소프트웨어는 상품성, 특정 목적에의 적합성 및 비침해에 대한 보증을 포함하되 이에 국한되지 않는 모든 종류의 명시적 또는 묵시적 보증 없이 "있는 그대로" 제공됩니다. 어떠한 경우에도 저작자 또는 저작권 소유자는 소프트웨어 또는 소프트웨어의 사용 또는 기타 거래로 인해, 그로부터 또는 이와 관련하여 발생하는 계약, 불법행위 또는 기타 소송에서 발생하는 청구, 손해배상 또는 기타 책임에 대해 책임을 지지 않습니다.</s:String>
+</ResourceDictionary>

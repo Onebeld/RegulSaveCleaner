@@ -14,9 +14,18 @@
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/da.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/de.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/es.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fi.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fr.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/it.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ja.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ko.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/nb.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/nl.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/pl.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/pt.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/sv.axaml" />
                 <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/zh.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

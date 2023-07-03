@@ -69,6 +69,7 @@
     <s:String x:Key="ResultsBelow">結果は以下の通り。</s:String>
     <s:String x:Key="CacheCleared">キャッシュは正常にクリアされました！</s:String>
     <s:String x:Key="BackupCreated">バックアップが正常に作成されました！</s:String>
+    <s:String x:Key="CacheHasAlreadyBeenCleared">キャッシュはすでにクリアされています。</s:String>
     <s:String x:Key="Successful">成功した！</s:String>
     <s:String x:Key="Information">インフォメーション</s:String>
     <s:String x:Key="Error">エラー</s:String>
