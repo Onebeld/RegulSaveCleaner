@@ -7,6 +7,10 @@ using RegulSaveCleaner.Core;
 using RegulSaveCleaner.ViewModels;
 using RegulSaveCleaner.Views.Pages;
 
+#if OSX
+using PleasantUI.Core.Enums;
+#endif
+
 namespace RegulSaveCleaner.Views;
 
 public partial class MainWindow : PleasantWindow

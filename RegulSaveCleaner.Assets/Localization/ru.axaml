@@ -179,7 +179,7 @@
     <s:String x:Key="OpacityLevel">Уровень прозрачности</s:String>
     <s:String x:Key="AccentColor">Акцентный цвет</s:String>
     <s:String x:Key="UseSystemAccentColor">Использовать системный акцентный цвет</s:String>
-    <s:String x:Key="Change">Изменит</s:String>
+    <s:String x:Key="Change">Изменить</s:String>
     <s:String x:Key="Theme">Тема</s:String>
     <s:String x:Key="FolderForOldSaves">Папка для старых сохранений</s:String>
     <s:String x:Key="ShowWarningAboutLargeNumberOfSaves">Показывать предупреждение о большом количестве сохранений</s:String>
