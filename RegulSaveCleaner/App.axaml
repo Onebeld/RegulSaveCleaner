@@ -4,29 +4,29 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Icons.axaml" />
+                <MergeResourceInclude Source="/Assets/Icons.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
         <ResourceDictionary x:Key="LanguageDictionary">
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/cs.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/da.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/de.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/en.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/es.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fi.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/fr.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/it.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ja.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ko.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/nb.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/nl.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/pl.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/pt.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/ru.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/sv.axaml" />
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Localization/zh.axaml" />
+                <ResourceInclude Source="/Assets/Localization/cs.axaml" />
+                <ResourceInclude Source="/Assets/Localization/da.axaml" />
+                <ResourceInclude Source="/Assets/Localization/de.axaml" />
+                <ResourceInclude Source="/Assets/Localization/en.axaml" />
+                <ResourceInclude Source="/Assets/Localization/es.axaml" />
+                <ResourceInclude Source="/Assets/Localization/fi.axaml" />
+                <ResourceInclude Source="/Assets/Localization/fr.axaml" />
+                <ResourceInclude Source="/Assets/Localization/it.axaml" />
+                <ResourceInclude Source="/Assets/Localization/ja.axaml" />
+                <ResourceInclude Source="/Assets/Localization/ko.axaml" />
+                <ResourceInclude Source="/Assets/Localization/nb.axaml" />
+                <ResourceInclude Source="/Assets/Localization/nl.axaml" />
+                <ResourceInclude Source="/Assets/Localization/pl.axaml" />
+                <ResourceInclude Source="/Assets/Localization/pt.axaml" />
+                <ResourceInclude Source="/Assets/Localization/ru.axaml" />
+                <ResourceInclude Source="/Assets/Localization/sv.axaml" />
+                <ResourceInclude Source="/Assets/Localization/zh.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

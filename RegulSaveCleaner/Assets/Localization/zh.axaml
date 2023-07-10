@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">zh</s:String>
     
     <!--Chinese-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">恢复旧的保存</s:String>
     <s:String x:Key="SelectSavesToTransfer">选择要转移的保存资料</s:String>
     <s:String x:Key="MoveToSpareFolder">移动到一个备用文件夹</s:String>
+    <s:String x:Key="UnableToCleanSaves">无法清理保存文件</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">检查保存文件的访问权限，取消对保存文件 "只读 "属性的选中，并将Regul Save Cleaner添加到防病毒排除项中。</s:String>
     
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">游戏运行缓慢</s:String>

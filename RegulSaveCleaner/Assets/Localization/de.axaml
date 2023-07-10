@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">de</s:String>
     
     <!--German-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">Alte Speicherstände wiederherstellen</s:String>
     <s:String x:Key="SelectSavesToTransfer">Zu übertragende Saves auswählen</s:String>
     <s:String x:Key="MoveToSpareFolder">In einen Ersatzordner verschieben</s:String>
+    <s:String x:Key="UnableToCleanSaves">Sichern nicht bereinigen</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">Überprüfen Sie den Zugriff auf Sichern, deaktivieren Sie das Attribut "Schreibgeschützt" für Sichern und fügen Sie Regul Save Cleaner zu den Antiviren-Ausschlüssen hinzu</s:String>
     
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">Das Spiel ist sehr langsam</s:String>

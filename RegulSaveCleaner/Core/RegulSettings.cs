@@ -133,7 +133,7 @@ public class RegulSettings : ViewModelBase
         Instance.WorldCachesClear = true;
 
 #if !NET6_0_OR_GREATER
-        if (!OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
+        if (Environment.OSVersion.Version > new Version(10, 0, 14393))
         {
             PleasantSettings.Instance.WindowSettings.EnableBlur = false;
             PleasantSettings.Instance.WindowSettings.EnableCustomTitleBar = false;

@@ -147,7 +147,8 @@ public class SettingsViewModel : ViewModelBase
 #if Windows
             
 #if !NET6_0_OR_GREATER
-            return !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393);
+            return Environment.OSVersion.Version > new Version(10, 0, 14393);
+
 #else
             return false;
 #endif
@@ -177,7 +178,7 @@ public class SettingsViewModel : ViewModelBase
 
         if (!string.IsNullOrWhiteSpace(path))
             RegulSettings.Instance.PathToTheSims3Document = path;
-        
+
         App.MainWindow.ViewModel.LoadingSaves();
     }
     

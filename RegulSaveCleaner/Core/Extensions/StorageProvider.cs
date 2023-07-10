@@ -12,6 +12,6 @@ public static class StorageProvider
             SuggestedStartLocation = directory is null ? null : await window.StorageProvider.TryGetFolderFromPathAsync(new Uri(directory))
         });
         
-        return result.Count == 0 ? null : result[0].Path.AbsolutePath;
+        return result.Count == 0 ? null : result[0].Path.LocalPath;
     }
 }

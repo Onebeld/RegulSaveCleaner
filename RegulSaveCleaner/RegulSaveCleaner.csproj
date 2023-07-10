@@ -7,21 +7,26 @@
         <Nullable>enable</Nullable>
         <ApplicationIcon>icon.ico</ApplicationIcon>
         <IncludeAvaloniaGenerators>true</IncludeAvaloniaGenerators>
-        <AssemblyVersion>4.0.0</AssemblyVersion>
-        <FileVersion>4.0.0</FileVersion>
+        <AssemblyVersion>4.0.1</AssemblyVersion>
+        <FileVersion>4.0.1</FileVersion>
         <LangVersion>preview</LangVersion>
         <Product>Regul Save Cleaner</Product>
         <PublishAot>true</PublishAot>
+        <TieredPGO>true</TieredPGO>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.0-rc2.1" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0-rc2.1" />
+        <PackageReference Include="Avalonia" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
         <PackageReference Include="Pfim" Version="0.11.2" />
-        <PackageReference Include="PleasantUI" Version="3.0.6" />
+        <PackageReference Include="PleasantUI" Version="3.0.8" />
         <PackageReference Condition="'$(TargetFramework)' != 'net461'" Include="SixLabors.ImageSharp" Version="3.0.1" />
         <PackageReference Condition="'$(TargetFramework)' == 'net461'" Include="SixLabors.ImageSharp" Version="2.1.4" />
     </ItemGroup>
+    
+    <PropertyGroup>
+        <SatelliteResourceLanguages>cs,da,de,en,es,fi,fr,it,ja,ko,nb,nl,pl,pt,ru,sv,zh</SatelliteResourceLanguages>
+    </PropertyGroup>
 
     <PropertyGroup>
         <IsWindows Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</IsWindows>
@@ -50,6 +55,7 @@
         <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
         <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
         <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
+        <IlcTrimMetadata>true</IlcTrimMetadata>
     </PropertyGroup>
 
     <ItemGroup>
@@ -58,12 +64,20 @@
     </ItemGroup>
 
     <ItemGroup>
+        <AvaloniaResource Include="Assets\Images\BeforeAfter.jpg" />
+        <AvaloniaResource Include="Assets\Images\Families.png" />
+        <AvaloniaResource Include="Assets\Images\GeneratedImages.jpg" />
+        <AvaloniaResource Include="Assets\Images\Lots.png" />
+        <AvaloniaResource Include="Assets\Images\Photos.jpg" />
+        <AvaloniaResource Include="Assets\Images\Portraits.jpg" />
+        <AvaloniaResource Include="Assets\Images\Texture.png" />
+        <AvaloniaResource Include="Assets\Images\TheseCringeMachines.jpg" />
+        <AvaloniaResource Include="Assets\Images\TheseKillingCringeMachines.jpg" />
         <AvaloniaResource Include="icon.ico" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\RegulSaveCleaner.S3PI\RegulSaveCleaner.S3PI.csproj" />
-      <ProjectReference Include="..\RegulSaveCleaner.Assets\RegulSaveCleaner.Assets.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

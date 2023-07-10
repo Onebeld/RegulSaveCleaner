@@ -15,6 +15,7 @@ using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.Windows;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Png;
+using IImage = Pfim.IImage;
 
 namespace RegulSaveCleaner.ViewModels.Windows;
 

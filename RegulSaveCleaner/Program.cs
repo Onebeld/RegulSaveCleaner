@@ -28,21 +28,18 @@ public class Program
 
             StringBuilder stringBuilder = new();
 
-            stringBuilder.AppendLine($"[{DateTime.Now:dd.MM.yyy HH:mm:ss.fff}] | Fatal | [{ex.TargetSite?.DeclaringType}.{ex.TargetSite?.Name}()] {ex}\n");
+            stringBuilder.AppendLine($"[{DateTime.Now:dd.MM.yyy HH:mm:ss.fff}] | Fatal | {ex}\n");
 
             OperatingSystem os = Environment.OSVersion;
             stringBuilder.AppendLine("Operating System information:");
             stringBuilder.AppendLine("OS name: " + os.VersionString);
-            stringBuilder.AppendLine("OS platform: " + os.Platform);
             stringBuilder.AppendLine("OS architecture: " + RuntimeInformation.OSArchitecture + "\n");
             
             CultureInfo cultureInfo = CultureInfo.CurrentUICulture;
             stringBuilder.AppendLine("Default language information:");
             stringBuilder.AppendLine("Name: " + cultureInfo.Name);
-            stringBuilder.AppendLine("Display name: " + cultureInfo.DisplayName);
             stringBuilder.AppendLine("English name: " + cultureInfo.EnglishName);
-            stringBuilder.AppendLine("2-letter ISO name: " + cultureInfo.TwoLetterISOLanguageName);
-            stringBuilder.AppendLine("3-letter ISO name: " + cultureInfo.ThreeLetterISOLanguageName + "\n");
+            stringBuilder.AppendLine("2-letter ISO name: " + cultureInfo.TwoLetterISOLanguageName + "\n");
             
             stringBuilder.AppendLine("Other information:");
             stringBuilder.AppendLine(".NET version: " + RuntimeInformation.FrameworkDescription);

@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">da</s:String>
     
     <!--Danish-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">Gendan gamle gemmer</s:String>
     <s:String x:Key="SelectSavesToTransfer">Vælg gemmer for at overføre</s:String>
     <s:String x:Key="MoveToSpareFolder">Flyt til en ekstra mappe</s:String>
+    <s:String x:Key="UnableToCleanSaves">Kan ikke rense gemninger</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">Tjek adgang til gemninger, fjern markeringen af "skrivebeskyttet"-attributten på gemninger, og tilføj Regul Save Cleaner til antivirusundtagelser</s:String>
     
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">Spillet er meget langsomt</s:String>

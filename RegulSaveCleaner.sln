@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner", "RegulSaveCleaner\RegulSaveCleaner.csproj", "{990FEEE0-39F4-4779-B5F7-6625818FF78E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner.Assets", "RegulSaveCleaner.Assets\RegulSaveCleaner.Assets.csproj", "{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulSaveCleaner.S3PI", "RegulSaveCleaner.S3PI\RegulSaveCleaner.S3PI.csproj", "{012F95D6-DA83-4119-8002-E99099640D8E}"
 EndProject
 Global
@@ -16,10 +14,6 @@ Global
 		{990FEEE0-39F4-4779-B5F7-6625818FF78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990FEEE0-39F4-4779-B5F7-6625818FF78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990FEEE0-39F4-4779-B5F7-6625818FF78E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{255C8CC9-7392-4E7B-A098-CC4AE9CEB9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{012F95D6-DA83-4119-8002-E99099640D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{012F95D6-DA83-4119-8002-E99099640D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{012F95D6-DA83-4119-8002-E99099640D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU

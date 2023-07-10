@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">es</s:String>
 
     <!--Spanish-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">Restaurar antiguos archivos guardados</s:String>
     <s:String x:Key="SelectSavesToTransfer">Selecciona los archivos a transferir</s:String>
     <s:String x:Key="MoveToSpareFolder">Mover a una carpeta libre</s:String>
+    <s:String x:Key="UnableToCleanSaves">Unable to clean saves</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">Check access to saves, uncheck the "Read Only" attribute on saves, and add Regul Save Cleaner to antivirus exclusions</s:String>
 
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">El juego es muy lento</s:String>

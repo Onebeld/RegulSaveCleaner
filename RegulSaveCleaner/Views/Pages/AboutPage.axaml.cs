@@ -1,9 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
+using PleasantUI;
+using SixLabors.ImageSharp.Formats;
 
 namespace RegulSaveCleaner.Views.Pages;
 
@@ -14,6 +17,15 @@ public partial class AboutPage : UserControl
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
+
+        Version appVersion = Assembly.GetExecutingAssembly().GetName().Version!;
+        AppVersion.Text = $"{appVersion.Major}.{appVersion.Minor}.{appVersion.Build}";
+
+        Version pleasantUIVersion = typeof(PleasantTheme).Assembly.GetName().Version!;
+        PleasantUIVersion.Text = $"{pleasantUIVersion.Major}.{pleasantUIVersion.Minor}.{pleasantUIVersion.Build}";
+
+        Version imageSharpVersion = typeof(IImageEncoder).Assembly.GetName().Version!;
+        ImageSharpVersion.Text = $"{imageSharpVersion.Major}.{imageSharpVersion.Minor}.{imageSharpVersion.Build}";
 
         RunDotNet.Text = $"{RuntimeInformation.FrameworkDescription} {RuntimeInformation.ProcessArchitecture}";
         RunAuthor.Text = $"©2020-{DateTime.Now.Year} Dmitry Zhutkov (Onebeld)";

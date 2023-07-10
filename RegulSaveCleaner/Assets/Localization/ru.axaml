@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">ru</s:String>
     
     <!--Russian-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">Вернуть старые сохранения</s:String>
     <s:String x:Key="SelectSavesToTransfer">Выберите сохранения для перемещения</s:String>
     <s:String x:Key="MoveToSpareFolder">Переместить в запасную папку</s:String>
+    <s:String x:Key="UnableToCleanSaves">Невозможно очистить сохранения</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">Проверьте доступ к сохранениям, снимите атрибут "Только чтение" с сохранений и добавьте Regul Save Cleaner в исключения антивируса</s:String>
     
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">Игра очень медленная</s:String>

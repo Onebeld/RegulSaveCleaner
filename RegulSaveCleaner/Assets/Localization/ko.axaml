@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">ko</s:String>
 
     <!--Korean-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">이전 저장 복원</s:String>
     <s:String x:Key="SelectSavesToTransfer">전송할 저장을 선택합니다.</s:String>
     <s:String x:Key="MoveToSpareFolder">예비 폴더로 이동</s:String>
+    <s:String x:Key="UnableToCleanSaves">저장 내용을 정리할 수 없음</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">저장 내용에 대한 액세스 권한을 확인하고, 저장 내용에서 '읽기 전용' 속성을 선택 해제하고, 바이러스 백신 제외 항목에 저장 내용 정리기를 추가합니다.</s:String>
 
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">게임이 매우 느립니다.</s:String>

@@ -35,6 +35,8 @@ public class MainWindowViewModel : ViewModelBase
     
     private AvaloniaList<GameSave> _selectedGameSaves = new();
     private IManagedNotificationManager _notificationManager = null!;
+
+    private string? _currentCleaningSaveName;
     
     public AvaloniaList<GameSave> GameSaves { get; set; } = new();
 
@@ -538,8 +540,23 @@ public class MainWindowViewModel : ViewModelBase
 
         Thread thread = new(() =>
         {
-            Clean(loadingWindow, cleaningResults);
-
+            try
+            {
+                Clean(loadingWindow, cleaningResults);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                _synchronizationContext.Send(_ =>
+                {
+                    loadingWindow.Close();
+                    
+                    MessageBox.Show(App.MainWindow, App.GetString("UnableToCleanSaves"), App.GetString("UnableToCleanSavesDescription") + $"\n\n{_currentCleaningSaveName}");
+                    InCleaningProcess = false;
+                }, null);
+                
+                return;
+            }
+            
             if (RegulSettings.Instance.ClearCache)
             {
                 UpdateLoadingWindow(loadingWindow, 0, true, 100, "CleaningCache");
@@ -561,7 +578,7 @@ public class MainWindowViewModel : ViewModelBase
                 MessageBox.Show(App.MainWindow, title, App.GetString("ResultsBelow"), additionalText: results);
 
                 InCleaningProcess = false;
-            }, "");
+            }, null);
         })
         {
             Priority = ThreadPriority.Highest
@@ -665,6 +682,8 @@ public class MainWindowViewModel : ViewModelBase
 
         foreach (GameSave gameSave in SelectedGameSaves)
         {
+            _currentCleaningSaveName = gameSave.Name;
+            
             GameSaveResource? resource = RegulSettings.Instance.GameSaveResources.FirstOrDefault(x => x.Id == gameSave.Name);
             long oldGameSaveSize = Directory.EnumerateFiles(gameSave.Directory, "*.*", SearchOption.AllDirectories)
                 .Sum(path => new FileInfo(path).Length);

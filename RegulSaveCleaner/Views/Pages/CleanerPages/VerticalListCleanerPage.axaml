@@ -6,14 +6,6 @@
              xmlns:controls="clr-namespace:RegulSaveCleaner.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegulSaveCleaner.Views.Pages.CleanerPages.VerticalListCleanerPage">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://RegulSaveCleaner.Assets/Controls/Carousel.axaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-
     <Carousel x:Name="Carousel">
         <Carousel.PageTransition>
             <PageSlide Duration="0.35" SlideInEasing="SineEaseInOut" SlideOutEasing="SineEaseInOut" Orientation="Vertical" />

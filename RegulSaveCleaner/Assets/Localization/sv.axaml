@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:s="clr-namespace:System;assembly=netstandard">
+                    xmlns:s="clr-namespace:System;assembly=netstandard"
+                    x:ClassModifier="internal">
     <s:String x:Key="LanguageKey">sv</s:String>
 
     <!--Swedish-->
@@ -141,6 +142,8 @@
     <s:String x:Key="RestoreOldSaves">Återställ gamla sparningar</s:String>
     <s:String x:Key="SelectSavesToTransfer">Välj sparningar att överföra</s:String>
     <s:String x:Key="MoveToSpareFolder">Flytta till en extra mapp</s:String>
+    <s:String x:Key="UnableToCleanSaves">Det går inte att rensa sparade filer</s:String>
+    <s:String x:Key="UnableToCleanSavesDescription">Kontrollera åtkomsten till sparade filer, avmarkera attributet "Read Only" på sparade filer och lägg till Regul Save Cleaner i antivirusundantagen</s:String>
 
     <!--QuestionsAndAnswers Page-->
     <s:String x:Key="TheGameIsVerySlow">Spelet är mycket långsamt</s:String>

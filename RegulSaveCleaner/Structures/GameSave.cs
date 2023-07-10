@@ -30,11 +30,7 @@ public class GameSave : ViewModelBase
     {
         Directory = directory;
 
-        _name = new Lazy<string>(() =>
-        {
-            DirectoryInfo directoryInfo = new(Directory);
-            return directoryInfo.ToString().Split('\\')[checked (directoryInfo.ToString().Split('\\').Length - 1)].Replace(".sims3", "");
-        });
+        _name = new Lazy<string>(() => new DirectoryInfo(Directory).Name[..^".sims3".Length]);
         _location = new Lazy<string>(() =>
         {
             string str = "";
