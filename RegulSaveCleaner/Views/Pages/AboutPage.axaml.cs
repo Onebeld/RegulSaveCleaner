@@ -6,7 +6,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using PleasantUI;
-using SixLabors.ImageSharp.Formats;
 
 namespace RegulSaveCleaner.Views.Pages;
 
@@ -24,8 +23,11 @@ public partial class AboutPage : UserControl
         Version pleasantUIVersion = typeof(PleasantTheme).Assembly.GetName().Version!;
         PleasantUIVersion.Text = $"{pleasantUIVersion.Major}.{pleasantUIVersion.Minor}.{pleasantUIVersion.Build}";
 
-        Version imageSharpVersion = typeof(IImageEncoder).Assembly.GetName().Version!;
-        ImageSharpVersion.Text = $"{imageSharpVersion.Major}.{imageSharpVersion.Minor}.{imageSharpVersion.Build}";
+#if NET6_0_OR_GREATER
+        ImageSharpVersion.Text = "3.0.1";
+#else
+        ImageSharpVersion.Text = $"2.1.4";
+#endif
 
         RunDotNet.Text = $"{RuntimeInformation.FrameworkDescription} {RuntimeInformation.ProcessArchitecture}";
         RunAuthor.Text = $"©2020-{DateTime.Now.Year} Dmitry Zhutkov (Onebeld)";
