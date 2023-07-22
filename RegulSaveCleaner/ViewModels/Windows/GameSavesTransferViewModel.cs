@@ -1,5 +1,4 @@
 ﻿using Avalonia.Collections;
-using Avalonia.Media;
 using PleasantUI;
 using PleasantUI.Controls;
 using PleasantUI.Windows;
@@ -95,30 +94,13 @@ public class GameSavesTransferViewModel : ViewModelBase
                                 
                             continue;
                         }
-
-                        GameSave gameSave = new(directory);
-
-                        if (file.IndexOf(gameSave.Location, StringComparison.Ordinal) != -1)
+                        
+                        GameSave gameSave = GameSave.Create(directory, gameSaveData, _synchronizationContext);
+                        
+                        _synchronizationContext.Send(_ =>
                         {
-                            if (gameSaveData.FamilyIcon is null)
-                            {
-                                _synchronizationContext.Send(_ =>
-                                {
-                                    gameSave.ImageOfFamily = App.GetResource<DrawingImage>("UnknownIcon");
-                                }, "");
-                            }
-                            else gameSave.ImageOfFamily = gameSaveData.FamilyIcon;
-
-                            gameSave.WorldName = gameSaveData.WorldName;
-                            gameSave.Description = gameSaveData.Description;
-                            gameSave.ImageInstance = gameSaveData.ImgInstance;
-                            gameSave.LastSaveTime = gameSaveData.LastSaveTime;
-                            
-                            _synchronizationContext.Send(_ =>
-                            {
-                                GameSaves.Add(gameSave);
-                            }, "");
-                        }
+                            GameSaves.Add(gameSave);
+                        }, "");
                     }
                 });
             }

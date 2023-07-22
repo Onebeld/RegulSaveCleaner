@@ -3,7 +3,6 @@ using System.Text;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
-using Avalonia.Media;
 using PleasantUI;
 using PleasantUI.Windows;
 using RegulSaveCleaner.Controls;
@@ -79,7 +78,7 @@ public class MainWindowViewModel : ViewModelBase
     public bool InCleaningProcess
     {
         get => _inCleaningProcess;
-        set => RaiseAndSet(ref _inCleaningProcess, value);
+        private set => RaiseAndSet(ref _inCleaningProcess, value);
     }
     
     public bool IsLoadingSaves
@@ -254,31 +253,14 @@ public class MainWindowViewModel : ViewModelBase
                                 continue;
                             }
 
-                            GameSave gameSave = new(directory);
-
-                            if (file.IndexOf(gameSave.Location, StringComparison.Ordinal) != -1)
+                            GameSave gameSave = GameSave.Create(directory, gameSaveData, _synchronizationContext);
+                            
+                            _synchronizationContext.Send(_ =>
                             {
-                                if (gameSaveData.FamilyIcon is null)
-                                {
-                                    _synchronizationContext.Send(_ =>
-                                    {
-                                        gameSave.ImageOfFamily = App.GetResource<DrawingImage>("UnknownIcon");
-                                    }, "");
-                                }
-                                else gameSave.ImageOfFamily = gameSaveData.FamilyIcon;
-
-                                gameSave.WorldName = gameSaveData.WorldName;
-                                gameSave.Description = gameSaveData.Description;
-                                gameSave.ImageInstance = gameSaveData.ImgInstance;
-                                gameSave.LastSaveTime = gameSaveData.LastSaveTime;
-                                
-                                _synchronizationContext.Send(_ =>
-                                {
-                                    GameSaves.Add(gameSave);
-                                    if (saves.Any(save => gameSave.Name == save))
-                                        SelectedGameSaves.Add(gameSave);
-                                }, "");
-                            }
+                                GameSaves.Add(gameSave);
+                                if (saves.Any(save => gameSave.Name == save))
+                                    SelectedGameSaves.Add(gameSave);
+                            }, "");
                         }
                     });
                 }
@@ -307,67 +289,13 @@ public class MainWindowViewModel : ViewModelBase
 
     public void CancelAllSaves() => SelectedGameSaves.Clear();
 
-    public void SelectAllClearOptions()
-    {
-        RegulSettings.Instance.RemovePortraitsSims = true;
-        RegulSettings.Instance.RemoveLotThumbnails = true;
-        RegulSettings.Instance.RemovePhotos = true;
-        RegulSettings.Instance.RemoveFamilyPortraits = true;
-        RegulSettings.Instance.RemoveGeneratedImages = true;
-    }
-    
-    public void CancelAllClearOptions()
-    {
-        RegulSettings.Instance.RemovePortraitsSims = false;
-        RegulSettings.Instance.RemoveLotThumbnails = false;
-        RegulSettings.Instance.RemovePhotos = false;
-        RegulSettings.Instance.RemoveFamilyPortraits = false;
-        RegulSettings.Instance.RemoveGeneratedImages = false;
-        RegulSettings.Instance.RemoveTextures = false;
-        RegulSettings.Instance.RemoveOtherTypes = false;
-    }
-    
-    public void SelectAllCacheOptions()
-    {
-        RegulSettings.Instance.CasPartCacheClear = true;
-        RegulSettings.Instance.CompositorCacheClear = true;
-        RegulSettings.Instance.ScriptCacheClear = true;
-        RegulSettings.Instance.SimCompositorCacheClear = true;
-        RegulSettings.Instance.SocialCacheClear = true;
-        
-#if !OSX
-        RegulSettings.Instance.WorldCachesClear = true; 
-#endif
-        
-        RegulSettings.Instance.IgaCacheClear = true;
-        RegulSettings.Instance.ThumbnailsClear = true;
-        RegulSettings.Instance.FeaturedItemsClear = true;
-        RegulSettings.Instance.AllXmlClear = true;
-        RegulSettings.Instance.DccClear = true;
-        RegulSettings.Instance.DownloadedSimsClear = true;
-        RegulSettings.Instance.LogClear = true;
-        RegulSettings.Instance.DcBackupPackagesClear = true;
-        RegulSettings.Instance.MissingDepsClear = true;
-    }
-    
-    public void CancelAllCacheOptions()
-    {
-        RegulSettings.Instance.CasPartCacheClear = false;
-        RegulSettings.Instance.CompositorCacheClear = false;
-        RegulSettings.Instance.ScriptCacheClear = false;
-        RegulSettings.Instance.SimCompositorCacheClear = false;
-        RegulSettings.Instance.SocialCacheClear = false;
-        RegulSettings.Instance.WorldCachesClear = false;
-        RegulSettings.Instance.IgaCacheClear = false;
-        RegulSettings.Instance.ThumbnailsClear = false;
-        RegulSettings.Instance.FeaturedItemsClear = false;
-        RegulSettings.Instance.AllXmlClear = false;
-        RegulSettings.Instance.DccClear = false;
-        RegulSettings.Instance.DownloadedSimsClear = false;
-        RegulSettings.Instance.LogClear = false;
-        RegulSettings.Instance.DcBackupPackagesClear = false;
-        RegulSettings.Instance.MissingDepsClear = false;
-    }
+    public void SelectAllClearOptions() => ToggleClearOptions(true);
+
+    public void CancelAllClearOptions() => ToggleClearOptions(false);
+
+    public void SelectAllCacheOptions() => ToggleCacheOptions(true);
+
+    public void CancelAllCacheOptions() => ToggleCacheOptions(false);
 
     public void OpenRemoveFamilyPortraitsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemoveFamilyPortraitsPage());
     public void OpenRemovePortraitsSimsDescriptionWindow() => OpenCleaningOptionDescriptionWindow(new RemovePortraitsOfSimsPage());
@@ -397,22 +325,20 @@ public class MainWindowViewModel : ViewModelBase
     public async void OpenOldProhibitedLists(GameSave gameSave)
     {
         OldProhibitedListsWindow window = new(gameSave, GameSaves.Select(x => x.Name));
-        bool result = await window.Show<bool>(App.MainWindow);
 
-        if (result)
+        if (await window.Show<bool>(App.MainWindow))
             ShowNotification("Successful", "MergedOldList", NotificationType.Success, TimeSpan.FromSeconds(3));
     }
 
     public async void OpenGameSavesTransferWindow()
     {
         GameSavesTransferWindow window = new();
-        bool result = await window.Show<bool>(App.MainWindow);
 
-        if (result)
-        {
-            LoadingSaves();
-            ShowNotification("Successful", "YourSavesHaveBeenMoved", NotificationType.Success, TimeSpan.FromSeconds(3));
-        }
+        if (!await window.Show<bool>(App.MainWindow))
+            return;
+
+        LoadingSaves();
+        ShowNotification("Successful", "YourSavesHaveBeenMoved", NotificationType.Success, TimeSpan.FromSeconds(3));
     }
     
     public async void SelectBackupPath()
@@ -490,15 +416,6 @@ public class MainWindowViewModel : ViewModelBase
         LoadingSaves();
         
         ShowNotification("Successful", "YourSavesHaveBeenMoved", NotificationType.Success);
-    }
-
-    public void MoveSaveToSpareFolder(GameSave gameSave)
-    {
-        if (!Directory.Exists(RegulSettings.Instance.PathToFolderWithOldSaves))
-            Directory.CreateDirectory(RegulSettings.Instance.PathToFolderWithOldSaves);
-        
-        DirectoryManager.Copy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToFolderWithOldSaves, gameSave.Name + ".sims3"), true);
-        Directory.Delete(gameSave.Directory, true);
     }
 
     public async void StartCleaningCache()
@@ -586,6 +503,53 @@ public class MainWindowViewModel : ViewModelBase
         
         thread.Start();
     }
+    
+    private void ToggleClearOptions(bool value)
+    {
+        RegulSettings.Instance.RemovePortraitsSims = value;
+        RegulSettings.Instance.RemoveLotThumbnails = value;
+        RegulSettings.Instance.RemovePhotos = value;
+        RegulSettings.Instance.RemoveFamilyPortraits = value;
+        RegulSettings.Instance.RemoveGeneratedImages = value;
+
+        if (value)
+            return;
+
+        RegulSettings.Instance.RemoveTextures = false;
+        RegulSettings.Instance.RemoveOtherTypes = false;
+    }
+    
+    private void ToggleCacheOptions(bool value)
+    {
+        RegulSettings.Instance.CasPartCacheClear = value;
+        RegulSettings.Instance.CompositorCacheClear = value;
+        RegulSettings.Instance.ScriptCacheClear = value;
+        RegulSettings.Instance.SimCompositorCacheClear = value;
+        RegulSettings.Instance.SocialCacheClear = value;
+
+#if !OSX
+        RegulSettings.Instance.WorldCachesClear = value;
+#endif
+        
+        RegulSettings.Instance.IgaCacheClear = value;
+        RegulSettings.Instance.ThumbnailsClear = value;
+        RegulSettings.Instance.FeaturedItemsClear = value;
+        RegulSettings.Instance.AllXmlClear = value;
+        RegulSettings.Instance.DccClear = value;
+        RegulSettings.Instance.DownloadedSimsClear = value;
+        RegulSettings.Instance.LogClear = value;
+        RegulSettings.Instance.DcBackupPackagesClear = value;
+        RegulSettings.Instance.MissingDepsClear = value;
+    }
+    
+    private void MoveSaveToSpareFolder(GameSave gameSave)
+    {
+        if (!Directory.Exists(RegulSettings.Instance.PathToFolderWithOldSaves))
+            Directory.CreateDirectory(RegulSettings.Instance.PathToFolderWithOldSaves);
+        
+        DirectoryManager.Copy(gameSave.Directory, Path.Combine(RegulSettings.Instance.PathToFolderWithOldSaves, gameSave.Name + ".sims3"), true);
+        Directory.Delete(gameSave.Directory, true);
+    }
 
     private void OpenCleaningOptionDescriptionWindow(ContentControl userControl)
     {
@@ -614,13 +578,13 @@ public class MainWindowViewModel : ViewModelBase
                 stringBuilder.Append("\n-----------------------\n");
         }
 
-        if (deletedFiles.Count > 0)
-        {
-            stringBuilder.Append("\n-----------------------");
+        if (deletedFiles.Count <= 0)
+            return stringBuilder.ToString();
 
-            foreach (string deletedFile in deletedFiles)
-                stringBuilder.Append($"\n{deletedFile}");
-        }
+        stringBuilder.Append("\n-----------------------");
+
+        foreach (string deletedFile in deletedFiles)
+            stringBuilder.Append($"\n{deletedFile}");
 
         return stringBuilder.ToString();
     }
@@ -664,13 +628,12 @@ public class MainWindowViewModel : ViewModelBase
 
     private bool DeleteOtherResources(ResourceIndexEntry entry)
     {
-        if (RegulSettings.Instance.RemoveOtherTypes && entry.Memsize == 0x2AB38)
-        {
-            entry.IsDeleted = true;
-            return true;
-        }
+        if (!RegulSettings.Instance.RemoveOtherTypes || entry.Memsize != 0x2AB38)
+            return false;
 
-        return false;
+        entry.IsDeleted = true;
+        return true;
+
     }
 
     private bool CheckResourceInProhibitedList(ResourceIndexEntry entry, GameSaveResource? resource) => 
@@ -865,10 +828,7 @@ public class MainWindowViewModel : ViewModelBase
             }
             else DeleteFile(pathToCache, deletedFiles);
         }
-        catch
-        {
-            // ignored
-        }
+        catch { }
     }
     
     private void DeleteFile(string path, ICollection<string>? files = null)

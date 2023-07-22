@@ -15,7 +15,7 @@
             
             <StackPanel Grid.Row="1" Spacing="10">
                 <TextBlock Text="{StaticResource RemoveFamilyPortraitsDescription}" TextWrapping="Wrap" />
-                <Image Source="avares://RegulSaveCleaner.Assets/Images/Families.png"
+                <Image Source="avares://RegulSaveCleaner/Assets/Images/Families.png"
                        MaxWidth="200" />
             </StackPanel>
         </Grid>

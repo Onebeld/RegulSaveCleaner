@@ -4,10 +4,10 @@ namespace RegulSaveCleaner.Structures;
 
 public class ImageResource
 {
-    public uint Type { get; set; }
-    public uint Group { get; set; }
-    public ulong Instance { get; set; }
+    public uint Type { get; init; }
+    public uint Group { get; init; }
+    public ulong Instance { get; init; }
     
-    public Bitmap? Image { get; set; }
+    public Bitmap? Image { get; init; }
     public Bitmap? CompressedImage { get; set; }
 }

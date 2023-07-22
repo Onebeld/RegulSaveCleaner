@@ -1,43 +1,61 @@
-﻿using Avalonia.Media;
+﻿using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
 using PleasantUI;
+using RegulSaveCleaner.Core;
 
 namespace RegulSaveCleaner.Structures;
 
 public class GameSave : ViewModelBase
 {
-    private readonly Lazy<string> _name;
-    private readonly Lazy<string> _location;
     private IImage? _imageOfFamily;
+    
+    public string Name { get; }
+    
+    public string Directory { get; }
+    
+    public required ulong ImageInstance { get; set; }
 
-    public IImage? ImageOfFamily
+    public required string WorldName { get; set; }
+
+    public required string Description { get; set; }
+    
+    public required DateTime LastSaveTime { get; set; }
+
+    public required IImage? ImageOfFamily
     {
         get => _imageOfFamily;
         set => RaiseAndSet(ref _imageOfFamily, value);
     }
-    public ulong ImageInstance { get; set; }
 
-    public string Directory { get; }
-
-    public string WorldName { get; set; } = string.Empty;
-
-    public string Description { get; set; } = string.Empty;
-    public DateTime LastSaveTime { get; set; }
-
-    public string Name => _name.Value;
-    public string Location => _location.Value;
-
-    public GameSave(string directory)
+    private GameSave(string directory)
     {
         Directory = directory;
+        Name = new DirectoryInfo(directory).Name.Replace(".sims3", "");
+    }
 
-        _name = new Lazy<string>(() => new DirectoryInfo(Directory).Name[..^".sims3".Length]);
-        _location = new Lazy<string>(() =>
+    public static GameSave Create(string directory, GameSaveData gameSaveData, SynchronizationContext context)
+    {
+        IImage? image = null;
+
+        if (gameSaveData.FamilyIcon is null)
         {
-            string str = "";
-            string[] files = System.IO.Directory.GetFiles(Directory, "*.dat", SearchOption.AllDirectories);
-            if (0 < files.Length)
-                str = File.ReadAllText(files[0]).Split('_')[0];
-            return str;
-        });
+            context.Send(_ =>
+            {
+                image = (DrawingImage)Application.Current!.FindResource("UnknownIcon")!;
+            }, "");
+        }
+        else image = gameSaveData.FamilyIcon;
+        
+        GameSave gameSave = new(directory)
+        {
+            Description = gameSaveData.Description,
+            WorldName = gameSaveData.WorldName,
+            ImageInstance = gameSaveData.ImgInstance,
+            ImageOfFamily = image,
+            LastSaveTime = gameSaveData.LastSaveTime
+        };
+
+        return gameSave;
     }
 }

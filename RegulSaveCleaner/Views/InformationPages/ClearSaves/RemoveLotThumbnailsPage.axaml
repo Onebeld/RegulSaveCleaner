@@ -15,7 +15,7 @@
             
             <StackPanel Grid.Row="1" Spacing="10">
                 <TextBlock Text="{StaticResource RemoveLotThumbnailsDescription}" TextWrapping="Wrap" />
-                <Image Source="avares://RegulSaveCleaner.Assets/Images/Lots.png" MaxWidth="400" />
+                <Image Source="avares://RegulSaveCleaner/Assets/Images/Lots.png" MaxWidth="400" />
             </StackPanel>
         </Grid>
     </SmoothScrollViewer>

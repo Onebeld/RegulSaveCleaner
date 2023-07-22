@@ -15,7 +15,7 @@
             
             <StackPanel Grid.Row="1" Spacing="10">
                 <TextBlock Text="{StaticResource RemovePortraitsSimsDescription1}" TextWrapping="Wrap" />
-                <Image Source="avares://RegulSaveCleaner.Assets/Images/Portraits.jpg" MaxWidth="400" />
+                <Image Source="avares://RegulSaveCleaner/Assets/Images/Portraits.jpg" MaxWidth="400" />
                 <TextBlock Foreground="{StaticResource SystemFillColorCautionBrush}" TextWrapping="Wrap">
                     <Run Text="{StaticResource RemovePortraitsSimsDescription2}" FontWeight="Bold" />
                     <Run Text="{StaticResource RemovePortraitsSimsDescription3}" />

@@ -16,15 +16,15 @@
             <StackPanel Grid.Row="1" Spacing="10">
                 <TextBlock Text="{StaticResource RemoveGeneratedImagesDescription1}" TextWrapping="Wrap" />
                 <TextBlock Text="{StaticResource RemoveGeneratedImagesDescription2}" TextWrapping="Wrap" />
-                <Image Source="avares://RegulSaveCleaner.Assets/Images/GeneratedImages.jpg"
+                <Image Source="avares://RegulSaveCleaner/Assets/Images/GeneratedImages.jpg"
                        MaxWidth="400"/>
                 <Image x:Name="TheseCringeMachinesImage"
-                       Source="avares://RegulSaveCleaner.Assets/Images/TheseCringeMachines.jpg"
+                       Source="avares://RegulSaveCleaner/Assets/Images/TheseCringeMachines.jpg"
                        Stretch="Fill"
                        MaxWidth="400"
                        Height="200" />
                 <Image x:Name="TheseKillingCringeMachinesImage"
-                       Source="avares://RegulSaveCleaner.Assets/Images/TheseKillingCringeMachines.jpg"
+                       Source="avares://RegulSaveCleaner/Assets/Images/TheseKillingCringeMachines.jpg"
                        Stretch="Fill"
                        MaxWidth="400"
                        Height="200" />

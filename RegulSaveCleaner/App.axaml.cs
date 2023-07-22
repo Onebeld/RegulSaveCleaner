@@ -2,7 +2,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Avalonia.Styling;
 using PleasantUI;
 using RegulSaveCleaner.Core;
 using RegulSaveCleaner.Structures;
@@ -80,34 +79,6 @@ public class App : Application
 
     private static ResourceDictionary? CurrentLanguage { get; set; }
 
-    /// <summary>
-    /// Looks for a suitable resource in the program.
-    /// </summary>
-    /// <param name="key">Resource name</param>
-    /// <typeparam name="T">Resource type</typeparam>
-    /// <returns>Resource found, otherwise null</returns>
-    public static T GetResource<T>(object key)
-    {
-        object? value = null;
-
-        IResourceHost? current = Current;
-
-        while (current != null)
-        {
-            if (current is { } host)
-            {
-                if (host.TryGetResource(key, out value))
-                {
-                    return (T)value!;
-                }
-            }
-
-            current = ((IStyleHost)current).StylingParent as IResourceHost;
-        }
-
-        return (T)value!;
-    }
-
     public static readonly Language[] Languages =
     {
         new("Čeština (Czech)", "cs"),
@@ -131,7 +102,7 @@ public class App : Application
 
     private void LoadAllLanguages()
     {
-        IList<IResourceProvider> resourceProviders = GetResource<ResourceDictionary>("LanguageDictionary").MergedDictionaries;
+        IList<IResourceProvider> resourceProviders =  ((ResourceDictionary)Current!.FindResource("LanguageDictionary")!).MergedDictionaries;
 
         foreach (IResourceProvider resourceProvider in resourceProviders)
             _xamlLanguages.Add(resourceProvider);

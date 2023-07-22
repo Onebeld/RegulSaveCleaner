@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Media;
 
@@ -14,7 +15,7 @@ public class UnknownIconToMarginConverter : IValueConverter
         if (value is not DrawingImage image)
             return AvaloniaProperty.UnsetValue;
 
-        return Equals(image, App.GetResource<DrawingImage>("UnknownIcon")) ? Thickness.Parse("30") : Thickness.Parse("0");
+        return Equals(image, Application.Current!.FindResource("UnknownIcon")) ? Thickness.Parse("30") : Thickness.Parse("0");
     }
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
