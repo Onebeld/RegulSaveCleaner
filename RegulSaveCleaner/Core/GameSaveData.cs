@@ -65,11 +65,11 @@ public class GameSaveData
         if (ImgInstance != 0)
             foreach (ResourceIndexEntry resource in pkg.GetResourceList)
             {
-                if (resource.Instance == ImgInstance && resource.ResourceType == 1802339198U)
-                {
-                    rie = resource;
-                    break;
-                }
+                if (resource.Instance != ImgInstance || resource.ResourceType != 1802339198U)
+                    continue;
+
+                rie = resource;
+                break;
             }
 
         FamilyIcon = rie != null ? new Bitmap(WrapperDealer.GetResource(pkg, rie).Stream) : null;

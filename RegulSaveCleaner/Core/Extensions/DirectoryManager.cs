@@ -20,13 +20,14 @@ public static class DirectoryManager
             file.CopyTo(tempPath, true);
         }
 
-        if (copySubDirs)
+        if (!copySubDirs)
+            return;
+
+
+        foreach (DirectoryInfo subDir in dirs)
         {
-            foreach (DirectoryInfo subDir in dirs)
-            {
-                string tempPath = Path.Combine(destDirName, subDir.Name);
-                Copy(subDir.FullName, tempPath, true);
-            }
+            string tempPath = Path.Combine(destDirName, subDir.Name);
+            Copy(subDir.FullName, tempPath, true);
         }
     }
 }
