@@ -16,10 +16,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.0" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
+        <PackageReference Include="Avalonia" Version="11.0.1" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.1" />
         <PackageReference Include="Pfim" Version="0.11.2" />
-        <PackageReference Include="PleasantUI" Version="3.0.8" />
+        <PackageReference Include="PleasantUI" Version="3.0.9" />
         <PackageReference Condition="'$(TargetFramework)' != 'net461'" Include="SixLabors.ImageSharp" Version="3.0.1" />
         <PackageReference Condition="'$(TargetFramework)' == 'net461'" Include="SixLabors.ImageSharp" Version="2.1.4" />
     </ItemGroup>
@@ -40,10 +40,9 @@
 
     <PropertyGroup Condition="'$(Configuration.toUpper())' != 'DEBUG'">
         <TrimMode>link</TrimMode>
-        <TrimmerDefaultAction>link</TrimmerDefaultAction>
-        <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
         <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
         <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
         <StripSymbols>true</StripSymbols>
         <OptimizationPreference>Size</OptimizationPreference>
         <MetadataUpdaterSupport>false</MetadataUpdaterSupport>

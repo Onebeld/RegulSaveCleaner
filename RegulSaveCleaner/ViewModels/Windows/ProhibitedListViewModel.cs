@@ -13,8 +13,10 @@ using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.S3PI.Resources;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.Windows;
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
 using IImage = Pfim.IImage;
 
 namespace RegulSaveCleaner.ViewModels.Windows;
