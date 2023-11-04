@@ -3,6 +3,7 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using RegulSaveCleaner.S3PI;
 using RegulSaveCleaner.S3PI.Package;
+using PleasantUI.Reactive;
 
 namespace RegulSaveCleaner.Core;
 

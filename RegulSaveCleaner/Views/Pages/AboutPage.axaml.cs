@@ -24,7 +24,7 @@ public partial class AboutPage : UserControl
         PleasantUIVersion.Text = $"{pleasantUIVersion.Major}.{pleasantUIVersion.Minor}.{pleasantUIVersion.Build}";
 
 #if NET6_0_OR_GREATER
-        ImageSharpVersion.Text = "3.0.1";
+        ImageSharpVersion.Text = "3.0.2";
 #else
         ImageSharpVersion.Text = $"2.1.4";
 #endif
@@ -82,10 +82,9 @@ public partial class AboutPage : UserControl
 
     private void MailButtonOnClick(object? sender, RoutedEventArgs e)
     {
-        const string mailto = "mailto:onebeld@gmail.com";
         Process.Start(new ProcessStartInfo
         {
-            FileName = mailto,
+            FileName = "mailto:onebeld@gmail.com",
             UseShellExecute = true,
         });
     }

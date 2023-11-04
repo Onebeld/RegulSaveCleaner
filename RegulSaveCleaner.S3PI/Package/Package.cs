@@ -42,7 +42,7 @@ public sealed class Package
         // Lock the header while we save to prevent other processes saving concurrently
         // if it's not a file, it's probably safe not to lock it...
         using FileStream fs = _packageStream as FileStream;
-        string tmpFile = Path.GetTempFileName();
+        string tmpFile = GetCacheFileName();
         try
         {
             SaveAs(tmpFile);
@@ -64,6 +64,18 @@ public sealed class Package
         _header = new BinaryReader(_packageStream).ReadBytes(_header.Length);
 
         _index = null;
+    }
+
+    private string GetCacheFileName()
+    {
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache");
+        
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
+
+        string fileName = Guid.NewGuid() + ".tmp";
+
+        return Path.Combine(path, fileName);
     }
 
     /// <summary>

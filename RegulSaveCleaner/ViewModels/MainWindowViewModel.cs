@@ -690,7 +690,7 @@ public class MainWindowViewModel : ViewModelBase
                 Package travelDBPackage = Package.OpenPackage(travelDB, true);
                 
                 UpdateLoadingWindow(loadingWindow, 0, false, travelDBPackage.GetResourceList.Count, $"{gameSave.Name}\n{App.GetString("ProcessingFile")}: {Path.GetFileName(travelDB)}");
-
+                
                 Parallel.ForEach(travelDBPackage.GetResourceList, entry =>
                 {
                     _synchronizationContext.Send(_ => { loadingWindow.ProgressBar.Value += 1; }, "");
