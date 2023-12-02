@@ -4,6 +4,9 @@ namespace RegulSaveCleaner.Core.Constants;
 
 public static class GameDataTypes
 {
+    /// <summary>
+    /// List of types of family portraits
+    /// </summary>
     public static readonly GameDataType FamilyPortraits = new()
     {
         ResourceTypes = new uint[]
@@ -14,6 +17,9 @@ public static class GameDataTypes
         }
     };
 
+    /// <summary>
+    /// List of types and groups of generated images
+    /// </summary>
     public static readonly GameDataType GeneratedImages = new()
     {
         ResourceTypes = new uint[]
@@ -30,6 +36,9 @@ public static class GameDataTypes
         }
     };
 
+    /// <summary>
+    /// List of types and groups of photos
+    /// </summary>
     public static readonly GameDataType Photos = new()
     {
         ResourceTypes = new uint[]
@@ -43,6 +52,9 @@ public static class GameDataTypes
         }
     };
 
+    /// <summary>
+    /// List of types and groups of textures
+    /// </summary>
     public static readonly GameDataType Textures = new()
     {
         ResourceTypes = new uint[]
@@ -62,6 +74,9 @@ public static class GameDataTypes
         }
     };
 
+    /// <summary>
+    /// List of types of lot thumbnails
+    /// </summary>
     public static readonly GameDataType LotThumbnails = new()
     {
         ResourceTypes = new[]
@@ -70,6 +85,9 @@ public static class GameDataTypes
         }
     };
 
+    /// <summary>
+    /// List of types of sim portraits
+    /// </summary>
     public static readonly GameDataType SimPortraits = new()
     {
         ResourceTypes = new uint[]

@@ -27,7 +27,7 @@ public partial class MainWindow : PleasantWindow
         AboutPage.FuncControl += () => new AboutPage();
     }
 
-    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    protected override async void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
         
@@ -51,7 +51,7 @@ public partial class MainWindow : PleasantWindow
         if (Design.IsDesignMode) return;
 #endif
         
-        ViewModel.LoadingSaves();
+        await ViewModel.LoadSaves();
     }
 
     private void OnClosing(object? sender, WindowClosingEventArgs e)

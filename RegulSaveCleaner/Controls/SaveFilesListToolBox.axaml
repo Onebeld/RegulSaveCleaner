@@ -21,7 +21,7 @@
                               Command="{CompiledBinding MoveSavesToSpareFolder}" />
                     <MenuItem Header="{StaticResource RestoreOldSaves}"
                               Command="{CompiledBinding OpenGameSavesTransferWindow}"
-                              IsEnabled="{CompiledBinding FoundSaveFolder}" />
+                              IsEnabled="{CompiledBinding IsFoundSaveFolder}" />
                 </MenuFlyout>
             </Button.Flyout>
 
@@ -105,7 +105,7 @@
                 Background="{StaticResource ControlStrokeColorDefaultBrush}" />
 
         <Button Padding=" 8 6"
-                Command="{CompiledBinding LoadingSaves}"
+                Command="{CompiledBinding LoadSaves}"
                 ToolTip.Tip="{StaticResource UpdateList}">
             <Button.IsEnabled>
                 <MultiBinding Converter="{x:Static BoolConverters.Or}">

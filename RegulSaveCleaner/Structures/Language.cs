@@ -1,15 +1,10 @@
 ﻿namespace RegulSaveCleaner.Structures;
 
-public struct Language
+public readonly struct Language(string name, string key, params string[] additionalKeys)
 {
-    public string Name { get; }
-    public string Key { get; }
-    public string[] AdditionalKeys { get; }
+    public string Name { get; } = name;
 
-    public Language(string name, string key, params string[] additionalKeys)
-    {
-        Name = name;
-        Key = key;
-        AdditionalKeys = additionalKeys;
-    }
+    public string Key { get; } = key;
+
+    public string[] AdditionalKeys { get; } = additionalKeys;
 }

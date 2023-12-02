@@ -66,7 +66,7 @@ public sealed class Package
         _index = null;
     }
 
-    private string GetCacheFileName()
+    private static string GetCacheFileName()
     {
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cache");
         
@@ -106,7 +106,7 @@ public sealed class Package
             byte[] value = PackedChunk(ie);
 
             if (newIe != null)
-                newIe.Chunkoffset = (uint)s.Position;
+                newIe.ChunkOffset = (uint)s.Position;
 
             w.Write(value);
             w.Flush();
@@ -231,7 +231,7 @@ public sealed class Package
             FastBinaryReader r = new(res);
 
             res.Position = 0;
-            chunk = r.ReadBytes((int)ie.Memsize);
+            chunk = r.ReadBytes((int)ie.MemSize);
 
             byte[] comp = ie.Compressed != 0 ? Compression.CompressStream(chunk) : chunk;
             if (comp.Length < chunk.Length)
@@ -239,8 +239,8 @@ public sealed class Package
         }
         else
         {
-            _packageStream.Position = ie.Chunkoffset;
-            chunk = new FastBinaryReader(_packageStream).ReadBytes((int)ie.Filesize);
+            _packageStream.Position = ie.ChunkOffset;
+            chunk = new FastBinaryReader(_packageStream).ReadBytes((int)ie.FileSize);
         }
         return chunk;
     }
@@ -288,11 +288,11 @@ public sealed class Package
 
         if (rc.ResourceStream != null) return rc.ResourceStream;
 
-        if (rc.Chunkoffset == 0xffffffff) return null;
-        _packageStream.Position = rc.Chunkoffset;
+        if (rc.ChunkOffset == 0xffffffff) return null;
+        _packageStream.Position = rc.ChunkOffset;
 
-        if (rc.Filesize == 1 && rc.Memsize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
-        byte[] data = rc.Filesize == rc.Memsize ? new BinaryReader(_packageStream).ReadBytes((int)rc.Filesize) : Compression.UncompressStream(_packageStream, (int)rc.Filesize, (int)rc.Memsize);
+        if (rc.FileSize == 1 && rc.MemSize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
+        byte[] data = rc.FileSize == rc.MemSize ? new BinaryReader(_packageStream).ReadBytes((int)rc.FileSize) : Compression.UncompressStream(_packageStream, (int)rc.FileSize, (int)rc.MemSize);
 
         MemoryStream ms = new();
         ms.Write(data, 0, data.Length);

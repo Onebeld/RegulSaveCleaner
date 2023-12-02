@@ -38,13 +38,10 @@ public sealed class DefaultResource
     /// Create a new instance of the resource.
     /// </summary>
     /// <param name="s">Data _stream to use, or null to create from scratch</param>
-    public DefaultResource(Stream s)
-    {
-        _stream = s ?? new MemoryStream();
-    }
+    public DefaultResource(Stream s) => _stream = s ?? new MemoryStream();
 
     /// <summary>
-    /// The resource content as a Stream, with the _stream position set to the begining.
+    /// The resource content as a Stream, with the _stream position set to the beginning.
     /// </summary>
     public Stream Stream { get { _stream.Position = 0; return _stream; } }
 }

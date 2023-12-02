@@ -28,79 +28,84 @@ namespace RegulSaveCleaner.S3PI.Package
     /// </summary>
     internal static class Compression
     {
-        public static byte[] UncompressStream(Stream stream, int filesize, int memsize)
+        public static byte[] UncompressStream(Stream stream, int fileSize, int memSize)
         {
             BinaryReader r = new(stream);
-            long end = stream.Position + filesize;
+            long end = stream.Position + fileSize;
 
-            byte[] uncdata = new byte[memsize];
-            BinaryWriter bw = new(new MemoryStream(uncdata));
+            byte[] uncData = new byte[memSize];
+            BinaryWriter bw = new(new MemoryStream(uncData));
 
             byte[] data = r.ReadBytes(2);
 
-            int datalen = (((data[0] & 0x80) != 0) ? 4 : 3) * (((data[0] & 0x01) != 0) ? 2 : 1);
-            data = r.ReadBytes(datalen);
+            int dataLen = (data[0] & 0x80) != 0 ? 4 : 3 * ((data[0] & 0x01) != 0 ? 2 : 1);
+            data = r.ReadBytes(dataLen);
 
-            long realsize = 0;
-            for (int i = 0; i < data.Length; i++) realsize = (realsize << 8) + data[i];
+            long realSize = 0;
+            for (int i = 0; i < data.Length; i++) realSize = (realSize << 8) + data[i];
 
             while (stream.Position < end) { Dechunk(stream, bw); }
 
             bw.Close();
 
-            return uncdata;
+            return uncData;
         }
 
-        public static void Dechunk(Stream stream, BinaryWriter bw)
+        private static void Dechunk(Stream stream, BinaryWriter bw)
         {
             BinaryReader r = new(stream);
-            int copysize = 0;
-            int copyoffset = 0;
-            int datalen;
+            int copySize = 0;
+            int copyOffset = 0;
+            int dataLen;
             byte[] data;
 
             byte packing = r.ReadByte();
 
             #region Compressed
-            if (packing < 0x80) // 0.......; new data 3; copy data 10 (min 3); offset 1024
+            switch (packing)
             {
-                data = r.ReadBytes(1);
-                datalen = packing & 0x03;
-                copysize = ((packing >> 2) & 0x07) + 3;
-                copyoffset = (((packing << 3) & 0x300) | data[0]) + 1;
+                // 0.......; new data 3; copy data 10 (min 3); offset 1024
+                case < 0x80:
+                    data = r.ReadBytes(1);
+                    dataLen = packing & 0x03;
+                    copySize = (packing >> 2 & 0x07) + 3;
+                    copyOffset = (packing << 3 & 0x300 | data[0]) + 1;
+                    break;
+                // 10......; new data 3; copy data 67 (min 4); offset 16384
+                case < 0xC0:
+                    data = r.ReadBytes(2);
+                    dataLen = data[0] >> 6 & 0x03;
+                    copySize = (packing & 0x3F) + 4;
+                    copyOffset = (data[0] << 8 & 0x3F00 | data[1]) + 1;
+                    break;
+                // 110.....; new data 3; copy data 1028 (min 5); offset 131072
+                case < 0xE0:
+                    data = r.ReadBytes(3);
+                    dataLen = packing & 0x03;
+                    copySize = (packing << 6 & 0x300 | data[2]) + 5;
+                    copyOffset = (packing << 12 & 0x10000 | data[0] << 8 | data[1]) + 1;
+                    break;
+                // 1110000 - 11101111; new data 4-128
+                case < 0xFC:
+                    dataLen = (packing & 0x1F) + 1 << 2;
+                    break;
+                // 111111..; new data 3
+                default:
+                    dataLen = packing & 0x03;
+                    break;
             }
-            else if (packing < 0xC0) // 10......; new data 3; copy data 67 (min 4); offset 16384
-            {
-                data = r.ReadBytes(2);
-                datalen = (data[0] >> 6) & 0x03;
-                copysize = (packing & 0x3F) + 4;
-                copyoffset = (((data[0] << 8) & 0x3F00) | data[1]) + 1;
-            }
-            else if (packing < 0xE0) // 110.....; new data 3; copy data 1028 (min 5); offset 131072
-            {
-                data = r.ReadBytes(3);
-                datalen = packing & 0x03;
-                copysize = (((packing << 6) & 0x300) | data[2]) + 5;
-                copyoffset = (((packing << 12) & 0x10000) | data[0] << 8 | data[1]) + 1;
-            }
-            #endregion
-            #region Uncompressed
-            else if (packing < 0xFC) // 1110000 - 11101111; new data 4-128
-                datalen = (((packing & 0x1F) + 1) << 2);
-            else // 111111..; new data 3
-                datalen = packing & 0x03;
             #endregion
 
-            if (datalen > 0)
+            if (dataLen > 0)
             {
-                data = r.ReadBytes(datalen);
+                data = r.ReadBytes(dataLen);
                 bw.Write(data);
             }
 
-            if (copysize < copyoffset && copyoffset > 8) CopyA(bw.BaseStream, copyoffset, copysize); else CopyB(bw.BaseStream, copyoffset, copysize);
+            if (copySize < copyOffset && copyOffset > 8) CopyA(bw.BaseStream, copyOffset, copySize); else CopyB(bw.BaseStream, copyOffset, copySize);
         }
 
-        static void CopyA(Stream s, int offset, int len)
+        private static void CopyA(Stream s, int offset, int len)
         {
             while (len > 0)
             {
@@ -116,7 +121,7 @@ namespace RegulSaveCleaner.S3PI.Package
             }
         }
 
-        static void CopyB(Stream s, int offset, int len)
+        private static void CopyB(Stream s, int offset, int len)
         {
             while (len > 0)
             {
@@ -143,13 +148,13 @@ namespace Tiger
 {
     class DbpfCompression
     {
-        public DbpfCompression(int level)
+        private DbpfCompression(int level)
         {
             _mTracker = CreateTracker(level, out _mBruteForceLength);
         }
 
         private int _mBruteForceLength;
-        private IMatchtracker _mTracker;
+        private IMatchTracker _mTracker;
 
         private byte[] _mData;
 
@@ -164,12 +169,12 @@ namespace Tiger
             return compressed != null;
         }
 
-        public byte[] Compress(byte[] data)
+        private byte[] Compress(byte[] data)
         {
-            bool endisvalid = false;
-            List<byte[]> compressedchunks = new();
-            int compressedidx = 0;
-            int compressedlen = 0;
+            bool endIsValid = false;
+            List<byte[]> compressedChunks = new();
+            int compressedIdx = 0;
+            int compressedLen = 0;
 
             if (data.Length < 16 || data.LongLength > uint.MaxValue)
                 return null;
@@ -178,26 +183,26 @@ namespace Tiger
 
             try
             {
-                int lastbytestored = 0;
+                int lastByteStored = 0;
 
-                while (compressedidx < data.Length)
+                while (compressedIdx < data.Length)
                 {
-                    if (data.Length - compressedidx < 4)
+                    if (data.Length - compressedIdx < 4)
                     {
                         // Just copy the rest
-                        byte[] chunk = new byte[data.Length - compressedidx + 1];
-                        chunk[0] = (byte)(0xFC | (data.Length - compressedidx));
-                        Array.Copy(data, compressedidx, chunk, 1, data.Length - compressedidx);
-                        compressedchunks.Add(chunk);
-                        compressedidx += chunk.Length - 1;
-                        compressedlen += chunk.Length;
+                        byte[] chunk = new byte[data.Length - compressedIdx + 1];
+                        chunk[0] = (byte)(0xFC | data.Length - compressedIdx);
+                        Array.Copy(data, compressedIdx, chunk, 1, data.Length - compressedIdx);
+                        compressedChunks.Add(chunk);
+                        compressedIdx += chunk.Length - 1;
+                        compressedLen += chunk.Length;
 
-                        endisvalid = true;
+                        endIsValid = true;
                         continue;
                     }
 
-                    while (compressedidx > lastbytestored - 3)
-                        _mTracker.Addvalue(data[lastbytestored++]);
+                    while (compressedIdx > lastByteStored - 3)
+                        _mTracker.AddValue(data[lastByteStored++]);
 
                     // Search ahead in blocks of 4 bytes for a match until one is found
                     // Record the best match if multiple are found
@@ -208,33 +213,32 @@ namespace Tiger
                     {
                         for (int loop = 0; loop < 4; loop++)
                         {
-                            if (lastbytestored < data.Length)
-                                _mTracker.Addvalue(data[lastbytestored++]);
-                            FindSequence(lastbytestored - 4);
+                            if (lastByteStored < data.Length)
+                                _mTracker.AddValue(data[lastByteStored++]);
+                            FindSequence(lastByteStored - 4);
                         }
                     }
-                    while (!_mSequenceFound && lastbytestored + 4 <= data.Length);
+                    while (!_mSequenceFound && lastByteStored + 4 <= data.Length);
 
                     if (!_mSequenceFound)
                         _mSequenceDest = _mData.Length;
 
                     // If the next match is more than four bytes away, put in codes to read uncompressed data
-                    while (_mSequenceDest - compressedidx >= 4)
+                    while (_mSequenceDest - compressedIdx >= 4)
                     {
-                        int tocopy = (_mSequenceDest - compressedidx) & ~3;
-                        if (tocopy > 112) tocopy = 112;
+                        int toCopy = _mSequenceDest - compressedIdx & ~3;
+                        if (toCopy > 112) toCopy = 112;
 
-                        byte[] chunk = new byte[tocopy + 1];
-                        chunk[0] = (byte)(0xE0 | ((tocopy >> 2) - 1));
-                        Array.Copy(data, compressedidx, chunk, 1, tocopy);
-                        compressedchunks.Add(chunk);
-                        compressedidx += tocopy;
-                        compressedlen += chunk.Length;
+                        byte[] chunk = new byte[toCopy + 1];
+                        chunk[0] = (byte)(0xE0 | (toCopy >> 2) - 1);
+                        Array.Copy(data, compressedIdx, chunk, 1, toCopy);
+                        compressedChunks.Add(chunk);
+                        compressedIdx += toCopy;
+                        compressedLen += chunk.Length;
                     }
 
                     if (_mSequenceFound)
                     {
-                        byte[] chunk;
                         /*
                          * 00-7F  0oocccpp oooooooo
                          *   Read 0-3
@@ -257,89 +261,87 @@ namespace Tiger
                          * FD-FF  111111pp
                          *   Read 0-3
                          */
-                        //if (FindRunLength(data, seqstart, compressedidx + seqidx) < seqlength)
-                        //{
-                        //    break;
-                        //}
                         while (_mSequenceLength > 0)
                         {
-                            int thislength = _mSequenceLength;
-                            if (thislength > 1028)
-                                thislength = 1028;
-                            _mSequenceLength -= thislength;
+                            int thisLength = _mSequenceLength;
+                            if (thisLength > 1028)
+                                thisLength = 1028;
+                            _mSequenceLength -= thisLength;
 
                             int offset = _mSequenceDest - _mSequenceSource - 1;
-                            int readbytes = _mSequenceDest - compressedidx;
+                            int readBytes = _mSequenceDest - compressedIdx;
 
-                            _mSequenceSource += thislength;
-                            _mSequenceDest += thislength;
+                            _mSequenceSource += thisLength;
+                            _mSequenceDest += thisLength;
 
-                            if (thislength > 67 || offset > 16383)
+                            byte[] chunk;
+
+                            if (thisLength > 67 || offset > 16383)
                             {
-                                chunk = new byte[readbytes + 4];
-                                chunk[0] = (byte)(0xC0 | readbytes | (((thislength - 5) >> 6) & 0x0C) | ((offset >> 12) & 0x10));
-                                chunk[1] = (byte)((offset >> 8) & 0xFF);
+                                chunk = new byte[readBytes + 4];
+                                chunk[0] = (byte)(0xC0 | readBytes | thisLength - 5 >> 6 & 0x0C | offset >> 12 & 0x10);
+                                chunk[1] = (byte)(offset >> 8 & 0xFF);
                                 chunk[2] = (byte)(offset & 0xFF);
-                                chunk[3] = (byte)((thislength - 5) & 0xFF);
+                                chunk[3] = (byte)(thisLength - 5 & 0xFF);
                             }
-                            else if (thislength > 10 || offset > 1023)
+                            else if (thisLength > 10 || offset > 1023)
                             {
-                                chunk = new byte[readbytes + 3];
-                                chunk[0] = (byte)(0x80 | ((thislength - 4) & 0x3F));
-                                chunk[1] = (byte)(((readbytes << 6) & 0xC0) | ((offset >> 8) & 0x3F));
+                                chunk = new byte[readBytes + 3];
+                                chunk[0] = (byte)(0x80 | thisLength - 4 & 0x3F);
+                                chunk[1] = (byte)(readBytes << 6 & 0xC0 | offset >> 8 & 0x3F);
                                 chunk[2] = (byte)(offset & 0xFF);
                             }
                             else
                             {
-                                chunk = new byte[readbytes + 2];
-                                chunk[0] = (byte)((readbytes & 0x3) | (((thislength - 3) << 2) & 0x1C) | ((offset >> 3) & 0x60));
+                                chunk = new byte[readBytes + 2];
+                                chunk[0] = (byte)(readBytes & 0x3 | thisLength - 3 << 2 & 0x1C | offset >> 3 & 0x60);
                                 chunk[1] = (byte)(offset & 0xFF);
                             }
 
-                            if (readbytes > 0)
-                                Array.Copy(data, compressedidx, chunk, chunk.Length - readbytes, readbytes);
+                            if (readBytes > 0)
+                                Array.Copy(data, compressedIdx, chunk, chunk.Length - readBytes, readBytes);
 
-                            compressedchunks.Add(chunk);
-                            compressedidx += thislength + readbytes;
-                            compressedlen += chunk.Length;
+                            compressedChunks.Add(chunk);
+                            compressedIdx += thisLength + readBytes;
+                            compressedLen += chunk.Length;
                         }
                     }
                 }
 
-                if (compressedlen + 6 < data.Length)
+                if (compressedLen + 6 < data.Length)
                 {
-                    int chunkpos;
+                    int chunkPos;
                     byte[] compressed;
 
                     if (data.Length > 0xFFFFFF)
                     {
                         // Activate the large data bit for > 16mb uncompressed data
-                        compressed = new byte[compressedlen + 6 + (endisvalid ? 0 : 1)];
+                        compressed = new byte[compressedLen + 6 + (endIsValid ? 0 : 1)];
                         compressed[0] = 0x10 | 0x80; // 0x80 = length is 4 bytes
                         compressed[1] = 0xFB;
                         compressed[2] = (byte)(data.Length >> 24);
                         compressed[3] = (byte)(data.Length >> 16);
                         compressed[4] = (byte)(data.Length >> 8);
-                        compressed[5] = (byte)(data.Length);
-                        chunkpos = 6;
+                        compressed[5] = (byte)data.Length;
+                        chunkPos = 6;
                     }
                     else
                     {
-                        compressed = new byte[compressedlen + 5 + (endisvalid ? 0 : 1)];
+                        compressed = new byte[compressedLen + 5 + (endIsValid ? 0 : 1)];
                         compressed[0] = 0x10;
                         compressed[1] = 0xFB;
                         compressed[2] = (byte)(data.Length >> 16);
                         compressed[3] = (byte)(data.Length >> 8);
-                        compressed[4] = (byte)(data.Length);
-                        chunkpos = 5;
+                        compressed[4] = (byte)data.Length;
+                        chunkPos = 5;
                     }
 
-                    for (int loop = 0; loop < compressedchunks.Count; loop++)
+                    for (int loop = 0; loop < compressedChunks.Count; loop++)
                     {
-                        Array.Copy(compressedchunks[loop], 0, compressed, chunkpos, compressedchunks[loop].Length);
-                        chunkpos += compressedchunks[loop].Length;
+                        Array.Copy(compressedChunks[loop], 0, compressed, chunkPos, compressedChunks[loop].Length);
+                        chunkPos += compressedChunks[loop].Length;
                     }
-                    if (!endisvalid)
+                    if (!endIsValid)
                         compressed[compressed.Length - 1] = 0xfc;
                     return compressed;
                 }
@@ -353,22 +355,22 @@ namespace Tiger
             }
         }
 
-        private void FindSequence(int startindex)
+        private void FindSequence(int startIndex)
         {
             // Try a straight forward brute force first
             int end = -_mBruteForceLength;
-            if (startindex < _mBruteForceLength)
-                end = -startindex;
+            if (startIndex < _mBruteForceLength)
+                end = -startIndex;
 
-            byte searchforbyte = _mData[startindex];
+            byte searchForByte = _mData[startIndex];
 
             for (int loop = -1; loop >= end && _mSequenceLength < 1028; loop--)
             {
-                byte curbyte = _mData[loop + startindex];
-                if (curbyte != searchforbyte)
+                byte curByte = _mData[loop + startIndex];
+                if (curByte != searchForByte)
                     continue;
 
-                int len = FindRunLength(startindex + loop, startindex);
+                int len = FindRunLength(startIndex + loop, startIndex);
 
                 if (len <= _mSequenceLength
                     || len < 3
@@ -377,112 +379,115 @@ namespace Tiger
                     continue;
 
                 _mSequenceFound = true;
-                _mSequenceSource = startindex + loop;
+                _mSequenceSource = startIndex + loop;
                 _mSequenceLength = len;
-                _mSequenceDest = startindex;
+                _mSequenceDest = startIndex;
             }
 
             // Use the look-up table next
-            int matchloc;
-            if (_mSequenceLength < 1028 && _mTracker.FindMatch(out matchloc))
+            if (_mSequenceLength < 1028 && _mTracker.FindMatch(out int matchLoc))
             {
                 do
                 {
-                    int len = FindRunLength(matchloc, startindex);
+                    int len = FindRunLength(matchLoc, startIndex);
                     if (len < 5)
                         continue;
 
                     _mSequenceFound = true;
-                    _mSequenceSource = matchloc;
+                    _mSequenceSource = matchLoc;
                     _mSequenceLength = len;
-                    _mSequenceDest = startindex;
+                    _mSequenceDest = startIndex;
                 }
-                while (_mSequenceLength < 1028 && _mTracker.Nextmatch(out matchloc));
+                while (_mSequenceLength < 1028 && _mTracker.NextMatch(out matchLoc));
             }
         }
 
         private int FindRunLength(int src, int dst)
         {
-            int endsrc = src + 1;
-            int enddst = dst + 1;
-            while (enddst < _mData.Length && _mData[endsrc] == _mData[enddst] && enddst - dst < 1028)
+            int endSrc = src + 1;
+            int endDst = dst + 1;
+            while (endDst < _mData.Length && _mData[endSrc] == _mData[endDst] && endDst - dst < 1028)
             {
-                endsrc++;
-                enddst++;
+                endSrc++;
+                endDst++;
             }
 
-            return enddst - dst;
+            return endDst - dst;
         }
 
-        private interface IMatchtracker
+        private interface IMatchTracker
         {
             bool FindMatch(out int where);
-            bool Nextmatch(out int where);
-            void Addvalue(byte val);
+            bool NextMatch(out int where);
+            void AddValue(byte val);
             void Reset();
         }
 
-        static IMatchtracker CreateTracker(int blockinterval, int lookupstart, int windowlength, int bucketdepth)
+        private static IMatchTracker CreateTracker(int blockInterval, int lookupStart, int windowLength, int bucketDepth)
         {
-            if (bucketdepth <= 1)
-                return new SingledepthMatchTracker(blockinterval, lookupstart, windowlength);
-            return new DeepMatchTracker(blockinterval, lookupstart, windowlength, bucketdepth);
+            if (bucketDepth <= 1)
+                return new SingleDepthMatchTracker(blockInterval, lookupStart, windowLength);
+            return new DeepMatchTracker(blockInterval, lookupStart, windowLength, bucketDepth);
         }
 
-        static IMatchtracker CreateTracker(int level, out int bruteforcelength)
+        private static IMatchTracker CreateTracker(int level, out int bruteforceLength)
         {
-            switch (level)
+            while (true)
             {
-                case 0:
-                    bruteforcelength = 0;
-                    return CreateTracker(4, 0, 16384, 1);
-                case 1:
-                    bruteforcelength = 0;
-                    return CreateTracker(2, 0, 32768, 1);
-                case 2:
-                    bruteforcelength = 0;
-                    return CreateTracker(1, 0, 65536, 1);
-                case 3:
-                    bruteforcelength = 0;
-                    return CreateTracker(1, 0, 131000, 2);
-                case 4:
-                    bruteforcelength = 16;
-                    return CreateTracker(1, 16, 131000, 2);
-                case 5:
-                    bruteforcelength = 16;
-                    return CreateTracker(1, 16, 131000, 5);
-                case 6:
-                    bruteforcelength = 32;
-                    return CreateTracker(1, 32, 131000, 5);
-                case 7:
-                    bruteforcelength = 32;
-                    return CreateTracker(1, 32, 131000, 10);
-                case 8:
-                    bruteforcelength = 64;
-                    return CreateTracker(1, 64, 131000, 10);
-                case 9:
-                    bruteforcelength = 128;
-                    return CreateTracker(1, 128, 131000, 20);
-                default:
-                    return CreateTracker(5, out bruteforcelength);
+                switch (level)
+                {
+                    case 0:
+                        bruteforceLength = 0;
+                        return CreateTracker(4, 0, 16384, 1);
+                    case 1:
+                        bruteforceLength = 0;
+                        return CreateTracker(2, 0, 32768, 1);
+                    case 2:
+                        bruteforceLength = 0;
+                        return CreateTracker(1, 0, 65536, 1);
+                    case 3:
+                        bruteforceLength = 0;
+                        return CreateTracker(1, 0, 131000, 2);
+                    case 4:
+                        bruteforceLength = 16;
+                        return CreateTracker(1, 16, 131000, 2);
+                    case 5:
+                        bruteforceLength = 16;
+                        return CreateTracker(1, 16, 131000, 5);
+                    case 6:
+                        bruteforceLength = 32;
+                        return CreateTracker(1, 32, 131000, 5);
+                    case 7:
+                        bruteforceLength = 32;
+                        return CreateTracker(1, 32, 131000, 10);
+                    case 8:
+                        bruteforceLength = 64;
+                        return CreateTracker(1, 64, 131000, 10);
+                    case 9:
+                        bruteforceLength = 128;
+                        return CreateTracker(1, 128, 131000, 20);
+                    default:
+                        level = 5;
+                        continue;
+                }
             }
         }
 
-        private class SingledepthMatchTracker : IMatchtracker
+        private class SingleDepthMatchTracker : IMatchTracker
         {
-            public SingledepthMatchTracker(int blockinterval, int lookupstart, int windowlength)
+            public SingleDepthMatchTracker(int blockInterval, int lookupStart, int windowLength)
             {
-                _mInterval = blockinterval;
-                int res = lookupstart / blockinterval;
-                if (lookupstart > 0)
+                _mInterval = blockInterval;
+                int res = lookupStart / blockInterval;
+                if (lookupStart > 0)
                 {
                     _mPendingValues = new uint[res];
-                    _mQueueLength = _mPendingValues.Length * blockinterval;
+                    _mQueueLength = _mPendingValues.Length * blockInterval;
                 }
                 else
                     _mQueueLength = 0;
-                _mInsertedValues = new uint[windowlength / blockinterval - res];
-                _mWindowStart = -(_mInsertedValues.Length + res) * blockinterval - 4;
+                _mInsertedValues = new uint[windowLength / blockInterval - res];
+                _mWindowStart = -(_mInsertedValues.Length + res) * blockInterval - 4;
             }
 
             public void Reset()
@@ -505,15 +510,15 @@ namespace Tiger
             private uint _mRunningValue;
 
             // How often to insert into the table
-            private int _mInterval;
+            private readonly int _mInterval;
             // Avoid division by using a rolling count instead
             private int _mRollingInterval;
 
             // How many bytes to queue up before adding it to the lookup table
-            private int _mQueueLength;
+            private readonly int _mQueueLength;
 
             // Queued up values for future matches
-            private uint[] _mPendingValues;
+            private readonly uint[] _mPendingValues;
             private int _mPendingOffset;
 
             // Bytes processed so far
@@ -524,22 +529,22 @@ namespace Tiger
             private bool _mInitialized;
 
             // Values values pending removal
-            private uint[] _mInsertedValues;
+            private readonly uint[] _mInsertedValues;
             private int _mInsertLocation;
 
             // Hash of seen values
-            private Dictionary<uint, int> _mLookupTable = new();
+            private readonly Dictionary<uint, int> _mLookupTable = new();
 
             #region IMatchtracker Members
 
             // Never more than one match with a depth of 1
-            public bool Nextmatch(out int where)
+            public bool NextMatch(out int where)
             {
                 where = 0;
                 return false;
             }
 
-            public void Addvalue(byte val)
+            public void AddValue(byte val)
             {
                 if (_mInitialized)
                 {
@@ -554,23 +559,23 @@ namespace Tiger
                             int idx;
                             if (_mInsertLocation == _mInsertedValues.Length)
                                 _mInsertLocation = 0;
-                            uint oldval = _mInsertedValues[_mInsertLocation];
-                            if (_mLookupTable.TryGetValue(oldval, out idx) && idx == _mWindowStart)
-                                _mLookupTable.Remove(oldval);
+                            uint oldVal = _mInsertedValues[_mInsertLocation];
+                            if (_mLookupTable.TryGetValue(oldVal, out idx) && idx == _mWindowStart)
+                                _mLookupTable.Remove(oldVal);
                         }
                         if (_mPendingValues != null)
                         {
                             // Pop the top of the queue and put it in the table
                             if (_mDataLength > _mQueueLength + 4)
                             {
-                                uint poppedval = _mPendingValues[_mPendingOffset];
-                                _mInsertedValues[_mInsertLocation] = poppedval;
+                                uint poppedVal = _mPendingValues[_mPendingOffset];
+                                _mInsertedValues[_mInsertLocation] = poppedVal;
                                 _mInsertLocation++;
                                 if (_mInsertLocation > _mInsertedValues.Length)
                                     _mInsertLocation = 0;
 
                                 // Put it into the table
-                                _mLookupTable[poppedval] = _mDataLength - _mQueueLength - 4;
+                                _mLookupTable[poppedVal] = _mDataLength - _mQueueLength - 4;
                             }
                             // Push the next value onto the queue
                             _mPendingValues[_mPendingOffset] = _mRunningValue;
@@ -595,10 +600,10 @@ namespace Tiger
                     _mRollingInterval++;
                     if (_mRollingInterval == _mInterval)
                         _mRollingInterval = 0;
-                    _mInitialized = (_mDataLength == 3);
+                    _mInitialized = _mDataLength == 3;
                 }
 
-                _mRunningValue = (_mRunningValue << 8) | val;
+                _mRunningValue = _mRunningValue << 8 | val;
                 _mDataLength++;
                 _mWindowStart++;
             }
@@ -611,22 +616,22 @@ namespace Tiger
             #endregion
         }
 
-        private class DeepMatchTracker : IMatchtracker
+        private class DeepMatchTracker : IMatchTracker
         {
-            public DeepMatchTracker(int blockinterval, int lookupstart, int windowlength, int bucketdepth)
+            public DeepMatchTracker(int blockInterval, int lookupStart, int windowLength, int bucketDepth)
             {
-                _mInterval = blockinterval;
-                int res = lookupstart / blockinterval;
-                if (lookupstart > 0)
+                _mInterval = blockInterval;
+                int res = lookupStart / blockInterval;
+                if (lookupStart > 0)
                 {
                     _mPendingValues = new uint[res];
-                    _mQueueLength = _mPendingValues.Length * blockinterval;
+                    _mQueueLength = _mPendingValues.Length * blockInterval;
                 }
                 else
                     _mQueueLength = 0;
-                _mInsertedValues = new uint[windowlength / blockinterval - res];
-                _mWindowStart = -(_mInsertedValues.Length + res) * blockinterval - 4;
-                _mBucketDepth = bucketdepth;
+                _mInsertedValues = new uint[windowLength / blockInterval - res];
+                _mWindowStart = -(_mInsertedValues.Length + res) * blockInterval - 4;
+                _mBucketDepth = bucketDepth;
             }
 
             public void Reset()
@@ -686,7 +691,7 @@ namespace Tiger
 
             #region IMatchtracker Members
 
-            public void Addvalue(byte val)
+            public void AddValue(byte val)
             {
                 if (_mInitialized)
                 {
@@ -698,16 +703,15 @@ namespace Tiger
                         // Remove a value from the table if the window just rolled past it
                         if (_mWindowStart > 0)
                         {
-                            List<int> locations;
                             if (_mInsertLocation == _mInsertedValues.Length)
                                 _mInsertLocation = 0;
-                            uint oldval = _mInsertedValues[_mInsertLocation];
-                            if (_mLookupTable.TryGetValue(oldval, out locations) && locations[0] == _mWindowStart)
+                            uint oldVal = _mInsertedValues[_mInsertLocation];
+                            if (_mLookupTable.TryGetValue(oldVal, out List<int> locations) && locations[0] == _mWindowStart)
                             {
                                 locations.RemoveAt(0);
                                 if (locations.Count == 0)
                                 {
-                                    _mLookupTable.Remove(oldval);
+                                    _mLookupTable.Remove(oldVal);
                                     _mUnusedLists.Push(locations);
                                 }
                             }
@@ -717,15 +721,14 @@ namespace Tiger
                             // Pop the top of the queue and put it in the table
                             if (_mDataLength > _mQueueLength + 4)
                             {
-                                uint poppedval = _mPendingValues[_mPendingOffset];
-                                _mInsertedValues[_mInsertLocation] = poppedval;
+                                uint poppedVal = _mPendingValues[_mPendingOffset];
+                                _mInsertedValues[_mInsertLocation] = poppedVal;
                                 _mInsertLocation++;
                                 if (_mInsertLocation > _mInsertedValues.Length)
                                     _mInsertLocation = 0;
 
                                 // Put it into the table
-                                List<int> locations;
-                                if (_mLookupTable.TryGetValue(poppedval, out locations))
+                                if (_mLookupTable.TryGetValue(poppedVal, out List<int> locations))
                                 {
                                     // Check if the bucket runneth over
                                     if (locations.Count == _mBucketDepth)
@@ -735,7 +738,7 @@ namespace Tiger
                                 {
                                     // Allocate a new bucket
                                     locations = _mUnusedLists.Count > 0 ? _mUnusedLists.Pop() : new List<int>(1);
-                                    _mLookupTable[poppedval] = locations;
+                                    _mLookupTable[poppedVal] = locations;
                                 }
                                 locations.Add(_mDataLength - _mQueueLength - 4);
                             }
@@ -753,8 +756,7 @@ namespace Tiger
                                 _mInsertLocation = 0;
 
                             // Put it into the table
-                            List<int> locations;
-                            if (_mLookupTable.TryGetValue(_mRunningValue, out locations))
+                            if (_mLookupTable.TryGetValue(_mRunningValue, out List<int> locations))
                             {
                                 // Check if the bucket runneth over
                                 if (locations.Count == _mBucketDepth)
@@ -775,14 +777,14 @@ namespace Tiger
                     _mRollingInterval++;
                     if (_mRollingInterval == _mInterval)
                         _mRollingInterval = 0;
-                    _mInitialized = (_mDataLength == 3);
+                    _mInitialized = _mDataLength == 3;
                 }
-                _mRunningValue = (_mRunningValue << 8) | val;
+                _mRunningValue = _mRunningValue << 8 | val;
                 _mDataLength++;
                 _mWindowStart++;
             }
 
-            public bool Nextmatch(out int where)
+            public bool NextMatch(out int where)
             {
                 if (_mCurrentMatch != null && _mCurrentMatchIndex < _mCurrentMatch.Count)
                 {

@@ -4,6 +4,9 @@ namespace RegulSaveCleaner.Core.Constants;
 
 public static class LocalizedNames
 {
+    /// <summary>
+    /// Localized title of the game The Sims 3
+    /// </summary>
     public static string TheSims3
     {
         get => CultureInfo.CurrentCulture.TwoLetterISOLanguageName switch

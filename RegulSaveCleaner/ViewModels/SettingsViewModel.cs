@@ -166,7 +166,7 @@ public class SettingsViewModel : ViewModelBase
 
     public async void ChoosePathForOldSaves()
     {
-        string? path = await StorageProvider.SelectFolder(App.MainWindow);
+        string? path = await StorageProvider.SelectDirectory(App.MainWindow);
 
         if (!string.IsNullOrWhiteSpace(path))
             RegulSettings.Instance.PathToFolderWithOldSaves = path;
@@ -174,22 +174,22 @@ public class SettingsViewModel : ViewModelBase
     
     public async void ChoosePathToTheSims3Documents()
     {
-        string? path = await StorageProvider.SelectFolder(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+        string? path = await StorageProvider.SelectDirectory(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
         if (!string.IsNullOrWhiteSpace(path))
             RegulSettings.Instance.PathToTheSims3Document = path;
 
-        App.MainWindow.ViewModel.LoadingSaves();
+        await App.MainWindow.ViewModel.LoadSaves();
     }
     
     public async void ChoosePathToSave()
     {
-        string? path = await StorageProvider.SelectFolder(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+        string? path = await StorageProvider.SelectDirectory(App.MainWindow, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
         if (!string.IsNullOrWhiteSpace(path))
             RegulSettings.Instance.PathToSaves = path;
         
-        App.MainWindow.ViewModel.LoadingSaves();
+        await App.MainWindow.ViewModel.LoadSaves();
     }
     
     public async void ClearOldProhibitedLists()

@@ -7,7 +7,7 @@ namespace RegulSaveCleaner.Views.Windows;
 
 public partial class ProhibitedListWindow : ContentDialog
 {
-    public ProhibitedListViewModel ViewModel { get; set; }
+    public ProhibitedListViewModel ViewModel { get; }
     
     public ProhibitedListWindow() => InitializeComponent();
 

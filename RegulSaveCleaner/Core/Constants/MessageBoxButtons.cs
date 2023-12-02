@@ -28,22 +28,6 @@ public static class MessageBoxButtons
         }
     };
 
-    public static readonly IReadOnlyList<MessageBoxButton> YesNoCancel = new []
-    {
-        new MessageBoxButton
-        {
-            Text = "Yes", Default = true, Result = "Yes", IsKeyDown = true
-        },
-        new MessageBoxButton
-        {
-            Text = "No", Result = "No"
-        },
-        new MessageBoxButton
-        {
-            Text = "Cancel", Result = "Cancel"
-        }
-    };
-
     public static readonly IReadOnlyList<MessageBoxButton> Ok = new[]
     {
         new MessageBoxButton

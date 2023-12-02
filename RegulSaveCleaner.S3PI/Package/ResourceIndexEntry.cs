@@ -18,6 +18,7 @@
  *  along with s3pi.  If not, see <http://www.gnu.org/licenses/>.          *
  ***************************************************************************/
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace RegulSaveCleaner.S3PI.Package;
@@ -25,7 +26,7 @@ namespace RegulSaveCleaner.S3PI.Package;
 /// <summary>
 /// Implementation of an index entry
 /// </summary>
-public class ResourceIndexEntry
+public sealed class ResourceIndexEntry
 {
     #region AResourceIndexEntry
     /// <summary>
@@ -47,12 +48,12 @@ public class ResourceIndexEntry
     /// </summary>
     public ulong Instance
     {
-        get => ((ulong)BitConverter.ToUInt32(_indexEntry, 12) << 32) | BitConverter.ToUInt32(_indexEntry, 16);
+        get => (ulong)BitConverter.ToUInt32(_indexEntry, 12) << 32 | BitConverter.ToUInt32(_indexEntry, 16);
     }
     /// <summary>
     /// If the resource was read from a package, the location in the package the resource was read from
     /// </summary>
-    public uint Chunkoffset
+    public uint ChunkOffset
     {
         get => BitConverter.ToUInt32(_indexEntry, 20);
         set { byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, _indexEntry, 20, src.Length);
@@ -62,19 +63,19 @@ public class ResourceIndexEntry
     /// <summary>
     /// The number of bytes the resource uses within the package
     /// </summary>
-    public uint Filesize
+    public uint FileSize
     {
         get => BitConverter.ToUInt32(_indexEntry, 24) & 0x7fffffff;
     }
     /// <summary>
     /// The number of bytes the resource uses in memory
     /// </summary>
-    public uint Memsize
+    public uint MemSize
     {
         get => BitConverter.ToUInt32(_indexEntry, 28);
     }
     /// <summary>
-    /// 0xFFFF if Filesize != Memsize, else 0x0000
+    /// 0xFFFF if FileSize != MemSize, else 0x0000
     /// </summary>
     public ushort Compressed
     {
@@ -97,7 +98,7 @@ public class ResourceIndexEntry
     /// Get a copy of this element but with a new change event handler
     /// </summary>
     /// <returns>Return a copy of this element but with a new change event handler</returns>
-    public virtual ResourceIndexEntry Clone() { return new ResourceIndexEntry(_indexEntry); }
+    public ResourceIndexEntry Clone() { return new ResourceIndexEntry(_indexEntry); }
     #endregion
 
 
@@ -105,12 +106,12 @@ public class ResourceIndexEntry
     /// <summary>
     /// The index entry data
     /// </summary>
-    readonly byte[] _indexEntry;
+    private readonly byte[] _indexEntry;
 
     /// <summary>
     /// True if the index entry should be treated as deleted
     /// </summary>
-    bool _isDeleted;
+    private bool _isDeleted;
 
     /// <summary>
     /// Create a new index entry as a byte-for-byte copy of <paramref name="indexEntry"/>
@@ -123,9 +124,9 @@ public class ResourceIndexEntry
     /// </summary>
     /// <param name="header">header ints (same for each index entry); [0] is the index type</param>
     /// <param name="entry">entry ints (specific to this entry)</param>
-    internal ResourceIndexEntry(int[] header, int[] entry)
+    internal ResourceIndexEntry(IReadOnlyList<int> header, IReadOnlyList<int> entry)
     {
-        _indexEntry = new byte[(header.Length + entry.Length) * 4];
+        _indexEntry = new byte[(header.Count + entry.Count) * 4];
         MemoryStream ms = new(_indexEntry);
         BinaryWriter w = new(ms);
 
@@ -138,17 +139,17 @@ public class ResourceIndexEntry
         w.Write((ihGt & 0x02) != 0 ? header[hc++] : entry[ec++]);
         w.Write((ihGt & 0x04) != 0 ? header[hc++] : entry[ec++]);
 
-        for (; hc < header.Length - 1; hc++)
+        for (; hc < header.Count - 1; hc++)
             w.Write(header[hc]);
 
-        for (; ec < entry.Length; ec++)
+        for (; ec < entry.Count; ec++)
             w.Write(entry[ec]);
     }
 
     /// <summary>
     /// The uncompressed resource data associated with this index entry
     /// (used to save having to uncompress the same entry again if it's requested more than once)
-    /// Setting the stream updates the Memsize
+    /// Setting the stream updates the MemSize
     /// </summary>
     /// <remarks>Use Package.ReplaceResource() from user code</remarks>
     internal Stream ResourceStream { get; }
@@ -156,7 +157,7 @@ public class ResourceIndexEntry
     /// <summary>
     /// True if the index entry should be treated as dirty - e.g. the ResourceStream has been replaced
     /// </summary>
-    internal bool IsDirty { get; set; }
+    internal bool IsDirty { get; private set; }
 
     #endregion
 }

@@ -27,44 +27,39 @@ namespace RegulSaveCleaner.S3PI.Package;
 /// </summary>
 internal class PackageIndex : List<ResourceIndexEntry>
 {
-    const int NumFields = 9;
+    private const int NumFields = 9;
 
-    uint _indextype;
-    public uint Indextype
-    {
-        get => _indextype;
-        set => _indextype = value;
-    }
+    public uint Indextype { get; set; }
 
-    int Hdrsize
+    int HdrSize
     {
         get
         {
             int hc = 1;
-            for (int i = 0; i < sizeof(uint); i++) if ((_indextype & (1 << i)) != 0) hc++;
+            for (int i = 0; i < sizeof(uint); i++) if ((Indextype & 1 << i) != 0) hc++;
             return hc;
         }
     }
 
     public PackageIndex() { }
 
-    public PackageIndex(Stream s, int indexposition, int indexcount)
+    public PackageIndex(Stream s, int indexPosition, int indexCount)
     {
         if (s == null) return;
-        if (indexposition == 0) return;
+        if (indexPosition == 0) return;
 
         BinaryReader r = new(s);
-        s.Position = indexposition;
-        _indextype = r.ReadUInt32();
+        s.Position = indexPosition;
+        Indextype = r.ReadUInt32();
 
-        int[] hdr = new int[Hdrsize];
-        int[] entry = new int[NumFields - Hdrsize];
+        int[] hdr = new int[HdrSize];
+        int[] entry = new int[NumFields - HdrSize];
 
-        hdr[0] = (int)_indextype;
+        hdr[0] = (int)Indextype;
         for (int i = 1; i < hdr.Length; i++)
             hdr[i] = r.ReadInt32();
 
-        for (int i = 0; i < indexcount; i++)
+        for (int i = 0; i < indexCount; i++)
         {
             for (int j = 0; j < entry.Length; j++)
                 entry[j] = r.ReadInt32();
@@ -72,17 +67,17 @@ internal class PackageIndex : List<ResourceIndexEntry>
         }
     }
 
-    public int Size => (Count * (NumFields - Hdrsize) + Hdrsize) * 4;
+    public int Size => (Count * (NumFields - HdrSize) + HdrSize) * 4;
 
     public void Save(BinaryWriter w)
     {
         BinaryReader r = Count == 0 ? new BinaryReader(new MemoryStream(new byte[NumFields * 4])) : new BinaryReader(this[0].Stream);
             
         r.BaseStream.Position = 4;
-        w.Write(_indextype);
-        if ((_indextype & 0x01) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
-        if ((_indextype & 0x02) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
-        if ((_indextype & 0x04) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
+        w.Write(Indextype);
+        if ((Indextype & 0x01) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
+        if ((Indextype & 0x02) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
+        if ((Indextype & 0x04) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
 
         for (int index = 0; index < Count; index++)
         {
@@ -90,11 +85,11 @@ internal class PackageIndex : List<ResourceIndexEntry>
                 
             r = new BinaryReader(ie.Stream);
             r.BaseStream.Position = 4;
-            if ((_indextype & 0x01) == 0) w.Write(r.ReadUInt32());
+            if ((Indextype & 0x01) == 0) w.Write(r.ReadUInt32());
             else r.BaseStream.Position += 4;
-            if ((_indextype & 0x02) == 0) w.Write(r.ReadUInt32());
+            if ((Indextype & 0x02) == 0) w.Write(r.ReadUInt32());
             else r.BaseStream.Position += 4;
-            if ((_indextype & 0x04) == 0) w.Write(r.ReadUInt32());
+            if ((Indextype & 0x04) == 0) w.Write(r.ReadUInt32());
             else r.BaseStream.Position += 4;
             w.Write(r.ReadBytes((int) (ie.Stream.Length - ie.Stream.Position)));
         }

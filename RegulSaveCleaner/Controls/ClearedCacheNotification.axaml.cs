@@ -23,15 +23,17 @@ public partial class ClearedCacheNotification : UserControl, INotification
             stringBuilder.Append($"{deletedFile}\n");
         
         MessageBox.Show(App.MainWindow, App.GetString("CacheCleared"), App.GetString("ResultsBelow"), MessageBoxButtons.Ok, stringBuilder.ToString());
-        
-        ((NotificationCard)Parent).Close();
+
+
+        if (Parent is NotificationCard notificationCard)
+            notificationCard.Close();
     }
 
     public string? Title { get; }
 
     public string? Message { get; }
 
-    public NotificationType Type { get; set; }
+    public NotificationType Type { get; init; }
 
     public TimeSpan Expiration { get; }
 
@@ -39,5 +41,5 @@ public partial class ClearedCacheNotification : UserControl, INotification
 
     public Action? OnClose { get; }
     
-    public List<string> DeletedFiles { get; set; }
+    public List<string> DeletedFiles { get; init; }
 }

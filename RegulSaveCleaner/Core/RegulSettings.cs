@@ -3,7 +3,6 @@ using System.Text.Json;
 using Avalonia.Collections;
 using Avalonia.Media;
 using PleasantUI;
-using PleasantUI.Core;
 using PleasantUI.Core.Constants;
 using RegulSaveCleaner.Core.Constants;
 using RegulSaveCleaner.Structures;

@@ -128,10 +128,7 @@ public class GameSavesTransferViewModel : ViewModelBase
         List<GameSave> selectedGameSave = SelectedGameSaves.ToList();
         List<GameSave> gameSaves = GameSaves.ToList();
 
-        if (SortByAlphabet)
-            gameSaves = gameSaves.OrderBy(x => x.Name).ToList();
-        else
-            gameSaves = gameSaves.OrderByDescending(x => x.LastSaveTime).ToList();
+        gameSaves = SortByAlphabet ? gameSaves.OrderBy(x => x.Name).ToList() : gameSaves.OrderByDescending(x => x.LastSaveTime).ToList();
         
         GameSaves.Clear();
         GameSaves.AddRange(gameSaves);

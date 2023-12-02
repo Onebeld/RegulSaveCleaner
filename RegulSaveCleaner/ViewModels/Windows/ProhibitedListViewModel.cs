@@ -13,10 +13,8 @@ using RegulSaveCleaner.S3PI.Package;
 using RegulSaveCleaner.S3PI.Resources;
 using RegulSaveCleaner.Structures;
 using RegulSaveCleaner.Views.Windows;
-using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
 using IImage = Pfim.IImage;
 
 namespace RegulSaveCleaner.ViewModels.Windows;
@@ -159,10 +157,10 @@ public class ProhibitedListViewModel : ViewModelBase
 
     private bool CheckResourceAvailability(GameDataType gameDataType, ImageResource imageResource)
     {
-        bool isAvailable = gameDataType.ResourceTypes.Any(x => x == imageResource.Type);
+        bool isAvailable = Array.Exists(gameDataType.ResourceTypes, x => x == imageResource.Type);
 
         if (gameDataType.ResourceGroups is not null)
-            isAvailable = gameDataType.ResourceGroups.Any(x => x == imageResource.Group);
+            isAvailable = Array.Exists(gameDataType.ResourceTypes, x => x == imageResource.Group);
         
         return isAvailable;
     }
@@ -188,10 +186,10 @@ public class ProhibitedListViewModel : ViewModelBase
                 {
                     Bitmap bitmap;
 
-                    if (GameDataTypes.SimPortraits.ResourceTypes.Any(x => x == resource.ResourceType)
-                        || GameDataTypes.FamilyPortraits.ResourceTypes.Any(x => x == resource.ResourceType)
-                        || GameDataTypes.LotThumbnails.ResourceTypes.Any(x => x == resource.ResourceType)
-                        || GameDataTypes.SimPortraits.ResourceTypes.Any(x => x == resource.ResourceType))
+                    if (Array.Exists(GameDataTypes.SimPortraits.ResourceTypes, x => x == resource.ResourceType)
+                        || Array.Exists(GameDataTypes.FamilyPortraits.ResourceTypes, x => x == resource.ResourceType)
+                        || Array.Exists(GameDataTypes.LotThumbnails.ResourceTypes, x => x == resource.ResourceType)
+                        || Array.Exists(GameDataTypes.SimPortraits.ResourceTypes, x => x == resource.ResourceType))
                     {
                         DefaultResource resource2;
                         lock (Obj)
@@ -199,10 +197,10 @@ public class ProhibitedListViewModel : ViewModelBase
                     
                         bitmap = new Bitmap(resource2.Stream);
                     }
-                    else if (GameDataTypes.GeneratedImages.ResourceTypes.Any(x => x == resource.ResourceType)
-                             && GameDataTypes.GeneratedImages.ResourceGroups.Any(x => x == resource.ResourceGroup)
-                             || GameDataTypes.Photos.ResourceTypes.Any(x => x == resource.ResourceType)
-                             && GameDataTypes.Photos.ResourceGroups.Any(x => x == resource.ResourceGroup))
+                    else if (Array.Exists(GameDataTypes.GeneratedImages.ResourceTypes, x => x == resource.ResourceType)
+                             && Array.Exists(GameDataTypes.GeneratedImages.ResourceGroups!, x => x == resource.ResourceGroup)
+                             || Array.Exists(GameDataTypes.Photos.ResourceTypes, x => x == resource.ResourceType)
+                             && Array.Exists(GameDataTypes.Photos.ResourceGroups!, x => x == resource.ResourceGroup))
                     {
                         DefaultResource resource1;
                         lock (Obj)
@@ -302,7 +300,7 @@ public class ProhibitedListViewModel : ViewModelBase
 
     public async void SaveSelectedImages()
     {
-        string? path = await StorageProvider.SelectFolder(App.MainWindow);
+        string? path = await StorageProvider.SelectDirectory(App.MainWindow);
 
         if (!string.IsNullOrWhiteSpace(path))
         {

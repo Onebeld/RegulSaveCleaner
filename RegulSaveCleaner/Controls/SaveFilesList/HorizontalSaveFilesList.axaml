@@ -105,7 +105,7 @@
                        Text="{StaticResource SaveFilesNotFound}"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       IsVisible="{CompiledBinding !FoundSaveFolder}"
+                       IsVisible="{CompiledBinding !IsFoundSaveFolder}"
                        Foreground="{StaticResource TextFillColorTertiaryBrush}" />
             <TextBlock Grid.Row="1"
                        Text="{StaticResource NoSaveFound}"
@@ -114,7 +114,7 @@
                        Foreground="{StaticResource TextFillColorTertiaryBrush}">
                 <TextBlock.IsVisible>
                     <MultiBinding Converter="{x:Static BoolConverters.And}">
-                        <CompiledBinding Path="FoundSaveFolder" />
+                        <CompiledBinding Path="IsFoundSaveFolder" />
                         <CompiledBinding Path="!GameSaves.Count" />
                     </MultiBinding>
                 </TextBlock.IsVisible>

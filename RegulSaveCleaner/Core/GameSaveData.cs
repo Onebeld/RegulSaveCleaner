@@ -3,17 +3,34 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using RegulSaveCleaner.S3PI;
 using RegulSaveCleaner.S3PI.Package;
-using PleasantUI.Reactive;
 
 namespace RegulSaveCleaner.Core;
 
 public class GameSaveData
 {
+    /// <summary>
+    /// The image of the family that is noted in the save
+    /// </summary>
     public IImage? FamilyIcon;
 
+    /// <summary>
+    /// The name of the world that is noted in the save
+    /// </summary>
     public string WorldName = string.Empty;
+    
+    /// <summary>
+    /// Description of save
+    /// </summary>
     public string Description = string.Empty;
+    
+    /// <summary>
+    /// The instance number of the image of family that is marked in the save
+    /// </summary>
     public ulong ImgInstance;
+    
+    /// <summary>
+    /// Time of last save change
+    /// </summary>
     public DateTime LastSaveTime;
     
     public GameSaveData(string strPath)
@@ -29,9 +46,14 @@ public class GameSaveData
         Package.ClosePackage(package);
     }
 
-    private void Extract(Stream s, string nhdPath)
+    /// <summary>
+    /// Obtains the necessary information from the save
+    /// </summary>
+    /// <param name="stream">The resource content as a Stream</param>
+    /// <param name="nhdPath">The path to save</param>
+    private void Extract(Stream stream, string nhdPath)
     {
-        using FastBinaryReader fastBinaryReader = new(s);
+        using FastBinaryReader fastBinaryReader = new(stream);
         StringBuilder stringBuilder = new();
         
         fastBinaryReader.BaseStream.Position += 4;
@@ -50,7 +72,7 @@ public class GameSaveData
 
         WorldName = stringBuilder.ToString();
 
-        // Get Family description
+        // Get family description
         string description = string.Empty;
         int numSymbolForFamilyDescription = checked(fastBinaryReader.ReadInt32() - 1);
         for (int index = 0; index <= numSymbolForFamilyDescription; index++)

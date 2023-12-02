@@ -5,7 +5,13 @@ namespace RegulSaveCleaner.Core.Extensions;
 
 public static class StorageProvider
 {
-    public static async Task<string?> SelectFolder(PleasantWindow window, string? directory = null)
+    /// <summary>
+    /// Opens the directory selection window in the system
+    /// </summary>
+    /// <param name="window">Window that will be locked when selecting directories</param>
+    /// <param name="directory">The source directory that will be selected when the directory selection window is opened</param>
+    /// <returns>Directory path</returns>
+    public static async Task<string?> SelectDirectory(PleasantWindow window, string? directory = null)
     {
         IReadOnlyList<IStorageFolder> result = await window.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
         {
