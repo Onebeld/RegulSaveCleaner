@@ -14,12 +14,13 @@
         <Decorator x:Name="Decorator" Grid.Row="0" />
         
         <Border Grid.Row="1"
-                BorderBrush="{StaticResource ControlStrokeColorDefaultBrush}"
-                Background="{StaticResource SolidBackgroundFillColorBaseBrush}"
+                BorderBrush="{StaticResource ContentBorderColorBrush}"
+                Background="{StaticResource BackgroundColor3Brush}"
                 BorderThickness="0 1 0 0"
                 Height="80">
-            <Button Theme="{StaticResource AccentButton}"
+            <Button Theme="{StaticResource AccentButtonTheme}"
                     Content="{StaticResource StartCleaning}"
+                    Foreground="{StaticResource ForegroundAccentLightColor3Brush}"
                     VerticalAlignment="Center"
                     Command="{CompiledBinding StartCleaning}"
                     Margin="15 0">

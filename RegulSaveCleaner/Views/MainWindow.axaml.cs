@@ -63,6 +63,6 @@ public partial class MainWindow : PleasantWindow
     private static void OnClosed(object? sender, EventArgs e)
     {
         RegulSettings.Save();
-        PleasantSettings.Instance.Save();
+        PleasantSettings.Save();
     }
 }

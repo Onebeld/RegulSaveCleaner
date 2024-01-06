@@ -10,7 +10,7 @@
         <UniformGrid Margin="15 0" Rows="1">
             <Panel />
             <Button x:Name="CloseButton"
-                    Theme="{StaticResource AccentButton}"
+                    Theme="{StaticResource AccentButtonTheme}"
                     Content="{StaticResource Ok}"
                     VerticalAlignment="Center"
                     Margin="5" />

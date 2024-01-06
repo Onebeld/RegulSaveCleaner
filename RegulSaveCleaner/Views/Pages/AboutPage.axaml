@@ -16,13 +16,13 @@
                         <StackPanel Grid.Column="1" Width="150" Margin="20 0 0 0" VerticalAlignment="Center">
                             <Path Stretch="Uniform"
                                   Data="{StaticResource RegulText}"
-                                  Fill="{StaticResource TextFillColorPrimaryBrush}" />
+                                  Fill="{StaticResource TextFillColor1Brush}" />
                             <TextBlock Text="Save Cleaner" FontSize="16" FontWeight="SemiBold" />
-                            <TextBlock Foreground="{StaticResource TextFillColorTertiaryBrush}" FontSize="12">
+                            <TextBlock Foreground="{StaticResource TextFillColor3Brush}" FontSize="12">
                                 <Run Text="{StaticResource License}" /><Run Text=":" />
                                 &#8203;<Run Text="MIT" />
                             </TextBlock>
-                            <TextBlock Margin="0 -2 0 0" Foreground="{StaticResource TextFillColorTertiaryBrush}"
+                            <TextBlock Margin="0 -2 0 0" Foreground="{StaticResource TextFillColor3Brush}"
                                        FontSize="12">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
                                 &#8203;<Run x:Name="AppVersion" />
@@ -33,13 +33,13 @@
                     <StackPanel HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Width="200">
-                        <Path Fill="{StaticResource TextFillColorPrimaryBrush}"
+                        <Path Fill="{StaticResource TextFillColor1Brush}"
                               Data="{StaticResource OnebeldIcon}"
                               Stretch="Uniform" />
                         <TextBlock Text="Dmitry Zhutkov"
                                    FontSize="12"
                                    TextAlignment="Right"
-                                   Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                                   Foreground="{StaticResource TextFillColor3Brush}" />
                         <Button x:Name="ContactAuthorButton"
                                 Theme="{StaticResource AppBarButtonTheme}"
                                 Content="{StaticResource ContactAuthor}"
@@ -128,12 +128,12 @@
                             
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
-                                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                       Foreground="{StaticResource TextFillColor3Brush}">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
                                 &#8203;<Run Text="11.0.5" />
                             </TextBlock>
                         </Panel>
-                        <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />
+                        <Separator Background="{StaticResource ControlBorderColorBrush}" Margin="-12 0" />
                         <Panel Margin="5">
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <Image Source="{StaticResource PleasantUIIcon}" Width="30" Height="30" />
@@ -143,48 +143,48 @@
                             <StackPanel>
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
-                                           Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                           Foreground="{StaticResource TextFillColor3Brush}">
                                     <Run Text="{StaticResource Version}" /><Run Text=":" />
                                     &#8203;<Run x:Name="PleasantUIVersion" />
                                 </TextBlock>
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Right"
-                                           Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                           Foreground="{StaticResource TextFillColor3Brush}">
                                     <Run Text="{StaticResource Author}" /><Run Text=":" />
                                     &#8203;<Run Text="Onebeld" />
                                 </TextBlock>
                             </StackPanel>
                             
                         </Panel>
-                        <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />
+                        <Separator Background="{StaticResource ControlBorderColorBrush}" Margin="-12 0" />
                         <Panel Margin="5">
                             <TextBlock Text="Pfim" FontSize="20" VerticalAlignment="Center" FontWeight="SemiBold" />
                             
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
-                                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                       Foreground="{StaticResource TextFillColor3Brush}">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
                                 &#8203;<Run Text="0.11.2" />
                             </TextBlock>
                         </Panel>
-                        <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />
+                        <Separator Background="{StaticResource ControlBorderColorBrush}" Margin="-12 0" />
                         <Panel Margin="5">
                             <TextBlock Text="SixLabors.ImageSharp" FontSize="20" VerticalAlignment="Center" FontWeight="SemiBold" />
                             
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
-                                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                       Foreground="{StaticResource TextFillColor3Brush}">
                                 <Run Text="{StaticResource Version}" /><Run Text=":" />
                                 &#8203;<Run x:Name="ImageSharpVersion" />
                             </TextBlock>
                         </Panel>
-                        <Separator Background="{StaticResource CardStrokeColorDefaultBrush}" Margin="-12 0" />
+                        <Separator Background="{StaticResource ControlBorderColorBrush}" Margin="-12 0" />
                         <Panel Margin="5">
                             <TextBlock Text="S3PI" FontSize="20" VerticalAlignment="Center" FontWeight="SemiBold" />
                             
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
-                                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                                       Foreground="{StaticResource TextFillColor3Brush}">
                                 <Run Text="{StaticResource Author}" /><Run Text=":" />
                                 &#8203;<Run Text="Peter L Jones" />
                             </TextBlock>
@@ -215,9 +215,9 @@
                 </OptionsDisplayItem.Content>
             </OptionsDisplayItem>
             
-            <Border Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+            <Border Background="{StaticResource BackgroundColor3Brush}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource ControlStrokeColorSecondaryBrush}"
+                    BorderBrush="{StaticResource ControlBorderColorBrush}"
                     Padding="12"
                     CornerRadius="4">
                 <StackPanel>

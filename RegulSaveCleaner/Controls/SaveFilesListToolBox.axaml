@@ -36,7 +36,7 @@
 
         <Border Width="1"
                 VerticalAlignment="Stretch"
-                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                Background="{StaticResource ControlBorderColorBrush}" />
 
         <StackPanel Orientation="Horizontal">
             <StackPanel.IsEnabled>
@@ -47,8 +47,8 @@
                 </MultiBinding>
             </StackPanel.IsEnabled>
 
-            <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
-                         CornerRadius="4 0 0 4"
+            <RadioButton Theme="{StaticResource ButtonedRadioButton}"
+                         CornerRadius="8 0 0 8"
                          Padding="8 6"
                          IsChecked="{CompiledBinding SortByAlphabet}"
                          GroupName="SortingSaves"
@@ -57,8 +57,8 @@
                     <Path Data="{StaticResource AlphabetRegular}" />
                 </Viewbox>
             </RadioButton>
-            <RadioButton Theme="{StaticResource RadioButtonLikeButton}"
-                         CornerRadius="0 4 4 0"
+            <RadioButton Theme="{StaticResource ButtonedRadioButton}"
+                         CornerRadius="0 8 8 0"
                          Padding="8 6"
                          IsChecked="{CompiledBinding SortByDate}"
                          GroupName="SortingSaves"
@@ -71,7 +71,7 @@
 
         <Border Width="1"
                 VerticalAlignment="Stretch"
-                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                Background="{StaticResource ControlBorderColorBrush}" />
 
         <StackPanel Orientation="Horizontal">
             <StackPanel.IsEnabled>
@@ -83,7 +83,7 @@
                 </MultiBinding>
             </StackPanel.IsEnabled>
             <Button Padding="8 6"
-                    CornerRadius="4 0 0 4"
+                    CornerRadius="8 0 0 8"
                     Command="{CompiledBinding SelectAllSaves}"
                     ToolTip.Tip="{StaticResource SelectAll}">
                 <Viewbox Width="16" Height="16">
@@ -91,7 +91,7 @@
                 </Viewbox>
             </Button>
             <Button Padding="8 6"
-                    CornerRadius="0 4 4 0"
+                    CornerRadius="0 8 8 0"
                     Command="{CompiledBinding CancelAllSaves}"
                     ToolTip.Tip="{StaticResource CancelAll}">
                 <Viewbox Width="16" Height="16">
@@ -102,9 +102,10 @@
 
         <Border Width="1"
                 VerticalAlignment="Stretch"
-                Background="{StaticResource ControlStrokeColorDefaultBrush}" />
+                Background="{StaticResource ControlBorderColorBrush}" />
 
         <Button Padding=" 8 6"
+                CornerRadius="8"
                 Command="{CompiledBinding LoadSaves}"
                 ToolTip.Tip="{StaticResource UpdateList}">
             <Button.IsEnabled>

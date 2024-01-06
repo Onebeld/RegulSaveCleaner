@@ -21,8 +21,7 @@
                 TitleBarType="ClassicExtended"
                 Icon="avares://RegulSaveCleaner/icon.ico"
                 x:DataType="viewModels:MainWindowViewModel">
-    <NavigationView Header="{x:Null}"
-                    IsOpen="False"
+    <NavigationView IsOpen="False"
                     SelectionMode="AlwaysSelected"
                     DisplayTopIndent="{CompiledBinding WindowSettings.EnableCustomTitleBar, Source={x:Static PleasantSettings.Instance}}"
                     BindWindowSettings="True">

@@ -25,9 +25,9 @@
         
         <Border Grid.Row="1"
                 CornerRadius="5"
-                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                Background="{StaticResource BackgroundColor2Brush}"
                 BorderThickness="1"
-                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{StaticResource ControlBorderColorBrush}"
                 Padding="5">
             <Panel>
                 <ListBox SelectionMode="Single"
@@ -44,14 +44,14 @@
                            IsVisible="{CompiledBinding !GameSaveResourcesList.Count}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                           Foreground="{StaticResource TextFillColor3Brush}" />
             </Panel>
         </Border>
     </Grid>
     
     <ContentDialog.BottomPanelContent>
         <UniformGrid Margin="15 0" Rows="1">
-            <Button Theme="{StaticResource AccentButton}" 
+            <Button Theme="{StaticResource AccentButtonTheme}" 
                     IsEnabled="{CompiledBinding SelectedGameSaveResources, Converter={x:Static ObjectConverters.IsNotNull}}"
                     Content="{StaticResource Ok}" 
                     VerticalAlignment="Center" 

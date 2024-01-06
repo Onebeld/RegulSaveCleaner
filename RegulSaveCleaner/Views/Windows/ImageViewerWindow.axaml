@@ -9,9 +9,9 @@
         Margin="60">
     <Grid Margin="15">
         <Border CornerRadius="5"
-                Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                Background="{StaticResource BackgroundColor2Brush}"
                 BorderThickness="1"
-                BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{StaticResource ControlBorderColorBrush}"
                 Padding="5">
             <SmoothScrollViewer HorizontalScrollBarVisibility="Auto">
                 <Image x:Name="Image"/>
@@ -23,7 +23,7 @@
         <UniformGrid Margin="15 0" Rows="1">
             <Panel/>
             <Button x:Name="CloseButton"
-                    Theme="{StaticResource AccentButton}"
+                    Theme="{StaticResource AccentButtonTheme}"
                     Content="{StaticResource Ok}" 
                     VerticalAlignment="Center" 
                     Margin="5"

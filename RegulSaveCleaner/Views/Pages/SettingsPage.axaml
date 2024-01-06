@@ -217,16 +217,16 @@
                             <TextBlock VerticalAlignment="Center" Text="{StaticResource SizeOfSaveThumbnail}" TextWrapping="Wrap" />
                         </DockPanel>
                         
-                        <Separator Margin="-60 10 -45 10" Background="{StaticResource CardStrokeColorDefaultBrush}" />
+                        <Separator Margin="-60 10 -45 10" Background="{StaticResource ControlBorderColorBrush}" />
                         
                         <TextBlock Text="{StaticResource Preview}" FontWeight="Bold" />
 
                         <Grid RowDefinitions="*,Auto" HorizontalAlignment="Left" Margin="0 10 0 0">
                             <Border Grid.Row="0"
                                     HorizontalAlignment="Center"
-                                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                                    Background="{StaticResource BackgroundColor2Brush}"
                                     BorderThickness="1"
-                                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                                    BorderBrush="{StaticResource ControlBorderColorBrush}"
                                     CornerRadius="5"
                                     Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25}"
                                     Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
@@ -358,7 +358,7 @@
                                     <MenuItem.Icon>
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource CopyRegular}"
-                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Fill="{StaticResource TextFillColor1Brush}"
                                                   Stretch="Uniform" />
                                         </Viewbox>
                                     </MenuItem.Icon>
@@ -370,7 +370,7 @@
                                     <MenuItem.Icon>
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource ClipboardPasteRegular}"
-                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Fill="{StaticResource TextFillColor1Brush}"
                                                   Stretch="Uniform" />
                                         </Viewbox>
                                     </MenuItem.Icon>
@@ -384,7 +384,7 @@
                                     <MenuItem.Icon>
                                         <Viewbox Width="16" Height="16">
                                             <Path Data="{StaticResource EditRegular}"
-                                                  Fill="{StaticResource TextFillColorPrimaryBrush}"
+                                                  Fill="{StaticResource TextFillColor1Brush}"
                                                   Stretch="Uniform" />
                                         </Viewbox>
                                     </MenuItem.Icon>

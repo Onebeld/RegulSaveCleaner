@@ -11,7 +11,7 @@
                 <Viewbox Width="16" Height="16">
                     <Path
                         Data="{StaticResource PresenceBlockedRegular}"
-                        Fill="{StaticResource TextFillColorPrimaryBrush}"
+                        Fill="{StaticResource TextFillColor1Brush}"
                         Stretch="Uniform" />
                 </Viewbox>
             </MenuItem.Icon>

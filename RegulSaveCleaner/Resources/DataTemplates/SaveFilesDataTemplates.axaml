@@ -11,10 +11,10 @@
     <DataTemplate x:Key="ListItemSaveFileDataTemplate" DataType="structures:GameSave">
         <Grid ColumnDefinitions="Auto,*,Auto" Margin="5">
             <Border Grid.Column="0"
-                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                    Background="{StaticResource BackgroundColor2Brush}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
-                    CornerRadius="5"
+                    BorderBrush="{StaticResource ControlBorderColorBrush}"
+                    CornerRadius="8"
                     Margin="0 0 10 0"
                     Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}"
                     Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
@@ -48,10 +48,10 @@
         <Grid RowDefinitions="*,Auto" Margin="10">
             <Border Grid.Row="0"
                     HorizontalAlignment="Center"
-                    Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+                    Background="{StaticResource BackgroundColor2Brush}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
-                    CornerRadius="5"
+                    BorderBrush="{StaticResource ControlBorderColorBrush}"
+                    CornerRadius="8"
                     Width="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}, Converter={x:Static converters:FoldingConverter.Instance}, ConverterParameter=25.0}"
                     Height="{CompiledBinding SizeOfSaveThumbnails, Source={x:Static core:RegulSettings.Instance}}">
                 <Panel>

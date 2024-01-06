@@ -21,9 +21,9 @@
 
     <Border MinHeight="200"
             CornerRadius="4"
-            Background="{StaticResource CardBackgroundFillColorDefaultBrush}"
+            Background="{StaticResource BackgroundColor3Brush}"
             BorderThickness="1"
-            BorderBrush="{StaticResource ControlStrokeColorSecondaryBrush}"
+            BorderBrush="{StaticResource ControlBorderColorBrush}"
             IsEnabled="{CompiledBinding !InCreatingBackupProcess}">
         <Grid RowDefinitions="Auto,*">
             <Panel Grid.Row="0" Margin="10 10 10 0">
@@ -37,7 +37,7 @@
 
                     <TextBlock FontSize="12"
                                VerticalAlignment="Center"
-                               Foreground="{StaticResource TextFillColorTertiaryBrush}"
+                               Foreground="{StaticResource TextFillColor3Brush}"
                                IsVisible="{CompiledBinding !!SelectedGameSaves.Count}">
                         <Run Text="{StaticResource Selected}" /><Run Text=":" />
                         <Run Text="{CompiledBinding SelectedGameSaves.Count}" />
@@ -106,12 +106,12 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        IsVisible="{CompiledBinding !IsFoundSaveFolder}"
-                       Foreground="{StaticResource TextFillColorTertiaryBrush}" />
+                       Foreground="{StaticResource TextFillColor3Brush}" />
             <TextBlock Grid.Row="1"
                        Text="{StaticResource NoSaveFound}"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Foreground="{StaticResource TextFillColorTertiaryBrush}">
+                       Foreground="{StaticResource TextFillColor3Brush}">
                 <TextBlock.IsVisible>
                     <MultiBinding Converter="{x:Static BoolConverters.And}">
                         <CompiledBinding Path="IsFoundSaveFolder" />
