@@ -60,7 +60,7 @@ public partial class MainWindow : PleasantWindow
             e.Cancel = true;
     }
 
-    private void OnClosed(object? sender, EventArgs e)
+    private static void OnClosed(object? sender, EventArgs e)
     {
         RegulSettings.Save();
         PleasantSettings.Instance.Save();
